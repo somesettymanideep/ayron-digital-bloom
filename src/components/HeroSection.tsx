@@ -140,9 +140,8 @@ const HeroSection = () => {
           <MobileRightPanel />
         </div>
         <div className="hidden lg:flex w-[40%] bg-background relative overflow-hidden items-center justify-center">
-          {/* Soft radial glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/15 blur-[80px]" />
+          {/* Subtle orange glow behind character */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-primary/10 blur-[100px]" />
 
           {/* Radar rings */}
           {[1, 2, 3].map((i) => (
