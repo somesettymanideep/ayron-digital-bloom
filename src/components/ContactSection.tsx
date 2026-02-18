@@ -166,14 +166,17 @@ const ContactSection = () => {
       </div>
 
       {/* Map placeholder */}
-      <div className="relative h-72 bg-muted overflow-hidden">
-        <div className="absolute inset-0 bg-primary/10" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <p className="font-display text-2xl text-foreground">Find Us On Map</p>
-            <p className="font-body text-sm text-muted-foreground mt-1">Interactive map coming soon</p>
-          </div>
-        </div>
+      <div className="relative h-72 overflow-hidden">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7651.038902739213!2d80.653851!3d16.499853!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35fbb039b07825%3A0xdab65771832e6eac!2sAyron%20Digital%20Solutions!5e0!3m2!1sen!2sin!4v1771394661827!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Ayron Digital Solutions Location"
+        />
       </div>
     </section>
   );
