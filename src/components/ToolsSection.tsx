@@ -14,7 +14,6 @@ import semrushIcon from "@/assets/tools/semrush.svg";
 import screamingFrogIcon from "@/assets/tools/screaming-frog.svg";
 import wordpressIcon from "@/assets/tools/wordpress.svg";
 import shopifyIcon from "@/assets/tools/shopify.svg";
-import webflowIcon from "@/assets/tools/webflow.svg";
 import mailchimpIcon from "@/assets/tools/mailchimp.svg";
 import klaviyoIcon from "@/assets/tools/klaviyo.svg";
 import vscodeIcon from "@/assets/tools/vscode.svg";
@@ -25,7 +24,7 @@ import djangoIcon from "@/assets/tools/django.svg";
 import bootstrapIcon from "@/assets/tools/bootstrap.svg";
 import pythonIcon from "@/assets/tools/python.svg";
 
-const categories = ["All", "Analytics", "Design", "Advertising", "SEO", "CMS", "Email", "Development"] as const;
+const categories = ["All", "Analytics", "Design", "Advertising", "SEO", "Email", "Development"] as const;
 type Category = (typeof categories)[number];
 
 interface Tool {
@@ -46,9 +45,8 @@ const tools: Tool[] = [
   { name: "Ahrefs", category: "SEO", icon: ahrefsIcon },
   { name: "SEMrush", category: "SEO", icon: semrushIcon },
   { name: "Screaming Frog", category: "SEO", icon: screamingFrogIcon },
-  { name: "WordPress", category: "CMS", icon: wordpressIcon },
-  { name: "Shopify", category: "CMS", icon: shopifyIcon },
-  { name: "Webflow", category: "CMS", icon: webflowIcon },
+  { name: "WordPress", category: "Development", icon: wordpressIcon },
+  { name: "Shopify", category: "Development", icon: shopifyIcon },
   { name: "Mailchimp", category: "Email", icon: mailchimpIcon },
   { name: "Klaviyo", category: "Email", icon: klaviyoIcon },
   { name: "VS Code", category: "Development", icon: vscodeIcon },
