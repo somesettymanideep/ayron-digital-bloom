@@ -4,6 +4,7 @@ import TestimonialsMasonry from "@/components/TestimonialsMasonry";
 import StatsSection from "@/components/StatsSection";
 import FounderMessage from "@/components/FounderMessage";
 import TeamCarousel from "@/components/TeamCarousel";
+import ToolsSection from "@/components/ToolsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -107,6 +108,7 @@ const About = () => (
     <WhyChooseSection />
     <StatsSection />
     <TestimonialsMasonry />
+    <ToolsSection />
     <CTASection />
     <Footer />
   </main>
