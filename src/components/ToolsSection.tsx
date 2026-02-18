@@ -17,8 +17,15 @@ import shopifyIcon from "@/assets/tools/shopify.svg";
 import webflowIcon from "@/assets/tools/webflow.svg";
 import mailchimpIcon from "@/assets/tools/mailchimp.svg";
 import klaviyoIcon from "@/assets/tools/klaviyo.svg";
+import vscodeIcon from "@/assets/tools/vscode.svg";
+import githubIcon from "@/assets/tools/github.svg";
+import awsIcon from "@/assets/tools/aws.svg";
+import reactjsIcon from "@/assets/tools/reactjs.svg";
+import djangoIcon from "@/assets/tools/django.svg";
+import bootstrapIcon from "@/assets/tools/bootstrap.svg";
+import pythonIcon from "@/assets/tools/python.svg";
 
-const categories = ["All", "Analytics", "Design", "Advertising", "SEO", "CMS", "Email"] as const;
+const categories = ["All", "Analytics", "Design", "Advertising", "SEO", "CMS", "Email", "Development"] as const;
 type Category = (typeof categories)[number];
 
 interface Tool {
@@ -44,6 +51,13 @@ const tools: Tool[] = [
   { name: "Webflow", category: "CMS", icon: webflowIcon },
   { name: "Mailchimp", category: "Email", icon: mailchimpIcon },
   { name: "Klaviyo", category: "Email", icon: klaviyoIcon },
+  { name: "VS Code", category: "Development", icon: vscodeIcon },
+  { name: "GitHub", category: "Development", icon: githubIcon },
+  { name: "AWS", category: "Development", icon: awsIcon },
+  { name: "React.js", category: "Development", icon: reactjsIcon },
+  { name: "Django", category: "Development", icon: djangoIcon },
+  { name: "Bootstrap", category: "Development", icon: bootstrapIcon },
+  { name: "Python", category: "Development", icon: pythonIcon },
 ];
 
 const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
