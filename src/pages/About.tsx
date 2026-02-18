@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import WhyChooseSection from "@/components/WhyChooseSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import StatsSection from "@/components/StatsSection";
 import FounderMessage from "@/components/FounderMessage";
 import TeamCarousel from "@/components/TeamCarousel";
@@ -105,6 +106,7 @@ const About = () => (
     <TeamCarousel />
     <WhyChooseSection />
     <StatsSection />
+    <TestimonialsSection />
     <CTASection />
     <Footer />
   </main>
