@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight, Linkedin, Twitter } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const teamMembers = [
   {
@@ -123,15 +123,6 @@ const TeamCarousel = () => {
                         {member.name.charAt(0)}
                       </span>
                     </div>
-                    {/* Social icons overlay */}
-                    <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <a href="#" className="w-8 h-8 bg-primary flex items-center justify-center text-primary-foreground hover:bg-agency-orange-dark transition-colors">
-                        <Linkedin size={14} />
-                      </a>
-                      <a href="#" className="w-8 h-8 bg-primary flex items-center justify-center text-primary-foreground hover:bg-agency-orange-dark transition-colors">
-                        <Twitter size={14} />
-                      </a>
-                    </div>
                   </div>
 
                   {/* Info */}
@@ -140,9 +131,6 @@ const TeamCarousel = () => {
                       {member.name}
                     </h4>
                     <p className="font-body text-sm text-primary font-medium mt-1">{member.role}</p>
-                    <p className="font-body font-light text-muted-foreground text-sm leading-relaxed mt-3">
-                      {member.bio}
-                    </p>
                   </div>
                 </div>
               </motion.div>
