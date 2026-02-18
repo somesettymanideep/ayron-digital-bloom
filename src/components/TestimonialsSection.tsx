@@ -214,16 +214,17 @@ const TestimonialsSection = () => {
 
         {/* Carousel */}
         <div ref={emblaRef} className="overflow-hidden">
-          <div className="flex gap-6">
+          <div className="flex" style={{ marginLeft: -12 }}>
             {testimonials.map((t, i) => {
               const isActive = i === selectedIndex;
               return (
                 <div
                   key={i}
-                  className="shrink-0"
+                  className="shrink-0 min-w-0 grow-0"
                   style={{
-                    width: 400,
+                    flexBasis: 400,
                     maxWidth: "85vw",
+                    paddingLeft: 12,
                     transform: isActive ? "scale(1.03)" : "scale(0.97)",
                     opacity: isActive ? 1 : 0.8,
                     transition: "all 0.30s ease",
