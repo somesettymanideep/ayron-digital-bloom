@@ -23,7 +23,7 @@ const navLinks = [
       { label: "Product Shoot", href: "/services/product-shoot", icon: Camera },
     ],
   },
-  { label: "Blog", href: "/#blog" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
