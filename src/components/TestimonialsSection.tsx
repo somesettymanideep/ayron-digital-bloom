@@ -47,17 +47,19 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "start",
+    align: "center",
     loop: true,
     slidesToScroll: 1,
   });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setCanScrollPrev(emblaApi.canScrollPrev());
     setCanScrollNext(emblaApi.canScrollNext());
+    setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
   useEffect(() => {
@@ -213,125 +215,160 @@ const TestimonialsSection = () => {
         {/* Carousel */}
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex gap-6">
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className="shrink-0"
-                style={{ width: 400, maxWidth: "85vw" }}
-              >
+            {testimonials.map((t, i) => {
+              const isActive = i === selectedIndex;
+              return (
                 <div
-                  className="relative h-full"
+                  key={i}
+                  className="shrink-0"
                   style={{
-                    backgroundColor: "#faf8f6",
-                    border: "1px solid #f0ece8",
-                    borderRadius: 24,
-                    padding: 40,
-                    boxShadow: "0 4px 24px rgba(244,124,65,0.06)",
+                    width: 400,
+                    maxWidth: "85vw",
+                    transform: isActive ? "scale(1.03)" : "scale(0.97)",
+                    opacity: isActive ? 1 : 0.8,
+                    transition: "all 0.30s ease",
                   }}
                 >
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-5">
-                    {Array.from({ length: t.stars }).map((_, si) => (
-                      <Star
-                        key={si}
-                        size={16}
-                        fill="#f47c41"
-                        color="#f47c41"
-                      />
-                    ))}
-                  </div>
-
-                  {/* Decorative quote */}
-                  <span
-                    className="absolute font-display select-none"
-                    style={{
-                      top: 16,
-                      right: 32,
-                      fontSize: 72,
-                      color: "#f47c41",
-                      opacity: 0.2,
-                      lineHeight: 1,
-                    }}
-                  >
-                    "
-                  </span>
-
-                  {/* Body text */}
-                  <p
-                    className="font-body"
-                    style={{
-                      color: "#444444",
-                      fontSize: 16,
-                      lineHeight: 1.85,
-                      fontWeight: 400,
-                    }}
-                  >
-                    {t.text}
-                  </p>
-
-                  {/* Divider */}
                   <div
+                    className="relative h-full group"
                     style={{
-                      height: 1,
-                      backgroundColor: "#f0ece8",
-                      margin: "24px 0",
+                      backgroundColor: isActive ? "#ffffff" : "#faf8f6",
+                      border: isActive
+                        ? "1.5px solid rgba(244,124,65,0.40)"
+                        : "1px solid #f0ece8",
+                      borderRadius: 24,
+                      padding: 40,
+                      boxShadow: isActive
+                        ? "0 16px 48px rgba(244,124,65,0.18)"
+                        : "0 4px 24px rgba(244,124,65,0.06)",
+                      transition: "all 0.30s ease",
                     }}
-                  />
-
-                  {/* Client row */}
-                  <div className="flex items-center gap-3.5">
-                    <img
-                      src={t.avatar}
-                      alt={t.name}
-                      className="shrink-0"
-                      style={{
-                        width: 52,
-                        height: 52,
-                        borderRadius: "50%",
-                        border: "2.5px solid #f47c41",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <div className="flex-1 min-w-0">
-                      <p
-                        className="font-display"
-                        style={{
-                          color: "#1a1a1a",
-                          fontSize: 15,
-                          fontWeight: 700,
-                        }}
-                      >
-                        {t.name}
-                      </p>
-                      <p
-                        className="font-body"
-                        style={{
-                          color: "#f47c41",
-                          fontSize: 12,
-                          fontWeight: 500,
-                        }}
-                      >
-                        {t.role}
-                      </p>
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget;
+                      el.style.border = "1.5px solid #f47c41";
+                      el.style.boxShadow = "0 12px 40px rgba(244,124,65,0.16)";
+                      el.style.transform = "translateY(-8px)";
+                      const q = el.querySelector<HTMLSpanElement>(".quote-mark");
+                      if (q) q.style.opacity = "0.35";
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget;
+                      el.style.border = isActive
+                        ? "1.5px solid rgba(244,124,65,0.40)"
+                        : "1px solid #f0ece8";
+                      el.style.boxShadow = isActive
+                        ? "0 16px 48px rgba(244,124,65,0.18)"
+                        : "0 4px 24px rgba(244,124,65,0.06)";
+                      el.style.transform = "translateY(0)";
+                      const q = el.querySelector<HTMLSpanElement>(".quote-mark");
+                      if (q) q.style.opacity = "0.2";
+                    }}
+                  >
+                    {/* Stars */}
+                    <div className="flex gap-1 mb-5">
+                      {Array.from({ length: t.stars }).map((_, si) => (
+                        <Star
+                          key={si}
+                          size={16}
+                          fill="#f47c41"
+                          color="#f47c41"
+                        />
+                      ))}
                     </div>
+
+                    {/* Decorative quote */}
                     <span
-                      className="font-body shrink-0"
+                      className="absolute font-display select-none quote-mark"
                       style={{
-                        backgroundColor: "#ffffff",
-                        border: "1.5px solid #f47c41",
+                        top: 16,
+                        right: 32,
+                        fontSize: 72,
                         color: "#f47c41",
-                        fontSize: 11,
-                        fontWeight: 700,
-                        padding: "4px 12px",
-                        borderRadius: 20,
+                        opacity: 0.2,
+                        lineHeight: 1,
+                        transition: "opacity 0.30s ease",
                       }}
                     >
-                      {t.tag}
+                      "
                     </span>
+
+                    {/* Body text */}
+                    <p
+                      className="font-body"
+                      style={{
+                        color: "#444444",
+                        fontSize: 16,
+                        lineHeight: 1.85,
+                        fontWeight: 400,
+                      }}
+                    >
+                      {t.text}
+                    </p>
+
+                    {/* Divider */}
+                    <div
+                      style={{
+                        height: 1,
+                        backgroundColor: "#f0ece8",
+                        margin: "24px 0",
+                      }}
+                    />
+
+                    {/* Client row */}
+                    <div className="flex items-center gap-3.5">
+                      <img
+                        src={t.avatar}
+                        alt={t.name}
+                        className="shrink-0"
+                        style={{
+                          width: 52,
+                          height: 52,
+                          borderRadius: "50%",
+                          border: "2.5px solid #f47c41",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <p
+                          className="font-display"
+                          style={{
+                            color: "#1a1a1a",
+                            fontSize: 15,
+                            fontWeight: 700,
+                          }}
+                        >
+                          {t.name}
+                        </p>
+                        <p
+                          className="font-body"
+                          style={{
+                            color: "#f47c41",
+                            fontSize: 12,
+                            fontWeight: 500,
+                          }}
+                        >
+                          {t.role}
+                        </p>
+                      </div>
+                      <span
+                        className="font-body shrink-0"
+                        style={{
+                          backgroundColor: "#ffffff",
+                          border: "1.5px solid #f47c41",
+                          color: "#f47c41",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          padding: "4px 12px",
+                          borderRadius: 20,
+                        }}
+                      >
+                        {t.tag}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
