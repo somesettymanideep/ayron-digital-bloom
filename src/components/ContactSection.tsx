@@ -118,16 +118,6 @@ const ContactSection = () => {
 
         {/* RIGHT - Info */}
         <div className="w-full lg:w-[40%] bg-primary p-8 md:p-12 flex flex-col">
-          {/* Office hours */}
-          <div className="bg-secondary text-secondary-foreground p-6 mb-8">
-            <h4 className="font-display text-xl text-primary mb-3">Office Hours</h4>
-            <div className="font-body text-sm space-y-1">
-              <p>Mon – Fri: 9:00 AM – 7:00 PM</p>
-              <p>Saturday: 10:00 AM – 4:00 PM</p>
-              <p>Sunday: Closed (we rest too 😄)</p>
-            </div>
-          </div>
-
           <div>
             <h3 className="font-display text-4xl text-secondary mb-2">Reach Us</h3>
             <p className="font-body text-secondary/80 text-sm mb-8">Prefer to talk? We're just a call away.</p>
@@ -160,6 +150,16 @@ const ContactSection = () => {
                   <Icon size={18} strokeWidth={1.5} />
                 </a>
               ))}
+            </div>
+          </div>
+
+          {/* Office hours - moved below social icons */}
+          <div className="bg-secondary text-secondary-foreground p-6 mt-8">
+            <h4 className="font-display text-xl text-primary mb-3">Office Hours</h4>
+            <div className="font-body text-sm space-y-1">
+              <p>Mon – Fri: 9:00 AM – 7:00 PM</p>
+              <p>Saturday: 10:00 AM – 4:00 PM</p>
+              <p>Sunday: Closed (we rest too 😄)</p>
             </div>
           </div>
         </div>
