@@ -64,10 +64,12 @@ const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30, scale: 0.92 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.92 }}
-      transition={{ delay: 0.3 + index * 0.05, duration: 0.35, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ delay: index * 0.06, duration: 0.45, ease: "easeOut" }}
+      whileHover={{ y: -8, scale: 1.04, transition: { duration: 0.25, ease: "easeOut" } }}
       className="relative flex flex-col items-center justify-center gap-3 min-h-[110px] cursor-pointer"
       style={{
         background: hovered ? "#fffaf7" : "#ffffff",
@@ -75,8 +77,7 @@ const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
         boxShadow: hovered ? "0 8px 28px rgba(244,124,65,0.12)" : "0 2px 10px rgba(0,0,0,0.04)",
         padding: "24px 16px",
         borderRadius: "16px",
-        transform: hovered ? "translateY(-5px)" : "translateY(0)",
-        transition: "all 0.28s ease",
+        transition: "background 0.28s ease, border 0.28s ease, box-shadow 0.28s ease",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
