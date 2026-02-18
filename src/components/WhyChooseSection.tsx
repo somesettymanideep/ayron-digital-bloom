@@ -25,7 +25,7 @@ const WhyChooseSection = () => {
             <h2 className="font-display text-[70px] md:text-[90px] leading-[0.95]">
               <span className="block text-primary-foreground">WHY</span>
               <span className="block text-stroke-white">CHOOSE</span>
-              <span className="block text-primary-foreground">AYRON?</span>
+              <span className="block text-primary-foreground">ADS?</span>
             </h2>
             <p className="font-serif-accent italic text-secondary text-xl mt-4">
               Because results speak louder.
