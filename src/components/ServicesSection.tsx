@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Megaphone, Monitor, Diamond, Mail, Users,
-  ShoppingBag, Search, Camera
+  ShoppingBag, Search, Camera, ArrowRight
 } from "lucide-react";
 
 const services = [
@@ -9,155 +10,128 @@ const services = [
     title: "Digital Marketing",
     desc: "Comprehensive digital strategies that drive traffic, engagement, and conversions across all channels.",
     icon: Megaphone,
-    tags: ["SEO", "PPC", "Social"],
-    featured: true,
-    theme: "orange" as const,
+    slug: "digital-marketing",
   },
   {
     title: "Website Design",
     desc: "Modern, high-performance websites built to convert visitors into customers.",
     icon: Monitor,
-    theme: "white" as const,
+    slug: "website-design",
   },
   {
     title: "Brand Identity",
     desc: "Distinctive brand systems that set you apart and create lasting recognition.",
     icon: Diamond,
-    theme: "black-border" as const,
+    slug: "brand-identity",
   },
   {
     title: "Email Marketing",
     desc: "Automated email campaigns with high open rates and measurable ROI.",
     icon: Mail,
-    theme: "white" as const,
+    slug: "email-marketing",
   },
   {
     title: "Influencer Marketing",
     desc: "Strategic influencer partnerships that amplify your brand to the right audiences.",
     icon: Users,
-    theme: "orange" as const,
+    slug: "influencer-marketing",
   },
   {
     title: "Ecommerce Listing",
     desc: "Optimized product listings that rank higher and sell faster on every marketplace.",
     icon: ShoppingBag,
-    theme: "black-border" as const,
+    slug: "ecommerce-listing",
   },
   {
     title: "SEO Optimization",
     desc: "Data-driven SEO strategies that improve rankings and drive organic growth.",
     icon: Search,
-    theme: "white" as const,
+    slug: "seo-optimization",
   },
   {
     title: "Product Shoot",
     desc: "Professional product photography that makes your brand look premium and trustworthy.",
     icon: Camera,
-    theme: "black" as const,
+    slug: "product-shoot",
   },
 ];
 
-const themeClasses = {
-  orange: "bg-primary text-primary-foreground",
-  white: "bg-secondary text-secondary-foreground",
-  "black-border": "bg-background text-foreground border border-primary/40",
-  black: "bg-background text-foreground",
-};
-
-const iconColor = {
-  orange: "text-secondary",
-  white: "text-primary",
-  "black-border": "text-primary",
-  black: "text-primary",
-};
-
-const headingColor = {
-  orange: "text-secondary",
-  white: "text-secondary-foreground",
-  "black-border": "text-foreground",
-  black: "text-foreground",
-};
-
-const descColor = {
-  orange: "text-secondary/80",
-  white: "text-muted-foreground",
-  "black-border": "text-muted-foreground",
-  black: "text-muted-foreground",
-};
-
 const ServicesSection = () => {
   return (
-    <section id="services" className="bg-background py-20 relative overflow-hidden">
-      {/* Ghost watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[200px] md:text-[300px] text-primary/[0.04] select-none pointer-events-none whitespace-nowrap">
-        SERVICES
-      </div>
+    <section id="services" className="bg-background py-24 relative overflow-hidden">
+      {/* Subtle background accent */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[150px]" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Header */}
-        <div className="mb-14">
-          <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">What We Do</span>
-          <h2 className="font-display text-5xl md:text-6xl text-foreground mt-2">
-            Services Built for
-          </h2>
-          <p className="font-serif-accent italic text-primary text-3xl md:text-4xl">Real Results</p>
-          <p className="font-body font-light text-muted-foreground text-base mt-4 max-w-lg">
-            Every service is designed to move the needle — not just look good on a report.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+          <div>
+            <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">
+              What We Do
+            </span>
+            <h2 className="font-display text-5xl md:text-6xl text-foreground mt-2">
+              Our Services
+            </h2>
+            <p className="font-body font-light text-muted-foreground text-base mt-4 max-w-lg">
+              Every service is designed to move the needle — not just look good on a report.
+            </p>
+          </div>
+          <Link
+            to="/services"
+            className="font-body text-sm text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group shrink-0"
+          >
+            View All Services
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border/40">
           {services.map((service, i) => {
             const Icon = service.icon;
-            const theme = service.theme;
             const num = String(i + 1).padStart(2, "0");
             return (
               <motion.div
                 key={service.title}
-                className={`relative p-10 group cursor-pointer transition-all duration-400 hover:-translate-y-1.5 ${themeClasses[theme]} ${
-                  service.featured ? "md:col-span-2" : ""
-                }`}
-                initial={{ opacity: 0, y: 30 }}
+                className="bg-background p-8 group cursor-pointer relative overflow-hidden"
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05, duration: 0.5 }}
+                transition={{ delay: i * 0.06, duration: 0.5 }}
               >
-                {/* Ghost number */}
-                <span className={`absolute top-4 right-6 font-display text-[60px] leading-none ${
-                  theme === "orange" || theme === "black" || theme === "black-border"
-                    ? "text-secondary/[0.05]"
-                    : "text-secondary-foreground/[0.05]"
-                }`}>
-                  {num}
-                </span>
+                {/* Hover background */}
+                <div className="absolute inset-0 bg-primary/[0.04] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className={`mb-6 ${iconColor[theme]}`}>
-                  <Icon size={service.featured ? 56 : 40} strokeWidth={1.5} />
+                <div className="relative z-10">
+                  {/* Number */}
+                  <span className="font-display text-xs text-muted-foreground/50 mb-6 block">
+                    {num}
+                  </span>
+
+                  {/* Icon */}
+                  <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                    <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-display text-xl text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="font-body font-light text-sm text-muted-foreground leading-relaxed mb-5">
+                    {service.desc}
+                  </p>
+
+                  {/* Arrow link */}
+                  <div className="flex items-center gap-1 text-primary text-sm font-body opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    Learn More
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
                 </div>
 
-                <h3 className={`font-display ${service.featured ? "text-4xl" : "text-[28px]"} mb-3 ${headingColor[theme]}`}>
-                  {service.title}
-                </h3>
-
-                <p className={`font-body font-light text-sm leading-relaxed mb-4 ${descColor[theme]}`}>
-                  {service.desc}
-                </p>
-
-                {service.tags && (
-                  <div className="flex gap-2 mb-4">
-                    {service.tags.map((tag) => (
-                      <span key={tag} className="border border-secondary/40 text-secondary font-body text-xs px-3 py-1">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                <span className={`text-primary font-body text-sm ${headingColor[theme]}`}>{num}</span>
-
-                {/* Hover underbar */}
-                <div className="absolute bottom-0 left-0 w-0 h-[3px] bg-primary group-hover:w-full transition-all duration-500" />
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-primary group-hover:w-full transition-all duration-500" />
               </motion.div>
             );
           })}
