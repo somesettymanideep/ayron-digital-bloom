@@ -102,20 +102,16 @@ const Blog = () => (
       </div>
     </section>
 
-    {/* Subscribe strip */}
+    {/* CTA strip */}
     <section className="bg-primary py-10 px-6 md:px-12">
       <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
-        <p className="text-primary-foreground font-body text-lg">Want digital marketing insights every week?</p>
-        <div className="flex">
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="bg-secondary text-secondary-foreground font-body text-sm px-4 py-3 w-64 border-0 outline-none focus:ring-2 focus:ring-background"
-          />
-          <button className="bg-background text-foreground font-display text-lg px-6 py-3 hover:bg-muted transition-colors">
-            Subscribe
-          </button>
-        </div>
+        <p className="text-primary-foreground font-body text-lg">Have a project in mind? Let's talk.</p>
+        <Link
+          to="/contact"
+          className="bg-background text-foreground font-display text-lg px-8 py-3 hover:bg-muted transition-colors"
+        >
+          Contact Us
+        </Link>
       </div>
     </section>
 
