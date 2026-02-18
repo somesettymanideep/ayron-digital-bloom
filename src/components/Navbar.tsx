@@ -56,7 +56,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-border/20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
@@ -71,7 +71,7 @@ const Navbar = () => {
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   className={`flex items-center gap-1 font-body text-[13px] tracking-widest uppercase transition-colors ${
-                    isActive(link.href) ? "text-primary" : "text-foreground/80 hover:text-primary"
+                    isActive(link.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
                   }`}
                 >
                   {link.label}
@@ -82,7 +82,7 @@ const Navbar = () => {
                 </button>
 
                 {dropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-background border border-border/40 shadow-xl z-50">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-secondary border border-border/40 shadow-xl z-50">
                     <div className="py-2">
                       <Link
                         to="/services"
@@ -96,7 +96,7 @@ const Navbar = () => {
                           <Link
                             key={item.label}
                             to={item.href}
-                            className="flex items-center gap-3 px-5 py-2.5 font-body text-sm text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
+                            className="flex items-center gap-3 px-5 py-2.5 font-body text-sm text-secondary-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
                           >
                             <Icon size={16} strokeWidth={1.5} className="text-primary shrink-0" />
                             {item.label}
@@ -112,7 +112,7 @@ const Navbar = () => {
                 key={link.label}
                 to={link.href}
                 className={`font-body text-[13px] tracking-widest uppercase transition-colors ${
-                  isActive(link.href) ? "text-primary" : "text-foreground/80 hover:text-primary"
+                  isActive(link.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
                 }`}
               >
                 {link.label}
@@ -131,7 +131,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground"
+          className="md:hidden text-secondary-foreground"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -146,13 +146,13 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border/20 px-6 py-4 space-y-3">
+        <div className="md:hidden bg-secondary border-t border-border/20 px-6 py-4 space-y-3">
           {navLinks.map((link) =>
             link.dropdown ? (
               <div key={link.label}>
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="flex items-center justify-between w-full font-body text-sm tracking-widest uppercase text-foreground/80"
+                  className="flex items-center justify-between w-full font-body text-sm tracking-widest uppercase text-secondary-foreground/80"
                 >
                   {link.label}
                   <ChevronDown
@@ -169,7 +169,7 @@ const Navbar = () => {
                       <Link
                         key={item.label}
                         to={item.href}
-                        className="block font-body text-sm text-foreground/70 hover:text-primary"
+                        className="block font-body text-sm text-secondary-foreground/70 hover:text-primary"
                       >
                         {item.label}
                       </Link>
@@ -181,7 +181,7 @@ const Navbar = () => {
               <Link
                 key={link.label}
                 to={link.href}
-                className="block font-body text-sm tracking-widest uppercase text-foreground/80 hover:text-primary"
+                className="block font-body text-sm tracking-widest uppercase text-secondary-foreground/80 hover:text-primary"
               >
                 {link.label}
               </Link>
