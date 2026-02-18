@@ -166,6 +166,10 @@ const ContactSection = () => {
       </div>
 
       {/* Map placeholder */}
+      <div className="bg-background py-10 text-center">
+        <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">Our Location</span>
+        <h3 className="font-display text-4xl md:text-5xl text-foreground mt-2">Find Us On The Map</h3>
+      </div>
       <div className="relative h-72 overflow-hidden">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7651.038902739213!2d80.653851!3d16.499853!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35fbb039b07825%3A0xdab65771832e6eac!2sAyron%20Digital%20Solutions!5e0!3m2!1sen!2sin!4v1771394661827!5m2!1sen!2sin"
