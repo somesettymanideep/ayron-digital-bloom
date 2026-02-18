@@ -1,8 +1,24 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const categories = ["All", "Analytics", "Design", "Advertising", "SEO", "CMS", "Email"] as const;
+import googleAnalyticsIcon from "@/assets/tools/google-analytics.svg";
+import searchConsoleIcon from "@/assets/tools/search-console.svg";
+import canvaIcon from "@/assets/tools/canva.svg";
+import figmaIcon from "@/assets/tools/figma.svg";
+import photoshopIcon from "@/assets/tools/photoshop.svg";
+import metaIcon from "@/assets/tools/meta.svg";
+import googleAdsIcon from "@/assets/tools/google-ads.svg";
+import linkedinIcon from "@/assets/tools/linkedin.svg";
+import ahrefsIcon from "@/assets/tools/ahrefs.svg";
+import semrushIcon from "@/assets/tools/semrush.svg";
+import screamingFrogIcon from "@/assets/tools/screaming-frog.svg";
+import wordpressIcon from "@/assets/tools/wordpress.svg";
+import shopifyIcon from "@/assets/tools/shopify.svg";
+import webflowIcon from "@/assets/tools/webflow.svg";
+import mailchimpIcon from "@/assets/tools/mailchimp.svg";
+import klaviyoIcon from "@/assets/tools/klaviyo.svg";
 
+const categories = ["All", "Analytics", "Design", "Advertising", "SEO", "CMS", "Email"] as const;
 type Category = (typeof categories)[number];
 
 interface Tool {
@@ -12,22 +28,22 @@ interface Tool {
 }
 
 const tools: Tool[] = [
-  { name: "Google Analytics", category: "Analytics", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
-  { name: "Search Console", category: "Analytics", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/googlesearchconsole.svg" },
-  { name: "Canva", category: "Design", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/canva.svg" },
-  { name: "Figma", category: "Design", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
-  { name: "Photoshop", category: "Design", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" },
-  { name: "Meta Ads", category: "Advertising", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/meta.svg" },
-  { name: "Google Ads", category: "Advertising", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/googleads.svg" },
-  { name: "LinkedIn Ads", category: "Advertising", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" },
-  { name: "Ahrefs", category: "SEO", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/ahrefs.svg" },
-  { name: "SEMrush", category: "SEO", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/semrush.svg" },
-  { name: "Screaming Frog", category: "SEO", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/screamingfrog.svg" },
-  { name: "WordPress", category: "CMS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
-  { name: "Shopify", category: "CMS", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/shopify.svg" },
-  { name: "Webflow", category: "CMS", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/webflow.svg" },
-  { name: "Mailchimp", category: "Email", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/mailchimp.svg" },
-  { name: "Klaviyo", category: "Email", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/klaviyo.svg" },
+  { name: "Google Analytics", category: "Analytics", icon: googleAnalyticsIcon },
+  { name: "Search Console", category: "Analytics", icon: searchConsoleIcon },
+  { name: "Canva", category: "Design", icon: canvaIcon },
+  { name: "Figma", category: "Design", icon: figmaIcon },
+  { name: "Photoshop", category: "Design", icon: photoshopIcon },
+  { name: "Meta Ads", category: "Advertising", icon: metaIcon },
+  { name: "Google Ads", category: "Advertising", icon: googleAdsIcon },
+  { name: "LinkedIn Ads", category: "Advertising", icon: linkedinIcon },
+  { name: "Ahrefs", category: "SEO", icon: ahrefsIcon },
+  { name: "SEMrush", category: "SEO", icon: semrushIcon },
+  { name: "Screaming Frog", category: "SEO", icon: screamingFrogIcon },
+  { name: "WordPress", category: "CMS", icon: wordpressIcon },
+  { name: "Shopify", category: "CMS", icon: shopifyIcon },
+  { name: "Webflow", category: "CMS", icon: webflowIcon },
+  { name: "Mailchimp", category: "Email", icon: mailchimpIcon },
+  { name: "Klaviyo", category: "Email", icon: klaviyoIcon },
 ];
 
 const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
@@ -40,12 +56,13 @@ const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.92 }}
       transition={{ delay: 0.3 + index * 0.05, duration: 0.35, ease: "easeOut" }}
-      className="relative flex flex-col items-center justify-center gap-3 min-h-[110px] rounded-2xl md:rounded-[16px] cursor-pointer group"
+      className="relative flex flex-col items-center justify-center gap-3 min-h-[110px] cursor-pointer"
       style={{
         background: hovered ? "#fffaf7" : "#ffffff",
         border: hovered ? "1px solid rgba(244,124,65,0.35)" : "1px solid #ede9e4",
         boxShadow: hovered ? "0 8px 28px rgba(244,124,65,0.12)" : "0 2px 10px rgba(0,0,0,0.04)",
         padding: "24px 16px",
+        borderRadius: "16px",
         transform: hovered ? "translateY(-5px)" : "translateY(0)",
         transition: "all 0.28s ease",
       }}
@@ -78,7 +95,6 @@ const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
           }}
         >
           {tool.name}
-          {/* Arrow */}
           <div
             style={{
               position: "absolute",
@@ -96,24 +112,24 @@ const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
         </div>
       </div>
 
-      {/* Icon */}
+      {/* Icon - grayscale by default, color on hover */}
       <img
         src={tool.icon}
         alt={tool.name}
-        className="w-12 h-12 md:w-12 md:h-12 object-contain"
+        loading="lazy"
         style={{
+          width: "48px",
+          height: "48px",
+          objectFit: "contain",
           filter: hovered ? "grayscale(0%) opacity(1)" : "grayscale(100%) opacity(0.55)",
           transform: hovered ? "scale(1.10)" : "scale(1)",
           transition: "filter 0.28s ease, transform 0.28s ease",
-          width: "48px",
-          height: "48px",
         }}
-        loading="lazy"
       />
 
       {/* Name */}
       <span
-        className="text-center leading-snug"
+        className="text-center leading-snug font-body"
         style={{
           fontSize: "12px",
           fontWeight: 500,
@@ -126,7 +142,7 @@ const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
 
       {/* Category badge */}
       <span
-        className="hidden md:inline-block absolute"
+        className="hidden md:inline-block absolute font-body"
         style={{
           bottom: "10px",
           right: "10px",
@@ -154,10 +170,7 @@ const ToolsSection = () => {
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) {
-      setInView(true);
-      return;
-    }
+    if (prefersReduced) { setInView(true); return; }
     const observer = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setInView(true); },
       { threshold: 0.12 }
@@ -169,7 +182,7 @@ const ToolsSection = () => {
   const filtered = active === "All" ? tools : tools.filter((t) => t.category === active);
 
   return (
-    <section ref={sectionRef} style={{ background: "#ffffff", padding: "90px 0" }} className="px-6 md:px-12 lg:py-[90px] md:py-[70px] py-[50px]">
+    <section ref={sectionRef} className="px-6 md:px-12 lg:py-[90px] md:py-[70px] py-[50px]" style={{ background: "#ffffff" }}>
       <div className="max-w-[1200px] mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
@@ -203,7 +216,7 @@ const ToolsSection = () => {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center mb-10 overflow-x-auto scrollbar-hide" style={{ gap: "10px" }}>
+        <div className="flex justify-center mb-10 overflow-x-auto tools-scrollbar-hide" style={{ gap: "10px" }}>
           {categories.map((cat, i) => (
             <motion.button
               key={cat}
@@ -222,16 +235,16 @@ const ToolsSection = () => {
               }}
               onMouseEnter={(e) => {
                 if (active !== cat) {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = "#f47c41";
-                  (e.currentTarget as HTMLButtonElement).style.color = "#f47c41";
-                  (e.currentTarget as HTMLButtonElement).style.background = "rgba(244,124,65,0.05)";
+                  (e.currentTarget).style.borderColor = "#f47c41";
+                  (e.currentTarget).style.color = "#f47c41";
+                  (e.currentTarget).style.background = "rgba(244,124,65,0.05)";
                 }
               }}
               onMouseLeave={(e) => {
                 if (active !== cat) {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = "#ede9e4";
-                  (e.currentTarget as HTMLButtonElement).style.color = "#666666";
-                  (e.currentTarget as HTMLButtonElement).style.background = "#ffffff";
+                  (e.currentTarget).style.borderColor = "#ede9e4";
+                  (e.currentTarget).style.color = "#666666";
+                  (e.currentTarget).style.background = "#ffffff";
                 }
               }}
               initial={{ opacity: 0 }}
@@ -244,12 +257,7 @@ const ToolsSection = () => {
         </div>
 
         {/* Tools Grid */}
-        <div
-          className="grid gap-4"
-          style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))",
-          }}
-        >
+        <div className="tools-grid">
           <AnimatePresence mode="popLayout">
             {filtered.map((tool, i) => (
               <ToolCard key={tool.name} tool={tool} index={i} />
@@ -284,13 +292,18 @@ const ToolsSection = () => {
       </div>
 
       <style>{`
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .tools-scrollbar-hide::-webkit-scrollbar { display: none; }
+        .tools-scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .tools-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+          gap: 16px;
+        }
         @media (max-width: 768px) {
-          .grid { grid-template-columns: repeat(3, 1fr) !important; }
+          .tools-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
         @media (min-width: 769px) and (max-width: 1024px) {
-          .grid { grid-template-columns: repeat(4, 1fr) !important; }
+          .tools-grid { grid-template-columns: repeat(4, 1fr) !important; }
         }
       `}</style>
     </section>
