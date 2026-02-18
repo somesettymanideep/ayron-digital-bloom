@@ -112,7 +112,7 @@ const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
         </div>
       </div>
 
-      {/* Icon - grayscale by default, color on hover */}
+      {/* Icon - color by default, grayscale on hover */}
       <img
         src={tool.icon}
         alt={tool.name}
@@ -121,7 +121,7 @@ const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
           width: "48px",
           height: "48px",
           objectFit: "contain",
-          filter: hovered ? "grayscale(0%) opacity(1)" : "grayscale(100%) opacity(0.55)",
+          filter: hovered ? "grayscale(100%) opacity(0.55)" : "grayscale(0%) opacity(1)",
           transform: hovered ? "scale(1.10)" : "scale(1)",
           transition: "filter 0.28s ease, transform 0.28s ease",
         }}
