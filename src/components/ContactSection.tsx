@@ -19,9 +19,9 @@ const ContactSection = () => {
   return (
     <section id="contact" className="relative">
       {/* Header */}
-      <div className="bg-secondary py-16 px-6 md:px-12 text-center">
+      <div className="bg-background py-16 px-6 md:px-12 text-center">
         <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">Get In Touch</span>
-        <h2 className="font-display text-5xl md:text-7xl text-secondary-foreground mt-2">
+        <h2 className="font-display text-5xl md:text-7xl text-foreground mt-2">
           Let's Start Your
         </h2>
         <p className="font-serif-accent italic text-primary text-4xl md:text-6xl">Growth Story</p>
