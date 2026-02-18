@@ -99,7 +99,7 @@ const Blog = () => (
           {allBlogs.map((blog, i) => (
             <motion.article
               key={blog.title}
-              className="group cursor-pointer relative bg-secondary border border-primary/10 transition-all duration-400 hover:-translate-y-1.5"
+              className="group cursor-pointer relative bg-secondary border border-primary/10 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(244,124,65,0.16)] transition-all duration-400 hover:-translate-y-1.5"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
