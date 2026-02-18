@@ -1,5 +1,8 @@
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Quote, Star } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -29,7 +32,7 @@ const testimonials = [
   {
     name: "Vikram Desai",
     role: "Director, BuildRight Infra",
-    text: "We were skeptical about digital marketing for real estate, but Ayron proved us wrong. 40+ qualified leads in the first month alone. Their ad strategy is razor-sharp and they genuinely care about our growth.",
+    text: "We were skeptical about digital marketing for real estate, but Ayron proved us wrong. 40+ qualified leads in the first month alone.",
     rating: 5,
   },
   {
@@ -40,72 +43,115 @@ const testimonials = [
   },
 ];
 
-const TestimonialsMasonry = () => (
-  <section className="bg-secondary py-20 px-6 md:px-12">
-    <div className="max-w-7xl mx-auto">
-      {/* Header */}
-      <motion.div
-        className="text-center mb-14"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">
-          Client Testimonials
-        </span>
-        <h2 className="font-display text-5xl md:text-6xl text-secondary-foreground mt-2">
-          What Our Clients <span className="font-serif-accent italic text-primary">Say</span>
-        </h2>
-      </motion.div>
+const TestimonialsMasonry = () => {
+  const autoplayPlugin = useRef(Autoplay({ delay: 5000, stopOnMouseEnter: true }));
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start" },
+    [autoplayPlugin.current]
+  );
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-      {/* Masonry grid */}
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-        {testimonials.map((t, i) => (
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi, onSelect]);
+
+  return (
+    <section className="bg-secondary py-20 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-14 gap-4">
           <motion.div
-            key={t.name}
-            className="break-inside-avoid group border border-primary/10 bg-secondary p-7 relative hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(244,124,65,0.12)] hover:border-primary/30 transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
           >
-            {/* Quote icon */}
-            <Quote
-              className="text-primary/15 group-hover:text-primary/30 transition-colors duration-300 mb-4"
-              size={32}
-              strokeWidth={1}
-            />
-
-            {/* Stars */}
-            <div className="flex gap-1 mb-4">
-              {Array.from({ length: t.rating }).map((_, si) => (
-                <Star key={si} size={14} className="text-primary fill-primary" />
-              ))}
-            </div>
-
-            {/* Text */}
-            <p className="font-body font-light text-secondary-foreground/80 text-sm leading-relaxed mb-6">
-              "{t.text}"
-            </p>
-
-            {/* Author */}
-            <div className="flex items-center gap-3 pt-4 border-t border-primary/10">
-              <div className="w-10 h-10 bg-primary flex items-center justify-center text-primary-foreground font-display text-lg shrink-0">
-                {t.name.charAt(0)}
-              </div>
-              <div>
-                <p className="font-body text-sm font-medium text-secondary-foreground">{t.name}</p>
-                <p className="font-body text-xs text-muted-foreground">{t.role}</p>
-              </div>
-            </div>
-
-            {/* Hover underbar */}
-            <div className="absolute bottom-0 left-0 w-0 h-[3px] bg-primary group-hover:w-full transition-all duration-500" />
+            <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">
+              Client Testimonials
+            </span>
+            <h2 className="font-display text-5xl md:text-6xl text-secondary-foreground mt-2">
+              What Our Clients <span className="font-serif-accent italic text-primary">Say</span>
+            </h2>
           </motion.div>
-        ))}
+
+          <div className="flex gap-3">
+            <button
+              onClick={() => emblaApi?.scrollPrev()}
+              className="w-12 h-12 border border-secondary-foreground/20 flex items-center justify-center text-secondary-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={() => emblaApi?.scrollNext()}
+              className="w-12 h-12 border border-secondary-foreground/20 flex items-center justify-center text-secondary-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+
+        {/* Carousel */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex" style={{ gap: 24 }}>
+            {testimonials.map((t, i) => (
+              <div
+                key={t.name}
+                className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"
+              >
+                <div className="group border border-primary/10 bg-secondary p-7 relative hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(244,124,65,0.12)] hover:border-primary/30 transition-all duration-300 h-full">
+                  <Quote
+                    className="text-primary/15 group-hover:text-primary/30 transition-colors duration-300 mb-4"
+                    size={32}
+                    strokeWidth={1}
+                  />
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: t.rating }).map((_, si) => (
+                      <Star key={si} size={14} className="text-primary fill-primary" />
+                    ))}
+                  </div>
+                  <p className="font-body font-light text-secondary-foreground/80 text-sm leading-relaxed mb-6">
+                    "{t.text}"
+                  </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-primary/10 mt-auto">
+                    <div className="w-10 h-10 bg-primary flex items-center justify-center text-primary-foreground font-display text-lg shrink-0">
+                      {t.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-body text-sm font-medium text-secondary-foreground">{t.name}</p>
+                      <p className="font-body text-xs text-muted-foreground">{t.role}</p>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 w-0 h-[3px] bg-primary group-hover:w-full transition-all duration-500" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-2 mt-10">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => emblaApi?.scrollTo(i)}
+              className="h-2 rounded-full transition-all duration-350"
+              style={{
+                width: i === selectedIndex ? 28 : 8,
+                backgroundColor: i === selectedIndex ? "hsl(var(--primary))" : "hsl(var(--border))",
+              }}
+            />
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default TestimonialsMasonry;
