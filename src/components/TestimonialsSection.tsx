@@ -1,5 +1,6 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 
 const testimonials = [
@@ -43,30 +44,56 @@ const testimonials = [
     stars: 5,
     text: "The website they built for us is stunning and converts like crazy. Our lead generation increased by 200% since launch. Their design sense combined with technical expertise is truly unmatched in the industry.",
   },
+  {
+    name: "Anita Desai",
+    role: "COO, PureGlow Beauty",
+    avatar: "https://randomuser.me/api/portraits/women/55.jpg",
+    tag: "Email",
+    stars: 5,
+    text: "Their email marketing campaigns have been a game changer for us. Open rates increased by 65% and our revenue from email alone tripled. The team understands our audience and crafts messages that truly resonate.",
+  },
 ];
 
 const TestimonialsSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "center",
-    loop: true,
-    slidesToScroll: 1,
-  });
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      align: "center",
+      loop: true,
+      slidesToScroll: 1,
+      dragFree: false,
+      containScroll: false,
+      duration: 30,
+    },
+    [autoplayPlugin.current]
+  );
+
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [isHovered, setIsHovered] = useState(false);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setCanScrollPrev(emblaApi.canScrollPrev());
-    setCanScrollNext(emblaApi.canScrollNext());
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
+  const scrollTo = useCallback(
+    (index: number) => emblaApi && emblaApi.scrollTo(index),
+    [emblaApi]
+  );
+
   useEffect(() => {
     if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
     onSelect();
     emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
+    emblaApi.on("reInit", () => {
+      setScrollSnaps(emblaApi.scrollSnapList());
+      onSelect();
+    });
     return () => {
       emblaApi.off("select", onSelect);
     };
@@ -144,8 +171,7 @@ const TestimonialsSection = () => {
               }}
             >
               What Our{" "}
-              <span style={{ color: "#f47c41" }}>Clients</span> Are
-              Saying
+              <span style={{ color: "#f47c41" }}>Clients</span> Are Saying
             </h2>
             <p
               className="font-body mt-3"
@@ -157,81 +183,72 @@ const TestimonialsSection = () => {
 
           {/* Nav arrows */}
           <div className="flex gap-3 shrink-0">
-            <button
-              onClick={() => emblaApi?.scrollPrev()}
-              className="flex items-center justify-center transition-all duration-300 group"
-              style={{
-                width: 52,
-                height: 52,
-                borderRadius: "50%",
-                backgroundColor: "#ffffff",
-                border: "2px solid #f0ece8",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#f47c41";
-                e.currentTarget.style.borderColor = "#f47c41";
-                const svg = e.currentTarget.querySelector("svg");
-                if (svg) svg.style.color = "#ffffff";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#ffffff";
-                e.currentTarget.style.borderColor = "#f0ece8";
-                const svg = e.currentTarget.querySelector("svg");
-                if (svg) svg.style.color = "#1a1a1a";
-              }}
-            >
-              <ArrowLeft size={20} style={{ color: "#1a1a1a" }} />
-            </button>
-            <button
-              onClick={() => emblaApi?.scrollNext()}
-              className="flex items-center justify-center transition-all duration-300 group"
-              style={{
-                width: 52,
-                height: 52,
-                borderRadius: "50%",
-                backgroundColor: "#ffffff",
-                border: "2px solid #f0ece8",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#f47c41";
-                e.currentTarget.style.borderColor = "#f47c41";
-                const svg = e.currentTarget.querySelector("svg");
-                if (svg) svg.style.color = "#ffffff";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#ffffff";
-                e.currentTarget.style.borderColor = "#f0ece8";
-                const svg = e.currentTarget.querySelector("svg");
-                if (svg) svg.style.color = "#1a1a1a";
-              }}
-            >
-              <ArrowRight size={20} style={{ color: "#1a1a1a" }} />
-            </button>
+            {[
+              { icon: ArrowLeft, action: () => emblaApi?.scrollPrev() },
+              { icon: ArrowRight, action: () => emblaApi?.scrollNext() },
+            ].map(({ icon: Icon, action }, idx) => (
+              <button
+                key={idx}
+                onClick={action}
+                className="flex items-center justify-center"
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: "50%",
+                  backgroundColor: "#ffffff",
+                  border: "2px solid #f0ece8",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#f47c41";
+                  e.currentTarget.style.borderColor = "#f47c41";
+                  const svg = e.currentTarget.querySelector("svg");
+                  if (svg) svg.style.color = "#ffffff";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#ffffff";
+                  e.currentTarget.style.borderColor = "#f0ece8";
+                  const svg = e.currentTarget.querySelector("svg");
+                  if (svg) svg.style.color = "#1a1a1a";
+                }}
+              >
+                <Icon size={20} style={{ color: "#1a1a1a", transition: "color 0.3s ease" }} />
+              </button>
+            ))}
           </div>
         </div>
 
         {/* Carousel */}
-        <div ref={emblaRef} className="overflow-hidden">
-          <div className="flex" style={{ marginLeft: -12 }}>
+        <div
+          ref={emblaRef}
+          className="overflow-hidden"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
+        >
+          <div
+            className="flex"
+            style={{ marginLeft: -12 }}
+          >
             {testimonials.map((t, i) => {
               const isActive = i === selectedIndex;
               return (
                 <div
                   key={i}
-                  className="shrink-0 min-w-0 grow-0"
+                  className="min-w-0 shrink-0 grow-0 testimonial-slide"
                   style={{
-                    flexBasis: 400,
-                    maxWidth: "85vw",
-                    paddingLeft: 12,
+                    /* Responsive basis: 3 cards on desktop, 2.2 on laptop, 1.3 on tablet, 1 on mobile */
+                    flexBasis: "calc(33.333% - 16px)",
+                    paddingLeft: 24,
                     transform: isActive ? "scale(1.03)" : "scale(0.97)",
                     opacity: isActive ? 1 : 0.8,
-                    transition: "all 0.30s ease",
+                    transition: "all 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   }}
                 >
                   <div
-                    className="relative h-full group"
+                    className="relative h-full"
                     style={{
                       backgroundColor: isActive ? "#ffffff" : "#faf8f6",
                       border: isActive
@@ -268,12 +285,7 @@ const TestimonialsSection = () => {
                     {/* Stars */}
                     <div className="flex gap-1 mb-5">
                       {Array.from({ length: t.stars }).map((_, si) => (
-                        <Star
-                          key={si}
-                          size={16}
-                          fill="#f47c41"
-                          color="#f47c41"
-                        />
+                        <Star key={si} size={16} fill="#f47c41" color="#f47c41" />
                       ))}
                     </div>
 
@@ -332,21 +344,13 @@ const TestimonialsSection = () => {
                       <div className="flex-1 min-w-0">
                         <p
                           className="font-display"
-                          style={{
-                            color: "#1a1a1a",
-                            fontSize: 15,
-                            fontWeight: 700,
-                          }}
+                          style={{ color: "#1a1a1a", fontSize: 15, fontWeight: 700 }}
                         >
                           {t.name}
                         </p>
                         <p
                           className="font-body"
-                          style={{
-                            color: "#f47c41",
-                            fontSize: 12,
-                            fontWeight: 500,
-                          }}
+                          style={{ color: "#f47c41", fontSize: 12, fontWeight: 500 }}
                         >
                           {t.role}
                         </p>
@@ -372,7 +376,50 @@ const TestimonialsSection = () => {
             })}
           </div>
         </div>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-2" style={{ marginTop: 40 }}>
+          {scrollSnaps.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              style={{
+                width: i === selectedIndex ? 28 : 8,
+                height: 8,
+                borderRadius: 50,
+                backgroundColor: i === selectedIndex ? "#f47c41" : "#f0ece8",
+                border: i === selectedIndex ? "none" : "1px solid #e0dbd5",
+                transition: "width 0.35s ease, background-color 0.35s ease",
+                cursor: "pointer",
+                padding: 0,
+              }}
+            />
+          ))}
+        </div>
       </div>
+
+      {/* Responsive styles */}
+      <style>{`
+        @media (max-width: 1279px) and (min-width: 1024px) {
+          /* Laptop: 2.2 cards */
+          .testimonial-slide {
+            flex-basis: calc(45.45% - 16px) !important;
+          }
+        }
+        @media (max-width: 1023px) and (min-width: 768px) {
+          /* Tablet: 1.3 cards */
+          .testimonial-slide {
+            flex-basis: calc(76.92% - 16px) !important;
+          }
+        }
+        @media (max-width: 767px) {
+          /* Mobile: 1 card full width */
+          .testimonial-slide {
+            flex-basis: calc(100% - 16px) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
