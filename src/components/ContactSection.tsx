@@ -19,7 +19,7 @@ const ContactSection = () => {
   return (
     <section id="contact" className="relative">
       {/* Header */}
-      <div className="bg-background py-16 px-6 md:px-12 text-center max-w-7xl mx-auto rounded-none">
+      <div className="bg-secondary py-16 px-6 md:px-12 text-center max-w-7xl mx-auto">
         <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">Get In Touch</span>
         <h2 className="font-display text-5xl md:text-7xl text-foreground mt-2">
           Let's Start Your
@@ -33,7 +33,7 @@ const ContactSection = () => {
       {/* Two column */}
       <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
         {/* LEFT - Form */}
-        <div className="w-full lg:w-[60%] bg-background p-8 md:p-16">
+        <div className="w-full lg:w-[60%] bg-secondary p-8 md:p-16">
           <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
             {[
               { label: "Full Name*", type: "text", placeholder: "Your full name" },
@@ -166,7 +166,7 @@ const ContactSection = () => {
       </div>
 
       {/* Map placeholder */}
-      <div className="bg-background py-10 text-center max-w-7xl mx-auto">
+      <div className="bg-secondary py-10 text-center max-w-7xl mx-auto">
         <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">Our Location</span>
         <h3 className="font-display text-4xl md:text-5xl text-secondary-foreground mt-2">Find Us On The Map</h3>
       </div>
