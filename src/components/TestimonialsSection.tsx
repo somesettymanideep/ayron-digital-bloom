@@ -1,7 +1,8 @@
 import { useState, useCallback, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -10,7 +11,7 @@ const testimonials = [
     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
     tag: "SEO",
     stars: 5,
-    text: "Ayron Digital Solutions transformed our online presence completely. Within three months, our organic traffic grew by 280% and we started ranking on the first page for all our target keywords. Their team is incredibly responsive and data-driven.",
+    text: "Ayron Digital Solutions transformed our online presence completely. Within three months, our organic traffic grew by 280% and we started ranking on the first page for all our target keywords.",
   },
   {
     name: "Priya Sharma",
@@ -18,7 +19,7 @@ const testimonials = [
     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
     tag: "Branding",
     stars: 5,
-    text: "The branding overhaul they did for us was phenomenal. From logo design to complete brand guidelines, everything was executed with precision. Our brand recognition increased significantly and customers love the new identity.",
+    text: "The branding overhaul they did for us was phenomenal. From logo design to complete brand guidelines, everything was executed with precision. Our brand recognition increased significantly.",
   },
   {
     name: "Arjun Patel",
@@ -26,7 +27,7 @@ const testimonials = [
     avatar: "https://randomuser.me/api/portraits/men/65.jpg",
     tag: "PPC",
     stars: 5,
-    text: "We saw a 4.5x return on our ad spend within the first quarter of working with Ayron. Their PPC strategies are sharp, well-researched, and constantly optimized. They truly understand performance marketing at scale.",
+    text: "We saw a 4.5x return on our ad spend within the first quarter of working with Ayron. Their PPC strategies are sharp, well-researched, and constantly optimized for scale.",
   },
   {
     name: "Sneha Reddy",
@@ -34,7 +35,7 @@ const testimonials = [
     avatar: "https://randomuser.me/api/portraits/women/68.jpg",
     tag: "Social Media",
     stars: 5,
-    text: "Our social media engagement tripled after partnering with Ayron Digital. Their content strategies are creative and aligned with our brand voice. The team goes above and beyond to deliver results every single month.",
+    text: "Our social media engagement tripled after partnering with Ayron Digital. Their content strategies are creative and aligned with our brand voice. Above and beyond every month.",
   },
   {
     name: "Vikram Singh",
@@ -42,7 +43,7 @@ const testimonials = [
     avatar: "https://randomuser.me/api/portraits/men/75.jpg",
     tag: "Web Design",
     stars: 5,
-    text: "The website they built for us is stunning and converts like crazy. Our lead generation increased by 200% since launch. Their design sense combined with technical expertise is truly unmatched in the industry.",
+    text: "The website they built for us is stunning and converts like crazy. Our lead generation increased by 200% since launch. Design sense combined with technical expertise is unmatched.",
   },
   {
     name: "Anita Desai",
@@ -50,7 +51,7 @@ const testimonials = [
     avatar: "https://randomuser.me/api/portraits/women/55.jpg",
     tag: "Email",
     stars: 5,
-    text: "Their email marketing campaigns have been a game changer for us. Open rates increased by 65% and our revenue from email alone tripled. The team understands our audience and crafts messages that truly resonate.",
+    text: "Their email marketing campaigns have been a game changer for us. Open rates increased by 65% and our revenue from email alone tripled. They truly understand our audience.",
   },
 ];
 
@@ -61,7 +62,7 @@ const TestimonialsSection = () => {
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
-      align: "center",
+      align: "start",
       loop: true,
       slidesToScroll: 1,
       dragFree: false,
@@ -73,7 +74,6 @@ const TestimonialsSection = () => {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-  const [isHovered, setIsHovered] = useState(false);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -100,299 +100,152 @@ const TestimonialsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{
-        backgroundColor: "#ffffff",
-        paddingTop: 100,
-        paddingBottom: 100,
-      }}
-    >
-      {/* Top-right orange blob */}
-      <div
-        className="pointer-events-none absolute"
-        style={{
-          width: 700,
-          height: 700,
-          top: -200,
-          right: -200,
-          borderRadius: "50%",
-          background: "rgba(244,124,65,0.06)",
-          filter: "blur(120px)",
-        }}
-      />
-      {/* Bottom-left orange blob */}
-      <div
-        className="pointer-events-none absolute"
-        style={{
-          width: 500,
-          height: 500,
-          bottom: -150,
-          left: -150,
-          borderRadius: "50%",
-          background: "rgba(244,124,65,0.05)",
-          filter: "blur(100px)",
-        }}
-      />
-      {/* Dot grid overlay */}
+    <section className="relative overflow-hidden bg-secondary py-24 md:py-28">
+      {/* Background elements */}
+      <div className="pointer-events-none absolute top-0 right-0 w-[600px] h-[600px] bg-primary/[0.04] rounded-full blur-[140px]" />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/[0.03] rounded-full blur-[100px]" />
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(244,124,65,0.03) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
+          backgroundImage: "radial-gradient(circle, hsl(var(--primary) / 0.04) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-[1200px] px-6">
-        {/* Header row */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-6">
-          <div>
-            <span
-              className="inline-block font-body font-bold uppercase mb-4"
-              style={{
-                backgroundColor: "#f47c41",
-                color: "#ffffff",
-                fontSize: 11,
-                letterSpacing: 3,
-                borderRadius: 50,
-                padding: "6px 18px",
-              }}
-            >
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-16 lg:px-24">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-14 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">
               Our Happy Clients
             </span>
-            <h2
-              className="font-display"
-              style={{
-                color: "#1a1a1a",
-                fontSize: 42,
-                fontWeight: 800,
-                lineHeight: 1.2,
-              }}
-            >
+            <h2 className="font-display text-5xl md:text-6xl text-secondary-foreground mt-2">
               What Our{" "}
-              <span style={{ color: "#f47c41" }}>Clients</span> Are Saying
+              <span className="font-serif-accent italic text-primary">Clients</span>{" "}
+              Say
             </h2>
-            <p
-              className="font-body mt-3"
-              style={{ color: "#888888", fontSize: 16 }}
-            >
+            <p className="font-body font-light text-muted-foreground text-lg mt-3">
               Real results. Real businesses. Real growth.
             </p>
-          </div>
+          </motion.div>
 
           {/* Nav arrows */}
           <div className="flex gap-3 shrink-0">
-            {[
-              { icon: ArrowLeft, action: () => emblaApi?.scrollPrev() },
-              { icon: ArrowRight, action: () => emblaApi?.scrollNext() },
-            ].map(({ icon: Icon, action }, idx) => (
-              <button
-                key={idx}
-                onClick={action}
-                className="flex items-center justify-center"
-                style={{
-                  width: 52,
-                  height: 52,
-                  borderRadius: "50%",
-                  backgroundColor: "#ffffff",
-                  border: "2px solid #f0ece8",
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#f47c41";
-                  e.currentTarget.style.borderColor = "#f47c41";
-                  const svg = e.currentTarget.querySelector("svg");
-                  if (svg) svg.style.color = "#ffffff";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#ffffff";
-                  e.currentTarget.style.borderColor = "#f0ece8";
-                  const svg = e.currentTarget.querySelector("svg");
-                  if (svg) svg.style.color = "#1a1a1a";
-                }}
-              >
-                <Icon size={20} style={{ color: "#1a1a1a", transition: "color 0.3s ease" }} />
-              </button>
-            ))}
+            <button
+              onClick={() => emblaApi?.scrollPrev()}
+              className="w-12 h-12 border border-border/40 flex items-center justify-center text-secondary-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+            >
+              <ArrowLeft size={18} />
+            </button>
+            <button
+              onClick={() => emblaApi?.scrollNext()}
+              className="w-12 h-12 border border-border/40 flex items-center justify-center text-secondary-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+            >
+              <ArrowRight size={18} />
+            </button>
           </div>
         </div>
 
         {/* Carousel */}
-        <div
-          ref={emblaRef}
-          className="overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onTouchStart={() => setIsHovered(true)}
-          onTouchEnd={() => setIsHovered(false)}
-        >
-          <div
-            className="flex"
-            style={{ marginLeft: -12 }}
-          >
+        <div ref={emblaRef} className="overflow-hidden">
+          <div className="flex" style={{ gap: 24 }}>
             {testimonials.map((t, i) => {
               const isActive = i === selectedIndex;
               return (
-                <div
+                <motion.div
                   key={i}
-                  className="min-w-0 shrink-0 grow-0 testimonial-slide"
+                  className="testimonial-slide min-w-0 shrink-0 grow-0"
                   style={{
-                    /* Responsive basis: 3 cards on desktop, 2.2 on laptop, 1.3 on tablet, 1 on mobile */
                     flexBasis: "calc(33.333% - 16px)",
-                    paddingLeft: 24,
-                    transform: isActive ? "scale(1.03)" : "scale(0.97)",
-                    opacity: isActive ? 1 : 0.8,
-                    transition: "all 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
                 >
                   <div
-                    className="relative h-full"
+                    className={`
+                      relative h-full p-8 md:p-10 border transition-all duration-300 group
+                      ${isActive
+                        ? "bg-background border-primary/30 shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.15)]"
+                        : "bg-background/60 border-border/30 hover:border-primary/40 hover:shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.12)]"
+                      }
+                    `}
                     style={{
-                      backgroundColor: isActive ? "#ffffff" : "#faf8f6",
-                      border: isActive
-                        ? "1.5px solid rgba(244,124,65,0.40)"
-                        : "1px solid #f0ece8",
-                      borderRadius: 24,
-                      padding: 40,
-                      boxShadow: isActive
-                        ? "0 16px 48px rgba(244,124,65,0.18)"
-                        : "0 4px 24px rgba(244,124,65,0.06)",
-                      transition: "all 0.30s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      const el = e.currentTarget;
-                      el.style.border = "1.5px solid #f47c41";
-                      el.style.boxShadow = "0 12px 40px rgba(244,124,65,0.16)";
-                      el.style.transform = "translateY(-8px)";
-                      const q = el.querySelector<HTMLSpanElement>(".quote-mark");
-                      if (q) q.style.opacity = "0.35";
-                    }}
-                    onMouseLeave={(e) => {
-                      const el = e.currentTarget;
-                      el.style.border = isActive
-                        ? "1.5px solid rgba(244,124,65,0.40)"
-                        : "1px solid #f0ece8";
-                      el.style.boxShadow = isActive
-                        ? "0 16px 48px rgba(244,124,65,0.18)"
-                        : "0 4px 24px rgba(244,124,65,0.06)";
-                      el.style.transform = "translateY(0)";
-                      const q = el.querySelector<HTMLSpanElement>(".quote-mark");
-                      if (q) q.style.opacity = "0.2";
+                      transform: isActive ? "translateY(-4px)" : undefined,
+                      transition: "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                     }}
                   >
+                    {/* Quote icon */}
+                    <Quote
+                      className="absolute top-6 right-6 text-primary/10 group-hover:text-primary/20 transition-colors"
+                      size={48}
+                      strokeWidth={1}
+                    />
+
+                    {/* Top accent line */}
+                    <div className={`absolute top-0 left-0 h-[3px] bg-primary transition-all duration-500 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
+
                     {/* Stars */}
-                    <div className="flex gap-1 mb-5">
+                    <div className="flex gap-1 mb-6">
                       {Array.from({ length: t.stars }).map((_, si) => (
-                        <Star key={si} size={16} fill="#f47c41" color="#f47c41" />
+                        <Star key={si} size={14} className="fill-primary text-primary" />
                       ))}
                     </div>
 
-                    {/* Decorative quote */}
-                    <span
-                      className="absolute font-display select-none quote-mark"
-                      style={{
-                        top: 16,
-                        right: 32,
-                        fontSize: 72,
-                        color: "#f47c41",
-                        opacity: 0.2,
-                        lineHeight: 1,
-                        transition: "opacity 0.30s ease",
-                      }}
-                    >
-                      "
-                    </span>
-
                     {/* Body text */}
-                    <p
-                      className="font-body"
-                      style={{
-                        color: "#444444",
-                        fontSize: 16,
-                        lineHeight: 1.85,
-                        fontWeight: 400,
-                      }}
-                    >
-                      {t.text}
+                    <p className="font-body font-light text-muted-foreground text-[15px] leading-[1.85] mb-8">
+                      "{t.text}"
                     </p>
 
                     {/* Divider */}
-                    <div
-                      style={{
-                        height: 1,
-                        backgroundColor: "#f0ece8",
-                        margin: "24px 0",
-                      }}
-                    />
+                    <div className="h-px bg-border/40 mb-6" />
 
-                    {/* Client row */}
-                    <div className="flex items-center gap-3.5">
+                    {/* Client info */}
+                    <div className="flex items-center gap-4">
                       <img
                         src={t.avatar}
                         alt={t.name}
-                        className="shrink-0"
-                        style={{
-                          width: 52,
-                          height: 52,
-                          borderRadius: "50%",
-                          border: "2.5px solid #f47c41",
-                          objectFit: "cover",
-                        }}
+                        className="w-12 h-12 object-cover border-2 border-primary/40"
                       />
                       <div className="flex-1 min-w-0">
-                        <p
-                          className="font-display"
-                          style={{ color: "#1a1a1a", fontSize: 15, fontWeight: 700 }}
-                        >
+                        <p className="font-display text-base text-secondary-foreground">
                           {t.name}
                         </p>
-                        <p
-                          className="font-body"
-                          style={{ color: "#f47c41", fontSize: 12, fontWeight: 500 }}
-                        >
+                        <p className="font-body text-xs text-primary font-medium">
                           {t.role}
                         </p>
                       </div>
-                      <span
-                        className="font-body shrink-0"
-                        style={{
-                          backgroundColor: "#ffffff",
-                          border: "1.5px solid #f47c41",
-                          color: "#f47c41",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          padding: "4px 12px",
-                          borderRadius: 20,
-                        }}
-                      >
+                      <span className="font-body text-[11px] font-semibold text-primary border border-primary/30 px-3 py-1 uppercase tracking-wider shrink-0">
                         {t.tag}
                       </span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-2" style={{ marginTop: 40 }}>
+        <div className="flex justify-center gap-2 mt-12">
           {scrollSnaps.map((_, i) => (
             <button
               key={i}
               onClick={() => scrollTo(i)}
               aria-label={`Go to slide ${i + 1}`}
+              className="h-2 rounded-full transition-all duration-350"
               style={{
                 width: i === selectedIndex ? 28 : 8,
-                height: 8,
-                borderRadius: 50,
-                backgroundColor: i === selectedIndex ? "#f47c41" : "#f0ece8",
-                border: i === selectedIndex ? "none" : "1px solid #e0dbd5",
-                transition: "width 0.35s ease, background-color 0.35s ease",
-                cursor: "pointer",
-                padding: 0,
+                backgroundColor:
+                  i === selectedIndex
+                    ? "hsl(var(--primary))"
+                    : "hsl(var(--border))",
               }}
             />
           ))}
@@ -402,19 +255,16 @@ const TestimonialsSection = () => {
       {/* Responsive styles */}
       <style>{`
         @media (max-width: 1279px) and (min-width: 1024px) {
-          /* Laptop: 2.2 cards */
           .testimonial-slide {
             flex-basis: calc(45.45% - 16px) !important;
           }
         }
         @media (max-width: 1023px) and (min-width: 768px) {
-          /* Tablet: 1.3 cards */
           .testimonial-slide {
             flex-basis: calc(76.92% - 16px) !important;
           }
         }
         @media (max-width: 767px) {
-          /* Mobile: 1 card full width */
           .testimonial-slide {
             flex-basis: calc(100% - 16px) !important;
           }
