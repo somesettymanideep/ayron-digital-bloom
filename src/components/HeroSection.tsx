@@ -1,37 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { BarChart3, Search, Globe, Mail, Camera, ShoppingCart, Users, Star } from "lucide-react";
-import heroCharacter from "@/assets/hero-character.png";
+import { Star } from "lucide-react";
+import heroGrowth from "@/assets/hero-growth.jpg";
 
 const services = [
   "SEO", "BRANDING", "INFLUENCER MARKETING", "WEB DESIGN",
   "EMAIL", "ECOMMERCE", "PRODUCT SHOOT", "DIGITAL MARKETING"
 ];
 
-const floatingIcons = [
-  { icon: BarChart3, label: "Analytics", pos: "top-[12%] left-[8%]", bg: "bg-background", iconColor: "text-foreground", delay: 0 },
-  { icon: Search, label: "SEO", pos: "top-[10%] right-[12%]", bg: "bg-secondary", iconColor: "text-primary", delay: 0.5 },
-  { icon: Globe, label: "Web", pos: "top-[40%] left-[4%]", bg: "bg-primary", iconColor: "text-secondary", delay: 1 },
-  { icon: Mail, label: "Email", pos: "top-[42%] right-[6%]", bg: "bg-secondary", iconColor: "text-background", delay: 1.5 },
-  { icon: Camera, label: "Brand", pos: "bottom-[28%] left-[10%]", bg: "bg-background", iconColor: "text-primary", delay: 2 },
-  { icon: ShoppingCart, label: "Ecom", pos: "bottom-[24%] right-[10%]", bg: "bg-primary", iconColor: "text-secondary", delay: 0.8 },
-  { icon: Users, label: "Influencer", pos: "top-[4%] left-[40%]", bg: "bg-background", iconColor: "text-primary", delay: 1.2, large: true },
-  { icon: Star, label: "5★", pos: "bottom-[44%] right-[18%]", bg: "bg-secondary", iconColor: "text-primary", delay: 0.3 },
-];
-
-const MobileRightPanel = () => (
-  <div className="relative w-full h-full flex items-center justify-center">
-    <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary/10 to-transparent" />
-    <motion.img
-      src={heroCharacter}
-      alt="3D digital marketer character"
-      className="w-[260px] h-auto drop-shadow-2xl relative z-10"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0, scale: [1, 1.02, 1] }}
-      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-    />
-  </div>
-);
 
 const HeroSection = () => {
   return (
@@ -136,125 +112,106 @@ const HeroSection = () => {
         </div>
 
         {/* RIGHT PANEL — Mobile */}
-        <div className="flex lg:hidden w-full h-[50vh] bg-background relative overflow-hidden items-center justify-center">
-          <MobileRightPanel />
+        <div className="flex lg:hidden w-full py-12 px-6 bg-background relative overflow-hidden items-center justify-center">
+          <div className="relative w-full max-w-sm">
+            <img src={heroGrowth} alt="Business growth" className="w-full h-auto object-cover" />
+            {/* Google rating overlay */}
+            <motion.div
+              className="absolute -bottom-4 -left-2 z-20 bg-background border border-border/30 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.1)]"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+            >
+              <div className="flex items-center gap-2">
+                <span className="font-display text-2xl text-foreground">5.0</span>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={12} className="fill-primary text-primary" />
+                  ))}
+                </div>
+              </div>
+              <p className="font-body text-[10px] text-muted-foreground">on Google</p>
+            </motion.div>
+          </div>
         </div>
 
         {/* RIGHT PANEL — Desktop */}
-        <div className="hidden lg:flex w-[40%] bg-background relative overflow-hidden items-center justify-center">
-          {/* Background grid */}
-          <div className="absolute inset-0 opacity-[0.04]" style={{
-            backgroundImage: "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-            backgroundSize: "60px 60px"
+        <div className="hidden lg:flex w-[40%] bg-background relative overflow-hidden items-center justify-center p-10">
+          {/* Background dot pattern */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: "radial-gradient(circle, hsl(var(--foreground)) 1px, transparent 1px)",
+            backgroundSize: "24px 24px"
           }} />
 
-          {/* Large orange accent block */}
+          {/* Offset orange accent block */}
           <motion.div
-            className="absolute top-[15%] right-[10%] w-[280px] h-[360px] bg-primary/[0.08]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          />
-
-          {/* Thin frame outline */}
-          <motion.div
-            className="absolute top-[12%] right-[7%] w-[300px] h-[380px] border border-primary/20"
+            className="absolute top-[10%] right-[6%] w-[85%] h-[75%] bg-primary/[0.06]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           />
 
-          {/* Central glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-primary/[0.06] blur-[100px]" />
-
-          {/* 3D Character — main visual */}
+          {/* Main image */}
           <motion.div
-            className="relative z-10"
-            initial={{ opacity: 0, y: 40 }}
+            className="relative z-10 w-[90%]"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
           >
-            <motion.img
-              src={heroCharacter}
-              alt="3D digital marketer character"
-              className="w-[360px] h-auto drop-shadow-[0_20px_60px_rgba(244,124,65,0.25)]"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            <img
+              src={heroGrowth}
+              alt="Business growth and digital marketing team"
+              className="w-full h-auto object-cover shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
             />
+
+            {/* Orange border accent */}
+            <div className="absolute -bottom-3 -right-3 w-full h-full border-2 border-primary/20 -z-10" />
           </motion.div>
 
-          {/* Floating service icons — compact orbit */}
-          {floatingIcons.slice(0, 6).map((item, i) => {
-            const positions = [
-              "top-[8%] left-[12%]",
-              "top-[6%] right-[18%]",
-              "top-[38%] left-[2%]",
-              "top-[45%] right-[3%]",
-              "bottom-[22%] left-[8%]",
-              "bottom-[18%] right-[8%]",
-            ];
-            return (
-              <motion.div
-                key={i}
-                className={`absolute ${positions[i]} z-20`}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8 + i * 0.12, duration: 0.4, type: "spring", stiffness: 200 }}
-              >
-                <motion.div
-                  className="bg-background border border-border/30 w-11 h-11 flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.12)]"
-                  animate={{ y: [0, i % 2 === 0 ? -6 : 6, 0] }}
-                  transition={{ duration: 3 + i * 0.4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <item.icon className="w-[18px] h-[18px] text-primary" />
-                </motion.div>
-              </motion.div>
-            );
-          })}
-
-          {/* Stat card — top left */}
+          {/* Google Rating Card — bottom left */}
           <motion.div
-            className="absolute top-20 left-4 z-20 bg-background border border-border/30 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.1)]"
+            className="absolute bottom-[12%] left-6 z-20 bg-background border border-border/30 px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.1)]"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1, duration: 0.5 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
           >
             <motion.div
-              animate={{ y: [0, -5, 0] }}
+              animate={{ y: [0, -4, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="flex items-center gap-2 mb-1">
-                <span className="w-2 h-2 bg-green-500 animate-pulse" />
-                <span className="font-display text-sm text-foreground">Campaign Live</span>
+              <div className="flex items-center gap-3">
+                <span className="font-display text-4xl text-foreground">5.0</span>
+                <div>
+                  <div className="flex gap-0.5 mb-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={14} className="fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <p className="font-body text-xs text-muted-foreground">on Google</p>
+                </div>
               </div>
-              <span className="font-body text-[10px] text-muted-foreground">3 Active · Running</span>
             </motion.div>
           </motion.div>
 
-          {/* Stat card — bottom right */}
+          {/* 100+ Ratings Card — top right */}
           <motion.div
-            className="absolute bottom-20 right-4 z-20 bg-primary px-4 py-3 shadow-[0_8px_30px_rgba(244,124,65,0.3)]"
+            className="absolute top-[8%] right-8 z-20 bg-primary px-5 py-4 shadow-[0_8px_30px_rgba(244,124,65,0.3)]"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.2, duration: 0.5 }}
+            transition={{ delay: 1.1, duration: 0.5 }}
           >
             <motion.div
-              animate={{ y: [0, 5, 0] }}
+              animate={{ y: [0, 4, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="flex items-center gap-2 mb-1">
-                <BarChart3 className="w-4 h-4 text-primary-foreground" />
-                <span className="font-display text-sm text-primary-foreground">+127%</span>
-              </div>
-              <span className="font-body text-[10px] text-primary-foreground/70">Organic Traffic ↑</span>
+              <span className="font-display text-3xl text-primary-foreground">100+</span>
+              <p className="font-body text-xs text-primary-foreground/80">5-Star Ratings</p>
             </motion.div>
           </motion.div>
 
-          {/* Corner accent lines */}
-          <div className="absolute bottom-0 left-0 w-24 h-[3px] bg-primary" />
-          <div className="absolute bottom-0 left-0 w-[3px] h-24 bg-primary" />
-          <div className="absolute top-0 right-0 w-16 h-[2px] bg-primary/40" />
-          <div className="absolute top-0 right-0 w-[2px] h-16 bg-primary/40" />
+          {/* Corner accents */}
+          <div className="absolute bottom-0 left-0 w-20 h-[3px] bg-primary" />
+          <div className="absolute bottom-0 left-0 w-[3px] h-20 bg-primary" />
         </div>
       </div>
     </section>
