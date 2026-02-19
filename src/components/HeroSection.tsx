@@ -136,7 +136,7 @@ const HeroSection = () => {
         </div>
 
         {/* RIGHT PANEL — Desktop */}
-        <div className="hidden lg:flex w-[40%] bg-background grid-bg noise-overlay relative overflow-hidden items-center justify-center p-10">
+        <div className="hidden lg:flex w-[40%] relative overflow-hidden items-center justify-center p-10">
 
           {/* Offset orange accent block */}
           <motion.div
