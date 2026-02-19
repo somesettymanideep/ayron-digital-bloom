@@ -65,7 +65,7 @@ const TeamCarousel = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="bg-background py-20 px-6 md:px-12 relative overflow-hidden">
+    <section className="bg-background py-20 px-6 md:px-16 lg:px-24 relative overflow-hidden">
       {/* Subtle background */}
       <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px]" />
 

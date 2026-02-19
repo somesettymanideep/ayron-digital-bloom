@@ -15,7 +15,7 @@ const WhyChooseSection = () => {
     <section className="relative">
       <div className="flex flex-col lg:flex-row min-h-[700px]">
         {/* LEFT - Orange */}
-        <div className="w-full lg:w-[45%] bg-primary relative overflow-hidden flex flex-col justify-center px-8 md:px-16 py-16">
+        <div className="w-full lg:w-[45%] bg-primary relative overflow-hidden flex flex-col justify-center px-8 md:px-16 lg:px-20 py-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -68,7 +68,7 @@ const WhyChooseSection = () => {
       </div>
 
       {/* Bottom CTA strip */}
-      <div className="bg-background py-6 px-8 flex flex-col sm:flex-row items-center justify-center gap-6">
+      <div className="bg-background py-6 px-8 md:px-16 lg:px-24 flex flex-col sm:flex-row items-center justify-center gap-6">
         <p className="text-foreground font-body text-lg">Ready to scale? Let's talk.</p>
         <a href="#contact" className="bg-primary text-primary-foreground font-display text-lg px-8 py-3 hover:bg-agency-orange-dark transition-colors">
           Book Free Consultation
