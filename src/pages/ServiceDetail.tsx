@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import servicesData from "@/data/servicesData";
-import ServiceDetailHero from "@/components/ServiceDetailHero";
+import ServiceBanner from "@/components/ServiceBanner";
 import ServiceOverviewStrip from "@/components/ServiceOverviewStrip";
 import ServiceDescription from "@/components/ServiceDescription";
 import ServiceApproach from "@/components/ServiceApproach";
@@ -26,7 +26,7 @@ const ServiceDetail = () => {
 
   return (
     <main className="pt-16">
-      <ServiceDetailHero service={service} />
+      <ServiceBanner service={service} />
       <ServiceOverviewStrip service={service} />
       <ServiceDescription service={service} />
       <ServiceApproach service={service} />
