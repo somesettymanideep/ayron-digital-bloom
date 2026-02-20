@@ -13,10 +13,9 @@ const reasons = [
 const WhyChooseSection = () => {
   return (
     <section className="relative">
-      <div className="max-w-[1440px] mx-auto">
       <div className="flex flex-col lg:flex-row min-h-[700px]">
         {/* LEFT - Orange */}
-        <div className="w-full lg:w-[45%] bg-primary relative overflow-hidden flex flex-col justify-center px-8 md:px-16 lg:px-20 xl:px-24 py-16">
+        <div className="w-full lg:w-[45%] bg-primary relative overflow-hidden flex flex-col justify-center px-8 md:px-16 lg:px-24 xl:px-32 py-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -67,7 +66,6 @@ const WhyChooseSection = () => {
           </div>
         </div>
       </div>
-      </div>{/* end max-w wrapper */}
 
       {/* Bottom CTA strip */}
       <div className="bg-background py-6 px-8 md:px-16 lg:px-24 flex flex-col sm:flex-row items-center justify-center gap-6">
