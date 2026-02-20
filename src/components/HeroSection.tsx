@@ -16,9 +16,9 @@ const HeroSection = () => {
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/[0.06] rounded-full blur-[120px]" />
       <div className="absolute bottom-0 right-[40%] w-80 h-80 bg-primary/[0.06] rounded-full blur-[100px]" />
 
-      <div className="relative z-10 flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
+      <div className="relative z-10 max-w-[1440px] mx-auto w-full flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
         {/* LEFT PANEL */}
-        <div className="w-full lg:w-[60%] flex flex-col px-6 md:px-12 lg:px-16">
+        <div className="w-full lg:w-[60%] flex flex-col px-6 md:px-12 lg:px-20 xl:px-24">
 
           {/* Hero content */}
           <div className="flex-1 flex flex-col justify-center py-12 lg:py-0">
