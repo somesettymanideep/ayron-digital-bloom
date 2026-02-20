@@ -124,13 +124,7 @@ const HeroSection = () => {
         {/* RIGHT PANEL — Desktop */}
         <div className="hidden lg:flex w-[40%] relative overflow-hidden items-center justify-center p-10">
 
-          {/* Offset orange accent block */}
-          <motion.div
-            className="absolute top-[10%] right-[6%] w-[85%] h-[75%] bg-primary/[0.06]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          />
+          {/* Main image */}
 
           {/* Main image */}
           <motion.div
