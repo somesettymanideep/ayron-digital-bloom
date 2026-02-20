@@ -124,7 +124,13 @@ const HeroSection = () => {
         {/* RIGHT PANEL — Desktop */}
         <div className="hidden lg:flex w-[40%] relative overflow-hidden items-center justify-center p-10">
 
-          {/* Main image */}
+          {/* Offset orange accent block */}
+          <motion.div
+            className="absolute top-[10%] right-[6%] w-[85%] h-[75%] bg-primary/[0.06]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          />
 
           {/* Main image */}
           <motion.div
@@ -139,6 +145,8 @@ const HeroSection = () => {
               className="w-full h-auto object-cover shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
             />
 
+            {/* Orange border accent */}
+            <div className="absolute -bottom-3 -right-3 w-full h-full border-2 border-primary/20 -z-10" />
           </motion.div>
 
           {/* Google Rating Card — bottom left */}
