@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
+import blogSeo from "@/assets/blog/blog-seo.jpg";
+import blogEmail from "@/assets/blog/blog-email.jpg";
+import blogInfluencer from "@/assets/blog/blog-influencer.jpg";
 
 const allBlogs = [
   {
@@ -10,6 +13,7 @@ const allBlogs = [
     date: "Feb 2026",
     author: "Team Ayron",
     readTime: "5 min read",
+    image: blogSeo,
   },
   {
     category: "Email",
@@ -18,6 +22,7 @@ const allBlogs = [
     date: "Jan 2026",
     author: "Team Ayron",
     readTime: "4 min read",
+    image: blogEmail,
   },
   {
     category: "Influencer",
@@ -26,6 +31,7 @@ const allBlogs = [
     date: "Jan 2026",
     author: "Team Ayron",
     readTime: "6 min read",
+    image: blogInfluencer,
   },
 ];
 
@@ -59,14 +65,7 @@ const Blog = () => (
             >
               {/* Image placeholder */}
               <div className="bg-background relative overflow-hidden h-48">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-background" />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(244,124,65,0.05) 20px, rgba(244,124,65,0.05) 40px)",
-                  }}
-                />
+                <img src={blog.image} alt={blog.title} className="absolute inset-0 w-full h-full object-cover" />
                 <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-xs px-3 py-1">
                   {blog.category}
                 </span>
