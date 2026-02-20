@@ -1,3 +1,4 @@
+import { MapPin, Phone, Mail } from "lucide-react";
 import adsLogo from "@/assets/ads-logo.png";
 
 const footerLinks = {
@@ -37,15 +38,20 @@ const Footer = () => (
         <div>
           <h4 className="font-display text-xl text-foreground mb-4">Contact Us</h4>
           <ul className="space-y-3">
-            <li className="font-body text-sm text-muted-foreground leading-relaxed">
-              Kongara Sai Building, Sai Nagar,<br />Kala Nagar, Acharya Ranga Nagar,<br />Vijayawada – 520010
+            <li className="flex items-start gap-2">
+              <MapPin size={16} className="text-primary mt-0.5 shrink-0" strokeWidth={1.5} />
+              <span className="font-body text-sm text-muted-foreground leading-relaxed">
+                Kongara Sai Building, Sai Nagar,<br />Kala Nagar, Acharya Ranga Nagar,<br />Vijayawada – 520010
+              </span>
             </li>
-            <li>
+            <li className="flex items-center gap-2">
+              <Phone size={16} className="text-primary shrink-0" strokeWidth={1.5} />
               <a href="tel:+919550860545" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
                 +91 9550860545
               </a>
             </li>
-            <li>
+            <li className="flex items-center gap-2">
+              <Mail size={16} className="text-primary shrink-0" strokeWidth={1.5} />
               <a href="mailto:hello@ayrondigital.com" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
                 hello@ayrondigital.com
               </a>
