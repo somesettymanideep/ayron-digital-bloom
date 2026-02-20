@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Globe, Instagram, Linkedin, Facebook, Twitter } from "lucide-react";
+import { addSubmission } from "@/lib/submissions";
+import { toast } from "@/hooks/use-toast";
 
 const serviceOptions = [
   "Digital Marketing", "Website Design", "Brand Identity", "Email Marketing",
@@ -11,6 +13,24 @@ const budgetOptions = ["Under ₹10K", "₹10K–₹30K", "₹30K–₹1L", "₹
 const ContactSection = () => {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [selectedBudget, setSelectedBudget] = useState("");
+  const [formData, setFormData] = useState({ fullName: "", email: "", phone: "", company: "", message: "" });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.fullName || !formData.email) {
+      toast({ title: "Required fields", description: "Please fill in your name and email.", variant: "destructive" });
+      return;
+    }
+    addSubmission({ ...formData, services: selectedServices, budget: selectedBudget });
+    toast({ title: "Enquiry sent!", description: "We'll get back to you within 24 hours." });
+    setFormData({ fullName: "", email: "", phone: "", company: "", message: "" });
+    setSelectedServices([]);
+    setSelectedBudget("");
+  };
 
   const toggleService = (s: string) => {
     setSelectedServices((prev) => prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]);
@@ -37,17 +57,20 @@ const ContactSection = () => {
       <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
         {/* LEFT - Form */}
         <div className="w-full lg:w-[60%] bg-secondary p-8 md:p-16 border-r border-border/10">
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-6" onSubmit={handleSubmit}>
             {[
-              { label: "Full Name*", type: "text", placeholder: "Your full name" },
-              { label: "Email Address*", type: "email", placeholder: "you@example.com" },
-              { label: "Phone Number", type: "tel", placeholder: "+91 XXXXX XXXXX" },
-              { label: "Company / Brand Name", type: "text", placeholder: "Your brand" },
+              { label: "Full Name*", type: "text", placeholder: "Your full name", name: "fullName" },
+              { label: "Email Address*", type: "email", placeholder: "you@example.com", name: "email" },
+              { label: "Phone Number", type: "tel", placeholder: "+91 XXXXX XXXXX", name: "phone" },
+              { label: "Company / Brand Name", type: "text", placeholder: "Your brand", name: "company" },
             ].map((field) => (
               <div key={field.label}>
                 <label className="font-body text-sm text-secondary-foreground font-medium block mb-2">{field.label}</label>
                 <input
                   type={field.type}
+                  name={field.name}
+                  value={formData[field.name as keyof typeof formData]}
+                  onChange={handleChange}
                   placeholder={field.placeholder}
                   className="w-full bg-transparent border border-secondary-foreground/20 text-secondary-foreground font-body text-sm px-4 py-3 outline-none focus:border-primary focus:shadow-[0_0_0_1px_hsl(20,89%,56%)] transition-all"
                 />
@@ -101,6 +124,9 @@ const ContactSection = () => {
               <label className="font-body text-sm text-secondary-foreground font-medium block mb-2">Message / Tell us about your project</label>
               <textarea
                 rows={5}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Describe your goals, challenges, or questions..."
                 className="w-full bg-transparent border border-secondary-foreground/20 text-secondary-foreground font-body text-sm px-4 py-3 outline-none focus:border-primary focus:shadow-[0_0_0_1px_hsl(20,89%,56%)] transition-all resize-none"
               />
