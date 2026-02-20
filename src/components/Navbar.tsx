@@ -57,8 +57,35 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
-      {/* Orange top bar */}
-      <div className="bg-primary h-1" />
+      {/* Services marquee top bar */}
+      <div className="bg-primary overflow-hidden h-8 flex items-center">
+        <div className="flex w-max animate-marquee-left" style={{ animationDuration: "30s" }}>
+          {[...Array(2)].flatMap((_, dupeIdx) =>
+            [
+              { icon: Megaphone, name: "Digital Marketing" },
+              { icon: Monitor, name: "Website Design" },
+              { icon: Diamond, name: "Brand Identity" },
+              { icon: Mail, name: "Email Marketing" },
+              { icon: Users, name: "Influencer Marketing" },
+              { icon: ShoppingBag, name: "Ecommerce Listing" },
+              { icon: Search, name: "SEO Optimization" },
+              { icon: Camera, name: "Product Shoot" },
+            ].map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <span
+                  key={`${dupeIdx}-${i}`}
+                  className="flex items-center gap-1.5 px-5 text-primary-foreground font-body text-xs tracking-wide whitespace-nowrap"
+                >
+                  <Icon size={13} strokeWidth={1.5} />
+                  {s.name}
+                  <span className="mx-3 opacity-40">✦</span>
+                </span>
+              );
+            })
+          )}
+        </div>
+      </div>
       <div className="bg-secondary/95 backdrop-blur-md border-b border-border/20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
         {/* Logo */}
