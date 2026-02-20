@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
-import heroGrowth from "@/assets/hero-growth.jpg";
+import heroGrowth from "@/assets/hero-3d-growth.jpg";
 
 
 
