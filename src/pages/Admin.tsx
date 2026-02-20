@@ -1,21 +1,89 @@
 import { useState, useEffect } from "react";
-import { Trash2, Mail, Phone, Building2, IndianRupee, CalendarDays, ArrowLeft } from "lucide-react";
+import { Trash2, Mail, Phone, Building2, IndianRupee, CalendarDays, ArrowLeft, LogOut, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getSubmissions, deleteSubmission, type ContactSubmission } from "@/lib/submissions";
 import { toast } from "@/hooks/use-toast";
 
+const ADMIN_EMAIL = "ads@gmail.com";
+const ADMIN_PASS = "Ads@1234";
+const SESSION_KEY = "admin_authenticated";
+
+const LoginGate = ({ onLogin }: { onLogin: () => void }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim() === ADMIN_EMAIL && password === ADMIN_PASS) {
+      sessionStorage.setItem(SESSION_KEY, "true");
+      onLogin();
+    } else {
+      setError("Invalid email or password");
+    }
+  };
+
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-background px-4">
+      <form onSubmit={handleLogin} className="w-full max-w-sm border border-border bg-card p-8 space-y-5">
+        <div className="text-center">
+          <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-3">
+            <Lock size={22} className="text-primary" />
+          </div>
+          <h1 className="font-display text-2xl text-foreground">Admin Login</h1>
+          <p className="font-body text-sm text-muted-foreground mt-1">Sign in to view enquiries</p>
+        </div>
+        {error && <p className="font-body text-sm text-destructive text-center">{error}</p>}
+        <div>
+          <label className="font-body text-sm text-foreground font-medium block mb-1">Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border border-border bg-background text-foreground font-body text-sm px-4 py-3 outline-none focus:border-primary transition-colors"
+            placeholder="admin@example.com"
+            required
+          />
+        </div>
+        <div>
+          <label className="font-body text-sm text-foreground font-medium block mb-1">Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-border bg-background text-foreground font-body text-sm px-4 py-3 outline-none focus:border-primary transition-colors"
+            placeholder="••••••••"
+            required
+          />
+        </div>
+        <button type="submit" className="w-full bg-primary text-primary-foreground font-display text-lg py-3 hover:bg-primary/90 transition-colors">
+          Sign In
+        </button>
+      </form>
+    </main>
+  );
+};
+
 const Admin = () => {
+  const [authed, setAuthed] = useState(() => sessionStorage.getItem(SESSION_KEY) === "true");
   const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
 
   useEffect(() => {
-    setSubmissions(getSubmissions());
-  }, []);
+    if (authed) setSubmissions(getSubmissions());
+  }, [authed]);
 
   const handleDelete = (id: string) => {
     deleteSubmission(id);
     setSubmissions(getSubmissions());
     toast({ title: "Deleted", description: "Submission removed successfully." });
   };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem(SESSION_KEY);
+    setAuthed(false);
+  };
+
+  if (!authed) return <LoginGate onLogin={() => setAuthed(true)} />;
 
   return (
     <main className="pt-20 pb-16 min-h-screen bg-background">
@@ -31,6 +99,12 @@ const Admin = () => {
               {submissions.length} submission{submissions.length !== 1 ? "s" : ""}
             </p>
           </div>
+          <button
+            onClick={handleLogout}
+            className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-destructive transition-colors px-3 py-2 border border-border"
+          >
+            <LogOut size={15} /> Logout
+          </button>
         </div>
 
         {submissions.length === 0 ? (
