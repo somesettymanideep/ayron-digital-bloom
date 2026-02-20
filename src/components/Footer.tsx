@@ -3,7 +3,6 @@ import adsLogo from "@/assets/ads-logo.png";
 const footerLinks = {
   Services: ["Digital Marketing", "Website Design", "Brand Identity", "Email Marketing", "Influencer Marketing", "SEO Optimization"],
   Company: ["About Us", "Our Work", "Blog", "Careers", "Contact"],
-  Resources: ["Case Studies", "Free Audit", "Marketing Guide", "FAQ"],
 };
 
 const Footer = () => (
@@ -33,6 +32,26 @@ const Footer = () => (
             </ul>
           </div>
         ))}
+
+        {/* Contact Us */}
+        <div>
+          <h4 className="font-display text-xl text-foreground mb-4">Contact Us</h4>
+          <ul className="space-y-3">
+            <li className="font-body text-sm text-muted-foreground leading-relaxed">
+              Kongara Sai Building, Sai Nagar,<br />Kala Nagar, Acharya Ranga Nagar,<br />Vijayawada – 520010
+            </li>
+            <li>
+              <a href="tel:+919550860545" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
+                +91 9550860545
+              </a>
+            </li>
+            <li>
+              <a href="mailto:hello@ayrondigital.com" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
+                hello@ayrondigital.com
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
