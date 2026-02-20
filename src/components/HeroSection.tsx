@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import heroGrowth from "@/assets/hero-growth.jpg";
 
-const services = [
-  "SEO", "BRANDING", "INFLUENCER MARKETING", "WEB DESIGN",
-  "EMAIL", "ECOMMERCE", "PRODUCT SHOOT", "DIGITAL MARKETING"
-];
 
 
 const HeroSection = () => {
@@ -99,16 +95,6 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Ticker */}
-          <div className="border-t border-border/30 py-4 overflow-hidden">
-            <div className="animate-ticker whitespace-nowrap flex">
-              {[...Array(3)].map((_, i) => (
-                <span key={i} className="text-primary text-[11px] tracking-[0.3em] uppercase font-body mr-0">
-                  {services.map((s) => s + " · ").join("")}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* RIGHT PANEL — Mobile */}
