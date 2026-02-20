@@ -139,8 +139,6 @@ const HeroSection = () => {
               className="w-full h-auto object-cover shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
             />
 
-            {/* Orange border accent */}
-            <div className="absolute -bottom-3 -right-3 w-full h-full border-2 border-primary/20 -z-10" />
           </motion.div>
 
           {/* Google Rating Card — bottom left */}
