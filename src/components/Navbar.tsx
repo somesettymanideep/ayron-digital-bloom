@@ -59,7 +59,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50">
       {/* Services marquee top bar */}
       <div className="bg-primary overflow-hidden h-8 flex items-center">
-        <div className="flex w-max animate-marquee-left" style={{ animationDuration: "30s" }}>
+        <div className="flex w-max animate-marquee-left" style={{ animationDuration: "35s", willChange: "transform" }}>
           {[...Array(2)].flatMap((_, dupeIdx) =>
             [
               { icon: Megaphone, name: "Digital Marketing" },
@@ -75,7 +75,7 @@ const Navbar = () => {
               return (
                 <span
                   key={`${dupeIdx}-${i}`}
-                  className="flex items-center gap-1.5 px-5 text-primary-foreground font-body text-xs tracking-wide whitespace-nowrap"
+                  className="flex items-center gap-1.5 px-5 text-secondary font-body text-xs tracking-wide whitespace-nowrap"
                 >
                   <Icon size={13} strokeWidth={1.5} />
                   {s.name}
@@ -84,6 +84,10 @@ const Navbar = () => {
               );
             })
           )}
+          <span className="flex items-center gap-1.5 px-5 text-secondary font-body text-xs tracking-wide whitespace-nowrap font-semibold">
+            📞 +91-XXXXXXXXXX
+            <span className="mx-3 opacity-40">✦</span>
+          </span>
         </div>
       </div>
       <div className="bg-secondary/95 backdrop-blur-md border-b border-border/20">

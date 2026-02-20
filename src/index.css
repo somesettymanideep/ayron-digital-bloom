@@ -133,9 +133,11 @@
 }
 .animate-marquee-left {
   animation: marquee-left 30s linear infinite;
+  will-change: transform;
 }
 .animate-marquee-right {
   animation: marquee-right 30s linear infinite;
+  will-change: transform;
 }
 
 /* Ticker */
