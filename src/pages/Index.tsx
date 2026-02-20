@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import ServicesMarquee from "@/components/ServicesMarquee";
 import ClientsSection from "@/components/ClientsSection";
 import ServicesSection from "@/components/ServicesSection";
 import WhyChooseSection from "@/components/WhyChooseSection";
@@ -13,6 +14,7 @@ const Index = () => {
   return (
     <main>
       <HeroSection />
+      <ServicesMarquee />
       <ClientsSection />
       <ServicesSection />
       <WhyChooseSection />
