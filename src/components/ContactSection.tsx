@@ -127,10 +127,10 @@ const ContactSection = () => {
 
             <div className="space-y-6">
               {[
-                { icon: MapPin, label: "Ayron Digital Solutions,\nIndia" },
-                { icon: Phone, label: "+91 XXXXX XXXXX\nMon–Sat, 10AM–7PM IST" },
+                { icon: MapPin, label: "Kongara Sai Building, Sai Nagar,\nKala Nagar, Acharya Ranga Nagar,\nVijayawada – 520010" },
+                { icon: Phone, label: "+91 9550860545\nMon–Sat, 10AM–7PM IST" },
                 { icon: Mail, label: "hello@ayrondigital.com" },
-                { icon: Globe, label: "www.ayrondigital.com" },
+                { icon: Globe, label: "www.ayrondigital.in" },
               ].map((item) => {
                 const Icon = item.icon;
                 return (
