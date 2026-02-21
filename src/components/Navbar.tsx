@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Megaphone, Monitor, Diamond, Mail, Users,
   ShoppingBag, Search, Camera, ChevronDown
@@ -33,13 +33,18 @@ const Navbar = () => {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
+  // Close everything on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setDropdownOpen(false);
     setMobileServicesOpen(false);
+    // Scroll to top on every navigation
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, [location.pathname]);
 
+  // Close dropdown on outside click
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -53,6 +58,18 @@ const Navbar = () => {
   const isActive = (href: string) => {
     if (href === "/") return location.pathname === "/";
     return location.pathname.startsWith(href);
+  };
+
+  // ✅ Handles clicking the same route you're already on — forces re-navigation
+  const handleNavClick = (href: string) => {
+    setDropdownOpen(false);
+    setMobileMenuOpen(false);
+    if (location.pathname === href) {
+      // Already on this page — force scroll to top
+      window.scrollTo({ top: 0, behavior: "instant" });
+    } else {
+      navigate(href);
+    }
   };
 
   return (
@@ -90,145 +107,150 @@ const Navbar = () => {
           </span>
         </div>
       </div>
-      <div className="bg-secondary/95 backdrop-blur-md border-b border-border/20">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src={adsLogo} alt="Ayron Digital Solutions" className="h-9" />
-        </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) =>
-            link.dropdown ? (
-              <div key={link.label} className="relative" ref={dropdownRef}>
+      <div className="bg-secondary/95 backdrop-blur-md border-b border-border/20">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2">
+            <img src={adsLogo} alt="Ayron Digital Solutions" className="h-9" />
+          </Link>
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) =>
+              link.dropdown ? (
+                <div key={link.label} className="relative" ref={dropdownRef}>
+                  <button
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    className={`flex items-center gap-1 font-body text-[13px] tracking-widest uppercase transition-colors ${
+                      isActive(link.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+
+                  {dropdownOpen && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-secondary border border-border/40 shadow-xl z-50">
+                      <div className="py-2">
+                        {/* ✅ Use button + handleNavClick instead of bare Link for same-page detection */}
+                        <button
+                          onClick={() => handleNavClick("/services")}
+                          className="block w-full text-left px-5 py-2.5 font-body text-sm text-primary hover:bg-muted/50 transition-colors border-b border-border/20 font-medium"
+                        >
+                          All Services
+                        </button>
+                        {link.dropdown.map((item) => {
+                          const Icon = item.icon;
+                          return (
+                            <button
+                              key={item.label}
+                              onClick={() => handleNavClick(item.href)}
+                              className="flex items-center gap-3 w-full text-left px-5 py-2.5 font-body text-sm text-secondary-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
+                            >
+                              <Icon size={16} strokeWidth={1.5} className="text-primary shrink-0" />
+                              {item.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
                 <button
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className={`flex items-center gap-1 font-body text-[13px] tracking-widest uppercase transition-colors ${
+                  key={link.label}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`font-body text-[13px] tracking-widest uppercase transition-colors ${
                     isActive(link.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
                   }`}
                 >
                   {link.label}
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
-                  />
                 </button>
-
-                {dropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-secondary border border-border/40 shadow-xl z-50">
-                    <div className="py-2">
-                      <Link
-                        to="/services"
-                        className="block px-5 py-2.5 font-body text-sm text-primary hover:bg-muted/50 transition-colors border-b border-border/20 font-medium"
-                      >
-                        All Services
-                      </Link>
-                      {link.dropdown.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <Link
-                            key={item.label}
-                            to={item.href}
-                            className="flex items-center gap-3 px-5 py-2.5 font-body text-sm text-secondary-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
-                          >
-                            <Icon size={16} strokeWidth={1.5} className="text-primary shrink-0" />
-                            {item.label}
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                key={link.label}
-                to={link.href}
-                className={`font-body text-[13px] tracking-widest uppercase transition-colors ${
-                  isActive(link.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
-                }`}
-              >
-                {link.label}
-              </Link>
-            )
-          )}
-        </div>
-
-        {/* CTA */}
-        <Link
-          to="/contact"
-          className="hidden md:inline-block bg-primary text-primary-foreground font-display text-lg px-6 py-2 hover:bg-agency-orange-dark transition-colors"
-        >
-          Get Started
-        </Link>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-secondary-foreground"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {mobileMenuOpen ? (
-              <path d="M18 6L6 18M6 6l12 12" />
-            ) : (
-              <path d="M3 12h18M3 6h18M3 18h18" />
+              )
             )}
-          </svg>
-        </button>
-      </div>
+          </div>
 
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-secondary border-t border-border/20 px-6 py-4 space-y-3">
-          {navLinks.map((link) =>
-            link.dropdown ? (
-              <div key={link.label}>
-                <button
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="flex items-center justify-between w-full font-body text-sm tracking-widest uppercase text-secondary-foreground/80"
-                >
-                  {link.label}
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {mobileServicesOpen && (
-                  <div className="mt-2 ml-4 space-y-2">
-                    <Link to="/services" className="block font-body text-sm text-primary">
-                      All Services
-                    </Link>
-                    {link.dropdown.map((item) => (
-                      <Link
-                        key={item.label}
-                        to={item.href}
-                        className="block font-body text-sm text-secondary-foreground/70 hover:text-primary"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="block font-body text-sm tracking-widest uppercase text-secondary-foreground/80 hover:text-primary"
-              >
-                {link.label}
-              </Link>
-            )
-          )}
-          <Link
-            to="/contact"
-            className="block bg-primary text-primary-foreground font-display text-lg px-6 py-2 w-fit mt-2"
+          {/* CTA */}
+          <button
+            onClick={() => handleNavClick("/contact")}
+            className="hidden md:inline-block bg-primary text-primary-foreground font-display text-lg px-6 py-2 hover:bg-agency-orange-dark transition-colors"
           >
             Get Started
-          </Link>
+          </button>
+
+          {/* Mobile toggle */}
+          <button
+            className="md:hidden text-secondary-foreground"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {mobileMenuOpen ? (
+                <path d="M18 6L6 18M6 6l12 12" />
+              ) : (
+                <path d="M3 12h18M3 6h18M3 18h18" />
+              )}
+            </svg>
+          </button>
         </div>
-      )}
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-secondary border-t border-border/20 px-6 py-4 space-y-3">
+            {navLinks.map((link) =>
+              link.dropdown ? (
+                <div key={link.label}>
+                  <button
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    className="flex items-center justify-between w-full font-body text-sm tracking-widest uppercase text-secondary-foreground/80"
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {mobileServicesOpen && (
+                    <div className="mt-2 ml-4 space-y-2">
+                      <button
+                        onClick={() => handleNavClick("/services")}
+                        className="block font-body text-sm text-primary"
+                      >
+                        All Services
+                      </button>
+                      {link.dropdown.map((item) => (
+                        <button
+                          key={item.label}
+                          onClick={() => handleNavClick(item.href)}
+                          className="block font-body text-sm text-secondary-foreground/70 hover:text-primary"
+                        >
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link.href)}
+                  className="block font-body text-sm tracking-widest uppercase text-secondary-foreground/80 hover:text-primary"
+                >
+                  {link.label}
+                </button>
+              )
+            )}
+            <button
+              onClick={() => handleNavClick("/contact")}
+              className="block bg-primary text-primary-foreground font-display text-lg px-6 py-2 w-fit mt-2"
+            >
+              Get Started
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );
