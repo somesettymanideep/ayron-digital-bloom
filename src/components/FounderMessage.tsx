@@ -60,8 +60,8 @@ const FounderMessage = () => (
           <div className="mt-8 flex items-center gap-4">
             <div className="w-12 h-[2px] bg-primary" />
             <div>
-              <p className="font-display text-xl text-secondary-foreground">The Founder</p>
-              <p className="font-body text-sm text-muted-foreground">Ayron Digital Solutions</p>
+              <p className="font-display text-4xl text-secondary-foreground">Aziz Rehman</p>
+             
             </div>
           </div>
         </motion.div>
