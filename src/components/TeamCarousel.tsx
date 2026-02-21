@@ -3,19 +3,6 @@ import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import rahulImg from "@/assets/team/rahul.jpg";
-import arjunImg from "@/assets/team/arjun.jpg";
-import vikramImg from "@/assets/team/vikram.jpg";
-import karanImg from "@/assets/team/karan.jpg";
-import rohanImg from "@/assets/team/rohan.jpg";
-import amitImg from "@/assets/team/amit.jpg";
-import siddharthImg from "@/assets/team/siddharth.jpg";
-import nikhilImg from "@/assets/team/nikhil.jpg";
-import deepakImg from "@/assets/team/deepak.jpg";
-import manishImg from "@/assets/team/manish.jpg";
-import harshImg from "@/assets/team/harsh.jpg";
-import adityaImg from "@/assets/team/aditya.jpg";
-import rajeshImg from "@/assets/team/rajesh.jpg";
 import lokeshImg from "@/assets/team/lokesh.jpg";
 import mouliImg from "@/assets/team/mouli.jpg";
 import salmanImg from "@/assets/team/salman.jpg";
@@ -29,19 +16,6 @@ import saikumarImg from "@/assets/team/saikumar.jpg";
 import manikantaImg from "@/assets/team/manikanta.jpg";
 
 const teamMembers = [
-  { name: "Rahul Sharma", role: "Creative Director", bio: "10+ years crafting brand identities and visual experiences for top Indian brands.", image: rahulImg },
-  { name: "Arjun Reddy", role: "SEO Lead", bio: "Helped 50+ brands reach page 1 on Google with data-driven SEO strategies.", image: arjunImg },
-  { name: "Vikram Singh", role: "Web Development Lead", bio: "Full-stack developer specializing in high-performance, conversion-focused websites.", image: vikramImg },
-  { name: "Karan Mehta", role: "PPC Specialist", bio: "Google Ads certified expert delivering 5x ROAS for e-commerce and lead-gen brands.", image: karanImg },
-  { name: "Rohan Kapoor", role: "Video Production Lead", bio: "Creates compelling video content that boosts brand visibility and engagement.", image: rohanImg },
-  { name: "Amit Joshi", role: "Analytics Manager", bio: "Turns raw data into actionable insights that fuel smarter marketing decisions.", image: amitImg },
-  { name: "Siddharth Rao", role: "Growth Hacker", bio: "Experiment-driven marketer who scaled 3 startups from zero to ₹1Cr MRR.", image: siddharthImg },
-  { name: "Nikhil Bansal", role: "Head of Digital Marketing", bio: "Performance marketing expert who has managed ₹10Cr+ in ad spend across platforms.", image: nikhilImg },
-  { name: "Deepak Tiwari", role: "Content Strategist", bio: "Storyteller at heart, turning brand narratives into engaging digital content.", image: deepakImg },
-  { name: "Manish Agarwal", role: "Social Media Manager", bio: "Built communities of 1M+ followers across Instagram, LinkedIn, and Facebook.", image: manishImg },
-  { name: "Harsh Pandey", role: "UI/UX Designer", bio: "Designs intuitive user experiences that drive engagement and conversions.", image: harshImg },
-  { name: "Aditya Kumar", role: "Email Marketing Lead", bio: "Automated email flows generating ₹2Cr+ in revenue for D2C brands.", image: adityaImg },
-  { name: "Rajesh Nair", role: "Brand Strategist", bio: "Shapes brand positioning and messaging for startups and enterprise clients alike.", image: rajeshImg },
   { name: "Lokesh Vaddineni", role: "Sr. Social Media Manager", bio: "Drives social strategy and engagement for top brands across all platforms.", image: lokeshImg },
   { name: "Mouli Reddy", role: "Sr. Social Media Manager", bio: "Builds high-impact social campaigns that amplify brand reach and loyalty.", image: mouliImg },
   { name: "Sk. Salman", role: "Social Media Manager", bio: "Creates and manages engaging social content that resonates with target audiences.", image: salmanImg },
