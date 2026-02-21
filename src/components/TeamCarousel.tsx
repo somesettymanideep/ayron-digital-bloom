@@ -1,6 +1,7 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import rahulImg from "@/assets/team/rahul.jpg";
 import priyaImg from "@/assets/team/priya.jpg";
@@ -45,14 +46,55 @@ const teamMembers = [
     bio: "Built communities of 1M+ followers across Instagram, LinkedIn, and Facebook.",
     image: ananyaImg,
   },
+  {
+    name: "Karan Mehta",
+    role: "PPC Specialist",
+    bio: "Google Ads certified expert delivering 5x ROAS for e-commerce and lead-gen brands.",
+    image: rahulImg,
+  },
+  {
+    name: "Neha Verma",
+    role: "UI/UX Designer",
+    bio: "Designs intuitive user experiences that drive engagement and conversions.",
+    image: priyaImg,
+  },
+  {
+    name: "Rohan Kapoor",
+    role: "Video Production Lead",
+    bio: "Creates compelling video content that boosts brand visibility and engagement.",
+    image: arjunImg,
+  },
+  {
+    name: "Divya Nair",
+    role: "Email Marketing Lead",
+    bio: "Automated email flows generating ₹2Cr+ in revenue for D2C brands.",
+    image: snehaImg,
+  },
+  {
+    name: "Amit Joshi",
+    role: "Analytics Manager",
+    bio: "Turns raw data into actionable insights that fuel smarter marketing decisions.",
+    image: vikramImg,
+  },
+  {
+    name: "Pooja Iyer",
+    role: "Brand Strategist",
+    bio: "Shapes brand positioning and messaging for startups and enterprise clients alike.",
+    image: ananyaImg,
+  },
+  {
+    name: "Siddharth Rao",
+    role: "Growth Hacker",
+    bio: "Experiment-driven marketer who scaled 3 startups from zero to ₹1Cr MRR.",
+    image: rahulImg,
+  },
 ];
 
 const TeamCarousel = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
-    align: "start",
-    slidesToScroll: 1,
-  });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start", slidesToScroll: 1 },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
