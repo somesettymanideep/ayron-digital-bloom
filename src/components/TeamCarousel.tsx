@@ -4,11 +4,8 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import rahulImg from "@/assets/team/rahul.jpg";
-import priyaImg from "@/assets/team/priya.jpg";
 import arjunImg from "@/assets/team/arjun.jpg";
-import snehaImg from "@/assets/team/sneha.jpg";
 import vikramImg from "@/assets/team/vikram.jpg";
-import ananyaImg from "@/assets/team/ananya.jpg";
 const teamMembers = [
   {
     name: "Rahul Sharma",
@@ -17,22 +14,10 @@ const teamMembers = [
     image: rahulImg,
   },
   {
-    name: "Priya Patel",
-    role: "Head of Digital Marketing",
-    bio: "Performance marketing expert who has managed ₹10Cr+ in ad spend across platforms.",
-    image: priyaImg,
-  },
-  {
     name: "Arjun Reddy",
     role: "SEO Lead",
     bio: "Helped 50+ brands reach page 1 on Google with data-driven SEO strategies.",
     image: arjunImg,
-  },
-  {
-    name: "Sneha Gupta",
-    role: "Content Strategist",
-    bio: "Storyteller at heart, turning brand narratives into engaging digital content.",
-    image: snehaImg,
   },
   {
     name: "Vikram Singh",
@@ -41,22 +26,10 @@ const teamMembers = [
     image: vikramImg,
   },
   {
-    name: "Ananya Desai",
-    role: "Social Media Manager",
-    bio: "Built communities of 1M+ followers across Instagram, LinkedIn, and Facebook.",
-    image: ananyaImg,
-  },
-  {
     name: "Karan Mehta",
     role: "PPC Specialist",
     bio: "Google Ads certified expert delivering 5x ROAS for e-commerce and lead-gen brands.",
     image: rahulImg,
-  },
-  {
-    name: "Neha Verma",
-    role: "UI/UX Designer",
-    bio: "Designs intuitive user experiences that drive engagement and conversions.",
-    image: priyaImg,
   },
   {
     name: "Rohan Kapoor",
@@ -65,27 +38,51 @@ const teamMembers = [
     image: arjunImg,
   },
   {
-    name: "Divya Nair",
-    role: "Email Marketing Lead",
-    bio: "Automated email flows generating ₹2Cr+ in revenue for D2C brands.",
-    image: snehaImg,
-  },
-  {
     name: "Amit Joshi",
     role: "Analytics Manager",
     bio: "Turns raw data into actionable insights that fuel smarter marketing decisions.",
     image: vikramImg,
   },
   {
-    name: "Pooja Iyer",
-    role: "Brand Strategist",
-    bio: "Shapes brand positioning and messaging for startups and enterprise clients alike.",
-    image: ananyaImg,
-  },
-  {
     name: "Siddharth Rao",
     role: "Growth Hacker",
     bio: "Experiment-driven marketer who scaled 3 startups from zero to ₹1Cr MRR.",
+    image: rahulImg,
+  },
+  {
+    name: "Nikhil Bansal",
+    role: "Head of Digital Marketing",
+    bio: "Performance marketing expert who has managed ₹10Cr+ in ad spend across platforms.",
+    image: arjunImg,
+  },
+  {
+    name: "Deepak Tiwari",
+    role: "Content Strategist",
+    bio: "Storyteller at heart, turning brand narratives into engaging digital content.",
+    image: vikramImg,
+  },
+  {
+    name: "Manish Agarwal",
+    role: "Social Media Manager",
+    bio: "Built communities of 1M+ followers across Instagram, LinkedIn, and Facebook.",
+    image: rahulImg,
+  },
+  {
+    name: "Harsh Pandey",
+    role: "UI/UX Designer",
+    bio: "Designs intuitive user experiences that drive engagement and conversions.",
+    image: arjunImg,
+  },
+  {
+    name: "Aditya Kumar",
+    role: "Email Marketing Lead",
+    bio: "Automated email flows generating ₹2Cr+ in revenue for D2C brands.",
+    image: vikramImg,
+  },
+  {
+    name: "Rajesh Nair",
+    role: "Brand Strategist",
+    bio: "Shapes brand positioning and messaging for startups and enterprise clients alike.",
     image: rahulImg,
   },
 ];
