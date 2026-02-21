@@ -1,10 +1,10 @@
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const socials = [
-  { icon: Facebook, label: "Facebook", href: "#", bg: "bg-[hsl(221,44%,41%)]" },
-  { icon: Instagram, label: "Instagram", href: "#", bg: "bg-gradient-to-br from-[hsl(37,97%,70%)] via-[hsl(333,69%,52%)] to-[hsl(270,70%,55%)]" },
+  { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/AyronDigitalSolutions", bg: "bg-[hsl(221,44%,41%)]" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/ayron_digital_solutions?igsh=MXYyNnBlNmdkbXRxMg==", bg: "bg-gradient-to-br from-[hsl(37,97%,70%)] via-[hsl(333,69%,52%)] to-[hsl(270,70%,55%)]" },
   { icon: Linkedin, label: "LinkedIn", href: "#", bg: "bg-[hsl(210,80%,42%)]" },
-  { icon: Youtube, label: "YouTube", href: "#", bg: "bg-[hsl(0,100%,50%)]" },
+  { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@AyronDigitalSolutions", bg: "bg-[hsl(0,100%,50%)]" },
 ];
 
 const SocialSidebar = () => (
