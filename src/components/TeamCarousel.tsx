@@ -2,37 +2,48 @@ import { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import rahulImg from "@/assets/team/rahul.jpg";
+import priyaImg from "@/assets/team/priya.jpg";
+import arjunImg from "@/assets/team/arjun.jpg";
+import snehaImg from "@/assets/team/sneha.jpg";
+import vikramImg from "@/assets/team/vikram.jpg";
+import ananyaImg from "@/assets/team/ananya.jpg";
 const teamMembers = [
   {
     name: "Rahul Sharma",
     role: "Creative Director",
     bio: "10+ years crafting brand identities and visual experiences for top Indian brands.",
+    image: rahulImg,
   },
   {
     name: "Priya Patel",
     role: "Head of Digital Marketing",
     bio: "Performance marketing expert who has managed ₹10Cr+ in ad spend across platforms.",
+    image: priyaImg,
   },
   {
     name: "Arjun Reddy",
     role: "SEO Lead",
     bio: "Helped 50+ brands reach page 1 on Google with data-driven SEO strategies.",
+    image: arjunImg,
   },
   {
     name: "Sneha Gupta",
     role: "Content Strategist",
     bio: "Storyteller at heart, turning brand narratives into engaging digital content.",
+    image: snehaImg,
   },
   {
     name: "Vikram Singh",
     role: "Web Development Lead",
     bio: "Full-stack developer specializing in high-performance, conversion-focused websites.",
+    image: vikramImg,
   },
   {
     name: "Ananya Desai",
     role: "Social Media Manager",
     bio: "Built communities of 1M+ followers across Instagram, LinkedIn, and Facebook.",
+    image: ananyaImg,
   },
 ];
 
@@ -116,13 +127,9 @@ const TeamCarousel = () => {
               >
                 <div className="group border border-border/30 bg-background hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
                   {/* Photo placeholder */}
-                  <div className="bg-muted relative overflow-hidden h-64">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/60" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-display text-[100px] text-primary/15">
-                        {member.name.charAt(0)}
-                      </span>
-                    </div>
+                  <div className="relative overflow-hidden h-64">
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/40" />
                   </div>
 
                   {/* Info */}
