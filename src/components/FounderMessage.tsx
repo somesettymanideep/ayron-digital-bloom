@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
+import founderImg from "@/assets/team/founder.jpg";
 
 const FounderMessage = () => (
   <section className="bg-secondary py-20 px-6 md:px-12">
@@ -15,17 +16,8 @@ const FounderMessage = () => (
         >
           <div className="relative">
             <div className="bg-background aspect-[3/4] relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-background" />
-              <div
-                className="absolute inset-0"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(244,124,65,0.05) 20px, rgba(244,124,65,0.05) 40px)",
-                }}
-              />
-              <div className="absolute inset-0 flex items-end justify-center">
-                <span className="font-display text-[200px] text-primary/10 leading-none">A</span>
-              </div>
+              <img src={founderImg} alt="Founder of Ayron Digital Solutions" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
             </div>
             {/* Name card */}
             <div className="bg-primary px-5 py-3 absolute -bottom-4 -right-4">
