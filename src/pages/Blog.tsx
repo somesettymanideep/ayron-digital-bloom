@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import blogSeo from "@/assets/blog/blog-seo.jpg";
 import blogEmail from "@/assets/blog/blog-email.jpg";
 import blogInfluencer from "@/assets/blog/blog-influencer.jpg";
@@ -37,6 +38,11 @@ const allBlogs = [
 
 const Blog = () => (
   <main className="pt-16">
+    <SEO
+      title="Blog"
+      description="Digital marketing strategies, industry insights, and growth tactics from the Ayron Digital Solutions team."
+      canonical="/blog"
+    />
     {/* Hero */}
     <section className="bg-background py-20 px-6 md:px-12 text-center">
       <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">
