@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import WhyChooseSection from "@/components/WhyChooseSection";
+import SEO from "@/components/SEO";
 import TestimonialsMasonry from "@/components/TestimonialsMasonry";
 import StatsSection from "@/components/StatsSection";
 import FounderMessage from "@/components/FounderMessage";
@@ -10,6 +11,11 @@ import Footer from "@/components/Footer";
 
 const About = () => (
   <main className="pt-16">
+    <SEO
+      title="About Us"
+      description="Learn about Ayron Digital Solutions — a full-service digital marketing agency helping 200+ brands grow with data-driven strategies across India."
+      canonical="/about"
+    />
     {/* Hero */}
     <section className="bg-background grid-bg noise-overlay relative overflow-hidden py-24 md:py-32">
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/[0.06] rounded-full blur-[120px]" />

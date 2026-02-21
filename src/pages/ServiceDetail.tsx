@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import servicesData from "@/data/servicesData";
+import SEO from "@/components/SEO";
 import ServiceBanner from "@/components/ServiceBanner";
 import ServiceOverviewStrip from "@/components/ServiceOverviewStrip";
 import ServiceDescription from "@/components/ServiceDescription";
@@ -26,6 +27,18 @@ const ServiceDetail = () => {
 
   return (
     <main className="pt-16">
+      <SEO
+        title={service.title}
+        description={service.desc?.slice(0, 155) || `${service.title} services by Ayron Digital Solutions.`}
+        canonical={`/services/${slug}`}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: service.title,
+          provider: { "@type": "Organization", name: "Ayron Digital Solutions" },
+          description: service.desc,
+        }}
+      />
       <ServiceBanner service={service} />
       <ServiceOverviewStrip service={service} />
       <ServiceDescription service={service} />
