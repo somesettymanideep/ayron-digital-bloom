@@ -156,7 +156,7 @@ const ContactSection = () => {
                 { icon: MapPin, label: "Kongara Sai Building, Sai Nagar,\nKala Nagar, Acharya Ranga Nagar,\nVijayawada – 520010" },
                 { icon: Phone, label: "+91 9550860545\nMon–Sat, 10AM–7PM IST" },
                 { icon: Mail, label: "hello@ayrondigital.com" },
-                { icon: Globe, label: "www.ayrondigital.in" },
+                { icon: Globe, label: "www.ayrondigital.com" },
               ].map((item) => {
                 const Icon = item.icon;
                 return (
@@ -187,7 +187,7 @@ const ContactSection = () => {
             <h4 className="font-display text-xl text-primary mb-3">Office Hours</h4>
             <div className="font-body text-sm space-y-1">
               <p>Mon – Fri: 9:00 AM – 7:00 PM</p>
-              <p>Saturday: 10:00 AM – 4:00 PM</p>
+              <p>Saturday: 9:00 AM – 7:00 PM</p>
               <p>Sunday: Closed (we rest too 😄)</p>
             </div>
           </div>
