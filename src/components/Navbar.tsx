@@ -4,7 +4,7 @@ import {
   Megaphone, Monitor, Diamond, Mail, Users,
   ShoppingBag, Search, Camera, ChevronDown
 } from "lucide-react";
-import adsLogo from "@/assets/ads-logo.png";
+import adsLogo from "@/assets/ADS.png";
 
 const navLinks = [
   { label: "Home", href: "/" },
