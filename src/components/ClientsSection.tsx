@@ -1,84 +1,107 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-const categories = ["All", "FMCG", "Fashion", "Tech", "Real Estate", "F&B", "Healthcare"];
-
-const clientNames = [
-  "FreshBite Foods", "StyleCraft", "TechNova", "GreenLeaf Organics",
-  "UrbanNest Realty", "PureGlow Beauty", "CloudSync Tech", "SpiceRoute",
-  "MetroFit Gym", "BlueOcean Logistics", "CraftBrew Co.", "SilkLine Fashion",
-  "DataPulse AI", "SunRise Solar", "PixelForge Studios", "AquaPure Water",
+const clients = [
+  { name: "FreshBite Foods", category: "FMCG" },
+  { name: "StyleCraft", category: "Fashion" },
+  { name: "TechNova", category: "Tech" },
+  { name: "GreenLeaf Organics", category: "FMCG" },
+  { name: "UrbanNest Realty", category: "Real Estate" },
+  { name: "PureGlow Beauty", category: "Healthcare" },
+  { name: "CloudSync Tech", category: "Tech" },
+  { name: "SpiceRoute", category: "F&B" },
+  { name: "MetroFit Gym", category: "Healthcare" },
+  { name: "BlueOcean Logistics", category: "Tech" },
+  { name: "CraftBrew Co.", category: "F&B" },
+  { name: "SilkLine Fashion", category: "Fashion" },
+  { name: "DataPulse AI", category: "Tech" },
+  { name: "SunRise Solar", category: "Tech" },
+  { name: "PixelForge Studios", category: "Tech" },
+  { name: "AquaPure Water", category: "FMCG" },
 ];
 
 const ClientsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start", slidesToScroll: 1 },
+    [Autoplay({ delay: 2500, stopOnInteraction: false })]
+  );
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi, onSelect]);
 
   return (
     <section className="bg-secondary py-20 relative" style={{ borderTop: "1px solid rgba(244,124,65,0.2)" }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-[2px] bg-primary" />
-            <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">Trusted By</span>
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-4">
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-[2px] bg-primary" />
+              <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">Trusted By</span>
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl text-secondary-foreground">
+              Brands We've <span className="text-primary">Grown</span>
+            </h2>
           </div>
 
-          <h2 className="font-display text-4xl md:text-5xl text-secondary-foreground text-center">
-            Brands We've <span className="text-primary">Grown</span>
-          </h2>
-
-          <p className="text-muted-foreground text-sm font-body">200+ Clients Across India</p>
-        </div>
-
-        {/* Category chips */}
-        <div className="flex flex-wrap gap-3 justify-center mb-10">
-          {categories.map((cat) => (
+          <div className="flex items-center gap-4">
+            <p className="text-muted-foreground text-sm font-body mr-4 hidden md:block">200+ Clients Across India</p>
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`font-body text-sm px-5 py-2 border transition-colors ${
-                activeCategory === cat
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-transparent text-secondary-foreground border-secondary-foreground/30 hover:border-primary hover:text-primary"
-              }`}
+              onClick={() => emblaApi?.scrollPrev()}
+              disabled={!canScrollPrev}
+              className="w-10 h-10 border border-secondary-foreground/20 flex items-center justify-center hover:border-primary hover:text-primary text-secondary-foreground transition-colors disabled:opacity-30"
             >
-              {cat}
+              <ArrowLeft className="w-4 h-4" />
             </button>
-          ))}
+            <button
+              onClick={() => emblaApi?.scrollNext()}
+              disabled={!canScrollNext}
+              className="w-10 h-10 border border-secondary-foreground/20 flex items-center justify-center hover:border-primary hover:text-primary text-secondary-foreground transition-colors disabled:opacity-30"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        {/* Marquee rows */}
-        <div className="space-y-4 overflow-hidden mb-10">
-          {/* Row 1 - left */}
-          <div className="overflow-hidden">
-            <div className="animate-marquee-left flex gap-4 w-max">
-              {[...clientNames, ...clientNames].map((name, i) => (
-                <div
-                  key={i}
-                  className="w-40 h-16 flex items-center justify-center border border-primary/20 bg-secondary text-muted-foreground font-body text-sm hover:border-b-2 hover:border-b-primary hover:text-primary transition-all shrink-0 cursor-pointer"
-                >
-                  {name}
+        {/* Carousel */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {clients.map((client, i) => (
+              <div
+                key={i}
+                className="flex-[0_0_50%] sm:flex-[0_0_33.333%] md:flex-[0_0_25%] lg:flex-[0_0_20%] min-w-0 px-2"
+              >
+                <div className="group border border-secondary-foreground/10 bg-secondary p-6 h-28 flex flex-col items-center justify-center text-center hover:border-primary/60 transition-all cursor-pointer relative overflow-hidden">
+                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                  <span className="font-body text-sm font-medium text-secondary-foreground group-hover:text-primary transition-colors">
+                    {client.name}
+                  </span>
+                  <span className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground mt-1.5">
+                    {client.category}
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Row 2 - right */}
-          <div className="overflow-hidden">
-            <div className="animate-marquee-right flex gap-4 w-max">
-              {[...clientNames.slice().reverse(), ...clientNames.slice().reverse()].map((name, i) => (
-                <div
-                  key={i}
-                  className="w-40 h-16 flex items-center justify-center border border-primary/20 bg-secondary text-muted-foreground font-body text-sm hover:border-b-2 hover:border-b-primary hover:text-primary transition-all shrink-0 cursor-pointer"
-                >
-                  {name}
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="text-center">
+        <div className="text-center mt-10">
           <p className="font-body text-muted-foreground text-sm mb-2">
             Join 200+ brands that chose growth over guesswork.
           </p>
