@@ -100,11 +100,11 @@ const TeamCarousel = () => {
 
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex" style={{ gap: 24 }}>
+          <div className="flex -ml-6">
             {teamMembers.map((member, i) => (
               <motion.div
                 key={member.name}
-                className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(25%-18px)] min-w-0"
+                className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
