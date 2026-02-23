@@ -52,31 +52,46 @@ const FAQSection = () => {
           {/* RIGHT - Accordion */}
           <div className="lg:w-[60%]">
             {/* Category chips */}
-            <div className="flex flex-wrap gap-2 mb-8">
+            <motion.div
+              className="flex flex-wrap gap-2 mb-8"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+            >
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => { setActiveCat(cat); setOpenIndex(null); }}
-                  className={`font-body text-sm px-4 py-1.5 border transition-colors ${
-                    activeCat === cat
+                  className={`font-body text-sm px-4 py-1.5 border transition-colors ${activeCat === cat
                       ? "bg-primary text-primary-foreground border-primary"
                       : "bg-transparent text-secondary-foreground border-secondary-foreground/20 hover:border-primary"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
               ))}
-            </div>
+            </motion.div>
 
-            <div className="space-y-0">
+            <motion.div
+              className="space-y-0"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ staggerChildren: 0.1 }}
+            >
               {filtered.map((faq, i) => {
                 const globalIndex = faqs.indexOf(faq);
                 const num = String(globalIndex + 1).padStart(2, "0");
                 const isOpen = openIndex === globalIndex;
                 return (
-                  <div
+                  <motion.div
                     key={globalIndex}
                     className={`border-b border-primary/10 transition-colors ${isOpen ? "bg-primary/5" : ""}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: i * 0.05 }}
                   >
                     <button
                       onClick={() => setOpenIndex(isOpen ? null : globalIndex)}
@@ -86,9 +101,8 @@ const FAQSection = () => {
                       <span className={`flex-1 font-body font-semibold text-[17px] transition-colors ${isOpen ? "text-primary" : "text-secondary-foreground"}`}>
                         {faq.q}
                       </span>
-                      <span className={`w-8 h-8 flex items-center justify-center border text-lg font-body transition-all ${
-                        isOpen ? "bg-primary text-primary-foreground border-primary rotate-45" : "border-secondary-foreground/30 text-secondary-foreground"
-                      }`}>
+                      <span className={`w-8 h-8 flex items-center justify-center border text-lg font-body transition-all ${isOpen ? "bg-primary text-primary-foreground border-primary rotate-45" : "border-secondary-foreground/30 text-secondary-foreground"
+                        }`}>
                         +
                       </span>
                     </button>
@@ -107,10 +121,10 @@ const FAQSection = () => {
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

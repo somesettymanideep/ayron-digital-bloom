@@ -48,12 +48,24 @@ const CTASection = () => (
         </motion.span>
       </motion.h2>
 
-      <p className="font-body font-light text-muted-foreground text-[17px] max-w-[560px] mb-10 leading-relaxed">
+      <motion.p
+        className="font-body font-light text-muted-foreground text-[17px] max-w-[560px] mb-10 leading-relaxed"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         Stop losing leads to competitors. Let Ayron Digital Solutions craft a strategy that gets you seen, clicked, and chosen.
-      </p>
+      </motion.p>
 
       {/* Buttons */}
-      <div className="flex flex-wrap items-center justify-center gap-4 mb-4">
+      <motion.div
+        className="flex flex-wrap items-center justify-center gap-4 mb-4"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
         <a
           href="#contact"
           className="bg-primary text-primary-foreground font-display text-xl px-11 py-5 hover:bg-agency-orange-dark transition-colors"
@@ -66,20 +78,32 @@ const CTASection = () => (
         >
           View Our Services
         </a>
-      </div>
+      </motion.div>
 
-      <p className="font-body italic text-xs text-muted-foreground mb-10">
+      <motion.p
+        className="font-body italic text-xs text-muted-foreground mb-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.6 }}
+      >
         No commitment. No fluff. Just results.
-      </p>
+      </motion.p>
 
       {/* Service pills */}
-      <div className="flex flex-wrap justify-center gap-3">
+      <motion.div
+        className="flex flex-wrap justify-center gap-3"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
         {servicePills.map((s) => (
-          <span key={s} className="border border-primary/40 text-primary font-body text-xs px-4 py-1.5">
+          <span key={s} className="border border-primary/40 text-primary font-body text-xs px-4 py-1.5 hover:bg-primary/5 transition-colors cursor-default">
             {s}
           </span>
         ))}
-      </div>
+      </motion.div>
     </div>
   </section>
 );

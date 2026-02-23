@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail } from "lucide-react";
+import { motion } from "framer-motion";
 import adsLogo from "@/assets/ADS.png";
 
 const footerLinks = {
@@ -9,18 +10,24 @@ const footerLinks = {
 const Footer = () => (
   <footer className="bg-background border-t border-border/30">
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, staggerChildren: 0.1 }}
+      >
         {/* Brand */}
-        <div>
-          <img src={adsLogo} alt="Ayron Digital Solutions"  style={{height:"5rem"}} className="bg-white p-2  mb-4" />
+        <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+          <img src={adsLogo} alt="Ayron Digital Solutions" style={{ height: "5rem" }} className="bg-white p-2 mb-4" />
           <p className="font-body font-light text-muted-foreground text-sm leading-relaxed max-w-xs">
             Full-service digital marketing agency helping brands grow with data-driven strategies and creative execution.
           </p>
-        </div>
+        </motion.div>
 
         {/* Link columns */}
         {Object.entries(footerLinks).map(([title, links]) => (
-          <div key={title}>
+          <motion.div key={title} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
             <h4 className="font-display text-xl text-foreground mb-4">{title}</h4>
             <ul className="space-y-2">
               {links.map((link) => (
@@ -31,11 +38,11 @@ const Footer = () => (
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
 
         {/* Contact Us */}
-        <div>
+        <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
           <h4 className="font-display text-xl text-foreground mb-4">Contact Us</h4>
           <ul className="space-y-3">
             <li className="flex items-start gap-2">
@@ -57,8 +64,8 @@ const Footer = () => (
               </a>
             </li>
           </ul>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
 
     {/* Bottom bar */}

@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import heroGrowth from "@/assets/hero-3d-growth.jpg";
-
-
+import heroCharacter from "@/assets/hero-character.png";
 
 const HeroSection = () => {
   return (

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const clients = [
   { name: "FreshBite Foods", category: "FMCG" },
@@ -49,7 +50,12 @@ const ClientsSection = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-4">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="flex items-center gap-3 mb-3">
               <div className="w-8 h-[2px] bg-primary" />
               <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">Trusted By</span>
@@ -57,9 +63,15 @@ const ClientsSection = () => {
             <h2 className="font-display text-4xl md:text-5xl text-secondary-foreground">
               Brands We've <span className="text-primary">Grown</span>
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-4">
+          <motion.div
+            className="flex items-center gap-4"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <p className="text-muted-foreground text-sm font-body mr-4 hidden md:block">200+ Clients Across India</p>
             <button
               onClick={() => emblaApi?.scrollPrev()}
@@ -75,11 +87,17 @@ const ClientsSection = () => {
             >
               <ArrowRight className="w-4 h-4" />
             </button>
-          </div>
+          </motion.div>
         </div>
 
         {/* Carousel */}
-        <div className="overflow-hidden" ref={emblaRef}>
+        <motion.div
+          className="overflow-hidden" ref={emblaRef}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <div className="flex">
             {clients.map((client, i) => (
               <div
@@ -98,17 +116,23 @@ const ClientsSection = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom */}
-        <div className="text-center mt-10">
+        <motion.div
+          className="text-center mt-10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <p className="font-body text-muted-foreground text-sm mb-2">
             Join 200+ brands that chose growth over guesswork.
           </p>
           <a href="#contact" className="text-primary font-body text-sm hover:underline underline-offset-4">
             Become a Client →
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

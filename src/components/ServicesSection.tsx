@@ -65,7 +65,12 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">
               What We Do
             </span>
@@ -75,14 +80,21 @@ const ServicesSection = () => {
             <p className="font-body font-light text-muted-foreground text-base mt-4 max-w-lg">
               Every service is designed to move the needle — not just look good on a report.
             </p>
-          </div>
-          <Link
-            to="/services"
-            className="font-body text-sm text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group shrink-0"
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            View All Services
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
+            <Link
+              to="/services"
+              className="font-body text-sm text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group shrink-0"
+            >
+              View All Services
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
 
         {/* Grid */}
@@ -97,7 +109,7 @@ const ServicesSection = () => {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.5 }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
               >
                 {/* Hover background */}
                 <div className="absolute inset-0 bg-primary/[0.04] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

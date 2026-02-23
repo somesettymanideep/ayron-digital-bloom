@@ -9,29 +9,26 @@ const stats = [
   { number: 7, suffix: "+", label: "Years of Excellence", sub: "In the digital marketing space", orange: true },
 ];
 
-function useCountUp(target: number, inView: boolean, duration = 2000) {
+const StatBlock = ({ stat, index }: { stat: typeof stats[0]; index: number }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  // Custom counter logic that only runs when inView is true
   const [count, setCount] = useState(0);
   const started = useRef(false);
 
   useEffect(() => {
     if (!inView || started.current) return;
     started.current = true;
+    const duration = 2000;
     const startTime = performance.now();
     const step = (now: number) => {
       const progress = Math.min((now - startTime) / duration, 1);
-      setCount(Math.floor(progress * target));
+      setCount(Math.floor(progress * stat.number));
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
-  }, [inView, target, duration]);
-
-  return count;
-}
-
-const StatBlock = ({ stat, index }: { stat: typeof stats[0]; index: number }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  const count = useCountUp(stat.number, inView);
+  }, [inView, stat.number]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([e]) => { if (e.isIntersecting) setInView(true); }, { threshold: 0.5 });
