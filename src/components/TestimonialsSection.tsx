@@ -153,33 +153,19 @@ const TestimonialsSection = () => {
 
         {/* Carousel */}
         <div ref={emblaRef} className="overflow-hidden">
-          <div className="flex" style={{ gap: 24 }}>
-            {testimonials.map((t, i) => {
-              const isActive = i === selectedIndex;
-              return (
-                <motion.div
-                  key={i}
-                  className="testimonial-slide min-w-0 shrink-0 grow-0"
-                  style={{
-                    flexBasis: "calc(33.333% - 16px)",
-                  }}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
-                >
-                  <div
-                    className={`
-                      relative h-full p-8 md:p-10 border transition-all duration-300 group
-                      ${isActive
-                        ? "bg-background border-primary/30 shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.15)]"
-                        : "bg-background/60 border-border/30 hover:border-primary/40 hover:shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.12)]"
-                      }
-                    `}
-                    style={{
-                      transform: isActive ? "translateY(-4px)" : undefined,
-                      transition: "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                    }}
+          <div className="flex -ml-6 touch-pan-y">
+            {testimonials.map((t, i) => (
+              <div
+                key={i}
+                className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333333%] min-w-0 pl-6"
+              >
+                <div className="h-full">
+                  <motion.div
+                    className="relative h-full p-8 md:p-10 border border-border/30 bg-background/60 hover:bg-background hover:border-primary/40 shadow-sm hover:shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.15)] transition-all duration-400 group hover:-translate-y-2 flex flex-col"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
                   >
                     {/* Quote icon */}
                     <Quote
@@ -189,7 +175,7 @@ const TestimonialsSection = () => {
                     />
 
                     {/* Top accent line */}
-                    <div className={`absolute top-0 left-0 h-[3px] bg-primary transition-all duration-500 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
+                    <div className="absolute top-0 left-0 h-[3px] bg-primary transition-all duration-500 w-0 group-hover:w-full" />
 
                     {/* Stars */}
                     <div className="flex gap-1 mb-6">
@@ -199,12 +185,12 @@ const TestimonialsSection = () => {
                     </div>
 
                     {/* Body text */}
-                    <p className="font-body font-light text-muted-foreground text-[15px] leading-[1.85] mb-8">
+                    <p className="font-body font-light text-muted-foreground text-[15px] leading-[1.85] mb-8 grow">
                       "{t.text}"
                     </p>
 
                     {/* Divider */}
-                    <div className="h-px bg-border/40 mb-6" />
+                    <div className="h-px w-full bg-border/40 mb-6" />
 
                     {/* Client info */}
                     <div className="flex items-center gap-4">
@@ -225,10 +211,10 @@ const TestimonialsSection = () => {
                         {t.tag}
                       </span>
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -251,25 +237,6 @@ const TestimonialsSection = () => {
           ))}
         </div>
       </div>
-
-      {/* Responsive styles */}
-      <style>{`
-        @media (max-width: 1279px) and (min-width: 1024px) {
-          .testimonial-slide {
-            flex-basis: calc(45.45% - 16px) !important;
-          }
-        }
-        @media (max-width: 1023px) and (min-width: 768px) {
-          .testimonial-slide {
-            flex-basis: calc(76.92% - 16px) !important;
-          }
-        }
-        @media (max-width: 767px) {
-          .testimonial-slide {
-            flex-basis: calc(100% - 16px) !important;
-          }
-        }
-      `}</style>
     </section>
   );
 };

@@ -96,17 +96,19 @@ const TeamCarousel = () => {
 
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex -ml-6">
+          <div className="flex -ml-6 touch-pan-y">
             {teamMembers.map((member, i) => (
-              <motion.div
+              <div
                 key={member.name}
                 className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
               >
-                <div className="group border border-border/30 bg-background hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
+                <motion.div
+                  className="group border border-border/30 bg-background hover:border-primary/40 transition-all duration-300 hover:-translate-y-1 h-full"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
+                >
                   {/* Photo placeholder */}
                   <div className="relative overflow-hidden h-64">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
@@ -114,14 +116,16 @@ const TeamCarousel = () => {
                   </div>
 
                   {/* Info */}
-                  <div className="p-6">
-                    <h4 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors">
-                      {member.name}
-                    </h4>
-                    <p className="font-body text-sm text-primary font-medium mt-1">{member.role}</p>
+                  <div className="p-6 flex flex-col justify-between">
+                    <div>
+                      <h4 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors">
+                        {member.name}
+                      </h4>
+                      <p className="font-body text-sm text-primary font-medium mt-1">{member.role}</p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             ))}
           </div>
         </div>
