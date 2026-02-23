@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Megaphone, Monitor, Diamond, Mail, Users,
   ShoppingBag, Search, Camera, ChevronDown
@@ -33,7 +33,6 @@ const Navbar = () => {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const navigate = useNavigate();
 
   // Close everything on route change
   useEffect(() => {
@@ -60,15 +59,13 @@ const Navbar = () => {
     return location.pathname.startsWith(href);
   };
 
-  // ✅ Handles clicking the same route you're already on — forces re-navigation
+  // ✅ Handles clicking the same route you're already on — forces scroll to top
   const handleNavClick = (href: string) => {
     setDropdownOpen(false);
     setMobileMenuOpen(false);
     if (location.pathname === href) {
       // Already on this page — force scroll to top
       window.scrollTo({ top: 0, behavior: "instant" });
-    } else {
-      navigate(href);
     }
   };
 
@@ -122,9 +119,8 @@ const Navbar = () => {
                 <div key={link.label} className="relative" ref={dropdownRef}>
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className={`flex items-center gap-1 font-body text-[13px] tracking-widest uppercase transition-colors ${
-                      isActive(link.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
-                    }`}
+                    className={`flex items-center gap-1 font-body text-[13px] tracking-widest uppercase transition-colors ${isActive(link.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
+                      }`}
                   >
                     {link.label}
                     <ChevronDown
@@ -136,24 +132,26 @@ const Navbar = () => {
                   {dropdownOpen && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-secondary border border-border/40 shadow-xl z-50">
                       <div className="py-2">
-                        {/* ✅ Use button + handleNavClick instead of bare Link for same-page detection */}
-                        <button
+                        {/* ✅ Use Link + handleNavClick for same-page detection */}
+                        <Link
+                          to="/services"
                           onClick={() => handleNavClick("/services")}
                           className="block w-full text-left px-5 py-2.5 font-body text-sm text-primary hover:bg-muted/50 transition-colors border-b border-border/20 font-medium"
                         >
                           All Services
-                        </button>
+                        </Link>
                         {link.dropdown.map((item) => {
                           const Icon = item.icon;
                           return (
-                            <button
+                            <Link
+                              to={item.href}
                               key={item.label}
                               onClick={() => handleNavClick(item.href)}
                               className="flex items-center gap-3 w-full text-left px-5 py-2.5 font-body text-sm text-secondary-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
                             >
                               <Icon size={16} strokeWidth={1.5} className="text-primary shrink-0" />
                               {item.label}
-                            </button>
+                            </Link>
                           );
                         })}
                       </div>
@@ -161,26 +159,27 @@ const Navbar = () => {
                   )}
                 </div>
               ) : (
-                <button
+                <Link
+                  to={link.href}
                   key={link.label}
                   onClick={() => handleNavClick(link.href)}
-                  className={`font-body text-[13px] tracking-widest uppercase transition-colors ${
-                    isActive(link.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
-                  }`}
+                  className={`font-body text-[13px] tracking-widest uppercase transition-colors ${isActive(link.href) ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
+                    }`}
                 >
                   {link.label}
-                </button>
+                </Link>
               )
             )}
           </div>
 
           {/* CTA */}
-          <button
+          <Link
+            to="/contact"
             onClick={() => handleNavClick("/contact")}
-            className="hidden md:inline-block bg-primary text-primary-foreground font-display text-lg px-6 py-2 hover:bg-agency-orange-dark transition-colors"
+            className="hidden md:inline-flex items-center justify-center bg-primary text-primary-foreground font-display text-lg px-6 py-2 hover:bg-agency-orange-dark transition-colors"
           >
             Get Started
-          </button>
+          </Link>
 
           {/* Mobile toggle */}
           <button
@@ -215,40 +214,44 @@ const Navbar = () => {
                   </button>
                   {mobileServicesOpen && (
                     <div className="mt-2 ml-4 space-y-2">
-                      <button
+                      <Link
+                        to="/services"
                         onClick={() => handleNavClick("/services")}
                         className="block font-body text-sm text-primary"
                       >
                         All Services
-                      </button>
+                      </Link>
                       {link.dropdown.map((item) => (
-                        <button
+                        <Link
+                          to={item.href}
                           key={item.label}
                           onClick={() => handleNavClick(item.href)}
                           className="block font-body text-sm text-secondary-foreground/70 hover:text-primary"
                         >
                           {item.label}
-                        </button>
+                        </Link>
                       ))}
                     </div>
                   )}
                 </div>
               ) : (
-                <button
+                <Link
+                  to={link.href}
                   key={link.label}
                   onClick={() => handleNavClick(link.href)}
                   className="block font-body text-sm tracking-widest uppercase text-secondary-foreground/80 hover:text-primary"
                 >
                   {link.label}
-                </button>
+                </Link>
               )
             )}
-            <button
+            <Link
+              to="/contact"
               onClick={() => handleNavClick("/contact")}
-              className="block bg-primary text-primary-foreground font-display text-lg px-6 py-2 w-fit mt-2"
+              className="block bg-primary text-primary-foreground font-display text-lg px-6 py-2 w-fit mt-2 text-center"
             >
               Get Started
-            </button>
+            </Link>
           </div>
         )}
       </div>
