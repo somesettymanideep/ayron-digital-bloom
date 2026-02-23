@@ -98,7 +98,7 @@ const HeroSection = () => {
         {/* RIGHT PANEL — Mobile */}
         <div className="flex lg:hidden w-full py-12 px-6 bg-background relative overflow-hidden items-center justify-center">
           <div className="relative w-full max-w-xs">
-            <motion.img src={heroCharacter} alt="3D business character" className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(244,124,65,0.2)]" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, translateY: [0, -10, 0] }} transition={{ delay: 0.4, duration: 0.6, translateY: { duration: 4, repeat: Infinity, ease: "easeInOut" } }} />
+            <motion.img src={heroCharacter} alt="3D business character" className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(244,124,65,0.2)]" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }} />
             {/* Google rating overlay */}
             <motion.div
               className="absolute -bottom-4 -left-2 z-20 bg-background border border-border/30 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.1)]"
@@ -130,12 +130,10 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
           >
-            <motion.img
+            <img
               src={heroCharacter}
               alt="3D business professional character"
               className="w-full h-auto object-contain drop-shadow-[0_20px_60px_rgba(244,124,65,0.25)]"
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
 
