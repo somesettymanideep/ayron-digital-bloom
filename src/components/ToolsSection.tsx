@@ -37,29 +37,29 @@ interface FloatingTool {
 
 // Manually position icons scattered around the section
 const floatingTools: FloatingTool[] = [
-  { name: "Google Analytics", icon: googleAnalyticsIcon, x: 8, y: 10, size: 52, delay: 0 },
-  { name: "Figma", icon: figmaIcon, x: 25, y: 5, size: 48, delay: 0.3 },
-  { name: "Python", icon: pythonIcon, x: 45, y: 8, size: 56, delay: 0.6 },
-  { name: "Meta Ads", icon: metaIcon, x: 70, y: 6, size: 50, delay: 0.15 },
-  { name: "GitHub", icon: githubIcon, x: 88, y: 12, size: 54, delay: 0.45 },
-  { name: "React.js", icon: reactjsIcon, x: 5, y: 35, size: 56, delay: 0.75 },
-  { name: "Canva", icon: canvaIcon, x: 18, y: 55, size: 48, delay: 0.2 },
-  { name: "Shopify", icon: shopifyIcon, x: 82, y: 30, size: 50, delay: 0.5 },
-  { name: "Django", icon: djangoIcon, x: 90, y: 55, size: 52, delay: 0.35 },
-  { name: "WordPress", icon: wordpressIcon, x: 12, y: 78, size: 50, delay: 0.65 },
-  { name: "SEMrush", icon: semrushIcon, x: 30, y: 85, size: 48, delay: 0.1 },
-  { name: "Photoshop", icon: photoshopIcon, x: 50, y: 82, size: 54, delay: 0.4 },
-  { name: "AWS", icon: awsIcon, x: 68, y: 88, size: 52, delay: 0.7 },
-  { name: "Bootstrap", icon: bootstrapIcon, x: 85, y: 80, size: 48, delay: 0.25 },
-  { name: "Google Ads", icon: googleAdsIcon, x: 35, y: 28, size: 46, delay: 0.55 },
-  { name: "LinkedIn", icon: linkedinIcon, x: 65, y: 25, size: 46, delay: 0.8 },
-  { name: "Ahrefs", icon: ahrefsIcon, x: 22, y: 42, size: 44, delay: 0.15 },
-  { name: "Webflow", icon: webflowIcon, x: 78, y: 68, size: 44, delay: 0.5 },
-  { name: "Mailchimp", icon: mailchimpIcon, x: 55, y: 65, size: 46, delay: 0.35 },
-  { name: "Klaviyo", icon: klaviyoIcon, x: 42, y: 70, size: 44, delay: 0.6 },
-  { name: "VS Code", icon: vscodeIcon, x: 3, y: 60, size: 44, delay: 0.45 },
-  { name: "Search Console", icon: searchConsoleIcon, x: 72, y: 50, size: 46, delay: 0.2 },
-  { name: "Screaming Frog", icon: screamingFrogIcon, x: 92, y: 42, size: 42, delay: 0.7 },
+  { name: "Google Analytics", icon: googleAnalyticsIcon, x: 8, y: 10, size: 72, delay: 0 },
+  { name: "Figma", icon: figmaIcon, x: 25, y: 5, size: 68, delay: 0.3 },
+  { name: "Python", icon: pythonIcon, x: 45, y: 8, size: 76, delay: 0.6 },
+  { name: "Meta Ads", icon: metaIcon, x: 70, y: 6, size: 70, delay: 0.15 },
+  { name: "GitHub", icon: githubIcon, x: 88, y: 12, size: 74, delay: 0.45 },
+  { name: "React.js", icon: reactjsIcon, x: 5, y: 35, size: 76, delay: 0.75 },
+  { name: "Canva", icon: canvaIcon, x: 18, y: 55, size: 68, delay: 0.2 },
+  { name: "Shopify", icon: shopifyIcon, x: 82, y: 30, size: 70, delay: 0.5 },
+  { name: "Django", icon: djangoIcon, x: 90, y: 55, size: 72, delay: 0.35 },
+  { name: "WordPress", icon: wordpressIcon, x: 12, y: 78, size: 70, delay: 0.65 },
+  { name: "SEMrush", icon: semrushIcon, x: 30, y: 85, size: 68, delay: 0.1 },
+  { name: "Photoshop", icon: photoshopIcon, x: 50, y: 82, size: 74, delay: 0.4 },
+  { name: "AWS", icon: awsIcon, x: 68, y: 88, size: 72, delay: 0.7 },
+  { name: "Bootstrap", icon: bootstrapIcon, x: 85, y: 80, size: 68, delay: 0.25 },
+  { name: "Google Ads", icon: googleAdsIcon, x: 35, y: 28, size: 66, delay: 0.55 },
+  { name: "LinkedIn", icon: linkedinIcon, x: 65, y: 25, size: 66, delay: 0.8 },
+  { name: "Ahrefs", icon: ahrefsIcon, x: 22, y: 42, size: 64, delay: 0.15 },
+  { name: "Webflow", icon: webflowIcon, x: 78, y: 68, size: 64, delay: 0.5 },
+  { name: "Mailchimp", icon: mailchimpIcon, x: 55, y: 65, size: 66, delay: 0.35 },
+  { name: "Klaviyo", icon: klaviyoIcon, x: 42, y: 70, size: 64, delay: 0.6 },
+  { name: "VS Code", icon: vscodeIcon, x: 3, y: 60, size: 64, delay: 0.45 },
+  { name: "Search Console", icon: searchConsoleIcon, x: 72, y: 50, size: 66, delay: 0.2 },
+  { name: "Screaming Frog", icon: screamingFrogIcon, x: 92, y: 42, size: 62, delay: 0.7 },
 ];
 
 const ToolsSection = () => {
@@ -123,7 +123,7 @@ const ToolsSection = () => {
           <img
             src={tool.icon}
             alt={tool.name}
-            className="w-7 h-7 object-contain"
+            className="w-10 h-10 object-contain"
             loading="lazy"
           />
         </motion.div>
