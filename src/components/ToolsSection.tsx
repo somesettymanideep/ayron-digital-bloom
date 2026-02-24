@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import googleAnalyticsIcon from "@/assets/tools/google-analytics.svg";
 import searchConsoleIcon from "@/assets/tools/search-console.svg";
@@ -23,161 +23,45 @@ import reactjsIcon from "@/assets/tools/reactjs.svg";
 import djangoIcon from "@/assets/tools/django.svg";
 import bootstrapIcon from "@/assets/tools/bootstrap.svg";
 import pythonIcon from "@/assets/tools/python.svg";
+import webflowIcon from "@/assets/tools/webflow.svg";
 
-const categories = ["All", "Analytics", "Design", "Advertising", "SEO", "Email", "Development"] as const;
-type Category = (typeof categories)[number];
-
-interface Tool {
+interface FloatingTool {
   name: string;
-  category: Exclude<Category, "All">;
   icon: string;
+  x: number; // percentage
+  y: number; // percentage
+  size: number; // px
+  delay: number;
 }
 
-const tools: Tool[] = [
-  { name: "Google Analytics", category: "Analytics", icon: googleAnalyticsIcon },
-  { name: "Search Console", category: "Analytics", icon: searchConsoleIcon },
-  { name: "Canva", category: "Design", icon: canvaIcon },
-  { name: "Figma", category: "Design", icon: figmaIcon },
-  { name: "Photoshop", category: "Design", icon: photoshopIcon },
-  { name: "Meta Ads", category: "Advertising", icon: metaIcon },
-  { name: "Google Ads", category: "Advertising", icon: googleAdsIcon },
-  { name: "LinkedIn Ads", category: "Advertising", icon: linkedinIcon },
-  { name: "Ahrefs", category: "SEO", icon: ahrefsIcon },
-  { name: "SEMrush", category: "SEO", icon: semrushIcon },
-  { name: "Screaming Frog", category: "SEO", icon: screamingFrogIcon },
-  { name: "WordPress", category: "Development", icon: wordpressIcon },
-  { name: "Shopify", category: "Development", icon: shopifyIcon },
-  { name: "Mailchimp", category: "Email", icon: mailchimpIcon },
-  { name: "Klaviyo", category: "Email", icon: klaviyoIcon },
-  { name: "VS Code", category: "Development", icon: vscodeIcon },
-  { name: "GitHub", category: "Development", icon: githubIcon },
-  { name: "AWS", category: "Development", icon: awsIcon },
-  { name: "React.js", category: "Development", icon: reactjsIcon },
-  { name: "Django", category: "Development", icon: djangoIcon },
-  { name: "Bootstrap", category: "Development", icon: bootstrapIcon },
-  { name: "Python", category: "Development", icon: pythonIcon },
+// Manually position icons scattered around the section
+const floatingTools: FloatingTool[] = [
+  { name: "Google Analytics", icon: googleAnalyticsIcon, x: 8, y: 10, size: 52, delay: 0 },
+  { name: "Figma", icon: figmaIcon, x: 25, y: 5, size: 48, delay: 0.3 },
+  { name: "Python", icon: pythonIcon, x: 45, y: 8, size: 56, delay: 0.6 },
+  { name: "Meta Ads", icon: metaIcon, x: 70, y: 6, size: 50, delay: 0.15 },
+  { name: "GitHub", icon: githubIcon, x: 88, y: 12, size: 54, delay: 0.45 },
+  { name: "React.js", icon: reactjsIcon, x: 5, y: 35, size: 56, delay: 0.75 },
+  { name: "Canva", icon: canvaIcon, x: 18, y: 55, size: 48, delay: 0.2 },
+  { name: "Shopify", icon: shopifyIcon, x: 82, y: 30, size: 50, delay: 0.5 },
+  { name: "Django", icon: djangoIcon, x: 90, y: 55, size: 52, delay: 0.35 },
+  { name: "WordPress", icon: wordpressIcon, x: 12, y: 78, size: 50, delay: 0.65 },
+  { name: "SEMrush", icon: semrushIcon, x: 30, y: 85, size: 48, delay: 0.1 },
+  { name: "Photoshop", icon: photoshopIcon, x: 50, y: 82, size: 54, delay: 0.4 },
+  { name: "AWS", icon: awsIcon, x: 68, y: 88, size: 52, delay: 0.7 },
+  { name: "Bootstrap", icon: bootstrapIcon, x: 85, y: 80, size: 48, delay: 0.25 },
+  { name: "Google Ads", icon: googleAdsIcon, x: 35, y: 28, size: 46, delay: 0.55 },
+  { name: "LinkedIn", icon: linkedinIcon, x: 65, y: 25, size: 46, delay: 0.8 },
+  { name: "Ahrefs", icon: ahrefsIcon, x: 22, y: 42, size: 44, delay: 0.15 },
+  { name: "Webflow", icon: webflowIcon, x: 78, y: 68, size: 44, delay: 0.5 },
+  { name: "Mailchimp", icon: mailchimpIcon, x: 55, y: 65, size: 46, delay: 0.35 },
+  { name: "Klaviyo", icon: klaviyoIcon, x: 42, y: 70, size: 44, delay: 0.6 },
+  { name: "VS Code", icon: vscodeIcon, x: 3, y: 60, size: 44, delay: 0.45 },
+  { name: "Search Console", icon: searchConsoleIcon, x: 72, y: 50, size: 46, delay: 0.2 },
+  { name: "Screaming Frog", icon: screamingFrogIcon, x: 92, y: 42, size: 42, delay: 0.7 },
 ];
 
-const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 30, scale: 0.92 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.92 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ delay: index * 0.06, duration: 0.45, ease: "easeOut" }}
-      whileHover={{ y: -8, scale: 1.04, transition: { duration: 0.25, ease: "easeOut" } }}
-      className="relative flex flex-col items-center justify-center gap-3 min-h-[110px] cursor-pointer"
-      style={{
-        background: hovered ? "#fffaf7" : "#ffffff",
-        border: hovered ? "1px solid rgba(244,124,65,0.35)" : "1px solid #ede9e4",
-        boxShadow: hovered ? "0 8px 28px rgba(244,124,65,0.12)" : "0 2px 10px rgba(0,0,0,0.04)",
-        padding: "24px 16px",
-        borderRadius: "16px",
-        transition: "background 0.28s ease, border 0.28s ease, box-shadow 0.28s ease",
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Tooltip */}
-      <div
-        className="hidden md:block absolute left-1/2 pointer-events-none"
-        style={{
-          top: "-36px",
-          transform: "translateX(-50%)",
-          opacity: hovered ? 1 : 0,
-          transition: "opacity 0.20s ease",
-          zIndex: 10,
-        }}
-      >
-        <div
-          className="relative"
-          style={{
-            background: "#ffffff",
-            border: "1px solid #ede9e4",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
-            padding: "5px 12px",
-            borderRadius: "8px",
-            fontSize: "11px",
-            fontWeight: 600,
-            color: "#1a1a1a",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {tool.name}
-          <div
-            style={{
-              position: "absolute",
-              bottom: "-5px",
-              left: "50%",
-              transform: "translateX(-50%) rotate(45deg)",
-              width: "8px",
-              height: "8px",
-              background: "#ffffff",
-              border: "1px solid #ede9e4",
-              borderTop: "none",
-              borderLeft: "none",
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Icon - color by default, grayscale on hover */}
-      <img
-        src={tool.icon}
-        alt={tool.name}
-        loading="lazy"
-        style={{
-          width: "48px",
-          height: "48px",
-          objectFit: "contain",
-          filter: hovered ? "grayscale(100%) opacity(0.55)" : "grayscale(0%) opacity(1)",
-          transform: hovered ? "scale(1.10)" : "scale(1)",
-          transition: "filter 0.28s ease, transform 0.28s ease",
-        }}
-      />
-
-      {/* Name */}
-      <span
-        className="text-center leading-snug font-body"
-        style={{
-          fontSize: "12px",
-          fontWeight: 500,
-          color: hovered ? "#f47c41" : "#999999",
-          transition: "color 0.28s ease",
-        }}
-      >
-        {tool.name}
-      </span>
-
-      {/* Category badge */}
-      <span
-        className="hidden md:inline-block absolute font-body"
-        style={{
-          bottom: "10px",
-          right: "10px",
-          background: "rgba(244,124,65,0.08)",
-          border: "1px solid rgba(244,124,65,0.20)",
-          color: "#f47c41",
-          fontSize: "9px",
-          fontWeight: 700,
-          textTransform: "uppercase",
-          letterSpacing: "0.5px",
-          padding: "2px 7px",
-          borderRadius: "10px",
-        }}
-      >
-        {tool.category}
-      </span>
-    </motion.div>
-  );
-};
-
 const ToolsSection = () => {
-  const [active, setActive] = useState<Category>("All");
   const [inView, setInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -186,139 +70,144 @@ const ToolsSection = () => {
     if (prefersReduced) { setInView(true); return; }
     const observer = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setInView(true); },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const filtered = active === "All" ? tools : tools.filter((t) => t.category === active);
-
   return (
-    <section ref={sectionRef} className="px-6 md:px-12 lg:py-[90px] md:py-[70px] py-[50px]" style={{ background: "#ffffff" }}>
-      <div className="max-w-[1200px] mx-auto">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <motion.span
-            className="block font-body"
-            style={{ color: "#f47c41", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "3px", marginBottom: "12px" }}
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.4 }}
-          >
-            OUR TECH STACK
-          </motion.span>
-          <motion.h2
-            className="font-display"
-            style={{ color: "#1a1a1a", fontSize: "42px", marginBottom: "16px" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
-            Tools & Platforms We <span style={{ color: "#f47c41" }}>Master</span>
-          </motion.h2>
-          <motion.p
-            className="font-body mx-auto"
-            style={{ color: "#888888", fontSize: "16px", maxWidth: "500px", marginBottom: "40px" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.18, duration: 0.45 }}
-          >
-            We use industry-leading tools to deliver precision, performance, and real results for every client we work with.
-          </motion.p>
-        </div>
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden"
+      style={{
+        background: "#0a0a0a",
+        minHeight: "700px",
+        padding: "80px 24px",
+      }}
+    >
+      {/* Floating Tool Icons */}
+      {floatingTools.map((tool, i) => (
+        <motion.div
+          key={tool.name}
+          className="absolute hidden md:flex items-center justify-center"
+          style={{
+            left: `${tool.x}%`,
+            top: `${tool.y}%`,
+            width: `${tool.size}px`,
+            height: `${tool.size}px`,
+            borderRadius: "12px",
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            backdropFilter: "blur(4px)",
+            zIndex: 1,
+          }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={inView ? {
+            opacity: [0, 0.85, 0.65, 0.85],
+            scale: 1,
+            y: [0, -8, 0, 8, 0],
+          } : {}}
+          transition={{
+            opacity: { delay: tool.delay, duration: 1.2 },
+            scale: { delay: tool.delay, duration: 0.6, ease: "easeOut" },
+            y: {
+              delay: tool.delay + 1,
+              duration: 4 + (i % 3),
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+        >
+          <img
+            src={tool.icon}
+            alt={tool.name}
+            className="w-7 h-7 object-contain"
+            loading="lazy"
+          />
+        </motion.div>
+      ))}
 
-        {/* Filter Tabs */}
-        <div className="flex justify-center mb-10 overflow-x-auto tools-scrollbar-hide" style={{ gap: "10px" }}>
-          {categories.map((cat, i) => (
-            <motion.button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className="shrink-0 font-body cursor-pointer"
-              style={{
-                background: active === cat ? "#f47c41" : "#ffffff",
-                border: active === cat ? "1.5px solid #f47c41" : "1.5px solid #ede9e4",
-                color: active === cat ? "#ffffff" : "#666666",
-                fontSize: "13px",
-                fontWeight: 500,
-                padding: "8px 22px",
-                borderRadius: "50px",
-                boxShadow: active === cat ? "0 4px 16px rgba(244,124,65,0.30)" : "none",
-                transition: "all 0.25s ease",
-              }}
-              onMouseEnter={(e) => {
-                if (active !== cat) {
-                  (e.currentTarget).style.borderColor = "#f47c41";
-                  (e.currentTarget).style.color = "#f47c41";
-                  (e.currentTarget).style.background = "rgba(244,124,65,0.05)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (active !== cat) {
-                  (e.currentTarget).style.borderColor = "#ede9e4";
-                  (e.currentTarget).style.color = "#666666";
-                  (e.currentTarget).style.background = "#ffffff";
-                }
-              }}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.25 + i * 0.05, duration: 0.3 }}
-            >
-              {cat}
-            </motion.button>
-          ))}
-        </div>
-
-        {/* Tools Grid */}
-        <div className="tools-grid">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((tool, i) => (
-              <ToolCard key={tool.name} tool={tool} index={i} />
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {/* Bottom Trust Strip */}
-        <div className="text-center" style={{ marginTop: "48px" }}>
-          <div style={{ maxWidth: "200px", margin: "0 auto 24px", height: "1px", background: "#ede9e4" }} />
-          <p className="font-body" style={{ fontSize: "14px", color: "#aaaaaa", fontWeight: 400 }}>
-            + More tools added regularly as we evolve with the industry
-          </p>
-          <span
-            className="inline-block font-body"
+      {/* Mobile: simple grid of icons */}
+      <div className="md:hidden grid grid-cols-5 gap-3 mb-10 px-2">
+        {floatingTools.slice(0, 15).map((tool) => (
+          <motion.div
+            key={tool.name}
+            className="flex items-center justify-center rounded-xl p-3"
             style={{
-              marginTop: "10px",
-              background: "rgba(244,124,65,0.10)",
-              border: "1px solid rgba(244,124,65,0.25)",
-              color: "#f47c41",
-              fontSize: "11px",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              padding: "5px 14px",
-              borderRadius: "20px",
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.08)",
             }}
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={inView ? { opacity: 0.8, scale: 1 } : {}}
+            transition={{ delay: tool.delay, duration: 0.5 }}
           >
-            Always Upgrading
-          </span>
-        </div>
+            <img src={tool.icon} alt={tool.name} className="w-6 h-6 object-contain" loading="lazy" />
+          </motion.div>
+        ))}
       </div>
 
-      <style>{`
-        .tools-scrollbar-hide::-webkit-scrollbar { display: none; }
-        .tools-scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        .tools-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-          gap: 16px;
-        }
-        @media (max-width: 768px) {
-          .tools-grid { grid-template-columns: repeat(3, 1fr) !important; }
-        }
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .tools-grid { grid-template-columns: repeat(4, 1fr) !important; }
-        }
-      `}</style>
+      {/* Center Card */}
+      <motion.div
+        className="relative z-10 mx-auto text-center"
+        style={{
+          maxWidth: "620px",
+          background: "rgba(255,255,255,0.97)",
+          borderRadius: "20px",
+          padding: "60px 40px",
+          boxShadow: "0 0 80px rgba(244,124,65,0.08), 0 30px 60px rgba(0,0,0,0.3)",
+          border: "1px solid rgba(255,255,255,0.15)",
+          marginTop: "80px",
+        }}
+        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+      >
+        <span
+          className="block font-body mb-4"
+          style={{
+            color: "#f47c41",
+            fontSize: "12px",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "3px",
+          }}
+        >
+          OUR TECH STACK
+        </span>
+        <h2
+          className="font-display mb-5"
+          style={{ color: "#1a1a1a", fontSize: "clamp(28px, 4vw, 42px)", lineHeight: 1.2 }}
+        >
+          Tools & Platforms We{" "}
+          <span style={{ color: "#f47c41" }}>Master</span>
+        </h2>
+        <p
+          className="font-body mb-8 mx-auto"
+          style={{ color: "#666666", fontSize: "15px", maxWidth: "420px", lineHeight: 1.7 }}
+        >
+          We use industry-leading tools to deliver precision, performance, and real results for every client we work with.
+        </p>
+        <a
+          href="/services"
+          className="inline-flex items-center gap-2 font-body font-semibold transition-all duration-300 hover:gap-3"
+          style={{
+            background: "#f47c41",
+            color: "#ffffff",
+            padding: "14px 32px",
+            borderRadius: "50px",
+            fontSize: "14px",
+            boxShadow: "0 6px 20px rgba(244,124,65,0.35)",
+          }}
+        >
+          Explore Our Services
+          <span style={{ fontSize: "18px" }}>→</span>
+        </a>
+
+        <p className="font-body mt-8" style={{ fontSize: "13px", color: "#aaaaaa" }}>
+          22+ tools · Always upgrading with the industry
+        </p>
+      </motion.div>
     </section>
   );
 };
