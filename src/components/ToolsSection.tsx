@@ -83,12 +83,54 @@ const ToolsSection = () => {
       className="relative overflow-hidden"
       style={{
         background: "#0a0a0a",
-        minHeight: "900px",
-        padding: "80px 24px 120px",
+        minHeight: "700px",
+        padding: "80px 24px",
       }}
     >
+      {/* Floating Tool Icons */}
+      {floatingTools.map((tool, i) => (
+        <motion.div
+          key={tool.name}
+          className="absolute hidden md:flex items-center justify-center"
+          style={{
+            left: `${tool.x}%`,
+            top: `${tool.y}%`,
+            width: `${tool.size}px`,
+            height: `${tool.size}px`,
+            borderRadius: "12px",
+            background: "rgba(255,255,255,0.95)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            backdropFilter: "blur(4px)",
+            zIndex: 1,
+          }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={inView ? {
+            opacity: [0, 0.85, 0.65, 0.85],
+            scale: 1,
+            y: [0, -8, 0, 8, 0],
+          } : {}}
+          transition={{
+            opacity: { delay: tool.delay, duration: 1.2 },
+            scale: { delay: tool.delay, duration: 0.6, ease: "easeOut" },
+            y: {
+              delay: tool.delay + 1,
+              duration: 4 + (i % 3),
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+        >
+          <img
+            src={tool.icon}
+            alt={tool.name}
+            className="w-10 h-10 object-contain"
+            loading="lazy"
+          />
+        </motion.div>
+      ))}
+
       {/* Top Header */}
-      <div className="relative z-10 text-center mb-12">
+      <div className="relative z-10 text-center mb-6">
         <motion.span
           className="block font-body mb-3"
           style={{ color: "#f47c41", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "3px" }}
@@ -120,9 +162,9 @@ const ToolsSection = () => {
 
       {/* Mobile: simple grid of icons */}
       <div className="md:hidden grid grid-cols-5 gap-3 mb-6 px-2">
-        {[metaIcon, googleAdsIcon, linkedinIcon, canvaIcon, figmaIcon, photoshopIcon, reactjsIcon, wordpressIcon, djangoIcon, shopifyIcon, githubIcon, awsIcon, bootstrapIcon, pythonIcon, vscodeIcon].map((icon, i) => (
+        {floatingTools.slice(0, 15).map((tool) => (
           <motion.div
-            key={i}
+            key={tool.name}
             className="flex items-center justify-center rounded-xl p-3"
             style={{
               background: "rgba(255,255,255,0.05)",
@@ -130,218 +172,38 @@ const ToolsSection = () => {
             }}
             initial={{ opacity: 0, scale: 0.7 }}
             animate={inView ? { opacity: 0.8, scale: 1 } : {}}
-            transition={{ delay: i * 0.05, duration: 0.5 }}
+            transition={{ delay: tool.delay, duration: 0.5 }}
           >
-            <img src={icon} alt="" className="w-6 h-6 object-contain" loading="lazy" />
+            <img src={tool.icon} alt={tool.name} className="w-6 h-6 object-contain" loading="lazy" />
           </motion.div>
         ))}
       </div>
 
-      {/* Orbiting Icon System */}
+      {/* Center ADS Logo */}
       <motion.div
-        className="relative z-10 mx-auto hidden md:flex items-center justify-center"
-        style={{ marginTop: "40px", width: "620px", height: "620px" }}
-        initial={{ opacity: 1, scale: 1 }}
-        animate={{ opacity: 1, scale: 1 }}
+        className="relative z-10 mx-auto flex items-center justify-center"
+        style={{ marginTop: "60px" }}
+        initial={{ opacity: 0, scale: 0.7 }}
+        animate={inView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
       >
-        {/* Orbit ring 1 - Marketing (inner) */}
         <div
-          className="absolute rounded-full"
-          style={{ width: "260px", height: "260px", border: "1px dashed rgba(244,124,65,0.2)" }}
-        />
-        {/* Orbit ring 2 - Design (middle) */}
-        <div
-          className="absolute rounded-full"
-          style={{ width: "420px", height: "420px", border: "1px dashed rgba(244,124,65,0.15)" }}
-        />
-        {/* Orbit ring 3 - Development (outer) */}
-        <div
-          className="absolute rounded-full"
-          style={{ width: "580px", height: "580px", border: "1px dashed rgba(244,124,65,0.1)" }}
-        />
-
-        {/* Ring 1: Marketing icons - clockwise */}
-        <div className="absolute" style={{ width: "260px", height: "260px", animation: "spin-slow 20s linear infinite" }}>
-          {[
-            { icon: metaIcon, name: "Meta Ads" },
-            { icon: googleAdsIcon, name: "Google Ads" },
-            { icon: linkedinIcon, name: "LinkedIn" },
-            { icon: semrushIcon, name: "SEMrush" },
-            { icon: ahrefsIcon, name: "Ahrefs" },
-          ].map((tool, i, arr) => {
-            const angle = (360 / arr.length) * i;
-            const rad = (angle * Math.PI) / 180;
-            const r = 130;
-            const x = r * Math.cos(rad);
-            const y = r * Math.sin(rad);
-            return (
-              <div
-                key={tool.name}
-                className="absolute"
-                style={{
-                  width: "52px", height: "52px",
-                  left: `calc(50% + ${x}px - 26px)`,
-                  top: `calc(50% + ${y}px - 26px)`,
-                }}
-              >
-                <div
-                  className="w-full h-full flex items-center justify-center rounded-xl"
-                  style={{
-                    background: "rgba(255,255,255,0.95)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
-                    animation: "counter-spin-20 20s linear infinite",
-                  }}
-                >
-                  <img src={tool.icon} alt={tool.name} className="w-7 h-7 object-contain" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Ring 2: Design icons - clockwise slower */}
-        <div className="absolute" style={{ width: "420px", height: "420px", animation: "spin-slow 30s linear infinite" }}>
-          {[
-            { icon: canvaIcon, name: "Canva" },
-            { icon: figmaIcon, name: "Figma" },
-            { icon: photoshopIcon, name: "Photoshop" },
-            { icon: webflowIcon, name: "Webflow" },
-            { icon: mailchimpIcon, name: "Mailchimp" },
-            { icon: klaviyoIcon, name: "Klaviyo" },
-          ].map((tool, i, arr) => {
-            const angle = (360 / arr.length) * i;
-            const rad = (angle * Math.PI) / 180;
-            const r = 210;
-            const x = r * Math.cos(rad);
-            const y = r * Math.sin(rad);
-            return (
-              <div
-                key={tool.name}
-                className="absolute"
-                style={{
-                  width: "56px", height: "56px",
-                  left: `calc(50% + ${x}px - 28px)`,
-                  top: `calc(50% + ${y}px - 28px)`,
-                }}
-              >
-                <div
-                  className="w-full h-full flex items-center justify-center rounded-xl"
-                  style={{
-                    background: "rgba(255,255,255,0.95)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
-                    animation: "counter-spin-30 30s linear infinite",
-                  }}
-                >
-                  <img src={tool.icon} alt={tool.name} className="w-8 h-8 object-contain" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Ring 3: Development icons - clockwise slowest */}
-        <div className="absolute" style={{ width: "580px", height: "580px", animation: "spin-slow 40s linear infinite" }}>
-          {[
-            { icon: reactjsIcon, name: "React" },
-            { icon: wordpressIcon, name: "WordPress" },
-            { icon: djangoIcon, name: "Django" },
-            { icon: pythonIcon, name: "Python" },
-            { icon: shopifyIcon, name: "Shopify" },
-            { icon: githubIcon, name: "GitHub" },
-            { icon: awsIcon, name: "AWS" },
-            { icon: bootstrapIcon, name: "Bootstrap" },
-            { icon: vscodeIcon, name: "VS Code" },
-          ].map((tool, i, arr) => {
-            const angle = (360 / arr.length) * i;
-            const rad = (angle * Math.PI) / 180;
-            const r = 290;
-            const x = r * Math.cos(rad);
-            const y = r * Math.sin(rad);
-            return (
-              <div
-                key={tool.name}
-                className="absolute"
-                style={{
-                  width: "60px", height: "60px",
-                  left: `calc(50% + ${x}px - 30px)`,
-                  top: `calc(50% + ${y}px - 30px)`,
-                }}
-              >
-                <div
-                  className="w-full h-full flex items-center justify-center rounded-xl"
-                  style={{
-                    background: "rgba(255,255,255,0.95)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
-                    animation: "counter-spin-40 40s linear infinite",
-                  }}
-                >
-                  <img src={tool.icon} alt={tool.name} className="w-9 h-9 object-contain" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Center ADS Logo */}
-        <div
-          className="rounded-full flex items-center justify-center relative z-20"
+          className="rounded-full flex items-center justify-center"
           style={{
-            width: "120px",
-            height: "120px",
-            background: "rgba(10,10,10,0.9)",
-            border: "2px solid rgba(244,124,65,0.4)",
-            boxShadow: "0 0 60px rgba(244,124,65,0.2), 0 0 120px rgba(244,124,65,0.08)",
+            width: "140px",
+            height: "140px",
+            background: "rgba(255,255,255,0.07)",
+            border: "2px solid rgba(244,124,65,0.3)",
+            boxShadow: "0 0 60px rgba(244,124,65,0.15), 0 0 120px rgba(244,124,65,0.05)",
           }}
         >
           <img
             src={adsLogo}
             alt="Ayron Digital Solutions"
-            className="w-16 h-16 object-contain"
+            className="w-20 h-20 object-contain"
           />
         </div>
       </motion.div>
-
-      {/* Mobile center logo */}
-      <motion.div
-        className="md:hidden relative z-10 mx-auto flex items-center justify-center mt-6"
-        initial={{ opacity: 0, scale: 0.7 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ delay: 0.4, duration: 0.7 }}
-      >
-        <div
-          className="rounded-full flex items-center justify-center"
-          style={{
-            width: "100px", height: "100px",
-            background: "rgba(10,10,10,0.9)",
-            border: "2px solid rgba(244,124,65,0.4)",
-            boxShadow: "0 0 40px rgba(244,124,65,0.2)",
-          }}
-        >
-          <img src={adsLogo} alt="ADS" className="w-14 h-14 object-contain" />
-        </div>
-      </motion.div>
-
-      <style>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes counter-spin-20 {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(-360deg); }
-        }
-        @keyframes counter-spin-30 {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(-360deg); }
-        }
-        @keyframes counter-spin-40 {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(-360deg); }
-        }
-      `}</style>
     </section>
   );
 };
