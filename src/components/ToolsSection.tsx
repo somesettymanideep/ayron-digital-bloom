@@ -98,7 +98,7 @@ const ToolsSection = () => {
             width: `${tool.size}px`,
             height: `${tool.size}px`,
             borderRadius: "12px",
-            background: "rgba(255,255,255,0.04)",
+            background: "rgba(255,255,255,0.95)",
             border: "1px solid rgba(255,255,255,0.08)",
             backdropFilter: "blur(4px)",
             zIndex: 1,
