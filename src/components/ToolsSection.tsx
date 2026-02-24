@@ -83,8 +83,8 @@ const ToolsSection = () => {
       className="relative overflow-hidden"
       style={{
         background: "#0a0a0a",
-        minHeight: "700px",
-        padding: "80px 24px",
+        minHeight: "900px",
+        padding: "80px 24px 120px",
       }}
     >
       {/* Top Header */}
@@ -141,9 +141,8 @@ const ToolsSection = () => {
       <motion.div
         className="relative z-10 mx-auto hidden md:flex items-center justify-center"
         style={{ marginTop: "40px", width: "620px", height: "620px" }}
-        initial={{ opacity: 0, scale: 0.7 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+        initial={{ opacity: 1, scale: 1 }}
+        animate={{ opacity: 1, scale: 1 }}
       >
         {/* Orbit ring 1 - Marketing (inner) */}
         <div
@@ -178,34 +177,27 @@ const ToolsSection = () => {
             return (
               <div
                 key={tool.name}
-                className="absolute flex items-center justify-center rounded-xl"
+                className="absolute"
                 style={{
                   width: "52px", height: "52px",
-                  left: "50%", top: "50%",
-                  transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                  background: "rgba(255,255,255,0.95)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
-                  animation: `counter-spin-20 20s linear infinite`,
+                  left: `calc(50% + ${x}px - 26px)`,
+                  top: `calc(50% + ${y}px - 26px)`,
                 }}
               >
-                <img src={tool.icon} alt={tool.name} className="w-7 h-7 object-contain" />
+                <div
+                  className="w-full h-full flex items-center justify-center rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.95)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
+                    animation: "counter-spin-20 20s linear infinite",
+                  }}
+                >
+                  <img src={tool.icon} alt={tool.name} className="w-7 h-7 object-contain" />
+                </div>
               </div>
             );
           })}
-          {/* Label */}
-          <div
-            className="absolute font-body text-center"
-            style={{
-              left: "50%", bottom: "-28px",
-              transform: "translateX(-50%)",
-              color: "#f47c41", fontSize: "10px", fontWeight: 700,
-              textTransform: "uppercase", letterSpacing: "2px",
-              animation: "counter-spin-20 20s linear infinite",
-            }}
-          >
-            Marketing
-          </div>
         </div>
 
         {/* Ring 2: Design icons - clockwise slower */}
@@ -226,18 +218,24 @@ const ToolsSection = () => {
             return (
               <div
                 key={tool.name}
-                className="absolute flex items-center justify-center rounded-xl"
+                className="absolute"
                 style={{
                   width: "56px", height: "56px",
-                  left: "50%", top: "50%",
-                  transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                  background: "rgba(255,255,255,0.95)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
-                  animation: `counter-spin-30 30s linear infinite`,
+                  left: `calc(50% + ${x}px - 28px)`,
+                  top: `calc(50% + ${y}px - 28px)`,
                 }}
               >
-                <img src={tool.icon} alt={tool.name} className="w-8 h-8 object-contain" />
+                <div
+                  className="w-full h-full flex items-center justify-center rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.95)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
+                    animation: "counter-spin-30 30s linear infinite",
+                  }}
+                >
+                  <img src={tool.icon} alt={tool.name} className="w-8 h-8 object-contain" />
+                </div>
               </div>
             );
           })}
@@ -264,18 +262,24 @@ const ToolsSection = () => {
             return (
               <div
                 key={tool.name}
-                className="absolute flex items-center justify-center rounded-xl"
+                className="absolute"
                 style={{
                   width: "60px", height: "60px",
-                  left: "50%", top: "50%",
-                  transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                  background: "rgba(255,255,255,0.95)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
-                  animation: `counter-spin-40 40s linear infinite`,
+                  left: `calc(50% + ${x}px - 30px)`,
+                  top: `calc(50% + ${y}px - 30px)`,
                 }}
               >
-                <img src={tool.icon} alt={tool.name} className="w-9 h-9 object-contain" />
+                <div
+                  className="w-full h-full flex items-center justify-center rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.95)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
+                    animation: "counter-spin-40 40s linear infinite",
+                  }}
+                >
+                  <img src={tool.icon} alt={tool.name} className="w-9 h-9 object-contain" />
+                </div>
               </div>
             );
           })}
