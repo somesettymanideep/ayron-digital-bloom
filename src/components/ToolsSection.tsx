@@ -24,6 +24,7 @@ import djangoIcon from "@/assets/tools/django.svg";
 import bootstrapIcon from "@/assets/tools/bootstrap.svg";
 import pythonIcon from "@/assets/tools/python.svg";
 import webflowIcon from "@/assets/tools/webflow.svg";
+import adsLogo from "@/assets/ads-logo.png";
 
 interface FloatingTool {
   name: string;
@@ -128,8 +129,39 @@ const ToolsSection = () => {
         </motion.div>
       ))}
 
+      {/* Top Header */}
+      <div className="relative z-10 text-center mb-6">
+        <motion.span
+          className="block font-body mb-3"
+          style={{ color: "#f47c41", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "3px" }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4 }}
+        >
+          OUR TECH STACK
+        </motion.span>
+        <motion.h2
+          className="font-display mb-4"
+          style={{ color: "#ffffff", fontSize: "clamp(28px, 4vw, 42px)", lineHeight: 1.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
+          Tools & Platforms We <span style={{ color: "#f47c41" }}>Master</span>
+        </motion.h2>
+        <motion.p
+          className="font-body mx-auto"
+          style={{ color: "rgba(255,255,255,0.5)", fontSize: "15px", maxWidth: "460px", lineHeight: 1.7 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.18, duration: 0.45 }}
+        >
+          We use industry-leading tools to deliver precision, performance, and real results for every client we work with.
+        </motion.p>
+      </div>
+
       {/* Mobile: simple grid of icons */}
-      <div className="md:hidden grid grid-cols-5 gap-3 mb-10 px-2">
+      <div className="md:hidden grid grid-cols-5 gap-3 mb-6 px-2">
         {floatingTools.slice(0, 15).map((tool) => (
           <motion.div
             key={tool.name}
@@ -147,66 +179,30 @@ const ToolsSection = () => {
         ))}
       </div>
 
-      {/* Center Card */}
+      {/* Center ADS Logo */}
       <motion.div
-        className="relative z-10 mx-auto text-center"
-        style={{
-          maxWidth: "620px",
-          background: "rgba(255,255,255,0.97)",
-          borderRadius: "20px",
-          padding: "60px 40px",
-          boxShadow: "0 0 80px rgba(244,124,65,0.08), 0 30px 60px rgba(0,0,0,0.3)",
-          border: "1px solid rgba(255,255,255,0.15)",
-          marginTop: "80px",
-        }}
-        initial={{ opacity: 0, y: 40, scale: 0.95 }}
-        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+        className="relative z-10 mx-auto flex items-center justify-center"
+        style={{ marginTop: "60px" }}
+        initial={{ opacity: 0, scale: 0.7 }}
+        animate={inView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
       >
-        <span
-          className="block font-body mb-4"
+        <div
+          className="rounded-full flex items-center justify-center"
           style={{
-            color: "#f47c41",
-            fontSize: "12px",
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: "3px",
+            width: "140px",
+            height: "140px",
+            background: "rgba(255,255,255,0.07)",
+            border: "2px solid rgba(244,124,65,0.3)",
+            boxShadow: "0 0 60px rgba(244,124,65,0.15), 0 0 120px rgba(244,124,65,0.05)",
           }}
         >
-          OUR TECH STACK
-        </span>
-        <h2
-          className="font-display mb-5"
-          style={{ color: "#1a1a1a", fontSize: "clamp(28px, 4vw, 42px)", lineHeight: 1.2 }}
-        >
-          Tools & Platforms We{" "}
-          <span style={{ color: "#f47c41" }}>Master</span>
-        </h2>
-        <p
-          className="font-body mb-8 mx-auto"
-          style={{ color: "#666666", fontSize: "15px", maxWidth: "420px", lineHeight: 1.7 }}
-        >
-          We use industry-leading tools to deliver precision, performance, and real results for every client we work with.
-        </p>
-        <a
-          href="/services"
-          className="inline-flex items-center gap-2 font-body font-semibold transition-all duration-300 hover:gap-3"
-          style={{
-            background: "#f47c41",
-            color: "#ffffff",
-            padding: "14px 32px",
-            borderRadius: "50px",
-            fontSize: "14px",
-            boxShadow: "0 6px 20px rgba(244,124,65,0.35)",
-          }}
-        >
-          Explore Our Services
-          <span style={{ fontSize: "18px" }}>→</span>
-        </a>
-
-        <p className="font-body mt-8" style={{ fontSize: "13px", color: "#aaaaaa" }}>
-          22+ tools · Always upgrading with the industry
-        </p>
+          <img
+            src={adsLogo}
+            alt="Ayron Digital Solutions"
+            className="w-20 h-20 object-contain"
+          />
+        </div>
       </motion.div>
     </section>
   );
