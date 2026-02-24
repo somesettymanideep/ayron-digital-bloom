@@ -87,6 +87,37 @@ const ToolsSection = () => {
         padding: "80px 24px",
       }}
     >
+      {/* Top Header */}
+      <div className="relative z-10 text-center mb-12">
+        <motion.span
+          className="block font-body mb-3"
+          style={{ color: "#f47c41", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "3px" }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4 }}
+        >
+          OUR TECH STACK
+        </motion.span>
+        <motion.h2
+          className="font-display mb-4"
+          style={{ color: "#ffffff", fontSize: "clamp(28px, 4vw, 42px)", lineHeight: 1.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
+          Tools & Platforms We <span style={{ color: "#f47c41" }}>Master</span>
+        </motion.h2>
+        <motion.p
+          className="font-body mx-auto"
+          style={{ color: "rgba(255,255,255,0.5)", fontSize: "15px", maxWidth: "460px", lineHeight: 1.7 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.18, duration: 0.45 }}
+        >
+          We use industry-leading tools to deliver precision, performance, and real results for every client we work with.
+        </motion.p>
+      </div>
+
       {/* Floating Tool Icons */}
       {floatingTools.map((tool, i) => (
         <motion.div
@@ -128,37 +159,6 @@ const ToolsSection = () => {
           />
         </motion.div>
       ))}
-
-      {/* Top Header */}
-      <div className="relative z-10 text-center mb-6">
-        <motion.span
-          className="block font-body mb-3"
-          style={{ color: "#f47c41", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "3px" }}
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4 }}
-        >
-          OUR TECH STACK
-        </motion.span>
-        <motion.h2
-          className="font-display mb-4"
-          style={{ color: "#ffffff", fontSize: "clamp(28px, 4vw, 42px)", lineHeight: 1.2 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.1, duration: 0.5 }}
-        >
-          Tools & Platforms We <span style={{ color: "#f47c41" }}>Master</span>
-        </motion.h2>
-        <motion.p
-          className="font-body mx-auto"
-          style={{ color: "rgba(255,255,255,0.5)", fontSize: "15px", maxWidth: "460px", lineHeight: 1.7 }}
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.18, duration: 0.45 }}
-        >
-          We use industry-leading tools to deliver precision, performance, and real results for every client we work with.
-        </motion.p>
-      </div>
 
       {/* Mobile: simple grid of icons */}
       <div className="md:hidden grid grid-cols-5 gap-3 mb-6 px-2">
