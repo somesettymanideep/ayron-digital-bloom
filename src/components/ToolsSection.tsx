@@ -179,14 +179,50 @@ const ToolsSection = () => {
         ))}
       </div>
 
-      {/* Center ADS Logo */}
+      {/* Center ADS Logo with rotating text */}
       <motion.div
         className="relative z-10 mx-auto flex items-center justify-center"
-        style={{ marginTop: "60px" }}
+        style={{ marginTop: "60px", width: "260px", height: "260px" }}
         initial={{ opacity: 0, scale: 0.7 }}
         animate={inView ? { opacity: 1, scale: 1 } : {}}
         transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
       >
+        {/* Rotating outer circle with text */}
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 260 260"
+          style={{ animation: "spin-slow 15s linear infinite" }}
+        >
+          <defs>
+            <path
+              id="circlePath"
+              d="M 130,130 m -105,0 a 105,105 0 1,1 210,0 a 105,105 0 1,1 -210,0"
+            />
+          </defs>
+          <text
+            fill="rgba(255,255,255,0.7)"
+            fontSize="14"
+            fontWeight="600"
+            letterSpacing="6"
+            fontFamily="sans-serif"
+          >
+            <textPath href="#circlePath" startOffset="0%">
+              MARKETING • DESIGNING • DEVELOPMENT •
+            </textPath>
+          </text>
+        </svg>
+
+        {/* Dashed orbit ring */}
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: "220px",
+            height: "220px",
+            border: "1.5px dashed rgba(244,124,65,0.25)",
+          }}
+        />
+
+        {/* Inner logo */}
         <div
           className="rounded-full flex items-center justify-center"
           style={{
@@ -204,6 +240,13 @@ const ToolsSection = () => {
           />
         </div>
       </motion.div>
+
+      <style>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </section>
   );
 };
