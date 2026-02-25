@@ -262,7 +262,7 @@ const ToolsSection = () => {
           style={{
             width: 120,
             height: 120,
-            background: "rgba(255,255,255,0.05)",
+            background: "rgba(255,255,255,0.95)",
             border: "2px solid rgba(244,124,65,0.3)",
             boxShadow: "0 0 60px rgba(244,124,65,0.12), 0 0 120px rgba(244,124,65,0.04)",
           }}
@@ -306,7 +306,7 @@ const ToolsSection = () => {
             style={{
               width: 90,
               height: 90,
-              background: "rgba(255,255,255,0.05)",
+              background: "rgba(255,255,255,0.95)",
               border: "2px solid rgba(244,124,65,0.3)",
               boxShadow: "0 0 40px rgba(244,124,65,0.1)",
             }}
