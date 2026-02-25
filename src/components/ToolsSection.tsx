@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import googleAnalyticsIcon from "@/assets/tools/google-analytics.svg";
 import searchConsoleIcon from "@/assets/tools/search-console.svg";
@@ -23,161 +23,134 @@ import reactjsIcon from "@/assets/tools/reactjs.svg";
 import djangoIcon from "@/assets/tools/django.svg";
 import bootstrapIcon from "@/assets/tools/bootstrap.svg";
 import pythonIcon from "@/assets/tools/python.svg";
+import webflowIcon from "@/assets/tools/webflow.svg";
+import adsLogo from "@/assets/ads-logo.png";
 
-const categories = ["All", "Analytics", "Design", "Advertising", "SEO", "Email", "Development"] as const;
-type Category = (typeof categories)[number];
-
-interface Tool {
+interface OrbitTool {
   name: string;
-  category: Exclude<Category, "All">;
   icon: string;
 }
 
-const tools: Tool[] = [
-  { name: "Google Analytics", category: "Analytics", icon: googleAnalyticsIcon },
-  { name: "Search Console", category: "Analytics", icon: searchConsoleIcon },
-  { name: "Canva", category: "Design", icon: canvaIcon },
-  { name: "Figma", category: "Design", icon: figmaIcon },
-  { name: "Photoshop", category: "Design", icon: photoshopIcon },
-  { name: "Meta Ads", category: "Advertising", icon: metaIcon },
-  { name: "Google Ads", category: "Advertising", icon: googleAdsIcon },
-  { name: "LinkedIn Ads", category: "Advertising", icon: linkedinIcon },
-  { name: "Ahrefs", category: "SEO", icon: ahrefsIcon },
-  { name: "SEMrush", category: "SEO", icon: semrushIcon },
-  { name: "Screaming Frog", category: "SEO", icon: screamingFrogIcon },
-  { name: "WordPress", category: "Development", icon: wordpressIcon },
-  { name: "Shopify", category: "Development", icon: shopifyIcon },
-  { name: "Mailchimp", category: "Email", icon: mailchimpIcon },
-  { name: "Klaviyo", category: "Email", icon: klaviyoIcon },
-  { name: "VS Code", category: "Development", icon: vscodeIcon },
-  { name: "GitHub", category: "Development", icon: githubIcon },
-  { name: "AWS", category: "Development", icon: awsIcon },
-  { name: "React.js", category: "Development", icon: reactjsIcon },
-  { name: "Django", category: "Development", icon: djangoIcon },
-  { name: "Bootstrap", category: "Development", icon: bootstrapIcon },
-  { name: "Python", category: "Development", icon: pythonIcon },
+const marketingTools: OrbitTool[] = [
+  { name: "Google Analytics", icon: googleAnalyticsIcon },
+  { name: "Google Ads", icon: googleAdsIcon },
+  { name: "Meta Ads", icon: metaIcon },
+  { name: "SEMrush", icon: semrushIcon },
+  { name: "Ahrefs", icon: ahrefsIcon },
+  { name: "Mailchimp", icon: mailchimpIcon },
+  { name: "Klaviyo", icon: klaviyoIcon },
+  { name: "LinkedIn", icon: linkedinIcon },
 ];
 
-const ToolCard = ({ tool, index }: { tool: Tool; index: number }) => {
-  const [hovered, setHovered] = useState(false);
+const designTools: OrbitTool[] = [
+  { name: "Figma", icon: figmaIcon },
+  { name: "Canva", icon: canvaIcon },
+  { name: "Photoshop", icon: photoshopIcon },
+  { name: "Webflow", icon: webflowIcon },
+  { name: "Search Console", icon: searchConsoleIcon },
+  { name: "Screaming Frog", icon: screamingFrogIcon },
+];
 
+const devTools: OrbitTool[] = [
+  { name: "React.js", icon: reactjsIcon },
+  { name: "Python", icon: pythonIcon },
+  { name: "Django", icon: djangoIcon },
+  { name: "WordPress", icon: wordpressIcon },
+  { name: "Shopify", icon: shopifyIcon },
+  { name: "GitHub", icon: githubIcon },
+  { name: "AWS", icon: awsIcon },
+  { name: "VS Code", icon: vscodeIcon },
+  { name: "Bootstrap", icon: bootstrapIcon },
+];
+
+const OrbitRing = ({
+  tools,
+  radius,
+  duration,
+  reverse,
+  iconSize,
+  inView,
+}: {
+  tools: OrbitTool[];
+  radius: number;
+  duration: number;
+  reverse?: boolean;
+  iconSize: number;
+  inView: boolean;
+}) => {
+  const count = tools.length;
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, y: 30, scale: 0.92 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.92 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ delay: index * 0.06, duration: 0.45, ease: "easeOut" }}
-      whileHover={{ y: -8, scale: 1.04, transition: { duration: 0.25, ease: "easeOut" } }}
-      className="relative flex flex-col items-center justify-center gap-3 min-h-[110px] cursor-pointer"
+      className="absolute rounded-full"
       style={{
-        background: hovered ? "#fffaf7" : "#ffffff",
-        border: hovered ? "1px solid rgba(244,124,65,0.35)" : "1px solid #ede9e4",
-        boxShadow: hovered ? "0 8px 28px rgba(244,124,65,0.12)" : "0 2px 10px rgba(0,0,0,0.04)",
-        padding: "24px 16px",
-        borderRadius: "16px",
-        transition: "background 0.28s ease, border 0.28s ease, box-shadow 0.28s ease",
+        width: radius * 2,
+        height: radius * 2,
+        top: "50%",
+        left: "50%",
+        marginTop: -radius,
+        marginLeft: -radius,
+        border: "1px solid rgba(255,255,255,0.06)",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      initial={{ opacity: 0, scale: 0.6 }}
+      animate={inView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {/* Tooltip */}
+      {/* Spinning wrapper */}
       <div
-        className="hidden md:block absolute left-1/2 pointer-events-none"
+        className="w-full h-full relative"
         style={{
-          top: "-36px",
-          transform: "translateX(-50%)",
-          opacity: hovered ? 1 : 0,
-          transition: "opacity 0.20s ease",
-          zIndex: 10,
+          animation: `${reverse ? "spin-reverse" : "spin-forward"} ${duration}s linear infinite`,
+          animationPlayState: inView ? "running" : "paused",
         }}
       >
-        <div
-          className="relative"
-          style={{
-            background: "#ffffff",
-            border: "1px solid #ede9e4",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
-            padding: "5px 12px",
-            borderRadius: "8px",
-            fontSize: "11px",
-            fontWeight: 600,
-            color: "#1a1a1a",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {tool.name}
-          <div
-            style={{
-              position: "absolute",
-              bottom: "-5px",
-              left: "50%",
-              transform: "translateX(-50%) rotate(45deg)",
-              width: "8px",
-              height: "8px",
-              background: "#ffffff",
-              border: "1px solid #ede9e4",
-              borderTop: "none",
-              borderLeft: "none",
-            }}
-          />
-        </div>
+        {tools.map((tool, i) => {
+          const angle = (360 / count) * i;
+          const rad = (angle * Math.PI) / 180;
+          const x = radius + radius * Math.cos(rad) - iconSize / 2;
+          const y = radius + radius * Math.sin(rad) - iconSize / 2;
+          return (
+            <div
+              key={tool.name}
+              className="absolute flex items-center justify-center group"
+              style={{
+                width: iconSize,
+                height: iconSize,
+                left: x,
+                top: y,
+                animation: `${reverse ? "spin-forward" : "spin-reverse"} ${duration}s linear infinite`,
+                animationPlayState: inView ? "running" : "paused",
+              }}
+            >
+              <div
+                className="w-full h-full rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-125"
+                style={{
+                  background: "rgba(255,255,255,0.95)",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1)",
+                }}
+              >
+                <img
+                  src={tool.icon}
+                  alt={tool.name}
+                  className="object-contain"
+                  style={{ width: iconSize * 0.55, height: iconSize * 0.55 }}
+                  loading="lazy"
+                />
+              </div>
+              {/* Tooltip */}
+              <span
+                className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-body text-white/60 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
+              >
+                {tool.name}
+              </span>
+            </div>
+          );
+        })}
       </div>
-
-      {/* Icon - color by default, grayscale on hover */}
-      <img
-        src={tool.icon}
-        alt={tool.name}
-        loading="lazy"
-        style={{
-          width: "48px",
-          height: "48px",
-          objectFit: "contain",
-          filter: hovered ? "grayscale(100%) opacity(0.55)" : "grayscale(0%) opacity(1)",
-          transform: hovered ? "scale(1.10)" : "scale(1)",
-          transition: "filter 0.28s ease, transform 0.28s ease",
-        }}
-      />
-
-      {/* Name */}
-      <span
-        className="text-center leading-snug font-body"
-        style={{
-          fontSize: "12px",
-          fontWeight: 500,
-          color: hovered ? "#f47c41" : "#999999",
-          transition: "color 0.28s ease",
-        }}
-      >
-        {tool.name}
-      </span>
-
-      {/* Category badge */}
-      <span
-        className="hidden md:inline-block absolute font-body"
-        style={{
-          bottom: "10px",
-          right: "10px",
-          background: "rgba(244,124,65,0.08)",
-          border: "1px solid rgba(244,124,65,0.20)",
-          color: "#f47c41",
-          fontSize: "9px",
-          fontWeight: 700,
-          textTransform: "uppercase",
-          letterSpacing: "0.5px",
-          padding: "2px 7px",
-          borderRadius: "10px",
-        }}
-      >
-        {tool.category}
-      </span>
     </motion.div>
   );
 };
 
 const ToolsSection = () => {
-  const [active, setActive] = useState<Category>("All");
   const [inView, setInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -186,139 +159,165 @@ const ToolsSection = () => {
     if (prefersReduced) { setInView(true); return; }
     const observer = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setInView(true); },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const filtered = active === "All" ? tools : tools.filter((t) => t.category === active);
-
   return (
-    <section ref={sectionRef} className="px-6 md:px-12 lg:py-[90px] md:py-[70px] py-[50px]" style={{ background: "#ffffff" }}>
-      <div className="max-w-[1200px] mx-auto">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <motion.span
-            className="block font-body"
-            style={{ color: "#f47c41", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "3px", marginBottom: "12px" }}
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden"
+      style={{ background: "#0a0a0a" }}
+    >
+      {/* Header */}
+      <div className="relative z-10 text-center pt-20 pb-4 px-6">
+        <motion.span
+          className="block font-body mb-3"
+          style={{ color: "#f47c41", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "3px" }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4 }}
+        >
+          OUR TECH STACK
+        </motion.span>
+        <motion.h2
+          className="font-display mb-4"
+          style={{ color: "#ffffff", fontSize: "clamp(32px, 5vw, 52px)", lineHeight: 1.1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
+          Tools & Platforms We <span style={{ color: "#f47c41" }}>Master</span>
+        </motion.h2>
+        <motion.p
+          className="font-body mx-auto"
+          style={{ color: "rgba(255,255,255,0.5)", fontSize: "15px", maxWidth: "480px", lineHeight: 1.7 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.18, duration: 0.45 }}
+        >
+          Industry-leading tools powering precision, performance, and real results for every client.
+        </motion.p>
+      </div>
+
+      {/* Orbit system — desktop */}
+      <div className="hidden md:block relative mx-auto" style={{ width: "780px", height: "780px" }}>
+        {/* Ambient glow */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            width: 300,
+            height: 300,
+            background: "radial-gradient(circle, rgba(244,124,65,0.08) 0%, transparent 70%)",
+            filter: "blur(40px)",
+          }}
+        />
+
+        {/* Orbit labels */}
+        {[
+          { label: "MARKETING", radius: 180, color: "rgba(244,124,65,0.25)" },
+          { label: "DESIGN", radius: 265, color: "rgba(255,255,255,0.12)" },
+          { label: "DEVELOPMENT", radius: 350, color: "rgba(255,255,255,0.08)" },
+        ].map((ring) => (
+          <motion.div
+            key={ring.label}
+            className="absolute rounded-full"
+            style={{
+              width: ring.radius * 2,
+              height: ring.radius * 2,
+              top: "50%",
+              left: "50%",
+              marginTop: -ring.radius,
+              marginLeft: -ring.radius,
+            }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 1 }}
           >
-            OUR TECH STACK
-          </motion.span>
-          <motion.h2
-            className="font-display"
-            style={{ color: "#1a1a1a", fontSize: "42px", marginBottom: "16px" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
-            Tools & Platforms We <span style={{ color: "#f47c41" }}>Master</span>
-          </motion.h2>
-          <motion.p
-            className="font-body mx-auto"
-            style={{ color: "#888888", fontSize: "16px", maxWidth: "500px", marginBottom: "40px" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.18, duration: 0.45 }}
-          >
-            We use industry-leading tools to deliver precision, performance, and real results for every client we work with.
-          </motion.p>
-        </div>
-
-        {/* Filter Tabs */}
-        <div className="flex justify-center mb-10 overflow-x-auto tools-scrollbar-hide" style={{ gap: "10px" }}>
-          {categories.map((cat, i) => (
-            <motion.button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className="shrink-0 font-body cursor-pointer"
+            <span
+              className="absolute font-body font-medium tracking-[0.15em] uppercase"
               style={{
-                background: active === cat ? "#f47c41" : "#ffffff",
-                border: active === cat ? "1.5px solid #f47c41" : "1.5px solid #ede9e4",
-                color: active === cat ? "#ffffff" : "#666666",
-                fontSize: "13px",
-                fontWeight: 500,
-                padding: "8px 22px",
-                borderRadius: "50px",
-                boxShadow: active === cat ? "0 4px 16px rgba(244,124,65,0.30)" : "none",
-                transition: "all 0.25s ease",
+                fontSize: "9px",
+                color: ring.color,
+                top: -14,
+                left: "50%",
+                transform: "translateX(-50%)",
               }}
-              onMouseEnter={(e) => {
-                if (active !== cat) {
-                  (e.currentTarget).style.borderColor = "#f47c41";
-                  (e.currentTarget).style.color = "#f47c41";
-                  (e.currentTarget).style.background = "rgba(244,124,65,0.05)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (active !== cat) {
-                  (e.currentTarget).style.borderColor = "#ede9e4";
-                  (e.currentTarget).style.color = "#666666";
-                  (e.currentTarget).style.background = "#ffffff";
-                }
-              }}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.25 + i * 0.05, duration: 0.3 }}
             >
-              {cat}
-            </motion.button>
-          ))}
-        </div>
+              {ring.label}
+            </span>
+          </motion.div>
+        ))}
 
-        {/* Tools Grid */}
-        <div className="tools-grid">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((tool, i) => (
-              <ToolCard key={tool.name} tool={tool} index={i} />
-            ))}
-          </AnimatePresence>
-        </div>
+        {/* 3 orbit rings */}
+        <OrbitRing tools={marketingTools} radius={180} duration={25} iconSize={52} inView={inView} />
+        <OrbitRing tools={designTools} radius={265} duration={35} reverse iconSize={48} inView={inView} />
+        <OrbitRing tools={devTools} radius={350} duration={45} iconSize={46} inView={inView} />
 
-        {/* Bottom Trust Strip */}
-        <div className="text-center" style={{ marginTop: "48px" }}>
-          <div style={{ maxWidth: "200px", margin: "0 auto 24px", height: "1px", background: "#ede9e4" }} />
-          <p className="font-body" style={{ fontSize: "14px", color: "#aaaaaa", fontWeight: 400 }}>
-            + More tools added regularly as we evolve with the industry
-          </p>
-          <span
-            className="inline-block font-body"
+        {/* Center logo */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full flex items-center justify-center"
+          style={{
+            width: 120,
+            height: 120,
+            background: "rgba(255,255,255,0.95)",
+            border: "2px solid rgba(244,124,65,0.3)",
+            boxShadow: "0 0 60px rgba(244,124,65,0.12), 0 0 120px rgba(244,124,65,0.04)",
+          }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+        >
+          <img src={adsLogo} alt="Ayron Digital Solutions" className="w-16 h-16 object-contain" />
+        </motion.div>
+      </div>
+
+      {/* Mobile: categorized grid */}
+      <div className="md:hidden px-6 pb-16 pt-6 space-y-8">
+        {[
+          { label: "Marketing", tools: marketingTools },
+          { label: "Design", tools: designTools },
+          { label: "Development", tools: devTools },
+        ].map((group) => (
+          <div key={group.label}>
+            <p className="font-body text-xs uppercase tracking-[0.2em] text-white/30 mb-3">{group.label}</p>
+            <div className="grid grid-cols-4 gap-3">
+              {group.tools.map((tool, i) => (
+                <motion.div
+                  key={tool.name}
+                  className="flex items-center justify-center rounded-xl p-3"
+                  style={{ background: "rgba(255,255,255,0.95)" }}
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: i * 0.05, duration: 0.4 }}
+                >
+                  <img src={tool.icon} alt={tool.name} className="w-7 h-7 object-contain" loading="lazy" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        ))}
+        {/* Center logo mobile */}
+        <div className="flex justify-center pt-4">
+          <div
+            className="rounded-full flex items-center justify-center"
             style={{
-              marginTop: "10px",
-              background: "rgba(244,124,65,0.10)",
-              border: "1px solid rgba(244,124,65,0.25)",
-              color: "#f47c41",
-              fontSize: "11px",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              padding: "5px 14px",
-              borderRadius: "20px",
+              width: 90,
+              height: 90,
+              background: "rgba(255,255,255,0.95)",
+              border: "2px solid rgba(244,124,65,0.3)",
+              boxShadow: "0 0 40px rgba(244,124,65,0.1)",
             }}
           >
-            Always Upgrading
-          </span>
+            <img src={adsLogo} alt="Ayron Digital Solutions" className="w-12 h-12 object-contain" />
+          </div>
         </div>
       </div>
 
-      <style>{`
-        .tools-scrollbar-hide::-webkit-scrollbar { display: none; }
-        .tools-scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        .tools-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-          gap: 16px;
-        }
-        @media (max-width: 768px) {
-          .tools-grid { grid-template-columns: repeat(3, 1fr) !important; }
-        }
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .tools-grid { grid-template-columns: repeat(4, 1fr) !important; }
-        }
-      `}</style>
+      {/* Bottom padding for desktop */}
+      <div className="hidden md:block h-12" />
     </section>
   );
 };
