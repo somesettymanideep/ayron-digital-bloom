@@ -152,7 +152,14 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Carousel */}
-        <div ref={emblaRef} className="overflow-hidden">
+        <motion.div
+          ref={emblaRef}
+          className="overflow-hidden"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <div className="flex -ml-6 touch-pan-y">
             {testimonials.map((t, i) => (
               <div
@@ -160,12 +167,8 @@ const TestimonialsSection = () => {
                 className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333333%] min-w-0 pl-6"
               >
                 <div className="h-full">
-                  <motion.div
-                    className="relative h-full p-8 md:p-10 border border-border/30 bg-background/60 hover:bg-background hover:border-primary/40 shadow-sm hover:shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.15)] transition-all duration-400 group hover:-translate-y-2 flex flex-col"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
+                  <div
+                    className="relative h-full p-8 md:p-10 border border-border/30 bg-background hover:border-primary/40 shadow-sm hover:shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.15)] transition-all duration-400 group hover:-translate-y-2 flex flex-col"
                   >
                     {/* Quote icon */}
                     <Quote
@@ -211,12 +214,12 @@ const TestimonialsSection = () => {
                         {t.tag}
                       </span>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Dots */}
         <div className="flex justify-center gap-2 mt-12">

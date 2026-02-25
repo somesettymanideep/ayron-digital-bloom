@@ -10,7 +10,12 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const About = () => (
-  <main className="pt-16">
+  <motion.main
+    className="pt-16"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.15, duration: 0.6 }}
+  >
     <SEO
       title="About Us"
       description="Learn about Ayron Digital Solutions — a full-service digital marketing agency helping 200+ brands grow with data-driven strategies across India."
@@ -117,7 +122,7 @@ const About = () => (
     <ToolsSection />
     <CTASection />
     <Footer />
-  </main>
+  </motion.main>
 );
 
 export default About;

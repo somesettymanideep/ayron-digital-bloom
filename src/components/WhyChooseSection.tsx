@@ -12,7 +12,7 @@ const reasons = [
 
 const WhyChooseSection = () => {
   return (
-    <section className="relative">
+    <section className="relative ">
       <div className="mx-auto max-w-7xl px-6 md:px-16 lg:px-24 flex flex-col lg:flex-row min-h-[700px] w-full overflow-hidden">
         {/* LEFT - Orange */}
         <motion.div

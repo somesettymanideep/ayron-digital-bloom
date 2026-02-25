@@ -9,10 +9,10 @@ const FounderMessage = () => (
         {/* Photo */}
         <motion.div
           className="md:col-span-2"
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           <div className="relative">
             <div className="bg-background aspect-[3/4] relative overflow-hidden">
@@ -30,10 +30,10 @@ const FounderMessage = () => (
         {/* Message */}
         <motion.div
           className="md:col-span-3"
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
           <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">
             A Word From Our Founder
@@ -61,7 +61,7 @@ const FounderMessage = () => (
             <div className="w-12 h-[2px] bg-primary" />
             <div>
               <p className="font-display text-4xl text-secondary-foreground">Aziz Rehman</p>
-             
+
             </div>
           </div>
         </motion.div>
