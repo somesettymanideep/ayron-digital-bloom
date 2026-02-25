@@ -258,7 +258,7 @@ const ToolsSection = () => {
 
         {/* Center logo */}
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full flex items-center justify-center"
+          className="absolute top-1/2 left-1/2 z-10 rounded-full flex items-center justify-center"
           style={{
             width: 120,
             height: 120,
@@ -266,8 +266,8 @@ const ToolsSection = () => {
             border: "2px solid rgba(244,124,65,0.3)",
             boxShadow: "0 0 60px rgba(244,124,65,0.12), 0 0 120px rgba(244,124,65,0.04)",
           }}
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          initial={{ opacity: 0, scale: 0.5, x: "-50%", y: "-50%" }}
+          animate={inView ? { opacity: 1, scale: 1, x: "-50%", y: "-50%" } : {}}
           transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
         >
           <img src={adsLogo} alt="Ayron Digital Solutions" className="w-16 h-16 object-contain" />
