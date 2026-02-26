@@ -12,7 +12,7 @@ const HeroSection = () => {
 
       <div className="relative z-10 max-w-[1440px] mx-auto w-full flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
         {/* LEFT PANEL */}
-        <div className="w-full lg:w-[60%] flex flex-col px-6 md:px-12 lg:px-20 xl:px-24">
+        <div className="w-full lg:w-[50%] flex flex-col px-6 md:px-12 lg:px-16 xl:px-20">
 
           {/* Hero content */}
           <div className="flex-1 flex flex-col justify-center py-12 lg:py-0">
@@ -97,7 +97,7 @@ const HeroSection = () => {
 
         {/* RIGHT PANEL — Mobile */}
         <div className="flex lg:hidden w-full py-12 px-6 bg-background relative overflow-hidden items-center justify-center">
-          <div className="relative w-full max-w-sm">
+          <div className="relative w-full max-w-lg">
             <motion.div className="w-full h-auto drop-shadow-[0_20px_40px_rgba(244,124,65,0.2)] rounded-2xl overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
               <DotLottieReact src="https://lottie.host/b1106e82-fb34-409f-b536-ae70c7e1de9c/NY1FASEsO6.json" loop autoplay />
             </motion.div>
@@ -122,7 +122,7 @@ const HeroSection = () => {
         </div>
 
         {/* RIGHT PANEL — Desktop */}
-        <div className="hidden lg:flex w-[40%] relative overflow-hidden items-center justify-center p-4">
+        <div className="hidden lg:flex w-[50%] relative overflow-hidden items-center justify-center">
 
 
           {/* Main 3D character */}

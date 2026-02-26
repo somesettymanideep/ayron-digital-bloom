@@ -1,6 +1,6 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import adsLogo from "@/assets/ADS.png";
+import adsLogo from "@/assets/ads-white-logo-footer.png";
 
 const footerLinks = {
   Services: ["Digital Marketing", "Website Design", "Brand Identity", "Email Marketing", "Influencer Marketing", "SEO Optimization"],
@@ -19,7 +19,7 @@ const Footer = () => (
       >
         {/* Brand */}
         <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-          <img src={adsLogo} alt="Ayron Digital Solutions" style={{ height: "5rem" }} className="bg-white p-2 mb-4" />
+          <img src={adsLogo} alt="Ayron Digital Solutions" style={{ height: "5rem" }} className=" p-2 mb-4" />
           <p className="font-body font-light text-muted-foreground text-sm leading-relaxed max-w-xs">
             Full-service digital marketing agency helping brands grow with data-driven strategies and creative execution.
           </p>
