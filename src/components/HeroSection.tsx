@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
-import heroVideo from "@/assets/hero-video.webm";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const HeroSection = () => {
   return (
@@ -98,7 +98,9 @@ const HeroSection = () => {
         {/* RIGHT PANEL — Mobile */}
         <div className="flex lg:hidden w-full py-12 px-6 bg-background relative overflow-hidden items-center justify-center">
           <div className="relative w-full max-w-xs">
-            <motion.video src={heroVideo} autoPlay loop muted playsInline className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(244,124,65,0.2)] rounded-2xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }} />
+            <motion.div className="w-full h-auto drop-shadow-[0_20px_40px_rgba(244,124,65,0.2)] rounded-2xl overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
+              <DotLottieReact src="https://lottie.host/f2576bfc-b69d-4f21-abae-e2fe142e9e6e/HJBwlZXVHK.lottie" loop autoplay />
+            </motion.div>
             {/* Google rating overlay */}
             <motion.div
               className="absolute -bottom-4 -left-2 z-20 bg-background border border-border/30 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.1)]"
@@ -130,14 +132,9 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
           >
-            <video
-              src={heroVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto object-contain drop-shadow-[0_20px_60px_rgba(244,124,65,0.25)] rounded-2xl"
-            />
+            <div className="w-full h-auto rounded-2xl overflow-hidden">
+              <DotLottieReact src="https://lottie.host/f2576bfc-b69d-4f21-abae-e2fe142e9e6e/HJBwlZXVHK.lottie" loop autoplay />
+            </div>
           </motion.div>
 
           {/* Google Rating Card — bottom left */}
