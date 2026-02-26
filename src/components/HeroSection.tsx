@@ -97,7 +97,7 @@ const HeroSection = () => {
 
         {/* RIGHT PANEL — Mobile */}
         <div className="flex lg:hidden w-full py-12 px-6 bg-background relative overflow-hidden items-center justify-center">
-          <div className="relative w-full max-w-xs">
+          <div className="relative w-full max-w-sm">
             <motion.div className="w-full h-auto drop-shadow-[0_20px_40px_rgba(244,124,65,0.2)] rounded-2xl overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
               <DotLottieReact src="https://lottie.host/f2576bfc-b69d-4f21-abae-e2fe142e9e6e/HJBwlZXVHK.lottie" loop autoplay />
             </motion.div>
@@ -122,12 +122,12 @@ const HeroSection = () => {
         </div>
 
         {/* RIGHT PANEL — Desktop */}
-        <div className="hidden lg:flex w-[40%] relative overflow-hidden items-center justify-center p-10">
+        <div className="hidden lg:flex w-[40%] relative overflow-hidden items-center justify-center p-4">
 
 
           {/* Main 3D character */}
           <motion.div
-            className="relative z-10 w-[85%]"
+            className="relative z-10 w-full"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
