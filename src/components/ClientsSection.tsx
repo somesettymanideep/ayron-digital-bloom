@@ -4,23 +4,32 @@ import Autoplay from "embla-carousel-autoplay";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
+// import actual logo images from assets
+import vijayaLogo from "../assets/clients/vijaya.png";
+import sanghaviCarLogo from "../assets/clients/sanghavi car.png";
+import saiRajendraLogo from "../assets/clients/sai rajendra.png";
+import metroCarsLogo from "../assets/clients/metro cars.png";
+import ferticareLogo from "../assets/clients/ferticare.png";
+import bspLogo from "../assets/clients/bsp.png";
+import bombayLogo from "../assets/clients/bombay.png";
+import amaLogo from "../assets/clients/ama.png";
+import adityaLogo from "../assets/clients/aditya.png";
+import namolightsLogo from "../assets/clients/namolights.png";
+import blossomsLogo from "../assets/clients/blossoms.png";
+
+// list of client logos to show in carousel
 const clients = [
-  { name: "FreshBite Foods", category: "FMCG" },
-  { name: "StyleCraft", category: "Fashion" },
-  { name: "TechNova", category: "Tech" },
-  { name: "GreenLeaf Organics", category: "FMCG" },
-  { name: "UrbanNest Realty", category: "Real Estate" },
-  { name: "PureGlow Beauty", category: "Healthcare" },
-  { name: "CloudSync Tech", category: "Tech" },
-  { name: "SpiceRoute", category: "F&B" },
-  { name: "MetroFit Gym", category: "Healthcare" },
-  { name: "BlueOcean Logistics", category: "Tech" },
-  { name: "CraftBrew Co.", category: "F&B" },
-  { name: "SilkLine Fashion", category: "Fashion" },
-  { name: "DataPulse AI", category: "Tech" },
-  { name: "SunRise Solar", category: "Tech" },
-  { name: "PixelForge Studios", category: "Tech" },
-  { name: "AquaPure Water", category: "FMCG" },
+  { name: "Vijaya", logo: vijayaLogo },
+  { name: "Sanghavi Car", logo: sanghaviCarLogo },
+  { name: "Sai Rajendra", logo: saiRajendraLogo },
+  { name: "Metro Cars", logo: metroCarsLogo },
+  { name: "Ferticare", logo: ferticareLogo },
+  { name: "BSP", logo: bspLogo },
+  { name: "Bombay", logo: bombayLogo },
+  { name: "AMA", logo: amaLogo },
+  { name: "Aditya", logo: adityaLogo },
+  { name: "Namo Lights", logo: namolightsLogo },
+  { name: "Blossoms", logo: blossomsLogo },
 ];
 
 const ClientsSection = () => {
@@ -104,14 +113,12 @@ const ClientsSection = () => {
                 key={i}
                 className="flex-[0_0_50%] sm:flex-[0_0_33.333%] md:flex-[0_0_25%] lg:flex-[0_0_20%] min-w-0 px-2"
               >
-                <div className="group border border-secondary-foreground/10 bg-secondary p-6 h-28 flex flex-col items-center justify-center text-center hover:border-primary/60 transition-all cursor-pointer relative overflow-hidden">
-                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-                  <span className="font-body text-sm font-medium text-secondary-foreground group-hover:text-primary transition-colors">
-                    {client.name}
-                  </span>
-                  <span className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground mt-1.5">
-                    {client.category}
-                  </span>
+                <div className="group border border-secondary-foreground/10 bg-secondary p-6 h-32 flex items-center justify-center hover:border-primary/60 transition-all cursor-pointer relative overflow-hidden">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="max-h-20 object-contain"
+                  />
                 </div>
               </div>
             ))}
