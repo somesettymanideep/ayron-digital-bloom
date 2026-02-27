@@ -153,7 +153,7 @@ const ContactSection = () => {
                 {[
                   { icon: MapPin, label: "Kongara Sai Building, Sai Nagar,\nKala Nagar, Acharya Ranga Nagar,\nVijayawada – 520010" },
                   { icon: Phone, label: "+91 9550860545\nMon–Sat, 10AM–7PM IST" },
-                  { icon: Mail, label: "hello@ayrondigital.com" },
+                  { icon: Mail, label: "info@ayrondigital.in" },
                   { icon: Globe, label: "www.ayrondigital.com" },
                 ].map((item) => {
                   const Icon = item.icon;
