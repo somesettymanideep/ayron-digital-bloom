@@ -14,15 +14,16 @@ const Index = () => {
   return (
     <main>
       <SEO
-        title="We Grow Brands That Matter"
-        description="From SEO to Influencer Marketing, Ayron Digital Solutions turns your vision into measurable growth. 200+ brands scaled across India."
+        title="Best Digital Marketing Agency in Vijayawada & Guntur"
+        description="Ayron Digital Solutions is the best digital marketing agency in Vijayawada and Guntur. From SEO to Influencer Marketing, we turn your vision into measurable growth. 200+ brands scaled."
         canonical="/"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Ayron Digital Solutions",
-          url: "https://ayron-digital-bloom.lovable.app",
-          description: "Full-service digital marketing agency specializing in SEO, brand identity, web design, and influencer marketing.",
+          url: "https://ayrondigitalsolutions.com",
+          description: "Best digital marketing agency in Vijayawada and Guntur specializing in SEO, brand identity, web design, and influencer marketing.",
+          areaServed: ["Vijayawada", "Guntur"],
           sameAs: [],
         }}
       />

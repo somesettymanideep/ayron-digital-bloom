@@ -11,7 +11,7 @@ interface SEOProps {
 
 const SITE_NAME = "Ayron Digital Solutions";
 const DEFAULT_OG_IMAGE = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3dc047b7-4265-484f-98cd-26d83b8b16d4/id-preview-e16652c9--d4c95d0d-ed6e-4bf0-b6ce-4cececbc864b.lovable.app-1771390921593.png";
-const BASE_URL = "https://ayron-digital-bloom.lovable.app";
+const BASE_URL = "https://ayrondigitalsolutions.com";
 
 const setMeta = (attr: string, key: string, content: string) => {
   let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
