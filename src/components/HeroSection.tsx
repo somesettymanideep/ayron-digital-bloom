@@ -58,7 +58,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.6 }}
             >
-              From SEO to Influencer Marketing, Ayron Digital Solutions turns your vision into measurable growth.
+              Vijayawada &amp; Guntur's trusted digital marketing agency. From SEO to Influencer Marketing, we turn your vision into measurable growth.
             </motion.p>
 
             <motion.div

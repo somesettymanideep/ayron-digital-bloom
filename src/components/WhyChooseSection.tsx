@@ -37,7 +37,7 @@ const WhyChooseSection = () => {
               <span className="block text-primary-foreground">ADS?</span>
             </h2>
             <p className="font-serif-accent italic text-secondary text-xl mt-4">
-              Because results speak louder.
+              Vijayawada &amp; Guntur's most results-driven agency.
             </p>
           </motion.div>
 

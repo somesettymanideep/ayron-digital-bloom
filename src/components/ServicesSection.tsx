@@ -75,10 +75,10 @@ const ServicesSection = () => {
               What We Do
             </span>
             <h2 className="font-display text-5xl md:text-6xl text-foreground mt-2">
-              Our Services
+              Digital Marketing Services in Vijayawada &amp; Guntur
             </h2>
             <p className="font-body font-light text-muted-foreground text-base mt-4 max-w-lg">
-              Every service is designed to move the needle — not just look good on a report.
+              Every service is designed to move the needle for businesses in Vijayawada, Guntur, and across India.
             </p>
           </motion.div>
           <motion.div

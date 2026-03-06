@@ -67,7 +67,7 @@ const StatsSection = () => (
       {/* Label */}
       <div className="flex items-center justify-center gap-4 mb-12">
         <div className="w-12 h-[1px] bg-primary" />
-        <span className="text-primary text-[11px] tracking-[0.3em] uppercase font-body">By The Numbers</span>
+        <span className="text-primary text-[11px] tracking-[0.3em] uppercase font-body">Our Impact Across Vijayawada, Guntur &amp; India</span>
         <div className="w-12 h-[1px] bg-primary" />
       </div>
 
