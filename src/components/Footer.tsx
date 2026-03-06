@@ -19,7 +19,7 @@ const Footer = () => (
       >
         {/* Brand */}
         <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-          <img src={adsLogo} alt="Ayron Digital Solutions" style={{ height: "5rem" }} className=" p-2 mb-4" />
+          <img src={adsLogo} alt="Ayron Digital Solutions" width="160" height="80" style={{ height: "5rem", width: "auto" }} className=" p-2 mb-4" />
           <p className="font-body font-light text-muted-foreground text-sm leading-relaxed max-w-xs">
             Full-service digital marketing agency helping brands grow with data-driven strategies and creative execution.
           </p>

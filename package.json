@@ -5,14 +5,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "start": "vite",
-  "build": "vite build",
-  "preview": "vite preview",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist",
-  "postbuild": "react-snap"
-},
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "postbuild": "react-snap"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@lottiefiles/dotlottie-react": "^0.18.3",
@@ -92,8 +92,11 @@
     "vite": "^5.4.19",
     "vitest": "^3.2.4"
   },
- "reactSnap": {
-  "source": "dist",
-  "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
-}
+  "reactSnap": {
+    "source": "dist",
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
+  }
 }

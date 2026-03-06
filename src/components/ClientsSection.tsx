@@ -117,6 +117,8 @@ const ClientsSection = () => {
                   <img
                     src={client.logo}
                     alt={client.name}
+                    width="120"
+                    height="80"
                     className="max-h-20 object-contain"
                   />
                 </div>

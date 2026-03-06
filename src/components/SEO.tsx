@@ -44,6 +44,11 @@ const SEO = ({
   const fullTitle = `${title} — ${SITE_NAME}`;
   const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : undefined;
 
+  // Set title in render for pre-rendering
+  if (typeof document !== "undefined") {
+    document.title = fullTitle;
+  }
+
   useEffect(() => {
     // Title
     document.title = fullTitle;

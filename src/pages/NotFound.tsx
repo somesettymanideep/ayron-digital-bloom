@@ -7,11 +7,13 @@ const NotFound = () => {
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    // Explicitly set title for react-snap
+    document.title = "404 — Page Not Found";
   }, [location.pathname]);
 
   return (
     <>
-      <SEO title="Page Not Found" description="The page you are looking for does not exist." />
+      <SEO title="404" description="The page you are looking for does not exist." />
       <div className="flex min-h-screen items-center justify-center bg-muted">
         <div className="text-center">
           <h1 className="mb-4 text-4xl font-bold">404</h1>
