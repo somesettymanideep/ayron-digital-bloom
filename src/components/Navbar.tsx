@@ -99,7 +99,7 @@ const Navbar = () => {
             })
           )}
           <span className="flex items-center gap-1.5 px-5 text-secondary font-body text-xs tracking-wide whitespace-nowrap font-semibold">
-            📞 +91-XXXXXXXXXX
+            📞 +91 9550860545
             <span className="mx-3 opacity-40">✦</span>
           </span>
         </div>
