@@ -42,7 +42,7 @@ const SEO = ({
   jsonLd,
 }: SEOProps) => {
   const fullTitle = `${title} — ${SITE_NAME}`;
-  const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : undefined;
+  const canonicalUrl = canonical ? `${BASE_URL}/#${canonical}` : undefined;
 
   // Set title in render for pre-rendering
   if (typeof document !== "undefined") {
