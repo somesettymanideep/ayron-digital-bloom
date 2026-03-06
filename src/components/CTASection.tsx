@@ -55,7 +55,7 @@ const CTASection = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        Stop losing leads to competitors. Let Ayron Digital Solutions craft a strategy that gets you seen, clicked, and chosen.
+        Stop losing leads to competitors in Vijayawada &amp; Guntur. Let Ayron Digital Solutions craft a strategy that gets you seen, clicked, and chosen.
       </motion.p>
 
       {/* Buttons */}
