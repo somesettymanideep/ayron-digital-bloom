@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import adsLogo from "@/assets/ads-white-logo-footer.png";
+import footerCharacter from "@/assets/footer-character-orange.png";
 
 const footerLinks = {
   Services: [
