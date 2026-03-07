@@ -27,8 +27,7 @@ const Footer = () => (
       <motion.img
         src={footerCharacter}
         alt="Digital marketing illustration"
-        className="w-28 md:w-36 relative z-10 animate-float drop-shadow-[0_0_25px_hsl(var(--primary)/0.5)]"
-        style={{ filter: "drop-shadow(0 0 20px hsl(24 90% 60% / 0.4)) drop-shadow(0 8px 30px hsl(24 90% 60% / 0.25))" }}
+        className="w-28 md:w-36 relative z-10 animate-float"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
