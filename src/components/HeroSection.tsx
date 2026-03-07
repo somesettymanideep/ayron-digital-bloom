@@ -171,7 +171,7 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* 100+ Ratings Card — top right */}
+          {/* Target Icon — top right */}
           <motion.div
             className="absolute top-[8%] right-6 z-20"
             initial={{ opacity: 0, x: 20 }}
@@ -179,17 +179,13 @@ const HeroSection = () => {
             transition={{ delay: 1.1, duration: 0.5 }}
           >
             <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-              className="bg-primary rounded-2xl px-5 py-4 shadow-[0_12px_35px_rgba(244,124,65,0.35)] min-w-[130px]"
+              animate={{ y: [0, 5, 0], rotate: [0, 360] }}
+              transition={{ 
+                y: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
+                rotate: { duration: 6, repeat: Infinity, ease: "linear" }
+              }}
             >
-              <div className="flex items-center gap-1.5 mb-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={11} className="fill-primary-foreground text-primary-foreground" />
-                ))}
-              </div>
-              <span className="font-display text-[2rem] leading-none text-primary-foreground block mb-0.5">100+</span>
-              <p className="font-body text-[11px] text-primary-foreground/80 tracking-wide">5-Star Ratings</p>
+              <img src={targetIcon} alt="Target" className="w-20 h-20 drop-shadow-lg" />
             </motion.div>
           </motion.div>
 
