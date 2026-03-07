@@ -3,8 +3,20 @@ import { motion } from "framer-motion";
 import adsLogo from "@/assets/ads-white-logo-footer.png";
 
 const footerLinks = {
-  Services: ["Digital Marketing", "Website Design", "Brand Identity", "Email Marketing", "Influencer Marketing", "SEO Optimization"],
-  Company: ["About Us", "Our Work", "Blog", "Careers", "Contact"],
+  Services: [
+    { label: "Digital Marketing", href: "/#/services/digital-marketing" },
+    { label: "Website Design", href: "/#/services/website-design" },
+    { label: "Brand Identity", href: "/#/services/brand-identity" },
+    { label: "Email Marketing", href: "/#/services/email-marketing" },
+    { label: "Influencer Marketing", href: "/#/services/influencer-marketing" },
+    { label: "SEO Optimization", href: "/#/services/seo-optimization" },
+  ],
+  "Quick Links": [
+    { label: "About Us", href: "/#/about" },
+    { label: "Our Work", href: "/#/services" },
+    { label: "Blog", href: "/#/blog" },
+    { label: "Contact", href: "/#/contact" },
+  ],
 };
 
 const Footer = () => (
@@ -31,9 +43,9 @@ const Footer = () => (
             <h4 className="font-display text-xl text-foreground mb-4">{title}</h4>
             <ul className="space-y-2">
               {links.map((link) => (
-                <li key={link}>
-                  <a href="#" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {link}
+                <li key={link.label}>
+                  <a href={link.href} className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
                   </a>
                 </li>
               ))}
