@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import adsLogo from "@/assets/ads-white-logo-footer.png";
+import footerCharacter from "@/assets/footer-character-orange.png";
 
 const footerLinks = {
   Services: [
@@ -20,7 +21,19 @@ const footerLinks = {
 };
 
 const Footer = () => (
-  <footer className="bg-background border-t border-border/30">
+  <footer className="bg-background border-t border-border/30 relative">
+    {/* Animated character */}
+    <div className="flex justify-end max-w-7xl mx-auto px-6 md:px-12 -mb-4">
+      <motion.img
+        src={footerCharacter}
+        alt="Digital marketing illustration"
+        className="w-28 md:w-36 relative z-10 animate-float"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      />
+    </div>
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-16">
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
