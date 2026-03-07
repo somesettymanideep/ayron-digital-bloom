@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import targetIcon from "@/assets/target-icon.png";
+import targetIcon from "@/assets/arrow background.png";
 
 const HeroSection = () => {
   return (
