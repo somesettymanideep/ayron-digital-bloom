@@ -43,9 +43,9 @@ const Footer = () => (
             <h4 className="font-display text-xl text-foreground mb-4">{title}</h4>
             <ul className="space-y-2">
               {links.map((link) => (
-                <li key={link}>
-                  <a href="#" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {link}
+                <li key={link.label}>
+                  <a href={link.href} className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
                   </a>
                 </li>
               ))}
