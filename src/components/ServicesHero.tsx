@@ -15,7 +15,7 @@ interface ServicesHeroProps {
 
 const ServicesHero = ({ activeFilter, onFilterChange, searchQuery, onSearchChange }: ServicesHeroProps) => {
   return (
-    <section className="relative w-full min-h-[60vh] overflow-hidden" style={{ background: "#ffffff" }}>
+    <section className="relative w-full min-h-[60vh] overflow-hidden" style={{ background: "#ffffff" }} data-animate="fade-in">
       {/* Orange radial gradient blob top-right */}
       <div className="absolute -top-20 -right-20 w-[600px] h-[600px] rounded-full" style={{ background: "radial-gradient(circle, rgba(244,124,65,0.12) 0%, transparent 70%)" }} />
 

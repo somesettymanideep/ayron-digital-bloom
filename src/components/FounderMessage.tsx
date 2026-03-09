@@ -3,7 +3,7 @@ import { Quote } from "lucide-react";
 import founderImg from "@/assets/team/founder.jpg";
 
 const FounderMessage = () => (
-  <section className="bg-secondary py-20 px-6 md:px-12">
+  <section className="bg-secondary py-20 px-6 md:px-12" data-animate="fade-up">
     <div className="max-w-5xl mx-auto">
       <div className="grid md:grid-cols-5 gap-10 items-center">
         {/* Photo */}

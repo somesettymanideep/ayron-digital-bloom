@@ -57,7 +57,7 @@ const StatBlock = ({ stat, index }: { stat: typeof stats[0]; index: number }) =>
 };
 
 const StatsSection = () => (
-  <section className="bg-background relative overflow-hidden" style={{ borderTop: "2px solid hsl(20,89%,56%)", borderBottom: "2px solid hsl(20,89%,56%)" }}>
+  <section className="bg-background relative overflow-hidden" style={{ borderTop: "2px solid hsl(20,89%,56%)", borderBottom: "2px solid hsl(20,89%,56%)" }} data-animate="zoom-in">
     {/* Ghost text */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[150px] md:text-[250px] text-primary/[0.03] select-none pointer-events-none whitespace-nowrap">
       NUMBERS

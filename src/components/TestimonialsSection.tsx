@@ -100,7 +100,7 @@ const TestimonialsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="relative overflow-hidden bg-secondary py-24 md:py-28">
+    <section className="relative overflow-hidden bg-secondary py-24 md:py-28" data-animate="fade-up">
       {/* Background elements */}
       <div className="pointer-events-none absolute top-0 right-0 w-[600px] h-[600px] bg-primary/[0.04] rounded-full blur-[140px]" />
       <div className="pointer-events-none absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/[0.03] rounded-full blur-[100px]" />

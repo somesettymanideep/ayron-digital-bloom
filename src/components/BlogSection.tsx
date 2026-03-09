@@ -35,7 +35,7 @@ const blogs = [
 ];
 
 const BlogSection = () => (
-  <section id="blog" className="bg-secondary py-20">
+  <section id="blog" className="bg-secondary py-20" data-animate="fade-up">
     <div className="max-w-7xl mx-auto px-6 md:px-12">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
