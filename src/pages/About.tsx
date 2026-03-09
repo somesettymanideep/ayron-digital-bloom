@@ -85,7 +85,7 @@ const About = () => (
     </section>
 
     {/* Mission / Vision */}
-    <section className="bg-background py-20 px-6 md:px-12">
+    <section className="bg-background py-20 px-6 md:px-12" data-animate="fade-up">
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
         {[
           {
