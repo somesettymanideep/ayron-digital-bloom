@@ -21,7 +21,7 @@ const footerLinks = {
 };
 
 const Footer = () => (
-  <footer className="bg-background border-t border-border/30 relative">
+  <footer className="bg-background border-t border-border/30 relative" data-animate="fade-up">
     {/* Animated character */}
     <div className="flex justify-end max-w-7xl mx-auto px-6 md:px-12 -mb-4">
       <motion.img

@@ -170,6 +170,7 @@ const ToolsSection = () => {
       ref={sectionRef}
       className="relative overflow-hidden"
       style={{ background: "#0a0a0a" }}
+      data-animate="fade-up"
     >
       {/* Header */}
       <div className="relative z-10 text-center pt-20 pb-4 px-6">

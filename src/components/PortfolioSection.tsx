@@ -20,7 +20,7 @@ const projects = [
 
 const PortfolioSection = () => {
   return (
-    <section className="bg-background py-20 md:py-28 relative overflow-hidden">
+    <section className="bg-background py-20 md:py-28 relative overflow-hidden" data-animate="fade-up">
       {/* Subtle dot grid */}
       <div className="absolute inset-0 dot-grid-light pointer-events-none" />
 

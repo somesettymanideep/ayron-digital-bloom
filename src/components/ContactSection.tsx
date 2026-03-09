@@ -37,7 +37,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="relative">
+    <section id="contact" className="relative" data-animate="fade-up">
       {/* Header */}
       <div className="bg-background py-16 px-6 md:px-12 text-center">
         <div className="max-w-7xl mx-auto">

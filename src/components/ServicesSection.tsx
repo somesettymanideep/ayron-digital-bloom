@@ -58,7 +58,7 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="bg-background py-24 relative overflow-hidden">
+    <section id="services" className="bg-background py-24 relative overflow-hidden" data-animate="fade-up">
       {/* Subtle background accent */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[150px]" />
 

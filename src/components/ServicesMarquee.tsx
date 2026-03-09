@@ -41,7 +41,7 @@ const MarqueeRow = ({ reverse = false }: { reverse?: boolean }) => (
 
 const ServicesMarquee = () => {
   return (
-    <section className="bg-background py-10 border-y border-border/20 overflow-hidden">
+    <section className="bg-background py-10 border-y border-border/20 overflow-hidden" data-animate="fade-in">
       <MarqueeRow />
       <MarqueeRow reverse />
     </section>

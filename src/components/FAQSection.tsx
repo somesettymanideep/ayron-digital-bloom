@@ -21,7 +21,7 @@ const FAQSection = () => {
   const filtered = activeCat === "All" ? faqs : faqs.filter((f) => f.cat === activeCat);
 
   return (
-    <section className="bg-secondary dot-grid-light relative" style={{ borderTop: "4px solid hsl(20,89%,56%)" }}>
+    <section className="bg-secondary dot-grid-light relative" style={{ borderTop: "4px solid hsl(20,89%,56%)" }} data-animate="fade-up">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
         <div className="flex flex-col lg:flex-row gap-12">
           {/* LEFT - Sticky */}

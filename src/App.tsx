@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import SocialSidebar from "./components/SocialSidebar";
 import ScrollToTopOnNav from "./components/ScrollToTopOnNav";
+import useScrollAnimations from "./hooks/useScrollAnimations";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -19,26 +20,35 @@ import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
+const AppContent = () => {
+  useScrollAnimations();
+  return (
+    <>
+      <Navbar />
+      <ScrollToTop />
+      <SocialSidebar />
+      <ScrollToTopOnNav />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <HashRouter>
-        <Navbar />
-        <ScrollToTop />
-        <SocialSidebar />
-        <ScrollToTopOnNav />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/services/:slug" element={<ServiceDetail />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppContent />
       </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>

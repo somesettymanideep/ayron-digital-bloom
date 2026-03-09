@@ -6,7 +6,7 @@ import targetIcon from "@/assets/arrow background.png";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen bg-background grid-bg noise-overlay relative overflow-hidden pt-16">
+    <section className="min-h-screen bg-background grid-bg noise-overlay relative overflow-hidden pt-16" data-animate="fade-in">
       {/* Orange blobs */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/[0.06] rounded-full blur-[120px]" />
       <div className="absolute bottom-0 right-[40%] w-80 h-80 bg-primary/[0.06] rounded-full blur-[100px]" />

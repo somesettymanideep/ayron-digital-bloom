@@ -95,7 +95,7 @@ const ServicesGrid = ({ activeFilter, searchQuery }: ServicesGridProps) => {
   });
 
   return (
-    <section className="py-20 px-6 md:px-[5%]" style={{ background: "#ffffff" }}>
+    <section className="py-20 px-6 md:px-[5%]" style={{ background: "#ffffff" }} data-animate="fade-up">
       <div className="max-w-7xl mx-auto">
         {/* Section label */}
         <div className="flex items-center gap-4 mb-10">

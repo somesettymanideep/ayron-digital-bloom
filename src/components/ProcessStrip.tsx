@@ -11,7 +11,7 @@ const steps = [
 
 const ProcessStrip = () => {
   return (
-    <section className="w-full py-[70px] px-6 md:px-12 relative overflow-hidden" style={{ background: "#f47c41" }}>
+    <section className="w-full py-[70px] px-6 md:px-12 relative overflow-hidden" style={{ background: "#f47c41" }} data-animate="slide-up">
       {/* Heading */}
       <div className="text-center mb-14">
         <motion.h2

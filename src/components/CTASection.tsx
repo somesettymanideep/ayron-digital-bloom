@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const servicePills = ["SEO", "Branding", "Email", "Web Design", "Influencer", "Ecommerce", "Product Shoot"];
 
 const CTASection = () => (
-  <section className="bg-background relative overflow-hidden grid-bg noise-overlay" style={{ minHeight: "70vh" }}>
+  <section className="bg-background relative overflow-hidden grid-bg noise-overlay" style={{ minHeight: "70vh" }} data-animate="zoom-in">
     {/* Ghost text */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[200px] md:text-[350px] text-primary/[0.05] select-none pointer-events-none whitespace-nowrap">
       GROW
