@@ -22,7 +22,7 @@ const About = () => (
       canonical="/about"
     />
     {/* Hero */}
-    <section className="bg-background grid-bg noise-overlay relative overflow-hidden py-24 md:py-32">
+    <section className="bg-background grid-bg noise-overlay relative overflow-hidden py-24 md:py-32" data-animate="fade-in">
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/[0.06] rounded-full blur-[120px]" />
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 text-center">
         <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">About Us</span>
