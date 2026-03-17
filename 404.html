@@ -3,70 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Page Not Found | Ayron Digital Solutions</title>
-
-<style>
-body{
-font-family: Arial, sans-serif;
-background:#f7f7f7;
-margin:0;
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
-text-align:center;
-}
-
-.container{
-max-width:500px;
-}
-
-h1{
-font-size:80px;
-margin:0;
-color:#333;
-}
-
-h2{
-margin:10px 0;
-color:#555;
-}
-
-p{
-color:#777;
-}
-
-a{
-display:inline-block;
-margin-top:20px;
-padding:12px 25px;
-background:#007bff;
-color:white;
-text-decoration:none;
-border-radius:6px;
-}
-
-a:hover{
-background:#0056b3;
-}
-</style>
-
-</head>
-
-<body>
-
-<div class="container">
-<h1>404</h1>
-<h2>Page Not Found</h2>
-<p>The page you are looking for does not exist or has been moved.</p>
-
-<a href="/">Go Back Home</a>
-</div>
+<title>Redirecting… | Ayron Digital Solutions</title>
 <script>
-sessionStorage.redirect = location.pathname;
-location.replace("/");
+  // Single-page app redirect for static hosts (GitHub Pages, Netlify fallback, etc.)
+  // Stores the attempted path and redirects to index so the SPA router can handle it.
+  var pathSegmentsToKeep = 0;
+  var l = window.location;
+  l.replace(
+    l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+    l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+    l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+    (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+    l.hash
+  );
 </script>
-
+</head>
+<body>
 </body>
 </html>
-
