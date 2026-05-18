@@ -19,7 +19,7 @@ const HeroSection = () => {
           <div className="flex-1 flex flex-col justify-center py-12 lg:py-0">
             <div className="mb-8">
               <motion.h1
-                className="font-display text-[60px] sm:text-[80px] lg:text-[100px] leading-[0.95] tracking-tight"
+                className="font-display text-[52px] sm:text-[72px] lg:text-[72px] xl:text-[88px] 2xl:text-[100px] leading-[0.95] tracking-tight break-words"
                 initial="hidden"
                 animate="visible"
                 variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
@@ -44,7 +44,7 @@ const HeroSection = () => {
                 </motion.span>
               </motion.h1>
               <motion.p
-                className="font-serif-accent italic text-primary text-2xl sm:text-[32px] mt-2"
+                className="font-serif-accent italic text-primary text-2xl sm:text-[28px] xl:text-[32px] mt-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
