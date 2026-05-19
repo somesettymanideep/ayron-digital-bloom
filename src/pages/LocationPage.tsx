@@ -4,7 +4,7 @@ import { Check, ArrowRight, MapPin, Star } from "lucide-react";
 import SEO from "@/components/SEO";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import { services } from "@/data/servicesData";
+import servicesData from "@/data/servicesData";
 
 export interface LocationPageProps {
   city: "Vijayawada" | "Guntur";
