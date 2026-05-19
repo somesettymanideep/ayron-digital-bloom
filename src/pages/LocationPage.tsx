@@ -122,7 +122,7 @@ const LocationPage = ({ city, neighborhoods, intro }: LocationPageProps) => {
             <p className="font-body text-muted-foreground mt-4">Eight specialised services, one strategic team. Built to scale {city} businesses from local favourite to category leader.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border/40">
-            {services.map((s) => (
+            {Object.values(servicesData).map((s) => (
               <Link
                 key={s.slug}
                 to={`/services/${s.slug}`}
