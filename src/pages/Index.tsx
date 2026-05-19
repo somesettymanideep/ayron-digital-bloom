@@ -14,8 +14,8 @@ const Index = () => {
   return (
     <main>
       <SEO
-        title="Best Digital Marketing Agency in Vijayawada & Guntur"
-        description="Ayron Digital Solutions is the best digital marketing agency in Vijayawada and Guntur. From SEO to Influencer Marketing, we turn your vision into measurable growth. 200+ brands scaled."
+        title="Best Digital Marketing Agency in Vijayawada"
+        description="Ayron Digital Solutions is the best digital marketing agency in Vijayawada offering SEO, social media, branding & influencer marketing. 200+ brands scaled."
         canonical="/"
         jsonLd={{
           "@context": "https://schema.org",
