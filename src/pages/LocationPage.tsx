@@ -129,7 +129,7 @@ const LocationPage = ({ city, neighborhoods, intro }: LocationPageProps) => {
                 className="group bg-background p-8 hover:bg-primary transition-colors block"
               >
                 <h3 className="font-display text-2xl text-foreground group-hover:text-primary-foreground transition-colors">{s.title}</h3>
-                <p className="font-body text-sm text-muted-foreground group-hover:text-primary-foreground/90 mt-3 line-clamp-3">{s.shortDescription}</p>
+                <p className="font-body text-sm text-muted-foreground group-hover:text-primary-foreground/90 mt-3 line-clamp-3">{s.desc}</p>
                 <span className="font-body text-xs text-primary group-hover:text-primary-foreground mt-6 inline-flex items-center gap-1">
                   Learn more <ArrowRight size={12} />
                 </span>
