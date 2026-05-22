@@ -19,17 +19,21 @@ const ContactSection = () => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.email) {
       toast({ title: "Required fields", description: "Please fill in your name and email.", variant: "destructive" });
       return;
     }
-    addSubmission({ ...formData, services: selectedServices, budget: selectedBudget });
-    toast({ title: "Enquiry sent!", description: "We'll get back to you within 24 hours." });
-    setFormData({ fullName: "", email: "", phone: "", company: "", message: "" });
-    setSelectedServices([]);
-    setSelectedBudget("");
+    try {
+      await addSubmission({ ...formData, services: selectedServices, budget: selectedBudget });
+      toast({ title: "Enquiry sent!", description: "We'll get back to you within 24 hours." });
+      setFormData({ fullName: "", email: "", phone: "", company: "", message: "" });
+      setSelectedServices([]);
+      setSelectedBudget("");
+    } catch (err: any) {
+      toast({ title: "Something went wrong", description: err?.message ?? "Please try again.", variant: "destructive" });
+    }
   };
 
   const toggleService = (s: string) => {
