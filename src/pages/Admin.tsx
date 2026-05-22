@@ -1,25 +1,67 @@
 import { useState, useEffect } from "react";
-import { Trash2, Mail, Phone, Building2, IndianRupee, CalendarDays, ArrowLeft, LogOut, Lock } from "lucide-react";
+import { Trash2, Mail, Phone, Building2, IndianRupee, CalendarDays, ArrowLeft, LogOut, Lock, Download } from "lucide-react";
 import { Link } from "react-router-dom";
-import { getSubmissions, deleteSubmission, type ContactSubmission } from "@/lib/submissions";
+import { supabase } from "@/integrations/supabase/client";
+import {
+  getSubmissions,
+  deleteSubmission,
+  exportSubmissionsCSV,
+  type ContactSubmission,
+} from "@/lib/submissions";
 import { toast } from "@/hooks/use-toast";
 
-const ADMIN_EMAIL = "ads@gmail.com";
-const ADMIN_PASS = "Ads@1234";
-const SESSION_KEY = "admin_authenticated";
+const ADMIN_USERNAME = "ADS";
+const ADMIN_EMAIL = "ads@ayrondigital.in";
+const ADMIN_PASS = "ADS@2026";
+
+// Ensures the admin auth user exists, then signs in.
+const ensureAdminSignedIn = async () => {
+  const { error } = await supabase.auth.signInWithPassword({
+    email: ADMIN_EMAIL,
+    password: ADMIN_PASS,
+  });
+  if (!error) return { ok: true as const };
+
+  // If invalid credentials, try to create the admin user (first-time setup), then sign in.
+  if (error.message?.toLowerCase().includes("invalid")) {
+    const { error: signUpErr } = await supabase.auth.signUp({
+      email: ADMIN_EMAIL,
+      password: ADMIN_PASS,
+      options: { emailRedirectTo: `${window.location.origin}/admin` },
+    });
+    if (signUpErr && !signUpErr.message?.toLowerCase().includes("registered")) {
+      return { ok: false as const, message: signUpErr.message };
+    }
+    const { error: retryErr } = await supabase.auth.signInWithPassword({
+      email: ADMIN_EMAIL,
+      password: ADMIN_PASS,
+    });
+    if (retryErr) return { ok: false as const, message: retryErr.message };
+    return { ok: true as const };
+  }
+  return { ok: false as const, message: error.message };
+};
 
 const LoginGate = ({ onLogin }: { onLogin: () => void }) => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim() === ADMIN_EMAIL && password === ADMIN_PASS) {
-      sessionStorage.setItem(SESSION_KEY, "true");
+    setError("");
+    if (username.trim() !== ADMIN_USERNAME || password !== ADMIN_PASS) {
+      setError("Invalid username or password");
+      return;
+    }
+    setLoading(true);
+    const result = await ensureAdminSignedIn();
+    setLoading(false);
+    if (result.ok) {
       onLogin();
     } else {
-      setError("Invalid email or password");
+      setError(result.message || "Could not sign in");
     }
   };
 
@@ -35,13 +77,14 @@ const LoginGate = ({ onLogin }: { onLogin: () => void }) => {
         </div>
         {error && <p className="font-body text-sm text-destructive text-center">{error}</p>}
         <div>
-          <label className="font-body text-sm text-foreground font-medium block mb-1">Email</label>
+          <label className="font-body text-sm text-foreground font-medium block mb-1">Username</label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="w-full border border-border bg-background text-foreground font-body text-sm px-4 py-3 outline-none focus:border-primary transition-colors"
-            placeholder="admin@example.com"
+            placeholder="ADS"
+            autoComplete="username"
             required
           />
         </div>
@@ -53,11 +96,16 @@ const LoginGate = ({ onLogin }: { onLogin: () => void }) => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border border-border bg-background text-foreground font-body text-sm px-4 py-3 outline-none focus:border-primary transition-colors"
             placeholder="••••••••"
+            autoComplete="current-password"
             required
           />
         </div>
-        <button type="submit" className="w-full bg-primary text-primary-foreground font-display text-lg py-3 hover:bg-primary/90 transition-colors">
-          Sign In
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-primary text-primary-foreground font-display text-lg py-3 hover:bg-primary/90 transition-colors disabled:opacity-60"
+        >
+          {loading ? "Signing in…" : "Sign In"}
         </button>
       </form>
     </main>
@@ -65,23 +113,65 @@ const LoginGate = ({ onLogin }: { onLogin: () => void }) => {
 };
 
 const Admin = () => {
-  const [authed, setAuthed] = useState(() => sessionStorage.getItem(SESSION_KEY) === "true");
+  const [authed, setAuthed] = useState(false);
+  const [checking, setChecking] = useState(true);
   const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
+  const [loadingList, setLoadingList] = useState(false);
 
   useEffect(() => {
-    if (authed) setSubmissions(getSubmissions());
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      setAuthed(!!session);
+    });
+    supabase.auth.getSession().then(({ data }) => {
+      setAuthed(!!data.session);
+      setChecking(false);
+    });
+    return () => sub.subscription.unsubscribe();
+  }, []);
+
+  const loadSubmissions = async () => {
+    setLoadingList(true);
+    try {
+      const data = await getSubmissions();
+      setSubmissions(data);
+    } catch (err: any) {
+      toast({ title: "Failed to load", description: err?.message ?? "Try again.", variant: "destructive" });
+    } finally {
+      setLoadingList(false);
+    }
+  };
+
+  useEffect(() => {
+    if (authed) loadSubmissions();
   }, [authed]);
 
-  const handleDelete = (id: string) => {
-    deleteSubmission(id);
-    setSubmissions(getSubmissions());
-    toast({ title: "Deleted", description: "Submission removed successfully." });
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteSubmission(id);
+      setSubmissions((prev) => prev.filter((s) => s.id !== id));
+      toast({ title: "Deleted", description: "Submission removed successfully." });
+    } catch (err: any) {
+      toast({ title: "Delete failed", description: err?.message ?? "Try again.", variant: "destructive" });
+    }
   };
 
-  const handleLogout = () => {
-    sessionStorage.removeItem(SESSION_KEY);
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setAuthed(false);
+    setSubmissions([]);
   };
+
+  const handleExport = () => {
+    if (submissions.length === 0) {
+      toast({ title: "Nothing to export", description: "No submissions available." });
+      return;
+    }
+    exportSubmissionsCSV(submissions);
+  };
+
+  if (checking) {
+    return <main className="min-h-screen flex items-center justify-center bg-background"><p className="font-body text-muted-foreground">Loading…</p></main>;
+  }
 
   if (!authed) return <LoginGate onLogin={() => setAuthed(true)} />;
 
@@ -89,7 +179,7 @@ const Admin = () => {
     <main className="pt-20 pb-16 min-h-screen bg-background">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-8 gap-4 flex-wrap">
           <div>
             <Link to="/" className="inline-flex items-center gap-1 text-primary text-sm font-body mb-2 hover:underline">
               <ArrowLeft size={14} /> Back to site
@@ -99,15 +189,25 @@ const Admin = () => {
               {submissions.length} submission{submissions.length !== 1 ? "s" : ""}
             </p>
           </div>
-          <button
-            onClick={handleLogout}
-            className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-destructive transition-colors px-3 py-2 border border-border"
-          >
-            <LogOut size={15} /> Logout
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleExport}
+              className="inline-flex items-center gap-2 font-body text-sm bg-primary text-primary-foreground px-4 py-2 hover:bg-primary/90 transition-colors"
+            >
+              <Download size={15} /> Export CSV
+            </button>
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-destructive transition-colors px-3 py-2 border border-border"
+            >
+              <LogOut size={15} /> Logout
+            </button>
+          </div>
         </div>
 
-        {submissions.length === 0 ? (
+        {loadingList ? (
+          <p className="font-body text-muted-foreground text-center py-12">Loading submissions…</p>
+        ) : submissions.length === 0 ? (
           <div className="text-center py-24">
             <p className="font-body text-muted-foreground text-lg">No submissions yet.</p>
             <p className="font-body text-muted-foreground text-sm mt-1">
