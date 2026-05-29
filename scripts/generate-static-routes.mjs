@@ -70,6 +70,11 @@ const routes = [
     priority: "0.7",
   },
   {
+    path: "/services/product-shoot-vijayawada",
+    changefreq: "monthly",
+    priority: "0.85",
+  },
+  {
     path: "/vijayawada",
     changefreq: "monthly",
     priority: "0.9",

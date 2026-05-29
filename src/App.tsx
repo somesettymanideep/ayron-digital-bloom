@@ -19,6 +19,7 @@ import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import Vijayawada from "./pages/Vijayawada";
 import Guntur from "./pages/Guntur";
+import ProductShootVijayawada from "./pages/ProductShootVijayawada";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,8 @@ const AppContent = () => {
         <Route path="/vijayawada/" element={<Vijayawada />} />
         <Route path="/guntur" element={<Guntur />} />
         <Route path="/guntur/" element={<Guntur />} />
+        <Route path="/services/product-shoot-vijayawada" element={<ProductShootVijayawada />} />
+        <Route path="/services/product-shoot-vijayawada/" element={<ProductShootVijayawada />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
