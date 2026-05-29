@@ -76,11 +76,19 @@ const Footer = () => (
                 Kongara Sai Building, Sai Nagar,<br />Kala Nagar, Acharya Ranga Nagar,<br />Vijayawada – 520010
               </span>
             </li>
-            <li className="flex items-center gap-2">
-              <Phone size={16} className="text-primary shrink-0" strokeWidth={1.5} />
-              <a href="tel:+919550860545" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
-                +91 9550860545
-              </a>
+            <li className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <Phone size={16} className="text-primary shrink-0" strokeWidth={1.5} />
+                <a href="tel:+919550860545" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
+                  +91 9550860545
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone size={16} className="text-primary shrink-0 opacity-0" strokeWidth={1.5} />
+                <a href="tel:+917386909994" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
+                  +91 73869 09994
+                </a>
+              </div>
             </li>
             <li className="flex items-center gap-2">
               <Mail size={16} className="text-primary shrink-0" strokeWidth={1.5} />
