@@ -39,7 +39,9 @@ const AppContent = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/vijayawada" element={<Vijayawada />} />
+        <Route path="/vijayawada/" element={<Vijayawada />} />
         <Route path="/guntur" element={<Guntur />} />
+        <Route path="/guntur/" element={<Guntur />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
