@@ -9,6 +9,7 @@ const Vijayawada = () => (
       "Labbipet", "Bhavanipuram", "Gunadala", "Moghalrajpuram", "Ramavarappadu",
       "Kanuru", "Tadepalli",
     ]}
+    noTrailingSlash
   />
 );
 

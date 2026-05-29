@@ -9,6 +9,7 @@ const Guntur = () => (
       "Sankar Vilas", "Nallapadu", "Gorantla", "Etukuru", "Chandramouli Nagar",
       "Amaravati Road", "Mangalagiri",
     ]}
+    noTrailingSlash
   />
 );
 

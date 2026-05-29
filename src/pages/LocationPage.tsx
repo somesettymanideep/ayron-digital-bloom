@@ -10,9 +10,10 @@ export interface LocationPageProps {
   city: "Vijayawada" | "Guntur";
   neighborhoods: string[];
   intro: string;
+  noTrailingSlash?: boolean;
 }
 
-const LocationPage = ({ city, neighborhoods, intro }: LocationPageProps) => {
+const LocationPage = ({ city, neighborhoods, intro, noTrailingSlash }: LocationPageProps) => {
   const slug = city.toLowerCase();
   const title = `Digital Marketing Agency in ${city}`;
   const description = `Ayron Digital Solutions is a leading digital marketing agency in ${city} offering SEO, social media, branding, web design & influencer marketing. Grow your ${city} business with data-driven campaigns.`;
@@ -28,12 +29,13 @@ const LocationPage = ({ city, neighborhoods, intro }: LocationPageProps) => {
         title={title}
         description={description}
         canonical={`/${slug}`}
+        noTrailingSlash={noTrailingSlash}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: `Ayron Digital Solutions — ${city}`,
           description,
-          url: `https://ayrondigitalsolutions.com/${slug}`,
+          url: `https://ayrondigitalsolutions.com/${slug}${noTrailingSlash ? "" : "/"}`,
           areaServed: { "@type": "City", name: city },
           address: { "@type": "PostalAddress", addressLocality: city, addressRegion: "Andhra Pradesh", addressCountry: "IN" },
           aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "100" },

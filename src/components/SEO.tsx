@@ -7,15 +7,27 @@ interface SEOProps {
   ogType?: string;
   ogImage?: string;
   jsonLd?: Record<string, unknown>;
+  keywords?: string;
+  noTrailingSlash?: boolean;
 }
 
 const SITE_NAME = "Ayron Digital Solutions";
 const DEFAULT_OG_IMAGE = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3dc047b7-4265-484f-98cd-26d83b8b16d4/id-preview-e16652c9--d4c95d0d-ed6e-4bf0-b6ce-4cececbc864b.lovable.app-1771390921593.png";
 const BASE_URL = "https://ayrondigitalsolutions.com";
 
-const normalizeCanonicalPath = (path: string) => {
-  if (path === "/") return "/";
+const normalizeCanonicalPath = (path: string, noTrailingSlash?: boolean) => {
+  if (path === "/" || noTrailingSlash) return path;
   return path.endsWith("/") ? path : `${path}/`;
+};
+
+const buildCanonicalUrl = (canonical: string | undefined, noTrailingSlash?: boolean) => {
+  if (!canonical) return undefined;
+  // If it's already a full URL, use it as-is
+  if (canonical.startsWith("http")) {
+    return canonical;
+  }
+  // Otherwise build it from the path
+  return `${BASE_URL}${normalizeCanonicalPath(canonical, noTrailingSlash)}`;
 };
 
 const setMeta = (attr: string, key: string, content: string) => {
@@ -45,9 +57,11 @@ const SEO = ({
   ogType = "website",
   ogImage = DEFAULT_OG_IMAGE,
   jsonLd,
+  keywords,
+  noTrailingSlash,
 }: SEOProps) => {
   const fullTitle = `${title} — ${SITE_NAME}`;
-  const canonicalUrl = canonical ? `${BASE_URL}${normalizeCanonicalPath(canonical)}` : undefined;
+  const canonicalUrl = buildCanonicalUrl(canonical, noTrailingSlash);
 
   // Set title in render for pre-rendering
   if (typeof document !== "undefined") {
@@ -60,6 +74,9 @@ const SEO = ({
 
     // Standard meta
     setMeta("name", "description", description);
+    if (keywords) {
+      setMeta("name", "keywords", keywords);
+    }
     setMeta("name", "author", SITE_NAME);
     setMeta("name", "robots", "index, follow");
 
@@ -98,7 +115,7 @@ const SEO = ({
       // Reset title on unmount
       document.title = `${SITE_NAME} — We Grow Brands That Matter`;
     };
-  }, [fullTitle, description, ogType, ogImage, canonicalUrl, jsonLd]);
+  }, [fullTitle, description, ogType, ogImage, canonicalUrl, jsonLd, keywords]);
 
   return null;
 };

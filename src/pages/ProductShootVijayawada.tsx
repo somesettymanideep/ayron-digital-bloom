@@ -17,7 +17,7 @@ const ProductShootVijayawada = () => {
         title="Best Product Shoot Services in Vijayawada | Professional Photography"
         description="Capture stunning product visuals with creative photography services for brands, eCommerce stores, and businesses in Vijayawada."
         keywords="best product shoot services in vijayawada, best product shoot photography in vijayawada"
-        canonical="/services/product-shoot-vijayawada"
+        canonical="https://ayrondigitalsolutions.com/services/product-shoot-vijayawada/"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Service",
