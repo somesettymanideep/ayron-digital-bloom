@@ -98,6 +98,7 @@ const routes = [
     keywords: "best digital marketing agency in vijayawada, digital marketing agency in vijayawada, digital marketing company vijayawada, SEO agency vijayawada, social media marketing vijayawada, branding agency vijayawada, Ayron Digital Solutions",
     changefreq: "monthly",
     priority: "0.9",
+    noTrailingSlash: true,
   },
   {
     path: "/guntur",
@@ -106,6 +107,7 @@ const routes = [
     keywords: "best digital marketing agency in guntur, digital marketing agency in guntur, digital marketing company guntur, SEO agency guntur, social media marketing guntur, branding agency guntur, Ayron Digital Solutions",
     changefreq: "monthly",
     priority: "0.9",
+    noTrailingSlash: true,
   },
 ];
 
@@ -116,7 +118,10 @@ if (!existsSync(indexFile)) {
 const escapeHtml = (value) =>
   value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;");
 
-const withTrailingSlash = (path) => (path === "/" ? "/" : `${path}/`);
+const withTrailingSlash = (path, noTrailingSlash) => {
+  if (noTrailingSlash || path === "/") return path;
+  return `${path}/`;
+};
 
 const setMeta = (html, attr, key, content) =>
   html.replace(new RegExp(`<meta ${attr}="${key}" content="[^"]*" ?/?>`, "i"), `<meta ${attr}="${key}" content="${escapeHtml(content)}" />`);
@@ -124,7 +129,7 @@ const setMeta = (html, attr, key, content) =>
 const baseHtml = readFileSync(indexFile, "utf8");
 
 for (const route of routes) {
-  const canonicalUrl = `${siteUrl}${withTrailingSlash(route.path)}`;
+  const canonicalUrl = `${siteUrl}${withTrailingSlash(route.path, route.noTrailingSlash)}`;
   const outputFile = resolve(distDir, route.path.replace(/^\//, ""), "index.html");
   let html = baseHtml
     .replace(/<title>.*?<\/title>/s, `<title>${escapeHtml(route.title)}</title>`)
@@ -154,7 +159,7 @@ const sitemap = [
   `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
   ...sitemapEntries.map((entry) => [
     `  <url>`,
-    `    <loc>${siteUrl}${withTrailingSlash(entry.path)}</loc>`,
+    `    <loc>${siteUrl}${withTrailingSlash(entry.path, entry.noTrailingSlash)}</loc>`,
     `    <changefreq>${entry.changefreq}</changefreq>`,
     `    <priority>${entry.priority}</priority>`,
     `  </url>`,
