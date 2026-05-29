@@ -95,6 +95,7 @@ const routes = [
     path: "/vijayawada",
     title: `Digital Marketing Agency in Vijayawada | ${siteName}`,
     description: "Ayron Digital Solutions is a digital marketing agency in Vijayawada offering SEO, social media, branding, web design and influencer marketing.",
+    keywords: "best digital marketing agency in vijayawada, digital marketing agency in vijayawada, digital marketing company vijayawada, SEO agency vijayawada, social media marketing vijayawada, branding agency vijayawada, Ayron Digital Solutions",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -102,6 +103,7 @@ const routes = [
     path: "/guntur",
     title: `Digital Marketing Agency in Guntur | ${siteName}`,
     description: "Ayron Digital Solutions is a digital marketing agency in Guntur offering SEO, social media, branding, website design and performance marketing.",
+    keywords: "best digital marketing agency in guntur, digital marketing agency in guntur, digital marketing company guntur, SEO agency guntur, social media marketing guntur, branding agency guntur, Ayron Digital Solutions",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -129,6 +131,9 @@ for (const route of routes) {
     .replace(/<link rel="canonical" href="[^"]*" ?\/?>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
 
   html = setMeta(html, "name", "description", route.description);
+  if (route.keywords) {
+    html = setMeta(html, "name", "keywords", route.keywords);
+  }
   html = setMeta(html, "property", "og:title", route.title);
   html = setMeta(html, "property", "og:description", route.description);
   html = setMeta(html, "property", "og:url", canonicalUrl);
