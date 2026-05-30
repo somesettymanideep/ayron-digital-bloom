@@ -18,14 +18,14 @@ import manikantaImg from "@/assets/team/manikanta.jpg";
 const teamMembers = [
   { name: "Lokesh Vaddineni", role: "Sr. Social Media Manager", bio: "Drives social strategy and engagement for top brands across all platforms.", image: lokeshImg },
   { name: "Mouli Reddy", role: "Sr. Social Media Manager", bio: "Builds high-impact social campaigns that amplify brand reach and loyalty.", image: mouliImg },
-  { name: "Sk. Salman", role: "Social Media Manager", bio: "Creates and manages engaging social content that resonates with target audiences.", image: salmanImg },
+  { name: "SitaRam", role: "Sr. Performance Marketing Specialist", bio: "Creates and manages engaging social content that resonates with target audiences.", image: salmanImg },
   { name: "Ch. Kiran Kumar", role: "Social Media Manager", bio: "Executes data-driven social strategies to grow brand presence and engagement.", image: kiranImg },
   { name: "S. Manideep", role: "Sr. Developer", bio: "Builds scalable, high-performance web applications with modern tech stacks.", image: manideepImg },
   { name: "R. Sai Sandeep", role: "Marketing Head", bio: "Leads marketing strategy and execution, driving growth across all channels.", image: sandeepImg },
   { name: "K. Naveen Babu", role: "Sr. Graphic Designer", bio: "Crafts stunning visuals and brand assets that captivate and convert.", image: naveenImg },
   { name: "N. Naresh", role: "Video Editor", bio: "Transforms raw footage into polished, engaging video content for brands.", image: nareshImg },
   { name: "A. Prabhat Sai", role: "Video Editor", bio: "Edits compelling video stories that drive views and audience engagement.", image: prabhatImg },
-  { name: "Sai Kumar", role: "Video Content Creator", bio: "Conceptualizes and produces creative video content for digital platforms.", image: saikumarImg },
+ 
   { name: "R. Manikanta", role: "Sr. Video Editor", bio: "Expert video editor delivering cinematic-quality content for brand campaigns.", image: manikantaImg },
 ];
 
