@@ -66,6 +66,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ayrondigitalsolutions.com/blog/shopify-vs-wordpress/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://ayrondigitalsolutions.com/contact/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
