@@ -15,6 +15,7 @@ import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import Vijayawada from "./pages/Vijayawada";
@@ -41,6 +42,8 @@ const AppContent = () => {
         <Route path="/services/:slug/" element={<ServiceDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />
+        <Route path="/blog/:slug/" element={<BlogDetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/contact/" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />

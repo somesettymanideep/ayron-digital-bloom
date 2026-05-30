@@ -2,37 +2,18 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import blogSeo from "@/assets/blog/blog-seo.jpg";
-import blogEmail from "@/assets/blog/blog-email.jpg";
-import blogInfluencer from "@/assets/blog/blog-influencer.jpg";
+import blogShopifyVsWordpress from "@/assets/blog/blog-shopify-vs-wordpress.jpg";
 
 const allBlogs = [
   {
-    category: "SEO",
-    title: "10 SEO Mistakes Killing Your Google Rankings in 2026",
-    excerpt: "Most brands unknowingly sabotage their search visibility. Here are the critical errors we see repeatedly — and how to fix them fast.",
-    date: "Feb 2026",
-    author: "Team Ayron",
-    readTime: "5 min read",
-    image: blogSeo,
-  },
-  {
-    category: "Email",
-    title: "Why Every Brand Needs Email Marketing in 2026",
-    excerpt: "Email marketing still delivers the highest ROI. Here's why you can't afford to ignore it.",
-    date: "Jan 2026",
-    author: "Team Ayron",
-    readTime: "4 min read",
-    image: blogEmail,
-  },
-  {
-    category: "Influencer",
-    title: "Instagram Influencer Marketing: How to Pick the Right Creator",
-    excerpt: "Choosing the wrong influencer wastes budget. Learn our framework for creator selection.",
-    date: "Jan 2026",
+    slug: "shopify-vs-wordpress",
+    category: "Ecommerce",
+    title: "Shopify vs. WordPress: Which Ecommerce Platform Fits Your Business?",
+    excerpt: "In today's hyper-competitive digital marketplace, launching an online store is no longer just about having a great product; it is about choosing the right foundation for your business to grow.",
+    date: "May 2026",
     author: "Team Ayron",
     readTime: "6 min read",
-    image: blogInfluencer,
+    image: blogShopifyVsWordpress,
   },
 ];
 
@@ -59,49 +40,51 @@ const Blog = () => (
     {/* Blog Grid */}
     <section className="bg-secondary py-16 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex justify-center">
           {allBlogs.map((blog, i) => (
-            <motion.article
-              key={blog.title}
-              className="group cursor-pointer relative bg-secondary border border-primary/10 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(244,124,65,0.16)] transition-all duration-400 hover:-translate-y-1.5"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
-            >
-              {/* Image placeholder */}
-              <div className="bg-background relative overflow-hidden h-48">
-                <img src={blog.image} alt={blog.title} className="absolute inset-0 w-full h-full object-cover" />
-                <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-xs px-3 py-1">
-                  {blog.category}
-                </span>
-              </div>
-
-              <div className="p-6">
-                <p className="font-body text-xs text-muted-foreground mb-2">{blog.date}</p>
-                <h3 className="font-display text-2xl text-secondary-foreground group-hover:text-primary transition-colors mb-3">
-                  {blog.title}
-                </h3>
-                <p className="font-body font-light text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
-                  {blog.excerpt}
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 bg-primary flex items-center justify-center text-primary-foreground text-[10px] font-display">
-                      A
-                    </div>
-                    <span className="font-body text-xs text-muted-foreground">{blog.author}</span>
-                    <span className="font-body text-xs text-muted-foreground">· {blog.readTime}</span>
-                  </div>
-                  <span className="text-primary font-body text-sm group-hover:translate-x-1 transition-transform inline-block">
-                    Read More →
+            <Link to={`/blog/${blog.slug}`} key={blog.title} className="block w-full max-w-3xl">
+              <motion.article
+                className="group cursor-pointer relative bg-secondary border border-primary/10 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(244,124,65,0.16)] transition-all duration-400 hover:-translate-y-1.5 w-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+              >
+                {/* Image placeholder */}
+                <div className="bg-background relative overflow-hidden h-64 sm:h-96">
+                  <img src={blog.image} alt={blog.title} className="absolute inset-0 w-full h-full object-cover animate-image-fade" />
+                  <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-xs px-3 py-1 font-medium tracking-wide">
+                    {blog.category}
                   </span>
                 </div>
-              </div>
 
-              {/* Hover underbar */}
-              <div className="absolute bottom-0 left-0 w-0 h-[3px] bg-primary group-hover:w-full transition-all duration-500" />
-            </motion.article>
+                <div className="p-8 sm:p-10">
+                  <p className="font-body text-xs text-muted-foreground mb-3 font-medium tracking-wider">{blog.date}</p>
+                  <h3 className="font-display text-3xl sm:text-4xl text-secondary-foreground group-hover:text-primary transition-colors duration-300 mb-4 leading-tight">
+                    {blog.title}
+                  </h3>
+                  <p className="font-body font-light text-muted-foreground text-base leading-relaxed mb-6">
+                    {blog.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between border-t border-primary/5 pt-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-display shadow-sm font-semibold">
+                        A
+                      </div>
+                      <span className="font-body text-sm text-muted-foreground font-medium">{blog.author}</span>
+                      <span className="text-muted-foreground/40">·</span>
+                      <span className="font-body text-sm text-muted-foreground">{blog.readTime}</span>
+                    </div>
+                    <span className="text-primary font-body text-sm font-semibold group-hover:translate-x-2 transition-transform duration-300 inline-flex items-center gap-1">
+                      Read More <span className="text-lg">→</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Hover underbar */}
+                <div className="absolute bottom-0 left-0 w-0 h-[4px] bg-primary group-hover:w-full transition-all duration-500" />
+              </motion.article>
+            </Link>
           ))}
         </div>
       </div>
