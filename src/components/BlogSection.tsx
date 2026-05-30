@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import blogShopifyVsWordpress from "@/assets/blog/blog-shopify-vs-wordpress.jpg";
+import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
 
 const blogs = [
   {

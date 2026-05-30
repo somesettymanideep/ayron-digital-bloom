@@ -3,7 +3,7 @@ import { motion, useScroll } from "framer-motion";
 import { ArrowLeft, Clock, Calendar, Tag, CheckCircle2, ChevronRight, Phone, MessageSquare, MapPin } from "lucide-react";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
-import blogShopifyVsWordpress from "@/assets/blog/blog-shopify-vs-wordpress.jpg";
+import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
 
 const BlogDetail = () => {
   const { slug } = useParams<{ slug: string }>();

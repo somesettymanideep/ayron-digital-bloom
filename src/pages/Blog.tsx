@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import blogShopifyVsWordpress from "@/assets/blog/blog-shopify-vs-wordpress.jpg";
+import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
 
 const allBlogs = [
   {
