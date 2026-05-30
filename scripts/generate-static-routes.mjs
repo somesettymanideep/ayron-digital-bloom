@@ -78,6 +78,27 @@ const routes = [
     priority: "0.8",
   },
   {
+    path: "/services/podcast-production",
+    title: "Podcast Production Service | Ayron Digital Solutions",
+    description: "End-to-end podcast production, sound design, scripting, editing and distribution services to build authority and connect with your audience.",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    path: "/services/performance-marketing",
+    title: "Performance Marketing Service | Ayron Digital Solutions",
+    description: "High-ROI paid performance marketing campaigns on Google Ads, Meta Ads and social platforms designed to generate leads and scale sales.",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    path: "/services/qcommerce",
+    title: "Quick Commerce Management (Q-Commerce) | Ayron Digital Solutions",
+    description: "Optimize and scale your brand sales on Zepto, Blinkit, Instamart and BigBasket with our expert q-commerce catalog, ads and stock management.",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
     path: "/services/product-shoot-vijayawada",
     title: "Best Product Shoot Services in Vijayawada | Professional Photography",
     description: "Capture stunning product visuals with creative photography services for brands, eCommerce stores, and businesses in Vijayawada.",

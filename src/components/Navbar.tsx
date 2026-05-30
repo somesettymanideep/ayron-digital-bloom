@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Megaphone, Monitor, Diamond, Mail, Users,
-  ShoppingBag, Search, Camera, ChevronDown
+  ShoppingBag, Search, Camera, ChevronDown, Mic, TrendingUp, Zap
 } from "lucide-react";
 import adsLogo from "@/assets/ADS.png";
 
@@ -21,6 +21,9 @@ const navLinks = [
       { label: "Ecommerce Listing", href: "/services/ecommerce-listing", icon: ShoppingBag },
       { label: "SEO Optimization", href: "/services/seo-optimization", icon: Search },
       { label: "Product Shoot", href: "/services/product-shoot", icon: Camera },
+      { label: "Podcast Production", href: "/services/podcast-production", icon: Mic },
+      { label: "Performance Marketing", href: "/services/performance-marketing", icon: TrendingUp },
+      { label: "Q-Commerce Management", href: "/services/qcommerce", icon: Zap },
     ],
   },
   { label: "Blog", href: "/blog" },
@@ -84,6 +87,9 @@ const Navbar = () => {
               { icon: ShoppingBag, name: "Ecommerce Listing" },
               { icon: Search, name: "SEO Optimization" },
               { icon: Camera, name: "Product Shoot" },
+              { icon: Mic, name: "Podcast Production" },
+              { icon: TrendingUp, name: "Performance Marketing" },
+              { icon: Zap, name: "Q-Commerce Management" },
             ].map((s, i) => {
               const Icon = s.icon;
               return (

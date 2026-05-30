@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Megaphone, Monitor, Diamond, Mail, Users,
-  ShoppingBag, Search, Camera, ArrowRight
+  ShoppingBag, Search, Camera, ArrowRight, Mic, TrendingUp, Zap
 } from "lucide-react";
 
 const services = [
@@ -79,6 +79,33 @@ const services = [
     icon: Camera,
     tags: ["Studio", "Lifestyle"],
     category: "Content",
+  },
+  {
+    num: "09",
+    title: "Podcast Production",
+    slug: "podcast-production",
+    desc: "End-to-end podcast production, editing, and distribution services to build authority and connect with your audience.",
+    icon: Mic,
+    tags: ["Audio Editing", "Distribution", "Content Repurposing"],
+    category: "Content",
+  },
+  {
+    num: "10",
+    title: "Performance Marketing",
+    slug: "performance-marketing",
+    desc: "Data-driven advertising campaigns focused on generating leads, scaling sales, and optimizing CPA/ROAS.",
+    icon: TrendingUp,
+    tags: ["ROAS Focus", "Paid Search", "Social Ads"],
+    category: "Marketing",
+  },
+  {
+    num: "11",
+    title: "Q-Commerce",
+    slug: "qcommerce",
+    desc: "Complete optimization and growth services for quick commerce platforms like Zepto, Blinkit, Instamart, and BigBasket.",
+    icon: Zap,
+    tags: ["Zepto & Blinkit", "Instamart Ads", "Inventory Planning"],
+    category: "Ecommerce",
   },
 ];
 

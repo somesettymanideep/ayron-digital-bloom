@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useLocation } from "react-router-dom";
 import {  Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
@@ -26,12 +26,15 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   useScrollAnimations();
+  const location = useLocation();
+  const isAdminPage = location.pathname === "/admin";
+
   return (
     <>
-      <Navbar />
-      <ScrollToTop />
-      <SocialSidebar />
-      <ScrollToTopOnNav />
+      {!isAdminPage && <Navbar />}
+      {!isAdminPage && <ScrollToTop />}
+      {!isAdminPage && <SocialSidebar />}
+      {!isAdminPage && <ScrollToTopOnNav />}
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />

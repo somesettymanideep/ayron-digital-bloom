@@ -66,8 +66,8 @@ const LoginGate = ({ onLogin }: { onLogin: () => void }) => {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-background px-4">
-      <form onSubmit={handleLogin} className="w-full max-w-sm border border-border bg-card p-8 space-y-5">
+    <main className="min-h-screen w-full flex items-center justify-center bg-background px-4 relative z-50">
+      <form onSubmit={handleLogin} className="w-full max-w-sm border border-border bg-card p-8 space-y-5 relative z-50">
         <div className="text-center">
           <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-3">
             <Lock size={22} className="text-primary" />

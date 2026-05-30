@@ -1,6 +1,6 @@
 import {
   Megaphone, Monitor, Diamond, Mail, Users,
-  ShoppingBag, Search, Camera
+  ShoppingBag, Search, Camera, Mic, TrendingUp, Zap
 } from "lucide-react";
 
 export interface ServiceData {
@@ -18,6 +18,7 @@ export interface ServiceData {
   checklist: string[];
   pricing: string;
   tags: string[];
+  keywords?: string;
   metrics: { value: string; label: string }[];
   overviewStats: { value: string; label: string }[];
   steps: { title: string; desc: string; duration: string }[];
@@ -380,6 +381,186 @@ const servicesData: Record<string, ServiceData> = {
     ctaHeadingLine1: "Let's Make Your",
     ctaHeadingLine2: "Products Shine",
     ctaOffer: "Book a free consultation — let's plan your next product shoot.",
+  },
+  "podcast-production": {
+    slug: "podcast-production",
+    title: "Podcast Production",
+    titleLine1: "Podcast",
+    titleLine2: "Production",
+    strokeLine: "That Elevates",
+    titleLine4: "Your Brand's Voice.",
+    icon: Mic,
+    category: "CONTENT & ENGAGEMENT",
+    desc: "End-to-end podcast production, editing, and distribution services to build authority and connect with your audience.",
+    keywords: "podcast production, podcast editing, podcast distribution, podcast marketing, audio production, podcast hosting, Spotify podcasts, Apple Podcasts, podcast strategy, podcast branding, audio editing, podcast creation",
+    longDesc: [
+      "Podcasting is one of the fastest-growing content channels for brand building. A professional podcast positions your brand as an industry authority, creating deep, personal connections with listeners that traditional text or social posts can't replicate.",
+      "At Ayron, we make podcasting effortless. We handle the entire lifecycle — from concept development, guest scripting, and recording guidance, to professional sound design, audio editing, show notes creation, and distribution across Spotify, Apple Podcasts, and Amazon Music.",
+      "We don't just produce audio; we create high-value content engines. We slice your long-form episodes into viral video shorts, reels, and blog posts to maximize your content reach and brand impact across all social platforms."
+    ],
+    quote: "A podcast is a direct line to your audience's ears — make every episode sound exceptional.",
+    checklist: [
+      "Concept & Show Format Strategy",
+      "Audio Editing & Noise Clean-up",
+      "Intro/Outro & Sound Effects Design",
+      "Show Notes & Transcript Writing",
+      "Cover Art & Branding Design",
+      "Platform Setup & Distribution (Spotify, Apple)",
+      "Video Podcast Editing (Reels/Shorts)",
+      "Guest Outreach & Briefing Templates",
+      "SEO-Optimized Episode Descriptions",
+      "Monthly Listener Analytics Reports"
+    ],
+    pricing: "₹12,000/episode onwards",
+    tags: ["Audio Editing", "Distribution", "Content Repurposing"],
+    metrics: [
+      { value: "10k+", label: "Avg Downloads" },
+      { value: "98%", label: "Listener Retention" },
+      { value: "5.0★", label: "Audio Rating" }
+    ],
+    overviewStats: [
+      { value: "50+", label: "Episodes Produced" },
+      { value: "10k+", label: "Average Downloads" },
+      { value: "4.8★", label: "Average Rating" },
+      { value: "100%", label: "Platform Distribution" }
+    ],
+    steps: [
+      { title: "Concept & Setup", desc: "Define your show's theme, target listener, format, and set up hosting platforms.", duration: "Week 1–2" },
+      { title: "Scripting & Prep", desc: "Outline episode structures, draft guest interview questions, and prep recording guides.", duration: "Week 2–3" },
+      { title: "Recording Support", desc: "Guidance on choosing microphones, software, and real-time remote recording setup.", duration: "Week 3" },
+      { title: "Post-Production", desc: "Professional editing, noise removal, volume leveling, adding intros/outros and ads.", duration: "Ongoing" },
+      { title: "Distribution & SEO", desc: "Upload to host, write search-optimized show notes, publish to Spotify/Apple.", duration: "Ongoing" },
+      { title: "Repurpose & Promote", desc: "Create short-form video reels, audiograms, and promotional graphics.", duration: "Weekly" }
+    ],
+    caseStudies: [
+      { brand: "FinTech Pod", industry: "Financial Services", result: "25k+ Monthly Listeners", timeline: "In 6 months" },
+      { brand: "D2C Founders", industry: "E-commerce Hub", result: "#12 Trending in Tech (India)", timeline: "In 3 months" },
+      { brand: "Creator Show", industry: "Lifestyle", result: "150k+ Reel Views per Episode", timeline: "In 4 months" }
+    ],
+    relatedSlugs: ["digital-marketing", "influencer-marketing", "brand-identity"],
+    ctaHeadingLine1: "Ready to Launch",
+    ctaHeadingLine2: "Your Podcast?",
+    ctaOffer: "Get a free 30-minute podcast blueprint and recording equipment guide — custom for your niche."
+  },
+  "performance-marketing": {
+    slug: "performance-marketing",
+    title: "Performance Marketing",
+    titleLine1: "Performance",
+    titleLine2: "Marketing",
+    strokeLine: "That Maximizes",
+    titleLine4: "Your Return on Ad Spend.",
+    icon: TrendingUp,
+    category: "GROWTH & PERFORMANCE",
+    desc: "Data-driven advertising campaigns focused on generating leads, scaling sales, and optimizing CPA/ROAS.",
+    keywords: "performance marketing, ROAS, paid advertising, Google Ads, Meta ads, conversion optimization, lead generation, retargeting, advertising strategy, ad management, CPA optimization, performance analytics, paid search",
+    longDesc: [
+      "Performance marketing is about turning every advertising rupee into measurable business growth. Unlike traditional awareness ads, performance marketing focuses strictly on actions — leads, app installs, sign-ups, and purchases.",
+      "At Ayron, we leverage advanced targeting, cohort analysis, and attribution modeling to identify and scale winning strategies. We manage high-converting campaigns across Google Search, Shopping, Meta Ads, and programmatic networks.",
+      "We continuously test ad creatives, copy variants, landing page layouts, and bidding algorithms. By aligning search intent and buyer psychology, we lower your customer acquisition cost (CAC) and sustainably scale your business."
+    ],
+    quote: "Stop paying for impressions. Start paying for results that scale your bottom line.",
+    checklist: [
+      "Multi-Platform Ad Account Setup",
+      "Meta Pixel & Conversion API Setup",
+      "Google Tag Manager & Tracking",
+      "Competitor Funnel Analysis",
+      "Creative Ideation & Copywriting",
+      "A/B Testing (Creatives, Landing Pages)",
+      "Retargeting & Lookalike Audiences",
+      "ROAS & LTV Cohort Tracking",
+      "Weekly Budget & Bid Management",
+      "Real-Time Reporting Dashboards"
+    ],
+    pricing: "₹25,000/month or % of ad spend",
+    tags: ["ROAS Focus", "Paid Search", "Social Ads"],
+    metrics: [
+      { value: "5.1×", label: "Average ROAS" },
+      { value: "₹8Cr+", label: "Ad Spend Managed" },
+      { value: "-35%", label: "Reduction in CPA" }
+    ],
+    overviewStats: [
+      { value: "150+", label: "Ad Accounts Scaled" },
+      { value: "₹8Cr+", label: "Cumulative Spend" },
+      { value: "5.1×", label: "Average ROAS" },
+      { value: "24/7", label: "Bidding Optimization" }
+    ],
+    steps: [
+      { title: "Funnel & Tracking Audit", desc: "Review site analytics, conversion tracking, pixels, and historic account performance.", duration: "Week 1" },
+      { title: "Audience Profiling", desc: "Identify key customer avatars, high-intent keywords, and competitor ad strategies.", duration: "Week 1–2" },
+      { title: "Creative Production", desc: "Develop high-performing ad hooks, visual graphics, conversion copy, and landing pages.", duration: "Week 2–3" },
+      { title: "Campaign Launch", desc: "Configure structured campaigns (Prospecting vs. Retargeting) with custom tracking parameters.", duration: "Week 3" },
+      { title: "Optimize & A/B Test", desc: "Monitor daily performance, cut low-performing ads, test new hooks, and adjust bids.", duration: "Ongoing" },
+      { title: "Scale & Report", desc: "Increase budgets on winning ad sets, expand into new channels, and review monthly reports.", duration: "Monthly" }
+    ],
+    caseStudies: [
+      { brand: "D2C Apparel", industry: "E-commerce", result: "6.2× Meta Ads ROAS", timeline: "In 3 months" },
+      { brand: "Real Estate Group", industry: "Property Development", result: "550+ Qualified Leads at -30% CPL", timeline: "In 2 months" },
+      { brand: "B2B SaaS", industry: "Software", result: "3.5× Demo Bookings", timeline: "In 4 months" }
+    ],
+    relatedSlugs: ["digital-marketing", "seo-optimization", "email-marketing"],
+    ctaHeadingLine1: "Ready to Scale",
+    ctaHeadingLine2: "Your Paid Ads?",
+    ctaOffer: "Request a free performance marketing account audit — we'll find 3 quick wins to improve your ROAS."
+  },
+  "qcommerce": {
+    slug: "qcommerce",
+    title: "Q-Commerce",
+    titleLine1: "Q-Commerce",
+    titleLine2: "Management",
+    strokeLine: "To Win the",
+    titleLine4: "10-Minute Delivery Race.",
+    icon: Zap,
+    category: "MARKETPLACE & SALES",
+    desc: "Complete optimization and growth services for quick commerce platforms like Zepto, Blinkit, Instamart, and BigBasket.",
+    keywords: "Q-commerce management, Blinkit seller, Zepto seller, Swiggy Instamart, quick commerce optimization, fast delivery, instant delivery, marketplace management, inventory management, product listing optimization, Instamart seller",
+    longDesc: [
+      "Quick Commerce is reshaping consumer behavior. Today, customers expect grocery, wellness, beauty, and household items delivered in minutes. Standing out on platforms like Blinkit, Zepto, Swiggy Instamart, and BigBasket requires highly optimized positioning.",
+      "We manage your brand's presence across q-commerce ecosystems. This includes creating high-converting product listings, setting up inventory sync, and designing lifestyle product cards that grab attention on small mobile screens.",
+      "We run targeted sponsor ads on quick commerce search pages and execute keyword bidding strategies. We also analyze warehouse levels to help you prevent stockouts, ensuring your products remain visible and order-ready 24/7."
+    ],
+    quote: "If you're out of stock on quick commerce, you're invisible. Keep your listings optimized and delivery-ready.",
+    checklist: [
+      "Zepto, Blinkit, Instamart Onboarding",
+      "Q-Commerce Ready Product Images",
+      "High-Impact Short Titles & Bullets",
+      "Sponsored Search & Banner Ads",
+      "Keyword Optimization for Instant Search",
+      "Warehouse-level Inventory Audits",
+      "Competitor Pricing & Share of Voice",
+      "Combo-Pack & Bundle Strategies",
+      "Direct-to-Warehouse Supply Planning",
+      "Weekly Sales & ROAS Reports"
+    ],
+    pricing: "₹20,000/month onwards",
+    tags: ["Zepto & Blinkit", "Instamart Ads", "Inventory Planning"],
+    metrics: [
+      { value: "3.2×", label: "Sales Multiplier" },
+      { value: "<15m", label: "Inventory Sync" },
+      { value: "45%+", label: "Repeat Buyers" }
+    ],
+    overviewStats: [
+      { value: "3.2×", label: "Average Sales Growth" },
+      { value: "10+", label: "Brands Launched" },
+      { value: "99.8%", label: "Stock-in Rate" },
+      { value: "4.5★", label: "Average Seller Rating" }
+    ],
+    steps: [
+      { title: "Platform Onboarding", desc: "Coordinate document submission, brand approval, and warehouse registration across platforms.", duration: "Week 1–2" },
+      { title: "Listing Optimization", desc: "Draft high-converting product names, design mobile-friendly infographics, and set categories.", duration: "Week 2–3" },
+      { title: "Inventory Sync Setup", desc: "Connect ERP or set up inventory tracking to monitor stock across regional dark stores.", duration: "Week 3" },
+      { title: "Sponsored Ads Setup", desc: "Launch targeted search ads, category banner ads, and cross-sell promotions.", duration: "Week 4" },
+      { title: "Supply Chain Audit", desc: "Analyze dark store velocity and generate replenishment requests to avoid stock-outs.", duration: "Ongoing" },
+      { title: "Performance Review", desc: "Track share of voice, ROAS, conversion rate, and customer feedback.", duration: "Weekly" }
+    ],
+    caseStudies: [
+      { brand: "Snacks Brand", industry: "FMCG", result: "4.5× Monthly Orders on Blinkit", timeline: "In 3 months" },
+      { brand: "Organic Skincare", industry: "Personal Care", result: "300% Growth on Zepto & Instamart", timeline: "In 6 weeks" },
+      { brand: "Pet Food Co", industry: "Pet Supplies", result: "Best Seller Badge in Category", timeline: "In 2 months" }
+    ],
+    relatedSlugs: ["ecommerce-listing", "product-shoot", "digital-marketing"],
+    ctaHeadingLine1: "Ready to Scale on",
+    ctaHeadingLine2: "Quick Commerce?",
+    ctaOffer: "Get a free Q-Commerce audit — we'll check your brand's share of voice and listing health on Swiggy Instamart and Blinkit."
   },
 };
 

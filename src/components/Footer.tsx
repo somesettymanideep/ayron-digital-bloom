@@ -11,6 +11,9 @@ const footerLinks = {
     { label: "Email Marketing", href: "/#/services/email-marketing" },
     { label: "Influencer Marketing", href: "/#/services/influencer-marketing" },
     { label: "SEO Optimization", href: "/#/services/seo-optimization" },
+    { label: "Podcast Production", href: "/#/services/podcast-production" },
+    { label: "Performance Marketing", href: "/#/services/performance-marketing" },
+    { label: "Q-Commerce", href: "/#/services/qcommerce" },
   ],
   "Quick Links": [
     { label: "About Us", href: "/#/about" },

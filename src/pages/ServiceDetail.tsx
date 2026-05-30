@@ -31,6 +31,7 @@ const ServiceDetail = () => {
         title={service.title}
         description={service.desc?.slice(0, 155) || `${service.title} services by Ayron Digital Solutions.`}
         canonical={`/services/${slug}`}
+        keywords={service.keywords}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Service",
