@@ -93,6 +93,14 @@ const routes = [
     priority: "0.7",
   },
   {
+    path: "/blog/shopify-vs-wordpress",
+    title: "Shopify vs. WordPress: Which Ecommerce Platform Fits Your Business?",
+    description: "Shopify vs. WordPress comparison for ecommerce website development. Analyze woocommerce shopify and wordpress shopify to choose the best shopify website development company.",
+    keywords: "shopify and wordpress, woocommerce shopify, wordpress shopify, shopify ecommerce website, shopify website development, shopify development company, shopify web development company, shopify website development company, Shopify vs. WordPress, which Ecommerce Platform Fits Your Business",
+    changefreq: "weekly",
+    priority: "0.85",
+  },
+  {
     path: "/contact",
     title: "Contact Ayron Digital Solutions | Digital Marketing Agency",
     description: "Contact Ayron Digital Solutions to discuss SEO, website design, branding, social media and digital marketing campaigns for your business.",
