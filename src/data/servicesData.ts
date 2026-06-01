@@ -512,7 +512,7 @@ const servicesData: Record<string, ServiceData> = {
     icon: Zap,
     category: "MARKETPLACE & SALES",
     desc: "Complete optimization and growth services for quick commerce platforms like Zepto, Blinkit, Instamart, and BigBasket.",
-    keywords: "Q-commerce management, Blinkit seller, Zepto seller, Swiggy Instamart, quick commerce optimization, fast delivery, instant delivery, marketplace management, inventory management, product listing optimization, Instamart seller",
+    keywords: "q-commerce management in vijayawada, best quick commerce agency in vijayawada, blinkit seller vijayawada, zepto seller vijayawada, instamart seller vijayawada, qcommerce ads vijayawada, marketplace management vijayawada, product listing optimization",
     longDesc: [
       "Quick Commerce is reshaping consumer behavior. Today, customers expect grocery, wellness, beauty, and household items delivered in minutes. Standing out on platforms like Blinkit, Zepto, Swiggy Instamart, and BigBasket requires highly optimized positioning.",
       "We manage your brand's presence across q-commerce ecosystems. This includes creating high-converting product listings, setting up inventory sync, and designing lifestyle product cards that grab attention on small mobile screens.",
