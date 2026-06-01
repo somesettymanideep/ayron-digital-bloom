@@ -452,7 +452,7 @@ const servicesData: Record<string, ServiceData> = {
     icon: TrendingUp,
     category: "GROWTH & PERFORMANCE",
     desc: "Data-driven advertising campaigns focused on generating leads, scaling sales, and optimizing CPA/ROAS.",
-    keywords: "performance marketing, ROAS, paid advertising, Google Ads, Meta ads, conversion optimization, lead generation, retargeting, advertising strategy, ad management, CPA optimization, performance analytics, paid search",
+    keywords: "performance marketing in vijayawada, best performance marketing agency in vijayawada, google ads agency vijayawada, meta ads agency vijayawada, paid marketing vijayawada, ROAS optimization vijayawada, lead generation vijayawada, conversion optimization",
     longDesc: [
       "Performance marketing is about turning every advertising rupee into measurable business growth. Unlike traditional awareness ads, performance marketing focuses strictly on actions — leads, app installs, sign-ups, and purchases.",
       "At Ayron, we leverage advanced targeting, cohort analysis, and attribution modeling to identify and scale winning strategies. We manage high-converting campaigns across Google Search, Shopping, Meta Ads, and programmatic networks.",
