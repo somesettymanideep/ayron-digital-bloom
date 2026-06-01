@@ -392,7 +392,7 @@ const servicesData: Record<string, ServiceData> = {
     icon: Mic,
     category: "CONTENT & ENGAGEMENT",
     desc: "End-to-end podcast production, editing, and distribution services to build authority and connect with your audience.",
-    keywords: "podcast production, podcast editing, podcast distribution, podcast marketing, audio production, podcast hosting, Spotify podcasts, Apple Podcasts, podcast strategy, podcast branding, audio editing, podcast creation",
+    keywords: "podcast production in vijayawada, best podcast production services in vijayawada, podcast editing vijayawada, podcast studio vijayawada, podcast recording vijayawada, audio production vijayawada, podcast distribution, podcast marketing",
     longDesc: [
       "Podcasting is one of the fastest-growing content channels for brand building. A professional podcast positions your brand as an industry authority, creating deep, personal connections with listeners that traditional text or social posts can't replicate.",
       "At Ayron, we make podcasting effortless. We handle the entire lifecycle — from concept development, guest scripting, and recording guidance, to professional sound design, audio editing, show notes creation, and distribution across Spotify, Apple Podcasts, and Amazon Music.",
@@ -452,7 +452,7 @@ const servicesData: Record<string, ServiceData> = {
     icon: TrendingUp,
     category: "GROWTH & PERFORMANCE",
     desc: "Data-driven advertising campaigns focused on generating leads, scaling sales, and optimizing CPA/ROAS.",
-    keywords: "performance marketing, ROAS, paid advertising, Google Ads, Meta ads, conversion optimization, lead generation, retargeting, advertising strategy, ad management, CPA optimization, performance analytics, paid search",
+    keywords: "performance marketing in vijayawada, best performance marketing agency in vijayawada, google ads agency vijayawada, meta ads agency vijayawada, paid marketing vijayawada, ROAS optimization vijayawada, lead generation vijayawada, conversion optimization",
     longDesc: [
       "Performance marketing is about turning every advertising rupee into measurable business growth. Unlike traditional awareness ads, performance marketing focuses strictly on actions — leads, app installs, sign-ups, and purchases.",
       "At Ayron, we leverage advanced targeting, cohort analysis, and attribution modeling to identify and scale winning strategies. We manage high-converting campaigns across Google Search, Shopping, Meta Ads, and programmatic networks.",
@@ -512,7 +512,7 @@ const servicesData: Record<string, ServiceData> = {
     icon: Zap,
     category: "MARKETPLACE & SALES",
     desc: "Complete optimization and growth services for quick commerce platforms like Zepto, Blinkit, Instamart, and BigBasket.",
-    keywords: "Q-commerce management, Blinkit seller, Zepto seller, Swiggy Instamart, quick commerce optimization, fast delivery, instant delivery, marketplace management, inventory management, product listing optimization, Instamart seller",
+    keywords: "q-commerce management in vijayawada, best quick commerce agency in vijayawada, blinkit seller vijayawada, zepto seller vijayawada, instamart seller vijayawada, qcommerce ads vijayawada, marketplace management vijayawada, product listing optimization",
     longDesc: [
       "Quick Commerce is reshaping consumer behavior. Today, customers expect grocery, wellness, beauty, and household items delivered in minutes. Standing out on platforms like Blinkit, Zepto, Swiggy Instamart, and BigBasket requires highly optimized positioning.",
       "We manage your brand's presence across q-commerce ecosystems. This includes creating high-converting product listings, setting up inventory sync, and designing lifestyle product cards that grab attention on small mobile screens.",
