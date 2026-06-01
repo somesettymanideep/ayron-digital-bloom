@@ -392,7 +392,7 @@ const servicesData: Record<string, ServiceData> = {
     icon: Mic,
     category: "CONTENT & ENGAGEMENT",
     desc: "End-to-end podcast production, editing, and distribution services to build authority and connect with your audience.",
-    keywords: "podcast production, podcast editing, podcast distribution, podcast marketing, audio production, podcast hosting, Spotify podcasts, Apple Podcasts, podcast strategy, podcast branding, audio editing, podcast creation",
+    keywords: "podcast production in vijayawada, best podcast production services in vijayawada, podcast editing vijayawada, podcast studio vijayawada, podcast recording vijayawada, audio production vijayawada, podcast distribution, podcast marketing",
     longDesc: [
       "Podcasting is one of the fastest-growing content channels for brand building. A professional podcast positions your brand as an industry authority, creating deep, personal connections with listeners that traditional text or social posts can't replicate.",
       "At Ayron, we make podcasting effortless. We handle the entire lifecycle — from concept development, guest scripting, and recording guidance, to professional sound design, audio editing, show notes creation, and distribution across Spotify, Apple Podcasts, and Amazon Music.",
