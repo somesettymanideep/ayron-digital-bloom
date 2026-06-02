@@ -1,33 +1,21 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion, useScroll } from "framer-motion";
-import { ArrowLeft, Clock, Calendar, Tag, CheckCircle2, ChevronRight, Phone, MessageSquare, MapPin } from "lucide-react";
+import { 
+  ArrowLeft, Clock, Calendar, Tag, CheckCircle2, ChevronRight, 
+  Phone, MessageSquare, MapPin, Award, Search, Laptop, ShieldCheck, 
+  Mail, Camera, BarChart3, ChevronDown, Check, ExternalLink, Globe, Star, Users, Building
+} from "lucide-react";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
+import blogMostTrustedAgency from "@/assets/blog/most-trusted-digital-marketing-agency-vijayawada.jpg";
 
-const BlogDetail = () => {
-  const { slug } = useParams<{ slug: string }>();
+// ==========================================
+// 1. Shopify vs WordPress Blog Detail Page
+// ==========================================
+const ShopifyVsWordpressDetail = () => {
   const { scrollYProgress } = useScroll();
-
-  // Since we only have one blog post right now, we'll render it if the slug matches or default to it.
-  const isCorrectSlug = slug === "shopify-vs-wordpress";
-
-  if (!isCorrectSlug) {
-    return (
-      <main className="pt-24 min-h-screen flex items-center justify-center bg-background">
-        <div className="text-center px-6">
-          <h1 className="font-display text-5xl mb-4 text-foreground">Blog Post Not Found</h1>
-          <p className="font-body text-muted-foreground mb-8 font-light">The article you are looking for might have been moved or deleted.</p>
-          <Link 
-            to="/blog" 
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display text-lg px-8 py-3 hover:bg-primary/90 transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" /> Back to Blog
-          </Link>
-        </div>
-      </main>
-    );
-  }
 
   return (
     <main className="pt-16 bg-background relative overflow-hidden text-foreground">
@@ -363,6 +351,438 @@ const BlogDetail = () => {
       </section>
 
       <Footer />
+    </main>
+  );
+};
+
+// ==========================================
+// 2. Most Trusted Digital Marketing Agency
+// ==========================================
+const MostTrustedAgencyDetail = () => {
+  const { scrollYProgress } = useScroll();
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      q: "What services does a full-service digital marketing agency in Vijayawada like Ayron Digital Solutions offer?",
+      a: "As a complete digital marketing company in Vijayawada, we offer a 360-degree approach to online growth. Our services include Search Engine Optimization (SEO), high-conversion Website Design & Development, Performance Marketing (PPC/Google Ads), Social Media Management, Branding & Identity Creation, Influencer Marketing strategic partnerships, professional Product Shoots, and E-commerce Listing Optimization. We provide everything a business needs to build and scale its online presence under one roof."
+    },
+    {
+      q: "Why should I choose a local Vijayawada agency over a national one?",
+      a: "Choosing a local digital marketing agency in Vijayawada gives you a significant competitive advantage. We have intimate knowledge of the local consumer behavior, culture, and market trends in Vijayawada and across Andhra Pradesh. We understand the specific challenges local businesses face. Furthermore, we believe in real partnerships; you can visit our office, meet your dedicated account manager, and have face-to-face strategy sessions, ensuring a level of personalization and accountability that distant national agencies cannot match."
+    },
+    {
+      q: "How long before I see measurable growth from my digital marketing campaigns?",
+      a: "The timeline for results depends heavily on the specific strategy. Performance marketing campaigns (like Google Ads or Facebook Ads) can generate traffic and leads almost immediately after launching. For organic strategies like SEO, while you might see initial improvements in visibility within the first 3 months, significant, sustainable jumps in traffic and rankings usually take 6 to 12 months. At Ayron Digital Solutions, we focus on driving both quick wins and long-term, scalable growth."
+    },
+    {
+      q: "How does Ayron Digital Solutions handle transparency and client reporting?",
+      a: "Transparency is the cornerstone of why we are the most trusted digital marketing agency in Vijayawada. We provide every client with access to a live dashboard, allowing you to monitor your campaign performance in real-time, 24/7. Additionally, we provide detailed, comprehensive monthly reports that analyze key metrics against your specific business goals. Your dedicated account manager is also available to discuss these reports and answer any questions."
+    },
+    {
+      q: "Do you offer customized digital marketing packages for small businesses and startups?",
+      a: "Absolutely. We recognize that every business, from a budding startup to an established enterprise, has unique goals and budget constraints. We do not believe in cookie-cutter solutions. After analyzing your specific business needs and target audience, we craft tailored, customized marketing strategies designed to maximize your ROI within your budget."
+    },
+    {
+      q: "Can digital marketing genuinely help increase foot traffic to my offline store in Vijayawada?",
+      a: "Yes, dramatically. Our expertise in local SEO services in Vijayawada ensures your business dominates local search results when nearby customers are actively searching for your products or services. By optimizing your Google My Business profile and utilizing geotargeted advertising, we drive online traffic that leads to real-world store visits."
+    }
+  ];
+
+  return (
+    <main className="pt-16 bg-background relative overflow-hidden text-foreground">
+      <SEO
+        title="Why Ayron Digital Solutions is the Most Trusted Digital Marketing Agency in Vijayawada"
+        description="Discover why Ayron Digital Solutions is the most trusted digital marketing agency in Vijayawada. Our proven track record of 200+ brands scaled & 5.0 Google rating speaks for itself."
+        keywords="digital marketing agency in vijayawada, best digital marketing agency in vijayawada, digital marketing company in vijayawada, local seo services in vijayawada, digital marketing services"
+        canonical="/blog/most-trusted-digital-marketing-agency-vijayawada"
+      />
+
+      {/* Reading Progress Bar */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-1.5 bg-primary z-50 origin-left"
+        style={{ scaleX: scrollYProgress }}
+      />
+
+      {/* Hero / Header Section */}
+      <section className="relative pt-20 pb-12 px-6 md:px-12 bg-background grid-bg noise-overlay border-b border-primary/10 overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/[0.05] rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="relative z-10 max-w-4xl mx-auto">
+          {/* Breadcrumbs */}
+          <div className="flex items-center gap-2 text-xs font-body text-muted-foreground mb-6">
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3 text-muted-foreground/30" />
+            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
+            <ChevronRight className="w-3 h-3 text-muted-foreground/30" />
+            <span className="text-foreground/90 font-medium truncate max-w-[200px] sm:max-w-none">Why Vijayawada chooses Ayron</span>
+          </div>
+
+          <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary font-body text-xs font-semibold px-3 py-1 uppercase tracking-wider mb-4 rounded-sm border border-primary/20">
+            <Tag className="w-3 h-3 text-primary" /> Digital Marketing
+          </span>
+
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-foreground leading-[1.1] mb-6 font-semibold tracking-wide">
+            Why Ayron Digital Solutions is the <br className="hidden sm:inline" />
+            <span className="font-serif-accent italic text-primary">Most Trusted Digital Marketing Agency in Vijayawada</span>
+          </h1>
+
+          {/* Meta Information */}
+          <div className="flex flex-wrap items-center gap-6 text-sm font-body text-muted-foreground border-t border-primary/10 pt-6">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-display shadow-md font-semibold">
+                A
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground/50 leading-none">Written by</p>
+                <p className="text-sm font-semibold text-foreground/90 mt-0.5">Team Ayron</p>
+              </div>
+            </div>
+            <div className="h-8 w-px bg-primary/10 hidden sm:block" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground/80 font-light">June 2, 2026</span>
+            </div>
+            <div className="h-8 w-px bg-primary/10 hidden sm:block" />
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground/80 font-light">8 min read</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Image Banner */}
+      <section className="px-6 md:px-12 py-10 max-w-5xl mx-auto bg-background relative z-10">
+        <motion.div 
+          className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-primary/20 bg-muted/10 p-2 rounded-sm"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <img 
+            src={blogMostTrustedAgency} 
+            alt="Why Ayron Digital Solutions is the Most Trusted Digital Marketing Agency in Vijayawada" 
+            className="w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover rounded-sm hover:scale-[1.01] transition-transform duration-700"
+          />
+        </motion.div>
+      </section>
+
+      {/* Article Content */}
+      <section className="px-6 md:px-12 pb-24 bg-background relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <article className="font-body text-base sm:text-lg text-muted-foreground/90 leading-relaxed space-y-8 font-light">
+            <p className="text-foreground/90 font-medium text-lg sm:text-xl leading-relaxed border-l-4 border-primary pl-5 py-3 italic bg-muted/20 pr-4 rounded-r-sm">
+              In the rapidly evolving digital landscape of Vijayawada, businesses of all sizes are increasingly recognizing the necessity of a robust online presence. The journey from being just visible online to actually driving measurable growth requires not just a <a href="https://en.wikipedia.org/wiki/Digital_marketing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold not-italic">digital marketing</a> expert, but a trusted partner who understands the local nuances, possesses deep expertise, and consistently delivers results.
+            </p>
+
+            <p className="text-muted-foreground/90">
+              This is where <strong>Ayron Digital Solutions</strong> stands out, having firmly established itself as the most trusted{" "}
+              <Link to="/" className="font-semibold bg-primary/15 text-primary px-1 py-0.5 rounded-sm border border-primary/25 hover:bg-primary/25 transition-colors whitespace-nowrap">digital marketing agency in Vijayawada</Link>.
+            </p>
+
+            <p className="text-muted-foreground/90">
+              But what truly sets Ayron apart and makes it the go-to choice for ambitious businesses in the city? The trust our clients place in us isn't based on empty promises, but on a foundation of proven success, deep local roots, and a relentless focus on our clients' bottom line. Here's why Vijayawada chooses Ayron Digital Solutions:
+            </p>
+
+            {/* Reason 1 */}
+            <div className="border-l-2 border-primary pl-6 space-y-3 pt-4">
+              <h3 className="font-display text-2xl sm:text-3xl text-foreground tracking-wide font-medium flex items-center gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-semibold border border-primary/20">1</span>
+                Deep-Rooted Local Expertise
+              </h3>
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed">
+                We are not a distant entity operating from another city. Ayron is deeply rooted in Vijayawada. Our team doesn't just understand <a href="https://en.wikipedia.org/wiki/Digital_marketing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">digital marketing</a>; we understand the Vijayawada market. We know the local customer base, their buying behaviors, the unique business landscape of Andhra Pradesh, and the specific challenges and opportunities local businesses face.
+              </p>
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed">
+                This hyper-local perspective allows us to craft customized marketing strategies that resonate directly with your target audience, right here in Vijayawada. We don't believe in one-size-fits-all; we build for your specific local success.
+              </p>
+            </div>
+
+            {/* Reason 2 */}
+            <div className="border-l-2 border-primary pl-6 space-y-3 pt-4">
+              <h3 className="font-display text-2xl sm:text-3xl text-foreground tracking-wide font-medium flex items-center gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-semibold border border-primary/20">2</span>
+                A Proven Track Record of Success (200+ Brands Scaled & 5.0 Google Rating)
+              </h3>
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed">
+                Trust is earned through performance. Ayron Digital Solutions boasts a stellar 5.0 rating on Google, a testament to the consistently exceptional experiences of our clients. This isn’t just a number; it’s a direct reflection of our dedication, skill, and the tangible results we achieve.
+              </p>
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed">
+                With experience in scaling over 200 brands across diverse industries—from local startups in Guntur to emerging enterprises in Vijayawada—we have a rich portfolio of success stories. Whether it’s massively increasing organic traffic, driving a high return on ad spend, or building powerful brand recognition, our record speaks for itself.
+              </p>
+
+              {/* Stat blocks */}
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="bg-muted/30 border border-primary/15 p-4 rounded-sm text-center shadow-sm">
+                  <div className="flex justify-center items-center gap-1 text-primary mb-1">
+                    <Star className="w-5 h-5 fill-primary text-primary" />
+                    <Star className="w-5 h-5 fill-primary text-primary" />
+                    <Star className="w-5 h-5 fill-primary text-primary" />
+                    <Star className="w-5 h-5 fill-primary text-primary" />
+                    <Star className="w-5 h-5 fill-primary text-primary" />
+                  </div>
+                  <h4 className="font-display text-2xl sm:text-3xl font-bold text-foreground">5.0 Rating</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Google Review Score</p>
+                </div>
+                <div className="bg-muted/30 border border-primary/15 p-4 rounded-sm text-center shadow-sm">
+                  <div className="flex justify-center text-primary mb-2">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <h4 className="font-display text-2xl sm:text-3xl font-bold text-foreground">200+ Brands</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Scaled Across Industries</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Reason 3 */}
+            <div className="border-l-2 border-primary pl-6 space-y-4 pt-4">
+              <h3 className="font-display text-2xl sm:text-3xl text-foreground tracking-wide font-medium flex items-center gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-semibold border border-primary/20">3</span>
+                Comprehensive, Full-Service Digital Solutions
+              </h3>
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed">
+                Finding reliable service providers for different aspects of your digital presence can be fragmented and inefficient. Ayron Digital Solutions eliminates that frustration by offering a complete full-service suite of <a href="https://en.wikipedia.org/wiki/Digital_marketing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">digital marketing</a> solutions under one roof. Our expertise spans every crucial touchpoint:
+              </p>
+
+              {/* Service Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="p-5 border border-primary/10 bg-muted/20 hover:border-primary/30 transition-colors rounded-sm flex gap-3">
+                  <Search className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="font-display text-base text-foreground mb-1 tracking-wide font-medium">Data-Driven SEO Optimization</h5>
+                    <p className="text-xs font-light text-muted-foreground/80 font-normal">To ensure you are the first choice for local and national searches.</p>
+                  </div>
+                </div>
+                <div className="p-5 border border-primary/10 bg-muted/20 hover:border-primary/30 transition-colors rounded-sm flex gap-3">
+                  <Laptop className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="font-display text-base text-foreground mb-1 tracking-wide font-medium">Modern, High-Conversion Web Design</h5>
+                    <p className="text-xs font-light text-muted-foreground/80 font-normal">Engineered to turn visitors into loyal customers.</p>
+                  </div>
+                </div>
+                <div className="p-5 border border-primary/10 bg-muted/20 hover:border-primary/30 transition-colors rounded-sm flex gap-3">
+                  <Award className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="font-display text-base text-foreground mb-1 tracking-wide font-medium">Brand Identity Creation</h5>
+                    <p className="text-xs font-light text-muted-foreground/80 font-normal">Building a premium and trustworthy brand image.</p>
+                  </div>
+                </div>
+                <div className="p-5 border border-primary/10 bg-muted/20 hover:border-primary/30 transition-colors rounded-sm flex gap-3">
+                  <BarChart3 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="font-display text-base text-foreground mb-1 tracking-wide font-medium">Performance PPC & Paid Ads</h5>
+                    <p className="text-xs font-light text-muted-foreground/80 font-normal">Strategic, well-researched campaigns for massive ROI.</p>
+                  </div>
+                </div>
+                <div className="p-5 border border-primary/10 bg-muted/20 hover:border-primary/30 transition-colors rounded-sm flex gap-3">
+                  <Globe className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="font-display text-base text-foreground mb-1 tracking-wide font-medium">Social & Influencer Marketing</h5>
+                    <p className="text-xs font-light text-muted-foreground/80 font-normal">Driving engagement and amplifying your brand through strategic partnerships.</p>
+                  </div>
+                </div>
+                <div className="p-5 border border-primary/10 bg-muted/20 hover:border-primary/30 transition-colors rounded-sm flex gap-3">
+                  <Camera className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="font-display text-base text-foreground mb-1 tracking-wide font-medium">Product Shoots & E-commerce Listing</h5>
+                    <p className="text-xs font-light text-muted-foreground/80 font-normal">Making your products look premium and sell faster.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-5 border border-primary/10 bg-muted/20 hover:border-primary/30 transition-colors rounded-sm flex gap-3 w-full">
+                <Mail className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                <div>
+                  <h5 className="font-display text-base text-foreground mb-1 tracking-wide font-medium">Strategic Email Marketing & Digital PR</h5>
+                  <p className="text-xs font-light text-muted-foreground/80 font-normal">Consistent, automated outreach and authority building.</p>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed pt-2">
+                This all-inclusive approach ensures brand consistency, streamlined communication, and a cohesive, powerful marketing engine.
+              </p>
+            </div>
+
+            {/* Reason 4 */}
+            <div className="border-l-2 border-primary pl-6 space-y-3 pt-4">
+              <h3 className="font-display text-2xl sm:text-3xl text-foreground tracking-wide font-medium flex items-center gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-semibold border border-primary/20">4</span>
+                Unmatched Transparency & Partnerships, Not just Services
+              </h3>
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed">
+                At Ayron, we don't just provide a service; we build trusted <a href="https://en.wikipedia.org/wiki/Digital_marketing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">digital marketing</a> partnerships. We believe in complete transparency. Our clients have access to live dashboards and receive detailed monthly reporting, ensuring they always know where their investment is going and, more importantly, the real, measurable impact on their business growth.
+              </p>
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed">
+                You won't get caught in vague metrics; we focus on quality leads, conversions, and revenue growth. Furthermore, every client is assigned a dedicated account manager—a single point of contact who truly knows your brand inside out, provides personalized support, and is invested in your success.
+              </p>
+            </div>
+
+            {/* Reason 5 */}
+            <div className="border-l-2 border-primary pl-6 space-y-3 pt-4">
+              <h3 className="font-display text-2xl sm:text-3xl text-foreground tracking-wide font-medium flex items-center gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-semibold border border-primary/20">5</span>
+                Data-Driven Strategies, No Guesswork
+              </h3>
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed">
+                In the digital age, effective <a href="https://en.wikipedia.org/wiki/Digital_marketing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">digital marketing</a> is a science, not a guessing game. Every campaign at Ayron Digital Solutions is backed by deep analytics, comprehensive audience insights, and extensive market research.
+              </p>
+              <p className="text-muted-foreground/90 text-sm sm:text-base leading-relaxed">
+                We leverage data to make informed decisions, optimize campaigns in real-time, and ensure that every action we take is moving you closer to your business goals. We don’t rely on vanity metrics; we execute tailored strategies that bring real, measurable results that you can trust.
+              </p>
+            </div>
+
+            {/* Summary / Verdict */}
+            <h2 className="font-display text-3xl sm:text-4xl text-foreground pt-8 border-b border-primary/10 pb-2 tracking-wide font-medium">
+              Partner with Vijayawada's Proven Growth Engine
+            </h2>
+            <p className="text-muted-foreground/90">
+              Ayron Digital Solutions is not just an agency; it’s your key to unlocking your business’s full digital potential in Vijayawada and beyond. Our combination of deep local knowledge, a spectacular track record, comprehensive expertise, and unwavering commitment to client trust makes us the definitive choice for businesses seeking to build a strong, successful, and truly visible online presence. Visit our <Link to="/" className="text-primary font-semibold hover:underline">home page</Link> to learn more about our full suite of services.
+            </p>
+            <p className="text-muted-foreground/90 font-medium text-foreground">
+              Ready to build a strong online presence and drive measurable growth for your business? Trust the experts who live, work, and succeed in Vijayawada — the leading <Link to="/" className="font-semibold bg-primary/15 text-primary px-1 py-0.5 rounded-sm border border-primary/25 hover:bg-primary/25 transition-colors whitespace-nowrap">digital marketing agency in Vijayawada</Link>.
+            </p>
+            <p className="text-muted-foreground/90">
+              Get in touch with Ayron Digital Solutions today. Your growth story starts here.
+            </p>
+
+            {/* Contact Details Card */}
+            <div className="bg-muted/40 border border-primary/20 p-6 rounded-sm shadow-md space-y-4">
+              <div className="flex items-center gap-2 border-b border-primary/10 pb-3">
+                <Building className="w-5 h-5 text-primary" />
+                <h4 className="font-display text-xl text-foreground font-semibold">Ayron Digital Solutions</h4>
+              </div>
+              <ul className="space-y-3 text-sm sm:text-base text-muted-foreground/90 font-body">
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span><strong>Address:</strong> Kongara Sai Building, Sai Nagar, Kala Nagar, Acharya Ranga Nagar, Vijayawada – 520010</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span><strong>Phone:</strong> <a href="tel:+919550860545" className="hover:text-primary transition-colors">+91 9550860545</a> / <a href="tel:+917386909994" className="hover:text-primary transition-colors">+91 73869 09994</a></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span><strong>Email:</strong> <a href="mailto:info@ayrondigital.in" className="hover:text-primary transition-colors">info@ayrondigital.in</a></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Globe className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span><strong>Website:</strong> <a href="https://ayrondigitalsolutions.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-1 inline-flex">ayrondigitalsolutions.com <ExternalLink className="w-3 h-3" /></a></span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Accordion FAQs */}
+            <h2 className="font-display text-3xl sm:text-4xl text-foreground pt-8 border-b border-primary/10 pb-2 tracking-wide font-medium">
+              Frequently Asked Questions (FAQs)
+            </h2>
+            <div className="space-y-4 pt-4">
+              {faqs.map((faq, index) => (
+                <div key={index} className="border border-primary/10 rounded-sm bg-muted/10 overflow-hidden transition-all duration-300">
+                  <button
+                    onClick={() => toggleFaq(index)}
+                    className="w-full flex items-center justify-between p-5 text-left text-foreground hover:bg-muted/20 transition-colors"
+                  >
+                    <span className="font-display font-medium text-base sm:text-lg pr-4">{faq.q}</span>
+                    <ChevronDown className={`w-5 h-5 text-primary shrink-0 transition-transform duration-300 ${openFaq === index ? "rotate-180" : ""}`} />
+                  </button>
+                  {openFaq === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="border-t border-primary/5 p-5 bg-background font-body font-light text-muted-foreground text-sm sm:text-base leading-relaxed animate-accordion-down"
+                    >
+                      {faq.a}
+                    </motion.div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* CTA section */}
+            <div className="bg-primary text-primary-foreground p-8 sm:p-10 mt-12 text-center space-y-6 rounded-sm shadow-xl relative overflow-hidden">
+              <div className="absolute inset-0" style={{
+                backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
+                backgroundSize: "20px 20px"
+              }} />
+              
+              <div className="relative z-10 space-y-6">
+                <h4 className="font-display text-3xl sm:text-4xl tracking-wide font-medium">Ready to scale your business growth?</h4>
+                <p className="font-body font-light text-primary-foreground/90 max-w-xl mx-auto text-sm sm:text-base">
+                  Trust the most trusted{" "}
+                  <Link to="/" className="font-bold underline underline-offset-2 decoration-primary-foreground/50 hover:decoration-primary-foreground transition-colors">digital marketing agency in Vijayawada</Link>.
+                  {" "}Get in touch with our experts today!
+                </p>
+                
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                  <a 
+                    href="https://wa.me/919550860545" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-background text-foreground font-display text-lg px-8 py-3.5 hover:bg-muted transition-colors shadow-lg"
+                  >
+                    <MessageSquare className="w-5 h-5 text-primary shrink-0" /> WhatsApp Us
+                  </a>
+                  <a 
+                    href="tel:+919550860545" 
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/20 text-primary-foreground font-display text-lg px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-colors"
+                  >
+                    <Phone className="w-5 h-5 shrink-0" /> Call: 9550860545
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Back button */}
+            <div className="pt-12 border-t border-primary/10 flex justify-between items-center">
+              <Link 
+                to="/blog" 
+                className="inline-flex items-center gap-2 text-primary font-body font-semibold hover:underline"
+              >
+                <ArrowLeft className="w-4 h-4 shrink-0" /> Back to Blog
+              </Link>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+};
+
+// ==========================================
+// 3. Main Router / Container Component
+// ==========================================
+const BlogDetail = () => {
+  const { slug } = useParams<{ slug: string }>();
+
+  if (slug === "shopify-vs-wordpress") {
+    return <ShopifyVsWordpressDetail />;
+  }
+  
+  if (slug === "most-trusted-digital-marketing-agency-vijayawada") {
+    return <MostTrustedAgencyDetail />;
+  }
+
+  // Fallback / NotFound
+  return (
+    <main className="pt-24 min-h-screen flex items-center justify-center bg-background">
+      <div className="text-center px-6">
+        <h1 className="font-display text-5xl mb-4 text-foreground">Blog Post Not Found</h1>
+        <p className="font-body text-muted-foreground mb-8 font-light">The article you are looking for might have been moved or deleted.</p>
+        <Link 
+          to="/blog" 
+          className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display text-lg px-8 py-3 hover:bg-primary/90 transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" /> Back to Blog
+        </Link>
+      </div>
     </main>
   );
 };
