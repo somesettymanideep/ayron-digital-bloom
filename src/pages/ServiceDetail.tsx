@@ -1,11 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import servicesData from "@/data/servicesData";
+import serviceFaqs, { defaultFaqs } from "@/data/serviceFaqs";
 import SEO from "@/components/SEO";
 import ServiceBanner from "@/components/ServiceBanner";
 import ServiceOverviewStrip from "@/components/ServiceOverviewStrip";
 import ServiceDescription from "@/components/ServiceDescription";
 import ServiceApproach from "@/components/ServiceApproach";
 import ServiceResults from "@/components/ServiceResults";
+import ServiceFAQs from "@/components/ServiceFAQs";
 import ServiceRelated from "@/components/ServiceRelated";
 import ServiceDetailCTA from "@/components/ServiceDetailCTA";
 import Footer from "@/components/Footer";
@@ -25,19 +27,37 @@ const ServiceDetail = () => {
     );
   }
 
+  const faqs = (slug && serviceFaqs[slug]) || defaultFaqs;
+  const seoTitle = service.seoTitle || service.title;
+  const seoDescription =
+    service.seoDescription || service.desc?.slice(0, 155) || `${service.title} services by Ayron Digital Solutions.`;
+
   return (
     <main className="pt-16">
       <SEO
-        title={service.title}
-        description={service.desc?.slice(0, 155) || `${service.title} services by Ayron Digital Solutions.`}
+        title={seoTitle}
+        description={seoDescription}
         canonical={`/services/${slug}`}
         keywords={service.keywords}
         jsonLd={{
           "@context": "https://schema.org",
-          "@type": "Service",
-          name: service.title,
-          provider: { "@type": "Organization", name: "Ayron Digital Solutions" },
-          description: service.desc,
+          "@graph": [
+            {
+              "@type": "Service",
+              name: service.title,
+              provider: { "@type": "Organization", name: "Ayron Digital Solutions" },
+              description: service.desc,
+              areaServed: ["Vijayawada", "Guntur", "India"],
+            },
+            {
+              "@type": "FAQPage",
+              mainEntity: faqs.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ],
         }}
       />
       <ServiceBanner service={service} />
@@ -45,6 +65,7 @@ const ServiceDetail = () => {
       <ServiceDescription service={service} />
       <ServiceApproach service={service} />
       <ServiceResults service={service} />
+      <ServiceFAQs serviceTitle={service.title} faqs={faqs} />
       <ServiceRelated service={service} />
       <ServiceDetailCTA service={service} />
       <Footer />

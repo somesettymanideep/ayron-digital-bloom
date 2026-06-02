@@ -17,9 +17,10 @@ const About = () => (
     transition={{ delay: 0.15, duration: 0.6 }}
   >
     <SEO
-      title="About Us"
-      description="Learn about Ayron Digital Solutions — a full-service digital marketing agency helping 200+ brands grow with data-driven strategies across India."
+      title="About | Best Digital Marketing Company in Vijayawada"
+      description="Ayron Digital Solutions is the best digital marketing company in Vijayawada — a full-service agency helping 200+ brands grow with SEO, branding, websites and paid campaigns."
       canonical="/about"
+      keywords="best digital marketing company in vijayawada, best digital marketing agency in vijayawada, digital marketing company vijayawada, top digital marketing agency vijayawada, digital marketing services vijayawada, ayron digital solutions"
     />
     {/* Hero */}
     <section className="bg-background grid-bg noise-overlay relative overflow-hidden py-24 md:py-32" data-animate="fade-in">

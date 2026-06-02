@@ -9,8 +9,9 @@ const siteUrl = "https://ayrondigitalsolutions.com";
 const routes = [
   {
     path: "/about",
-    title: "About Ayron Digital Solutions | Digital Marketing Agency",
-    description: "Learn about Ayron Digital Solutions, a digital marketing agency helping 200+ brands grow with SEO, branding, websites and performance campaigns.",
+    title: "About | Best Digital Marketing Company in Vijayawada | Ayron Digital Solutions",
+    description: "Ayron Digital Solutions is the best digital marketing company in Vijayawada — a full-service agency helping 200+ brands grow with SEO, branding, websites and paid campaigns.",
+    keywords: "best digital marketing company in vijayawada, best digital marketing agency in vijayawada, digital marketing company vijayawada, top digital marketing agency vijayawada, digital marketing services vijayawada, ayron digital solutions",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -30,8 +31,9 @@ const routes = [
   },
   {
     path: "/services/website-design",
-    title: "Website Design Service | Ayron Digital Solutions",
-    description: "Mobile-first website design services built for speed, SEO, trust and conversions for growing brands in Vijayawada, Guntur and across India.",
+    title: "Best Website Development Company in Vijayawada | Ayron Digital Solutions",
+    description: "Ayron Digital Solutions is the best website development company in Vijayawada — building fast, mobile-first, SEO-ready websites that convert visitors into customers.",
+    keywords: "best website development company in vijayawada, best website design company in vijayawada, website developers in vijayawada, custom website development vijayawada, ecommerce website vijayawada, responsive web design vijayawada, web design agency vijayawada",
     changefreq: "monthly",
     priority: "0.8",
   },
