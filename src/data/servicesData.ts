@@ -19,6 +19,8 @@ export interface ServiceData {
   pricing: string;
   tags: string[];
   keywords?: string;
+  seoTitle?: string;
+  seoDescription?: string;
   metrics: { value: string; label: string }[];
   overviewStats: { value: string; label: string }[];
   steps: { title: string; desc: string; duration: string }[];
@@ -157,6 +159,9 @@ const servicesData: Record<string, ServiceData> = {
     titleLine4: "Visitors Fast.",
     icon: Monitor,
     category: "DESIGN & DEVELOPMENT",
+    seoTitle: "Best Website Development Company in Vijayawada",
+    seoDescription: "Ayron Digital Solutions is the best website development company in Vijayawada — building fast, mobile-first, SEO-ready websites that convert visitors into customers.",
+    keywords: "best website development company in vijayawada, best website design company in vijayawada, website developers in vijayawada, custom website development vijayawada, ecommerce website vijayawada, responsive web design vijayawada, web design agency vijayawada",
     desc: "Modern, high-performance websites built to convert visitors into loyal customers.",
     longDesc: [
       "Your website is your digital storefront. Website design goes beyond aesthetics — it's about creating intuitive user experiences that guide visitors toward action.",
