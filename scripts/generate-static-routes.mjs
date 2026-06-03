@@ -119,6 +119,14 @@ const routes = [
     priority: "0.7",
   },
   {
+    path: "/blog/most-trusted-digital-marketing-agency-vijayawada",
+    title: "Most Trusted Digital Marketing Agency in Vijayawada | Ayron Digital Solutions",
+    description: "Discover why Ayron Digital Solutions is the most trusted digital marketing agency in Vijayawada — proven results in SEO, branding, web design and paid campaigns for 200+ brands.",
+    keywords: "most trusted digital marketing agency in vijayawada, best digital marketing agency in vijayawada, top digital marketing company vijayawada, ayron digital solutions, SEO agency vijayawada, branding agency vijayawada",
+    changefreq: "weekly",
+    priority: "0.85",
+  },
+  {
     path: "/blog/shopify-vs-wordpress",
     title: "Shopify vs. WordPress: Which Ecommerce Platform Fits Your Business?",
     description: "Shopify vs. WordPress comparison for ecommerce website development. Analyze woocommerce shopify and wordpress shopify to choose the best shopify website development company.",
