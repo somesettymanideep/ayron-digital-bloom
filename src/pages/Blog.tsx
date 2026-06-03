@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
-import blogMostTrustedAgency from "@/assets/blog/most-trusted-digital-marketing-agency-vijayawada.jpg";
+import blogMostTrustedAgency from "@/assets/blog/top-digital-marketing-agency.jpeg";
 
 const allBlogs = [
   {
