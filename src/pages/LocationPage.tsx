@@ -77,16 +77,8 @@ const LocationPage = ({
         description={description}
         canonical={`/${slug}`}
         noTrailingSlash={noTrailingSlash}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: `Ayron Digital Solutions — ${city}`,
-          description,
-          url: `https://ayrondigitalsolutions.com/${slug}${noTrailingSlash ? "" : "/"}`,
-          areaServed: { "@type": "City", name: city },
-          address: { "@type": "PostalAddress", addressLocality: city, addressRegion: "Andhra Pradesh", addressCountry: "IN" },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "100" },
-        }}
+        keywords={metaKeywords}
+        jsonLd={jsonLd}
       />
 
       {/* HERO */}
@@ -106,7 +98,13 @@ const LocationPage = ({
               <span className="block text-primary">{city}.</span>
             </h1>
             <p className="font-serif-accent italic text-primary text-2xl sm:text-[28px] mt-3">Built for growth.</p>
+            {highlightKeyword && (
+              <p className="mt-5 font-display text-2xl sm:text-3xl md:text-4xl leading-tight text-foreground max-w-[560px]">
+                <span className="text-primary">{highlightKeyword}</span>
+              </p>
+            )}
             <p className="font-body text-muted-foreground text-[17px] max-w-[520px] mt-6 leading-relaxed">{intro}</p>
+
 
             <div className="flex flex-wrap items-center gap-4 mt-8">
               <Link
