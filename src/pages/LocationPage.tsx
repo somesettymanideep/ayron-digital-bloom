@@ -258,6 +258,37 @@ const LocationPage = ({
         </div>
       </section>
 
+      {/* FAQs */}
+      {faqs && faqs.length > 0 && (
+        <section className="py-20 md:py-28 bg-background" data-animate="fade-up">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">FAQs</span>
+              <h2 className="font-display text-5xl md:text-6xl text-foreground mt-3 leading-[0.95]">
+                Questions, <span className="text-stroke-orange">answered.</span>
+              </h2>
+              <p className="font-body text-muted-foreground mt-5 text-[15px] leading-relaxed">
+                Everything {city} businesses ask before hiring a digital marketing partner.
+              </p>
+            </div>
+            <div className="lg:col-span-8 border-t border-border/40">
+              {faqs.map((f) => (
+                <details key={f.q} className="group border-b border-border/40 py-6">
+                  <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
+                    <h3 className="font-display text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                      {f.q}
+                    </h3>
+                    <span className="text-primary font-display text-2xl leading-none mt-1 transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="font-body text-muted-foreground mt-4 text-[15px] leading-relaxed max-w-2xl">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+
       {/* INTERNAL LINKS BACK TO HERO CTAs */}
       <section className="py-16 bg-primary text-primary-foreground" data-animate="fade-up">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
