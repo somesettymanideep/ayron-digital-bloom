@@ -100,7 +100,27 @@ const LocationPage = ({
             <p className="font-serif-accent italic text-primary text-2xl sm:text-[28px] mt-3">Built for growth.</p>
             {highlightKeyword && (
               <p className="mt-5 font-display text-2xl sm:text-3xl md:text-4xl leading-tight text-foreground max-w-[560px]">
-                <span className="text-primary">{highlightKeyword}</span>
+                <a
+                  href="https://ayrondigitalsolutions.com/"
+                  className="text-primary hover:underline underline-offset-4 decoration-primary/60"
+                  aria-label="Best Digital Marketing Agency in Guntur — Ayron Digital Solutions home"
+                >
+                  Best
+                </a>{" "}
+                <a
+                  href="https://en.wikipedia.org/wiki/Digital_marketing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline decoration-primary/60 underline-offset-4 hover:decoration-primary"
+                >
+                  Digital Marketing
+                </a>{" "}
+                <a
+                  href="https://ayrondigitalsolutions.com/"
+                  className="text-primary hover:underline underline-offset-4 decoration-primary/60"
+                >
+                  Agency in {city}
+                </a>
               </p>
             )}
             <p className="font-body text-muted-foreground text-[17px] max-w-[520px] mt-6 leading-relaxed">{intro}</p>
