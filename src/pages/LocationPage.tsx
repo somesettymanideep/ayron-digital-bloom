@@ -6,17 +6,64 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import servicesData from "@/data/servicesData";
 
+export interface LocationFAQ {
+  q: string;
+  a: string;
+}
+
 export interface LocationPageProps {
   city: "Vijayawada" | "Guntur";
   neighborhoods: string[];
   intro: string;
   noTrailingSlash?: boolean;
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
+  highlightKeyword?: string;
+  faqs?: LocationFAQ[];
 }
 
-const LocationPage = ({ city, neighborhoods, intro, noTrailingSlash }: LocationPageProps) => {
+const LocationPage = ({
+  city,
+  neighborhoods,
+  intro,
+  noTrailingSlash,
+  metaTitle,
+  metaDescription,
+  metaKeywords,
+  highlightKeyword,
+  faqs,
+}: LocationPageProps) => {
   const slug = city.toLowerCase();
-  const title = `Digital Marketing Agency in ${city}`;
-  const description = `Ayron Digital Solutions is a leading digital marketing agency in ${city} offering SEO, social media, branding, web design & influencer marketing. Grow your ${city} business with data-driven campaigns.`;
+  const title = metaTitle ?? `Digital Marketing Agency in ${city}`;
+  const description = metaDescription ?? `Ayron Digital Solutions is a leading digital marketing agency in ${city} offering SEO, social media, branding, web design & influencer marketing. Grow your ${city} business with data-driven campaigns.`;
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: `Ayron Digital Solutions — ${city}`,
+    description,
+    url: `https://ayrondigitalsolutions.com/${slug}${noTrailingSlash ? "" : "/"}`,
+    areaServed: { "@type": "City", name: city },
+    address: { "@type": "PostalAddress", addressLocality: city, addressRegion: "Andhra Pradesh", addressCountry: "IN" },
+    aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "100" },
+  };
+  const jsonLd = faqs && faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@graph": [
+          localBusinessSchema,
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          },
+        ],
+      }
+    : localBusinessSchema;
 
   return (
     <motion.main
@@ -30,16 +77,8 @@ const LocationPage = ({ city, neighborhoods, intro, noTrailingSlash }: LocationP
         description={description}
         canonical={`/${slug}`}
         noTrailingSlash={noTrailingSlash}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: `Ayron Digital Solutions — ${city}`,
-          description,
-          url: `https://ayrondigitalsolutions.com/${slug}${noTrailingSlash ? "" : "/"}`,
-          areaServed: { "@type": "City", name: city },
-          address: { "@type": "PostalAddress", addressLocality: city, addressRegion: "Andhra Pradesh", addressCountry: "IN" },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "100" },
-        }}
+        keywords={metaKeywords}
+        jsonLd={jsonLd}
       />
 
       {/* HERO */}
@@ -59,7 +98,13 @@ const LocationPage = ({ city, neighborhoods, intro, noTrailingSlash }: LocationP
               <span className="block text-primary">{city}.</span>
             </h1>
             <p className="font-serif-accent italic text-primary text-2xl sm:text-[28px] mt-3">Built for growth.</p>
+            {highlightKeyword && (
+              <p className="mt-5 font-display text-2xl sm:text-3xl md:text-4xl leading-tight text-foreground max-w-[560px]">
+                <span className="text-primary">{highlightKeyword}</span>
+              </p>
+            )}
             <p className="font-body text-muted-foreground text-[17px] max-w-[520px] mt-6 leading-relaxed">{intro}</p>
+
 
             <div className="flex flex-wrap items-center gap-4 mt-8">
               <Link
@@ -212,6 +257,37 @@ const LocationPage = ({ city, neighborhoods, intro, noTrailingSlash }: LocationP
           </div>
         </div>
       </section>
+
+      {/* FAQs */}
+      {faqs && faqs.length > 0 && (
+        <section className="py-20 md:py-28 bg-background" data-animate="fade-up">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <span className="text-primary text-xs tracking-[0.2em] uppercase font-body font-medium">FAQs</span>
+              <h2 className="font-display text-5xl md:text-6xl text-foreground mt-3 leading-[0.95]">
+                Questions, <span className="text-stroke-orange">answered.</span>
+              </h2>
+              <p className="font-body text-muted-foreground mt-5 text-[15px] leading-relaxed">
+                Everything {city} businesses ask before hiring a digital marketing partner.
+              </p>
+            </div>
+            <div className="lg:col-span-8 border-t border-border/40">
+              {faqs.map((f) => (
+                <details key={f.q} className="group border-b border-border/40 py-6">
+                  <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
+                    <h3 className="font-display text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                      {f.q}
+                    </h3>
+                    <span className="text-primary font-display text-2xl leading-none mt-1 transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="font-body text-muted-foreground mt-4 text-[15px] leading-relaxed max-w-2xl">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
 
       {/* INTERNAL LINKS BACK TO HERO CTAs */}
       <section className="py-16 bg-primary text-primary-foreground" data-animate="fade-up">
