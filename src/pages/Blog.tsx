@@ -4,8 +4,19 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
 import blogMostTrustedAgency from "@/assets/blog/top-digital-marketing-agency.jpeg";
+import blogLongTermSuccess from "@/assets/blog/digital-marketing-company.webp";
 
 const allBlogs = [
+  {
+    slug: "digital-marketing-services-in-vijayawada",
+    category: "Digital Marketing",
+    title: "The Secret Behind Long-Term Business Success with a Leading Digital Marketing Agency",
+    excerpt: "Every successful business has a strong digital foundation behind it. In today's competitive landscape, building a sustainable brand requires more than just launching a website—it demands a strategic, data-driven approach to online growth.",
+    date: "June 2026",
+    author: "Team Ayron",
+    readTime: "7 min read",
+    image: blogLongTermSuccess,
+  },
   {
     slug: "most-trusted-digital-marketing-agency-vijayawada",
     category: "Digital Marketing",
