@@ -1,7 +1,7 @@
 import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
 import blogMostTrustedAgency from "@/assets/blog/top-digital-marketing-agency.jpeg";
 import blogLongTermSuccess from "@/assets/blog/digital-marketing-company.webp";
-import blogBestAgency from "@/assets/blog/best-digital-marketing-agency-vijayawada.png";
+import blogBestAgency from "@/assets/blog/ayron-digital-solutions.webp";
 
 export interface Blog {
     slug: string;

@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
 import blogMostTrustedAgency from "@/assets/blog/top-digital-marketing-agency.jpeg";
 import blogLongTermSuccess from "@/assets/blog/digital-marketing-company.webp";
-import blogBestAgency from "@/assets/blog/best-digital-marketing-agency-vijayawada.png";
+import blogBestAgency from "@/assets/blog/ayron-digital-solutions.webp";
 
 // ==========================================
 // 0. Best Digital Marketing Agency Blog Detail Page
@@ -26,11 +26,11 @@ const BestDigitalMarketingAgencyDetail = () => {
 
   const faqs = [
     {
-      q: "What makes Ayron Digital Solutions the best digital marketing agency in Vijayawada?",
-      a: "Ayron offers a complete set of services—web design, SEO, paid marketing, WhatsApp marketing, e-commerce listing, quick commerce, logo design, product photography, and content creation—all under one roof. This one-stop model keeps your branding consistent and saves you the cost and hassle of managing several agencies."
+      q: "What makes Ayron Digital Solutions the best <Link to=\"/\" className=\"text-primary hover:underline italic\">digital marketing agency in Vijayawada</Link>?",
+      a: "Ayron offers a complete set of services—<a href=\"https://en.wikipedia.org/wiki/Web_design\" target=\"_blank\" rel=\"noopener noreferrer\" className=\"text-primary hover:underline italic\">web design</a>, SEO, paid marketing, WhatsApp marketing, e-commerce listing, quick commerce, logo design, product photography, and content creation—all under one roof. This one-stop model keeps your branding consistent and saves you the cost and hassle of managing several agencies."
     },
     {
-      q: "How much does it cost to hire a digital marketing agency in Vijayawada?",
+      q: "How much does it cost to hire a <Link to=\"/\" className=\"text-primary hover:underline italic\">digital marketing agency in Vijayawada</Link>?",
       a: "Costs vary based on the services you need, the size of your business, and your goals. A one-stop agency like Ayron can be more cost-effective than hiring separate vendors, since bundled services reduce overlap and improve coordination. Contact Ayron directly for a quote tailored to your needs."
     },
     {
@@ -122,7 +122,7 @@ const BestDigitalMarketingAgencyDetail = () => {
           <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-md">
             <h2 className="text-foreground font-display text-2xl mb-4 mt-0">Quick answer:</h2>
             <p className="italic text-foreground/90 m-0">
-              Ayron Digital Solutions stands out as a top digital marketing agency in Vijayawada because it offers everything under one roof—web design, SEO, paid ads, WhatsApp marketing, e-commerce listing, quick commerce, logo design, product shoots, and content creation. This one-stop model saves businesses time, money, and the hassle of juggling multiple vendors.
+              Ayron Digital Solutions stands out as a top <Link to="/" className="text-primary hover:underline italic">digital marketing agency in Vijayawada</Link> because it offers everything under one roof—<a href="https://en.wikipedia.org/wiki/Web_design" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline italic">web design</a>, SEO, paid ads, WhatsApp marketing, e-commerce listing, quick commerce, logo design, product shoots, and content creation. This one-stop model saves businesses time, money, and the hassle of juggling multiple vendors.
             </p>
           </div>
 
@@ -134,7 +134,7 @@ const BestDigitalMarketingAgencyDetail = () => {
             This post breaks down what makes a great digital marketing agency, the services your business genuinely needs to grow online, and why Ayron Digital Solutions has become a trusted name for businesses across Vijayawada. By the end, you'll know exactly what to look for—and how to make a confident choice.
           </p>
 
-          <h2 className="font-display text-3xl text-foreground mt-12 mb-6">What should you look for in a digital marketing agency in Vijayawada?</h2>
+          <h2 className="font-display text-3xl text-foreground mt-12 mb-6">What should you look for in a <Link to="/" className="text-primary hover:underline italic">digital marketing agency in Vijayawada</Link>?</h2>
           <p>
             A strong agency does more than run a few ads or build a website. It understands your business goals, your local market, and your customers. Here are the key things to check before you commit:
           </p>
@@ -215,7 +215,7 @@ const BestDigitalMarketingAgencyDetail = () => {
 
           <h2 className="font-display text-3xl text-foreground mt-12 mb-6">Make the smart choice for your business</h2>
           <p>
-            Picking a digital marketing agency shouldn't be a gamble. Look for local expertise, transparent results, and a full range of services that work together. Ayron Digital Solutions checks every box—offering web design, SEO, paid marketing, WhatsApp campaigns, e-commerce support, branding, product shoots, and content creation in one place.
+            Picking a <Link to="/" className="text-primary hover:underline italic">digital marketing agency in Vijayawada</Link> shouldn't be a gamble. Look for local expertise, transparent results, and a full range of services that work together. Ayron Digital Solutions checks every box—offering <a href="https://en.wikipedia.org/wiki/Web_design" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline italic">web design</a>, SEO, paid marketing, WhatsApp campaigns, e-commerce support, branding, product shoots, and content creation in one place.
           </p>
           <p className="text-xl text-primary font-medium italic">
             Ready to grow your business online? Reach out to Ayron Digital Solutions to discuss your goals and build a marketing plan that delivers real results.
