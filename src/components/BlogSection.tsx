@@ -1,17 +1,8 @@
 import { motion } from "framer-motion";
-import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
+import { Link } from "react-router-dom";
+import { allBlogs } from "@/data/blogs";
 
-const blogs = [
-  {
-    category: "Ecommerce",
-    title: "Shopify vs. WordPress: Which Ecommerce Platform Fits Your Business?",
-    excerpt: "In today's hyper-competitive digital marketplace, launching an online store is no longer just about having a great product; it is about choosing the right foundation for your business to grow.",
-    date: "May 2026",
-    author: "Team Ayron",
-    readTime: "6 min read",
-    image: blogShopifyVsWordpress,
-  },
-];
+const blogs = [allBlogs[0]];
 
 const BlogSection = () => (
   <section id="blog" className="bg-secondary py-20" data-animate="fade-up">
@@ -24,9 +15,9 @@ const BlogSection = () => (
             From Our <span className="font-serif-accent italic text-primary">Playbook</span>
           </h2>
         </div>
-        <a href="#blog" className="text-primary font-body text-sm hover:underline underline-offset-4">
+        <Link to="/blog" className="text-primary font-body text-sm hover:underline underline-offset-4">
           View All Posts →
-        </a>
+        </Link>
       </div>
 
       {/* Grid */}

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion, useScroll } from "framer-motion";
-import { 
-  ArrowLeft, Clock, Calendar, Tag, CheckCircle2, ChevronRight, 
-  Phone, MessageSquare, MapPin, Award, Search, Laptop, ShieldCheck, 
+import {
+  ArrowLeft, Clock, Calendar, Tag, CheckCircle2, ChevronRight,
+  Phone, MessageSquare, MapPin, Award, Search, Laptop, ShieldCheck,
   Mail, Camera, BarChart3, ChevronDown, Check, ExternalLink, Globe, Star, Users, Building
 } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -11,6 +11,271 @@ import Footer from "@/components/Footer";
 import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-wordpress.png";
 import blogMostTrustedAgency from "@/assets/blog/top-digital-marketing-agency.jpeg";
 import blogLongTermSuccess from "@/assets/blog/digital-marketing-company.webp";
+import blogBestAgency from "@/assets/blog/best-digital-marketing-agency-vijayawada.png";
+
+// ==========================================
+// 0. Best Digital Marketing Agency Blog Detail Page
+// ==========================================
+const BestDigitalMarketingAgencyDetail = () => {
+  const { scrollYProgress } = useScroll();
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      q: "What makes Ayron Digital Solutions the best digital marketing agency in Vijayawada?",
+      a: "Ayron offers a complete set of services—web design, SEO, paid marketing, WhatsApp marketing, e-commerce listing, quick commerce, logo design, product photography, and content creation—all under one roof. This one-stop model keeps your branding consistent and saves you the cost and hassle of managing several agencies."
+    },
+    {
+      q: "How much does it cost to hire a digital marketing agency in Vijayawada?",
+      a: "Costs vary based on the services you need, the size of your business, and your goals. A one-stop agency like Ayron can be more cost-effective than hiring separate vendors, since bundled services reduce overlap and improve coordination. Contact Ayron directly for a quote tailored to your needs."
+    },
+    {
+      q: "What services should a small business start with?",
+      a: "Most small businesses benefit from starting with a solid website and basic SEO, then adding paid ads and content as they grow. Ayron can help you prioritize based on your budget and goals, so you invest where it matters most first."
+    },
+    {
+      q: "How long does it take to see results from digital marketing?",
+      a: "Paid marketing can drive traffic almost immediately, while SEO typically takes a few months to show strong results. A combined strategy—which Ayron offers—gives you quick wins from ads while building long-term growth through SEO and content."
+    },
+    {
+      q: "Can Ayron help businesses that sell on e-commerce platforms?",
+      a: "Yes. Ayron handles e-commerce listings and quick commerce setups, along with product photography and content that make your listings more attractive and easier to find. This helps online sellers boost visibility and sales."
+    }
+  ];
+
+  return (
+    <main className="pt-16 bg-background relative overflow-hidden text-foreground">
+      <SEO
+        title="Best Digital Marketing Agency in Vijayawada: Why Ayron Wins"
+        description="Searching for the best digital marketing agency in Vijayawada? See why Ayron Digital Solutions' all-in-one services help local businesses grow faster."
+        canonical="/blog/best-digital-marketing-agency-vijayawada-ayron-wins"
+      />
+
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1.5 bg-primary z-50 origin-left"
+        style={{ scaleX: scrollYProgress }}
+      />
+
+      <section className="relative pt-20 pb-12 px-6 md:px-12 bg-background grid-bg noise-overlay border-b border-primary/10 overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/[0.05] rounded-full blur-[120px] pointer-events-none" />
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <div className="flex items-center gap-2 text-xs font-body text-muted-foreground mb-6">
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3 text-muted-foreground/30" />
+            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
+            <ChevronRight className="w-3 h-3 text-muted-foreground/30" />
+            <span className="text-foreground/90 font-medium truncate max-w-[200px] sm:max-w-none">Best Digital Marketing Agency</span>
+          </div>
+
+          <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary font-body text-xs font-semibold px-3 py-1 uppercase tracking-wider mb-4 rounded-sm border border-primary/20">
+            <Tag className="w-3 h-3 text-primary" /> Digital Marketing
+          </span>
+
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-foreground leading-[1.1] mb-6 font-semibold tracking-wide">
+            Best Digital Marketing Agency in Vijayawada? <br className="hidden sm:inline" />
+            <span className="font-serif-accent italic text-primary">Why Ayron Digital Solutions Wins</span>
+          </h1>
+
+          <div className="flex flex-wrap items-center gap-6 text-sm font-body text-muted-foreground border-t border-primary/10 pt-6">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-display shadow-md font-semibold">A</div>
+              <div>
+                <p className="text-xs text-muted-foreground/50 leading-none">Written by</p>
+                <p className="text-sm font-semibold text-foreground/90 mt-0.5">Team Ayron</p>
+              </div>
+            </div>
+            <div className="h-8 w-px bg-primary/10 hidden sm:block" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground/80 font-light">June 23, 2026</span>
+            </div>
+            <div className="h-8 w-px bg-primary/10 hidden sm:block" />
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground/80 font-light">10 min read</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-10 max-w-5xl mx-auto bg-background relative z-10">
+        <motion.div
+          className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-primary/20 bg-muted/10 p-2 rounded-sm"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <img
+            src={blogBestAgency}
+            alt="Best Digital Marketing Agency in Vijayawada"
+            className="w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover rounded-sm hover:scale-[1.01] transition-transform duration-700"
+          />
+        </motion.div>
+      </section>
+
+      <section className="px-6 md:px-12 py-12 max-w-4xl mx-auto relative z-10">
+        <div className="prose prose-lg prose-invert max-w-none font-body font-light text-muted-foreground leading-relaxed space-y-8">
+          <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-md">
+            <h2 className="text-foreground font-display text-2xl mb-4 mt-0">Quick answer:</h2>
+            <p className="italic text-foreground/90 m-0">
+              Ayron Digital Solutions stands out as a top digital marketing agency in Vijayawada because it offers everything under one roof—web design, SEO, paid ads, WhatsApp marketing, e-commerce listing, quick commerce, logo design, product shoots, and content creation. This one-stop model saves businesses time, money, and the hassle of juggling multiple vendors.
+            </p>
+          </div>
+
+          <p>
+            Finding the right digital marketing partner in Vijayawada can feel overwhelming. There are dozens of agencies, each promising big results, and it's hard to know which one actually delivers. Should you pick a specialist for SEO, another for design, and a third for ads? Or is there a smarter way?
+          </p>
+
+          <p>
+            This post breaks down what makes a great digital marketing agency, the services your business genuinely needs to grow online, and why Ayron Digital Solutions has become a trusted name for businesses across Vijayawada. By the end, you'll know exactly what to look for—and how to make a confident choice.
+          </p>
+
+          <h2 className="font-display text-3xl text-foreground mt-12 mb-6">What should you look for in a digital marketing agency in Vijayawada?</h2>
+          <p>
+            A strong agency does more than run a few ads or build a website. It understands your business goals, your local market, and your customers. Here are the key things to check before you commit:
+          </p>
+          <ul className="space-y-4 list-none pl-0">
+            {[
+              { t: "A full range of services.", d: "Marketing works best when design, content, SEO, and ads pull in the same direction. An agency that handles all of these keeps your brand consistent." },
+              { t: "Local market knowledge.", d: "Vijayawada businesses serve a specific audience. An agency that knows the region can target the right people with the right message." },
+              { t: "Transparent results.", d: "Look for a partner that shares clear reports on traffic, leads, and sales—not just vanity metrics." },
+              { t: "Proven experience.", d: "Ask to see past work and client outcomes across different industries." }
+            ].map((item, i) => (
+              <li key={i} className="flex gap-4 items-start bg-secondary/30 p-4 rounded-sm border border-primary/5">
+                <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                <span><strong className="text-foreground block mb-1">{item.t}</strong> {item.d}</span>
+              </li>
+            ))}
+          </ul>
+          <p>
+            When you find an agency that ticks all these boxes, you stop wasting money on guesswork and start seeing steady growth.
+          </p>
+
+          <h2 className="font-display text-3xl text-foreground mt-12 mb-6">Why is a one-stop digital marketing agency better for your business?</h2>
+          <p>
+            Hiring separate vendors for each task sounds flexible, but it often creates more problems than it solves. Your website team and your SEO team may not talk to each other. Your ad agency might design graphics that clash with your brand. The result is wasted budget and a confusing customer experience.
+          </p>
+          <p>
+            A one-stop agency fixes this. When one team handles your website, content, ads, and design, everything stays aligned. You get a single point of contact, faster turnaround, and a brand that looks and feels consistent everywhere.
+          </p>
+          <p>
+            Choose a one-stop agency if you want to save time, keep your messaging unified, and avoid the headache of managing multiple contracts.
+          </p>
+
+          <h2 className="font-display text-3xl text-foreground mt-12 mb-6">What services does Ayron Digital Solutions offer?</h2>
+          <p>
+            Ayron Digital Solutions is built as a complete digital partner for businesses in Vijayawada. Instead of forcing you to hire several specialists, Ayron brings every service together under one roof. Here's what's included:
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            {[
+              { title: "Web design and development", desc: "Ayron designs fast, mobile-friendly websites that turn visitors into customers and reflect your brand properly.", icon: <Laptop /> },
+              { title: "SEO", desc: "Ranking high on Google brings free, long-term traffic. Ayron's SEO work helps your business show up when local customers search.", icon: <Search /> },
+              { title: "Digital and paid marketing", desc: "From Google Ads to social media campaigns, Ayron runs paid marketing that targets the right audience.", icon: <BarChart3 /> },
+              { title: "WhatsApp marketing", desc: "Sets up WhatsApp campaigns that deliver offers, updates, and reminders straight to people's phones.", icon: <MessageSquare /> },
+              { title: "E-commerce & Quick Commerce", desc: "Handles product listings on e-commerce platforms and supports quick commerce setups.", icon: <Globe /> },
+              { title: "Logo design and branding", desc: "Creates clean, professional logos that help your business stand out and build trust.", icon: <Award /> },
+              { title: "Product photography", desc: "High-quality product shoots make your items look their best across your website and listings.", icon: <Camera /> },
+              { title: "Content creation", desc: "From blog posts to social media captions, produces content that informs and engages your audience.", icon: <Mail /> }
+            ].map((service, idx) => (
+              <div key={idx} className="bg-secondary/20 border border-primary/10 p-6 rounded-sm hover:border-primary/30 transition-colors group">
+                <div className="bg-primary/10 w-12 h-12 flex items-center justify-center rounded-sm mb-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  {service.icon}
+                </div>
+                <h3 className="text-foreground font-display text-xl mb-2">{service.title}</h3>
+                <p className="text-sm font-light leading-relaxed">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="font-display text-3xl text-foreground mt-12 mb-6">How does Ayron Digital Solutions help local Vijayawada businesses grow?</h2>
+          <p>
+            Ayron combines local knowledge with a complete service lineup. A restaurant, a retail store, and an online seller all need different strategies—and Ayron tailors its approach to each. Because every service lives under one roof, your campaigns stay connected. Your SEO supports your website, your content supports your ads, and your branding ties it all together.
+          </p>
+          <p>
+            This joined-up approach means you spend less and achieve more. Rather than paying multiple agencies to half-coordinate, you get one team focused entirely on your growth.
+          </p>
+
+          <h2 className="font-display text-3xl text-foreground mt-12 mb-6">How do you choose between Ayron and other agencies?</h2>
+          <p>
+            If you only need a single service once—say, a logo—a small specialist might do the job. But most growing businesses need ongoing support across many channels. That's where a one-stop partner makes the difference.
+          </p>
+          <div className="bg-primary/5 rounded-sm p-8 border border-primary/20">
+            <p className="text-foreground font-medium mb-4">Choose Ayron Digital Solutions if:</p>
+            <ul className="space-y-3 pl-0 list-none mb-0">
+              <li className="flex items-center gap-3"><Check className="text-primary w-5 h-5 shrink-0" /> You want consistent branding</li>
+              <li className="flex items-center gap-3"><Check className="text-primary w-5 h-5 shrink-0" /> You want fewer vendors to manage</li>
+              <li className="flex items-center gap-3"><Check className="text-primary w-5 h-5 shrink-0" /> You want a team that handles your entire online presence</li>
+            </ul>
+          </div>
+
+          <h2 className="font-display text-3xl text-foreground mt-12 mb-6">Make the smart choice for your business</h2>
+          <p>
+            Picking a digital marketing agency shouldn't be a gamble. Look for local expertise, transparent results, and a full range of services that work together. Ayron Digital Solutions checks every box—offering web design, SEO, paid marketing, WhatsApp campaigns, e-commerce support, branding, product shoots, and content creation in one place.
+          </p>
+          <p className="text-xl text-primary font-medium italic">
+            Ready to grow your business online? Reach out to Ayron Digital Solutions to discuss your goals and build a marketing plan that delivers real results.
+          </p>
+
+          {/* FAQ Section */}
+          <div className="mt-20 pt-12 border-t border-primary/10">
+            <h2 className="font-display text-4xl text-foreground mb-8">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <div key={i} className="border border-primary/10 bg-secondary/20 overflow-hidden">
+                  <button
+                    className="w-full text-left px-6 py-5 flex items-center justify-between group hover:bg-primary/5 transition-colors"
+                    onClick={() => toggleFaq(i)}
+                  >
+                    <span className="font-display text-lg text-foreground group-hover:text-primary transition-colors">{faq.q}</span>
+                    <ChevronDown className={`w-5 h-5 text-primary transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
+                  </button>
+                  <motion.div
+                    initial={false}
+                    animate={{ height: openFaq === i ? "auto" : 0, opacity: openFaq === i ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 text-muted-foreground font-light leading-relaxed">
+                      {faq.a}
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-6 md:px-12 bg-primary mt-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-10">
+          <Building className="w-full h-full rotate-12" />
+        </div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="font-display text-4xl md:text-5xl text-primary-foreground mb-6">Partner with Vijayawada's Leading Agency</h2>
+          <p className="text-primary-foreground/80 font-body text-lg mb-10 max-w-2xl mx-auto">
+            Let's build your digital growth engine together. Contact us for a free strategy session.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link to="/contact" className="bg-background text-primary font-display text-xl px-10 py-4 hover:bg-muted transition-all shadow-xl">
+              Get Started Now
+            </Link>
+            <a href="tel:+918121213232" className="flex items-center gap-2 text-primary-foreground hover:scale-105 transition-transform px-6 py-4">
+              <Phone className="w-5 h-5" /> +91-8121213232
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+};
 
 // ==========================================
 // 1. Shopify vs WordPress Blog Detail Page
@@ -28,7 +293,7 @@ const ShopifyVsWordpressDetail = () => {
       />
 
       {/* Reading Progress Bar */}
-      <motion.div 
+      <motion.div
         className="fixed top-0 left-0 right-0 h-1.5 bg-primary z-50 origin-left"
         style={{ scaleX: scrollYProgress }}
       />
@@ -37,7 +302,7 @@ const ShopifyVsWordpressDetail = () => {
       <section className="relative pt-20 pb-12 px-6 md:px-12 bg-background grid-bg noise-overlay border-b border-primary/10 overflow-hidden">
         {/* Glow orb */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/[0.05] rounded-full blur-[120px] pointer-events-none" />
-        
+
         <div className="relative z-10 max-w-4xl mx-auto">
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2 text-xs font-body text-muted-foreground mb-6">
@@ -84,15 +349,15 @@ const ShopifyVsWordpressDetail = () => {
 
       {/* Main Image Banner */}
       <section className="px-6 md:px-12 py-10 max-w-5xl mx-auto bg-background relative z-10">
-        <motion.div 
+        <motion.div
           className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-primary/20 bg-muted/10 p-2 rounded-sm"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <img 
-            src={blogShopifyVsWordpress} 
-            alt="Shopify vs WordPress Comparison Banner" 
+          <img
+            src={blogShopifyVsWordpress}
+            alt="Shopify vs WordPress Comparison Banner"
             className="w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover rounded-sm hover:scale-[1.01] transition-transform duration-700"
           />
         </motion.div>
@@ -303,24 +568,24 @@ const ShopifyVsWordpressDetail = () => {
                 backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
                 backgroundSize: "20px 20px"
               }} />
-              
+
               <div className="relative z-10 space-y-6">
                 <h4 className="font-display text-3xl sm:text-4xl tracking-wide font-medium">Ready to build your dream e-commerce store?</h4>
                 <p className="font-body font-light text-primary-foreground/90 max-w-xl mx-auto text-sm sm:text-base">
                   Don't let technical hurdles delay your business success. Let our experts handle the coding, design, and deployment. Reach out to us today for a free consultation!
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-                  <a 
-                    href="https://wa.me/919550860545" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/919550860545"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-background text-foreground font-display text-lg px-8 py-3.5 hover:bg-muted transition-colors shadow-lg"
                   >
                     <MessageSquare className="w-5 h-5 text-primary shrink-0" /> WhatsApp Us
                   </a>
-                  <a 
-                    href="tel:+919550860545" 
+                  <a
+                    href="tel:+919550860545"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/20 text-primary-foreground font-display text-lg px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-colors"
                   >
                     <Phone className="w-5 h-5 shrink-0" /> Call: 9550860545
@@ -328,8 +593,8 @@ const ShopifyVsWordpressDetail = () => {
                 </div>
 
                 <div className="border-t border-primary-foreground/10 pt-6 mt-6">
-                  <Link 
-                    to="/contact" 
+                  <Link
+                    to="/contact"
                     className="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-widest font-body font-semibold text-primary-foreground hover:underline"
                   >
                     <MapPin className="w-4 h-4 shrink-0" /> Visit Our Office: Ayron Digital Solutions Location
@@ -340,8 +605,8 @@ const ShopifyVsWordpressDetail = () => {
 
             {/* Back button */}
             <div className="pt-12 border-t border-primary/10 flex justify-between items-center">
-              <Link 
-                to="/blog" 
+              <Link
+                to="/blog"
                 className="inline-flex items-center gap-2 text-primary font-body font-semibold hover:underline"
               >
                 <ArrowLeft className="w-4 h-4 shrink-0" /> Back to Blog
@@ -404,7 +669,7 @@ const MostTrustedAgencyDetail = () => {
       />
 
       {/* Reading Progress Bar */}
-      <motion.div 
+      <motion.div
         className="fixed top-0 left-0 right-0 h-1.5 bg-primary z-50 origin-left"
         style={{ scaleX: scrollYProgress }}
       />
@@ -412,7 +677,7 @@ const MostTrustedAgencyDetail = () => {
       {/* Hero / Header Section */}
       <section className="relative pt-20 pb-12 px-6 md:px-12 bg-background grid-bg noise-overlay border-b border-primary/10 overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/[0.05] rounded-full blur-[120px] pointer-events-none" />
-        
+
         <div className="relative z-10 max-w-4xl mx-auto">
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2 text-xs font-body text-muted-foreground mb-6">
@@ -459,15 +724,15 @@ const MostTrustedAgencyDetail = () => {
 
       {/* Main Image Banner */}
       <section className="px-6 md:px-12 py-10 max-w-5xl mx-auto bg-background relative z-10">
-        <motion.div 
+        <motion.div
           className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-primary/20 bg-muted/10 p-2 rounded-sm"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <img 
-            src={blogMostTrustedAgency} 
-            alt="Why Ayron Digital Solutions is the Most Trusted Digital Marketing Agency in Vijayawada" 
+          <img
+            src={blogMostTrustedAgency}
+            alt="Why Ayron Digital Solutions is the Most Trusted Digital Marketing Agency in Vijayawada"
             className="w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover rounded-sm hover:scale-[1.01] transition-transform duration-700"
           />
         </motion.div>
@@ -711,7 +976,7 @@ const MostTrustedAgencyDetail = () => {
                 backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
                 backgroundSize: "20px 20px"
               }} />
-              
+
               <div className="relative z-10 space-y-6">
                 <h4 className="font-display text-3xl sm:text-4xl tracking-wide font-medium">Ready to scale your business growth?</h4>
                 <p className="font-body font-light text-primary-foreground/90 max-w-xl mx-auto text-sm sm:text-base">
@@ -719,18 +984,18 @@ const MostTrustedAgencyDetail = () => {
                   <Link to="/" className="font-bold underline underline-offset-2 decoration-primary-foreground/50 hover:decoration-primary-foreground transition-colors">digital marketing agency in Vijayawada</Link>.
                   {" "}Get in touch with our experts today!
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-                  <a 
-                    href="https://wa.me/919550860545" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/919550860545"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-background text-foreground font-display text-lg px-8 py-3.5 hover:bg-muted transition-colors shadow-lg"
                   >
                     <MessageSquare className="w-5 h-5 text-primary shrink-0" /> WhatsApp Us
                   </a>
-                  <a 
-                    href="tel:+919550860545" 
+                  <a
+                    href="tel:+919550860545"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/20 text-primary-foreground font-display text-lg px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-colors"
                   >
                     <Phone className="w-5 h-5 shrink-0" /> Call: 9550860545
@@ -741,8 +1006,8 @@ const MostTrustedAgencyDetail = () => {
 
             {/* Back button */}
             <div className="pt-12 border-t border-primary/10 flex justify-between items-center">
-              <Link 
-                to="/blog" 
+              <Link
+                to="/blog"
                 className="inline-flex items-center gap-2 text-primary font-body font-semibold hover:underline"
               >
                 <ArrowLeft className="w-4 h-4 shrink-0" /> Back to Blog
@@ -801,7 +1066,7 @@ const LongTermBusinessSuccessDetail = () => {
       />
 
       {/* Reading Progress Bar */}
-      <motion.div 
+      <motion.div
         className="fixed top-0 left-0 right-0 h-1.5 bg-primary z-50 origin-left"
         style={{ scaleX: scrollYProgress }}
       />
@@ -809,7 +1074,7 @@ const LongTermBusinessSuccessDetail = () => {
       {/* Hero / Header Section */}
       <section className="relative pt-20 pb-12 px-6 md:px-12 bg-background grid-bg noise-overlay border-b border-primary/10 overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/[0.05] rounded-full blur-[120px] pointer-events-none" />
-        
+
         <div className="relative z-10 max-w-4xl mx-auto">
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2 text-xs font-body text-muted-foreground mb-6">
@@ -856,15 +1121,15 @@ const LongTermBusinessSuccessDetail = () => {
 
       {/* Main Image Banner */}
       <section className="px-6 md:px-12 py-10 max-w-5xl mx-auto bg-background relative z-10">
-        <motion.div 
+        <motion.div
           className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-primary/20 bg-muted/10 p-2 rounded-sm"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <img 
-            src={blogLongTermSuccess} 
-            alt="The Secret Behind Long-Term Business Success" 
+          <img
+            src={blogLongTermSuccess}
+            alt="The Secret Behind Long-Term Business Success"
             className="w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover rounded-sm hover:scale-[1.01] transition-transform duration-700"
           />
         </motion.div>
@@ -1020,24 +1285,24 @@ const LongTermBusinessSuccessDetail = () => {
                 backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
                 backgroundSize: "20px 20px"
               }} />
-              
+
               <div className="relative z-10 space-y-6">
                 <h4 className="font-display text-3xl sm:text-4xl tracking-wide font-medium">Ready to Build Long-Term Business Success?</h4>
                 <p className="font-body font-light text-primary-foreground/90 max-w-xl mx-auto text-sm sm:text-base">
                   Don't leave your digital growth to chance. Partner with the best digital marketing company in Vijayawada and watch your business thrive. Reach out to us today for a free consultation!
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-                  <a 
-                    href="https://wa.me/919550860545" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/919550860545"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-background text-foreground font-display text-lg px-8 py-3.5 hover:bg-muted transition-colors shadow-lg"
                   >
                     <MessageSquare className="w-5 h-5 text-primary shrink-0" /> WhatsApp Us
                   </a>
-                  <a 
-                    href="tel:+919550860545" 
+                  <a
+                    href="tel:+919550860545"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/20 text-primary-foreground font-display text-lg px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-colors"
                   >
                     <Phone className="w-5 h-5 shrink-0" /> Call: 9550860545
@@ -1077,8 +1342,8 @@ const LongTermBusinessSuccessDetail = () => {
 
             {/* Back button */}
             <div className="pt-12 border-t border-primary/10 flex justify-between items-center">
-              <Link 
-                to="/blog" 
+              <Link
+                to="/blog"
                 className="inline-flex items-center gap-2 text-primary font-body font-semibold hover:underline"
               >
                 <ArrowLeft className="w-4 h-4 shrink-0" /> Back to Blog
@@ -1102,9 +1367,13 @@ const BlogDetail = () => {
   if (slug === "shopify-vs-wordpress") {
     return <ShopifyVsWordpressDetail />;
   }
-  
+
   if (slug === "most-trusted-digital-marketing-agency-vijayawada") {
     return <MostTrustedAgencyDetail />;
+  }
+
+  if (slug === "best-digital-marketing-agency-vijayawada-ayron-wins") {
+    return <BestDigitalMarketingAgencyDetail />;
   }
 
   if (slug === "digital-marketing-services-in-vijayawada") {
@@ -1117,8 +1386,8 @@ const BlogDetail = () => {
       <div className="text-center px-6">
         <h1 className="font-display text-5xl mb-4 text-foreground">Blog Post Not Found</h1>
         <p className="font-body text-muted-foreground mb-8 font-light">The article you are looking for might have been moved or deleted.</p>
-        <Link 
-          to="/blog" 
+        <Link
+          to="/blog"
           className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display text-lg px-8 py-3 hover:bg-primary/90 transition-colors"
         >
           <ArrowLeft className="w-5 h-5" /> Back to Blog
