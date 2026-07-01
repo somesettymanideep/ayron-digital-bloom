@@ -75,13 +75,36 @@ const PortfolioSection = () => {
             >
               {/* Image */}
               <div className="aspect-square overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
+                {project.category === "Web Design" ? (
+                  <div className="w-full h-full bg-neutral-900 flex flex-col items-center justify-center p-6">
+                    <div className="w-full max-w-[92%] bg-neutral-800 p-2 shadow-2xl">
+                      <div className="flex items-center gap-1.5 px-2 py-1.5">
+                        <span className="w-2 h-2 rounded-full bg-red-500" />
+                        <span className="w-2 h-2 rounded-full bg-yellow-500" />
+                        <span className="w-2 h-2 rounded-full bg-green-500" />
+                      </div>
+                      <div className="bg-black overflow-hidden aspect-[16/10]">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                    <div className="w-[30%] h-2 bg-neutral-700" />
+                    <div className="w-[45%] h-1.5 bg-neutral-800" />
+                  </div>
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                )}
               </div>
+
 
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
