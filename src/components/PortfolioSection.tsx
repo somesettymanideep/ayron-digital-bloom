@@ -83,11 +83,11 @@ const PortfolioSection = () => {
                         <span className="w-2 h-2 rounded-full bg-yellow-500" />
                         <span className="w-2 h-2 rounded-full bg-green-500" />
                       </div>
-                      <div className="bg-black overflow-hidden aspect-[16/10]">
+                      <div className="bg-white overflow-hidden aspect-[16/10]">
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
                       </div>
