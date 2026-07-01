@@ -127,6 +127,22 @@ const routes = [
     priority: "0.85",
   },
   {
+    path: "/blog/best-digital-marketing-agency-vijayawada-ayron-wins",
+    title: "Best Digital Marketing Agency in Vijayawada? Why Ayron Digital Solutions Wins",
+    description: "Ayron Digital Solutions is the best digital marketing agency in Vijayawada — web design, SEO, paid ads, WhatsApp marketing, e-commerce listing, quick commerce, logo design, product shoots and content creation under one roof.",
+    keywords: "best digital marketing agency in vijayawada, top digital marketing agency vijayawada, ayron digital solutions, seo agency vijayawada, paid ads vijayawada, whatsapp marketing vijayawada, ecommerce listing vijayawada",
+    changefreq: "weekly",
+    priority: "0.85",
+  },
+  {
+    path: "/blog/digital-marketing-services-in-vijayawada",
+    title: "Long-Term Business Success with a Leading Digital Marketing Agency in Vijayawada",
+    description: "The secret behind long-term business success — a strategic, data-driven digital marketing approach from Ayron Digital Solutions, a leading agency in Vijayawada.",
+    keywords: "digital marketing services in vijayawada, leading digital marketing agency vijayawada, long-term business growth, ayron digital solutions",
+    changefreq: "weekly",
+    priority: "0.85",
+  },
+  {
     path: "/blog/shopify-vs-wordpress",
     title: "Shopify vs. WordPress: Which Ecommerce Platform Fits Your Business?",
     description: "Shopify vs. WordPress comparison for ecommerce website development. Analyze woocommerce shopify and wordpress shopify to choose the best shopify website development company.",
