@@ -144,7 +144,7 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="flex -ml-6 touch-pan-y">
+          <div className="flex -ml-6 touch-pan-y items-stretch">
             {testimonials.map((t, i) => (
               <div
                 key={i}
