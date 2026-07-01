@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Megaphone, Monitor, Diamond, Mail, Users,
-  ShoppingBag, Search, Camera, ArrowRight
+  ShoppingBag, Search, Camera, Zap, ArrowRight
 } from "lucide-react";
 
 const services = [
@@ -53,6 +53,12 @@ const services = [
     desc: "Professional product photography that makes your brand look premium and trustworthy.",
     icon: Camera,
     slug: "product-shoot",
+  },
+  {
+    title: "Q-Commerce Management",
+    desc: "End-to-end quick-commerce operations across Blinkit, Zepto, and Instamart to boost sales and visibility.",
+    icon: Zap,
+    slug: "qcommerce",
   },
 ];
 
