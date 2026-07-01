@@ -13,7 +13,7 @@ const projects = [
   { image: project1, title: "Fashion Brand Campaign", category: "Branding", result: "3x Revenue Growth" },
   { image: project2, title: "Analytics Dashboard", category: "Digital Marketing", result: "248% ROAS" },
   { image: project3, title: "Cosmetics Product Shoot", category: "Product Photography", result: "40% Higher CTR" },
-  { image: project4, title: "Food Delivery Platform", category: "Web Design", result: "2x Conversions" },
+  { image: project4, title: "Durga Hardware Website", category: "Web Design", result: "2x Conversions" },
   { image: project5, title: "Influencer Campaign", category: "Influencer Marketing", result: "5M+ Reach" },
   { image: project6, title: "SEO & Content Strategy", category: "SEO", result: "Page 1 Rankings" },
 ];
