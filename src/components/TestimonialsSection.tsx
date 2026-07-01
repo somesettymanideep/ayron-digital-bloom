@@ -179,22 +179,17 @@ const TestimonialsSection = () => {
                   <div className="mt-auto">
                     <div className="h-px w-full bg-border/40 mb-6" />
                     <div className="flex items-center gap-4">
-                      <img
-                        src={t.avatar}
-                        alt={t.name}
-                        className="w-12 h-12 object-cover border-2 border-primary/40 shrink-0"
-                      />
+                      <div className="w-12 h-12 bg-primary text-primary-foreground font-display text-xl flex items-center justify-center shrink-0">
+                        {t.name.charAt(0)}
+                      </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-display text-base text-secondary-foreground truncate">
                           {t.name}
                         </p>
-                        <p className="font-body text-xs text-primary font-medium truncate">
+                        <p className="font-body text-sm text-muted-foreground truncate">
                           {t.role}
                         </p>
                       </div>
-                      <span className="font-body text-[11px] font-semibold text-primary border border-primary/30 px-3 py-1 uppercase tracking-wider shrink-0 whitespace-nowrap">
-                        {t.tag}
-                      </span>
                     </div>
                   </div>
                 </div>
