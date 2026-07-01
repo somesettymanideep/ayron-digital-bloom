@@ -95,8 +95,8 @@ const Footer = () => (
             </li>
             <li className="flex items-center gap-2">
               <Mail size={16} className="text-primary shrink-0" strokeWidth={1.5} />
-              <a href="mailto:info@ayrondigital.in" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
-                info@ayrondigital.in
+              <a href="mailto:info@ayrondigitalsolutions.com" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
+                info@ayrondigitalsolutions.com
               </a>
             </li>
           </ul>

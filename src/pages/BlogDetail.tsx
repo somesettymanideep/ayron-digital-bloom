@@ -932,7 +932,7 @@ const MostTrustedAgencyDetail = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                  <span><strong>Email:</strong> <a href="mailto:info@ayrondigital.in" className="hover:text-primary transition-colors">info@ayrondigital.in</a></span>
+                  <span><strong>Email:</strong> <a href="mailto:info@ayrondigitalsolutions.com" className="hover:text-primary transition-colors">info@ayrondigitalsolutions.com</a></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Globe className="w-5 h-5 text-primary shrink-0 mt-0.5" />
