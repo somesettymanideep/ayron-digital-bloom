@@ -148,53 +148,51 @@ const TestimonialsSection = () => {
             {testimonials.map((t, i) => (
               <div
                 key={i}
-                className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333333%] min-w-0 pl-6"
+                className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333333%] min-w-0 pl-6 flex"
               >
-                <div className="h-full">
-                  <div
-                    className="relative h-full p-8 md:p-10 border border-border/30 bg-background hover:border-primary/40 shadow-sm hover:shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.15)] transition-all duration-400 group hover:-translate-y-2 flex flex-col"
-                  >
-                    {/* Quote icon */}
-                    <Quote
-                      className="absolute top-6 right-6 text-primary/10 group-hover:text-primary/20 transition-colors"
-                      size={48}
-                      strokeWidth={1}
-                    />
+                <div
+                  className="relative w-full p-8 md:p-10 border border-border/30 bg-background hover:border-primary/40 shadow-sm hover:shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.15)] transition-all duration-400 group hover:-translate-y-2 flex flex-col"
+                >
+                  {/* Quote icon */}
+                  <Quote
+                    className="absolute top-6 right-6 text-primary/10 group-hover:text-primary/20 transition-colors"
+                    size={48}
+                    strokeWidth={1}
+                  />
 
-                    {/* Top accent line */}
-                    <div className="absolute top-0 left-0 h-[3px] bg-primary transition-all duration-500 w-0 group-hover:w-full" />
+                  {/* Top accent line */}
+                  <div className="absolute top-0 left-0 h-[3px] bg-primary transition-all duration-500 w-0 group-hover:w-full" />
 
-                    {/* Stars */}
-                    <div className="flex gap-1 mb-6">
-                      {Array.from({ length: t.stars }).map((_, si) => (
-                        <Star key={si} size={14} className="fill-primary text-primary" />
-                      ))}
-                    </div>
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-6">
+                    {Array.from({ length: t.stars }).map((_, si) => (
+                      <Star key={si} size={14} className="fill-primary text-primary" />
+                    ))}
+                  </div>
 
-                    {/* Body text */}
-                    <p className="font-body font-light text-muted-foreground text-[15px] leading-[1.85] mb-8 grow">
-                      "{t.text}"
-                    </p>
+                  {/* Body text */}
+                  <p className="font-body font-light text-muted-foreground text-[15px] leading-[1.85] mb-8 grow">
+                    "{t.text}"
+                  </p>
 
-                    {/* Divider */}
+                  {/* Footer pinned to bottom */}
+                  <div className="mt-auto">
                     <div className="h-px w-full bg-border/40 mb-6" />
-
-                    {/* Client info */}
                     <div className="flex items-center gap-4">
                       <img
                         src={t.avatar}
                         alt={t.name}
-                        className="w-12 h-12 object-cover border-2 border-primary/40"
+                        className="w-12 h-12 object-cover border-2 border-primary/40 shrink-0"
                       />
                       <div className="flex-1 min-w-0">
-                        <p className="font-display text-base text-secondary-foreground">
+                        <p className="font-display text-base text-secondary-foreground truncate">
                           {t.name}
                         </p>
-                        <p className="font-body text-xs text-primary font-medium">
+                        <p className="font-body text-xs text-primary font-medium truncate">
                           {t.role}
                         </p>
                       </div>
-                      <span className="font-body text-[11px] font-semibold text-primary border border-primary/30 px-3 py-1 uppercase tracking-wider shrink-0">
+                      <span className="font-body text-[11px] font-semibold text-primary border border-primary/30 px-3 py-1 uppercase tracking-wider shrink-0 whitespace-nowrap">
                         {t.tag}
                       </span>
                     </div>
