@@ -16,7 +16,7 @@ const HeroSection = () => {
         <div className="w-full lg:w-[50%] flex flex-col px-6 md:px-12 lg:px-16 xl:px-20">
 
           {/* Hero content */}
-          <div className="flex-1 flex flex-col justify-center py-12 lg:py-0">
+          <div className="flex-1 flex flex-col justify-center pt-20 pb-12 lg:pt-16 lg:pb-0">
             <div className="mb-8">
               <motion.h1
                 className="font-display text-[52px] sm:text-[72px] lg:text-[72px] xl:text-[88px] 2xl:text-[100px] leading-[0.95] tracking-tight break-words"
