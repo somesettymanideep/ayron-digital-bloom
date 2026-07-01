@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Megaphone, Monitor, Diamond, Mail, Users,
-  ShoppingBag, Search, Camera, ArrowRight
+  ShoppingBag, Search, Camera, Zap, ArrowRight
 } from "lucide-react";
 
 const services = [
