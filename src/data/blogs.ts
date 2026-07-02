@@ -2,6 +2,7 @@ import blogShopifyVsWordpress from "@/assets/blog/difference-between-shopify-vs-
 import blogMostTrustedAgency from "@/assets/blog/top-digital-marketing-agency.jpeg";
 import blogLongTermSuccess from "@/assets/blog/digital-marketing-company.webp";
 import blogBestAgency from "@/assets/blog/ayron-digital-solutions.webp";
+import blogBenefitsHiring from "@/assets/blog/digital-marketing-agency.png";
 
 export interface Blog {
     slug: string;
@@ -15,6 +16,16 @@ export interface Blog {
 }
 
 export const allBlogs: Blog[] = [
+    {
+        slug: "10-benefits-of-hiring-the-best-digital-marketing-company-in-vijayawada",
+        category: "Digital Marketing",
+        title: "10 Benefits of Hiring the Best Digital Marketing Company in Vijayawada for Your Brand",
+        excerpt: "A strong digital presence is essential for a growing business. Partnering with the best digital marketing agency in Vijayawada is a way to improve your business's online presence and gain more potential customers.",
+        date: "July 2026",
+        author: "Team Ayron",
+        readTime: "8 min read",
+        image: blogBenefitsHiring,
+    },
     {
         slug: "best-digital-marketing-agency-vijayawada-ayron-wins",
         category: "Digital Marketing",
