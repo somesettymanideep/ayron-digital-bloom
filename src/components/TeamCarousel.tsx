@@ -9,11 +9,8 @@ import salmanImg from "@/assets/team/salman.jpg";
 import kiranImg from "@/assets/team/kiran.jpg";
 import manideepImg from "@/assets/team/manideep.jpg";
 import sandeepImg from "@/assets/team/sandeep.jpg";
-import naveenImg from "@/assets/team/naveen.jpg";
 import nareshImg from "@/assets/team/naresh.jpg";
 import prabhatImg from "@/assets/team/prabhat.jpg";
-import saikumarImg from "@/assets/team/saikumar.jpg";
-import manikantaImg from "@/assets/team/manikanta.jpg";
 
 const teamMembers = [
   { name: "Lokesh Vaddineni", role: "Sr. Social Media Manager", bio: "Drives social strategy and engagement for top brands across all platforms.", image: lokeshImg },
@@ -22,11 +19,8 @@ const teamMembers = [
   { name: "Ch. Kiran Kumar", role: "Social Media Manager", bio: "Executes data-driven social strategies to grow brand presence and engagement.", image: kiranImg },
   { name: "S. Manideep", role: "Sr. Developer", bio: "Builds scalable, high-performance web applications with modern tech stacks.", image: manideepImg },
   { name: "R. Sai Sandeep", role: "Marketing Head", bio: "Leads marketing strategy and execution, driving growth across all channels.", image: sandeepImg },
-  { name: "K. Naveen Babu", role: "Sr. Graphic Designer", bio: "Crafts stunning visuals and brand assets that captivate and convert.", image: naveenImg },
   { name: "N. Naresh", role: "Video Editor", bio: "Transforms raw footage into polished, engaging video content for brands.", image: nareshImg },
   { name: "A. Prabhat Sai", role: "Video Editor", bio: "Edits compelling video stories that drive views and audience engagement.", image: prabhatImg },
- 
-  { name: "R. Manikanta", role: "Sr. Video Editor", bio: "Expert video editor delivering cinematic-quality content for brand campaigns.", image: manikantaImg },
 ];
 
 const TeamCarousel = () => {
