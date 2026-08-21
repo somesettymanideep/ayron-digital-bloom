@@ -21,7 +21,6 @@ import Admin from "./pages/Admin";
 import Vijayawada from "./pages/Vijayawada";
 import Guntur from "./pages/Guntur";
 import ProductShootVijayawada from "./pages/ProductShootVijayawada";
-import Portfolio from "./pages/Portfolio";
 
 
 const queryClient = new QueryClient();
@@ -58,8 +57,6 @@ const AppContent = () => {
         <Route path="/guntur/" element={<Guntur />} />
         <Route path="/services/product-shoot-vijayawada" element={<ProductShootVijayawada />} />
         <Route path="/services/product-shoot-vijayawada/" element={<ProductShootVijayawada />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/portfolio/" element={<Portfolio />} />
         <Route path="*" element={<NotFound />} />
 
       </Routes>
