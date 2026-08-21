@@ -3,6 +3,8 @@ import blogMostTrustedAgency from "@/assets/blog/top-digital-marketing-agency.jp
 import blogLongTermSuccess from "@/assets/blog/digital-marketing-company.webp";
 import blogBestAgency from "@/assets/blog/ayron-digital-solutions.webp";
 import blogBenefitsHiring from "@/assets/blog/digital-marketing-agency.png";
+import blogBestAgencyVijayawada from "@/assets/blog/best-digital-marketing-agency-vijayawada.png";
+import blogBestEcommerceDesign from "@/assets/blog/best-ecommerce-design-in-vijayawada.jpg";
 
 export interface Blog {
     slug: string;
@@ -16,6 +18,26 @@ export interface Blog {
 }
 
 export const allBlogs: Blog[] = [
+    {
+        slug: "best-ecommerce-design-in-vijayawada",
+        category: "Ecommerce",
+        title: "Launch an eCommerce store that helps Vijayawada retail brands increase online sales",
+        excerpt: "Discover how the best eCommerce website design in Vijayawada can transform your retail business, attract local customers, and increase online sales with mobile-friendly features and secure checkout.",
+        date: "August 2026",
+        author: "Team Ayron",
+        readTime: "8 min read",
+        image: blogBestEcommerceDesign,
+    },
+    {
+        slug: "best-digital-marketing-agency-vijayawada-growing-businesses",
+        category: "Digital Marketing",
+        title: "The Best Digital Marketing Agency in Vijayawada for Growing Businesses – AYron Digital Solutions",
+        excerpt: "Discover why AYron Digital Solutions is the best digital marketing agency in Vijayawada, helping startups, retail, and eCommerce brands drive measurable online growth with SEO, PPC, and web development.",
+        date: "July 2026",
+        author: "Team Ayron",
+        readTime: "8 min read",
+        image: blogBestAgencyVijayawada,
+    },
     {
         slug: "10-benefits-of-hiring-the-best-digital-marketing-company-in-vijayawada",
         category: "Digital Marketing",
