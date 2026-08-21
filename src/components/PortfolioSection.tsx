@@ -54,9 +54,10 @@ const PortfolioSection = () => {
             transition={{ delay: 0.3 }}
           >
             <Link
-              to="/services"
+              to="/portfolio"
               className="font-body text-muted-foreground hover:text-primary transition-colors text-sm group inline-flex items-center gap-1"
             >
+
               View all projects <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
           </motion.div>

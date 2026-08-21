@@ -26,7 +26,9 @@ const navLinks = [
       { label: "Q-Commerce Management", href: "/services/qcommerce", icon: Zap },
     ],
   },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Blog", href: "/blog" },
+
   { label: "Contact", href: "/contact" },
 ];
 
