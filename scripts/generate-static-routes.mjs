@@ -151,6 +151,30 @@ const routes = [
     priority: "0.85",
   },
   {
+    path: "/blog/best-ecommerce-design-in-vijayawada",
+    title: "Best eCommerce Website Design in Vijayawada: Launch Your Online Store",
+    description: "Launch an eCommerce store that helps Vijayawada retail brands increase online sales. Get custom, mobile-friendly, secure eCommerce designs with Ayron.",
+    keywords: "best ecomerce design in vijayawada, best eCommerce website design in Vijayawada, eCommerce store Vijayawada, retail brand online sales",
+    changefreq: "weekly",
+    priority: "0.85",
+  },
+  {
+    path: "/blog/best-digital-marketing-agency-vijayawada-growing-businesses",
+    title: "The Best Digital Marketing Agency in Vijayawada for Growing Businesses – AYron Digital Solutions",
+    description: "Discover why AYron Digital Solutions is the best digital marketing agency in Vijayawada, helping startups, retail, and eCommerce brands drive measurable online growth with SEO, PPC, and web development.",
+    keywords: "best digital marketing agency in vijayawada, digital marketing company vijayawada, grow business online, ayron digital solutions",
+    changefreq: "weekly",
+    priority: "0.85",
+  },
+  {
+    path: "/blog/10-benefits-of-hiring-the-best-digital-marketing-company-in-vijayawada",
+    title: "10 Benefits of Hiring the Best Digital Marketing Company in Vijayawada for Your Brand",
+    description: "A strong digital presence is essential for a growing business. Partnering with the best digital marketing agency in Vijayawada is a way to improve your business's online presence and gain more potential customers.",
+    keywords: "benefits of hiring digital marketing company, digital marketing agency vijayawada, online presence, ayron digital solutions",
+    changefreq: "weekly",
+    priority: "0.85",
+  },
+  {
     path: "/contact",
     title: "Contact Ayron Digital Solutions | Digital Marketing Agency",
     description: "Contact Ayron Digital Solutions to discuss SEO, website design, branding, social media and digital marketing campaigns for your business.",
@@ -174,14 +198,6 @@ const routes = [
     changefreq: "monthly",
     priority: "0.9",
     noTrailingSlash: true,
-  },
-  {
-    path: "/portfolio",
-    title: "Portfolio | Our Websites & Social Media Creatives | Ayron Digital Solutions",
-    description: "Explore Ayron Digital Solutions' portfolio of high-converting websites and engaging social media creatives designed for brands in Vijayawada.",
-    keywords: "digital marketing portfolio, website design portfolio, social media creatives, ayron digital solutions projects",
-    changefreq: "monthly",
-    priority: "0.8",
   },
 ];
 

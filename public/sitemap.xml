@@ -101,6 +101,21 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://ayrondigitalsolutions.com/blog/best-ecommerce-design-in-vijayawada/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ayrondigitalsolutions.com/blog/best-digital-marketing-agency-vijayawada-growing-businesses/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ayrondigitalsolutions.com/blog/10-benefits-of-hiring-the-best-digital-marketing-company-in-vijayawada/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://ayrondigitalsolutions.com/contact/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -114,10 +129,5 @@
     <loc>https://ayrondigitalsolutions.com/guntur</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ayrondigitalsolutions.com/portfolio/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>
