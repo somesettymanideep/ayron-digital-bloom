@@ -175,7 +175,16 @@ const routes = [
     priority: "0.9",
     noTrailingSlash: true,
   },
+  {
+    path: "/portfolio",
+    title: "Portfolio | Our Websites & Social Media Creatives | Ayron Digital Solutions",
+    description: "Explore Ayron Digital Solutions' portfolio of high-converting websites and engaging social media creatives designed for brands in Vijayawada.",
+    keywords: "digital marketing portfolio, website design portfolio, social media creatives, ayron digital solutions projects",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
 ];
+
 
 if (!existsSync(indexFile)) {
   throw new Error("dist/index.html not found. Run this script after vite build.");
