@@ -13,13 +13,13 @@ const ScrollToTop = () => {
   const scrollUp = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <div className="fixed bottom-8 right-8 z-50 flex flex-col items-center gap-3">
-      {/* WhatsApp */}
+    <>
+      {/* WhatsApp — bottom of the floating stack */}
       <a
         href="https://wa.me/919550860545"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 bg-[hsl(142,70%,40%)] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+        className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[hsl(142,70%,40%)] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
         aria-label="Chat on WhatsApp"
       >
         <svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor">
@@ -27,17 +27,17 @@ const ScrollToTop = () => {
         </svg>
       </a>
 
-      {/* Scroll to top */}
+      {/* Scroll to top — sits above the chat assistant button */}
       <button
         onClick={scrollUp}
-        className={`w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:bg-agency-orange-dark transition-all duration-300 ${
+        className={`fixed bottom-[176px] right-[36px] z-50 w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:bg-agency-orange-dark transition-all duration-300 ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         }`}
         aria-label="Scroll to top"
       >
         <ArrowUp size={22} className="animate-bounce" />
       </button>
-    </div>
+    </>
   );
 };
 
