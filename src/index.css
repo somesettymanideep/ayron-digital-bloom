@@ -286,3 +286,12 @@
     filter: none !important;
   }
 }
+
+/* Chat widget: sit above the WhatsApp / scroll-to-top stack (bottom-right) */
+#cw-bubble {
+  bottom: 160px !important;
+}
+#cw-panel,
+#cw-greet {
+  bottom: 232px !important;
+}
